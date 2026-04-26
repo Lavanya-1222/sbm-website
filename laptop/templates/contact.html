@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact – TechFix Pro</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#c9a227;--gold-light:#f0c84a;--gold-dark:#8a6e0f;--dark:#080a0e;--dark-2:#0e1117;--dark-3:#151b25;--dark-4:#1c2433;--white:#f5f0e8;--white-dim:rgba(245,240,232,0.7);--glass:rgba(255,255,255,0.04);--glass-border:rgba(201,162,39,0.2);--glass-gold:rgba(201,162,39,0.08);}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--white);overflow-x:hidden;cursor:none;}
+.cursor{position:fixed;width:12px;height:12px;border-radius:50%;background:var(--gold);pointer-events:none;z-index:99999;transform:translate(-50%,-50%);}
+.cursor-trail{position:fixed;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--gold);pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:all 0.15s ease;opacity:0.5;}
+::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:var(--dark-2);}::-webkit-scrollbar-thumb{background:var(--gold-dark);border-radius:3px;}
+nav{position:fixed;top:0;width:100%;z-index:1000;padding:1.2rem 5%;display:flex;align-items:center;justify-content:space-between;background:rgba(8,10,14,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--glass-border);}
+.logo{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:0.6rem;}
+.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;box-shadow:0 0 20px rgba(201,162,39,0.4);}
+.logo span{color:var(--gold);}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--white-dim);font-family:'Syne',sans-serif;font-size:0.9rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;position:relative;transition:color 0.3s;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width 0.3s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.nav-links a.active{color:var(--gold);}
+.nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--dark)!important;padding:0.7rem 1.8rem;border-radius:6px;font-weight:700!important;}
+.nav-cta::after{display:none!important;}
+section{padding:6rem 5%;position:relative;}
+.section-tag{font-family:'Syne',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:0.8rem;}
+.section-tag::before{content:'';width:30px;height:2px;background:var(--gold);}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.15;margin-bottom:1rem;}
+.reveal{opacity:0;transform:translateY(50px);transition:all 0.8s cubic-bezier(0.23,1,0.32,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-left{opacity:0;transform:translateX(-50px);transition:all 0.8s cubic-bezier(0.23,1,0.32,1);}
+.reveal-left.visible{opacity:1;transform:translateX(0);}
+.reveal-right{opacity:0;transform:translateX(50px);transition:all 0.8s cubic-bezier(0.23,1,0.32,1);}
+.reveal-right.visible{opacity:1;transform:translateX(0);}
+
+/* PAGE HEADER */
+.page-header{min-height:40vh;display:flex;align-items:center;padding:8rem 5% 4rem;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--dark-2),var(--dark));}
+.page-header::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(201,162,39,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,39,0.04) 1px,transparent 1px);background-size:60px 60px;}
+.page-header::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(201,162,39,0.1) 0%,transparent 60%);}
+.page-header-content{position:relative;z-index:1;text-align:center;width:100%;}
+.breadcrumb{display:flex;align-items:center;gap:0.5rem;font-family:'Syne',sans-serif;font-size:0.85rem;color:var(--white-dim);justify-content:center;margin-bottom:1rem;}
+.breadcrumb a{color:var(--gold);text-decoration:none;}
+
+/* CONTACT INFO CARDS */
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:4rem;}
+.info-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;padding:2rem;text-align:center;transition:all 0.4s;position:relative;overflow:hidden;}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transition:transform 0.4s;}
+.info-card:hover{transform:translateY(-8px);border-color:rgba(201,162,39,0.3);background:var(--glass-gold);}
+.info-card:hover::before{transform:scaleX(1);}
+.info-icon{font-size:2.5rem;margin-bottom:1rem;}
+.info-card h3{font-family:'Syne',sans-serif;font-weight:700;margin-bottom:0.5rem;color:var(--gold);}
+.info-card p{color:var(--white-dim);font-size:0.9rem;line-height:1.7;}
+
+/* MAIN CONTACT SECTION */
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:start;}
+
+/* FORM */
+.contact-form{background:var(--glass);border:1px solid var(--glass-border);border-radius:24px;padding:3rem;backdrop-filter:blur(20px);}
+.contact-form h2{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;margin-bottom:0.5rem;}
+.contact-form p{color:var(--white-dim);margin-bottom:2rem;font-size:0.95rem;line-height:1.7;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.form-group{display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1rem;}
+.form-group label{font-family:'Syne',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+.form-group input,.form-group select,.form-group textarea{background:rgba(255,255,255,0.04);border:1px solid var(--glass-border);border-radius:10px;padding:0.9rem 1.2rem;color:var(--white);font-family:'DM Sans',sans-serif;font-size:0.95rem;outline:none;transition:all 0.3s;width:100%;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold);background:var(--glass-gold);box-shadow:0 0 20px rgba(201,162,39,0.1);}
+.form-group select option{background:var(--dark-2);color:var(--white);}
+.form-group textarea{resize:vertical;min-height:120px;}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--dark);padding:1rem 2.4rem;border:none;border-radius:8px;cursor:pointer;font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;box-shadow:0 0 30px rgba(201,162,39,0.35);transition:all 0.3s;width:100%;justify-content:center;}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(201,162,39,0.5);}
+
+/* SUCCESS MESSAGE */
+.success-msg{display:none;background:rgba(201,162,39,0.1);border:1px solid var(--gold);border-radius:12px;padding:1.5rem;text-align:center;margin-top:1rem;}
+.success-msg.show{display:block;}
+
+/* CONTACT SIDE */
+.contact-side{}
+.quick-contact{display:flex;flex-direction:column;gap:1.5rem;margin-bottom:2rem;}
+.qc-item{display:flex;align-items:center;gap:1.2rem;padding:1.5rem;background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;text-decoration:none;color:var(--white);transition:all 0.3s;}
+.qc-item:hover{border-color:rgba(201,162,39,0.4);background:var(--glass-gold);transform:translateX(8px);}
+.qc-icon{width:52px;height:52px;background:linear-gradient(135deg,var(--gold-dark),var(--gold));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;}
+.qc-text h4{font-family:'Syne',sans-serif;font-weight:700;margin-bottom:0.2rem;}
+.qc-text p{color:var(--white-dim);font-size:0.9rem;}
+
+/* MAP PLACEHOLDER */
+.map-box{background:var(--dark-3);border:1px solid var(--glass-border);border-radius:20px;height:280px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;margin-top:2rem;}
+.map-box::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(8,10,14,0.9),rgba(21,27,37,0.7));z-index:1;}
+.map-pin{position:relative;z-index:2;text-align:center;}
+.map-pin-icon{font-size:3rem;animation:bounce 2s ease-in-out infinite;}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+.map-pin p{font-family:'Syne',sans-serif;font-size:0.9rem;font-weight:600;margin-top:0.5rem;color:var(--gold);}
+.map-pin small{color:var(--white-dim);font-size:0.8rem;}
+/* Map grid bg */
+.map-box::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(201,162,39,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,39,0.06) 1px,transparent 1px);background-size:40px 40px;}
+
+/* HOURS */
+.hours-card{background:var(--glass-gold);border:1px solid var(--gold-dark);border-radius:20px;padding:2rem;margin-top:1.5rem;}
+.hours-card h3{font-family:'Syne',sans-serif;font-weight:700;color:var(--gold);margin-bottom:1.2rem;}
+.hours-row{display:flex;justify-content:space-between;padding:0.6rem 0;border-bottom:1px solid rgba(201,162,39,0.1);font-size:0.9rem;}
+.hours-row:last-child{border-bottom:none;}
+.hours-row .day{color:var(--white-dim);}
+.hours-row .time{font-family:'Syne',sans-serif;font-weight:600;}
+.hours-row.today .day,.hours-row.today .time{color:var(--gold);}
+
+footer{background:var(--dark-2);border-top:1px solid var(--glass-border);padding:4rem 5% 2rem;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:3rem;margin-bottom:3rem;}
+.footer-brand p{color:var(--white-dim);font-size:0.95rem;line-height:1.8;margin:1.2rem 0;max-width:280px;}
+.footer-col h4{font-family:'Syne',sans-serif;font-weight:700;margin-bottom:1.2rem;color:var(--gold);font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:0.8rem;}
+.footer-col ul a{color:var(--white-dim);text-decoration:none;font-size:0.9rem;transition:color 0.3s;display:flex;align-items:center;gap:0.4rem;}
+.footer-col ul a:hover{color:var(--gold);}
+.footer-col ul a::before{content:'›';color:var(--gold-dark);}
+.social-links{display:flex;gap:1rem;margin-top:1rem;}
+.social-link{width:40px;height:40px;background:var(--glass);border:1px solid var(--glass-border);border-radius:10px;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1.1rem;transition:all 0.3s;}
+.social-link:hover{background:linear-gradient(135deg,var(--gold-dark),var(--gold));transform:translateY(-3px);}
+@media(max-width:900px){.info-grid{grid-template-columns:1fr;}.contact-grid{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}.footer-grid{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-trail" id="cursorTrail"></div>
+
+<nav>
+  <a href="" class="logo"><div class="logo-icon">⚡</div>Tech<span>Fix</span> Pro</a>
+  <ul class="nav-links">
+    <li><a href="">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">Get Quote →</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-content">
+    <div class="breadcrumb"><a href="">Home</a> <span>›</span> Contact</div>
+    <div class="section-tag" style="justify-content:center">Get In Touch</div>
+    <h1 class="section-title">Let's Fix Your <span style="color:var(--gold)">Device Today</span></h1>
+    <p style="color:var(--white-dim);max-width:500px;line-height:1.8;margin:1rem auto 0">Drop in, call, or fill the form. We respond within 30 minutes during business hours.</p>
+  </div>
+</div>
+
+<section>
+  <!-- INFO CARDS -->
+  <div class="info-grid">
+    <div class="info-card reveal" style="transition-delay:0.1s">
+      <div class="info-icon">📍</div>
+      <h3>Our Address</h3>
+      <p>132, Station Road, Solapur<br>Maharashtra 413001, India<br><small style="color:var(--gold)">Near Bus Stand</small></p>
+    </div>
+    <div class="info-card reveal" style="transition-delay:0.2s">
+      <div class="info-icon">📞</div>
+      <h3>24/7 Support</h3>
+      <p>+91 99999 99999<br>+91 88888 88888<br><small style="color:var(--gold)">info@techfixpro.in</small></p>
+    </div>
+    <div class="info-card reveal" style="transition-delay:0.3s">
+      <div class="info-icon">🕐</div>
+      <h3>Opening Hours</h3>
+      <p>Monday – Saturday<br>9:00 AM – 8:00 PM<br><small style="color:var(--gold)">Sunday: 10 AM – 5 PM</small></p>
+    </div>
+  </div>
+
+  <!-- CONTACT MAIN -->
+  <div class="contact-grid">
+    <!-- FORM -->
+    <div class="reveal-left">
+      <div class="contact-form">
+        <h2>Send Us a <span style="color:var(--gold)">Direct Message</span></h2>
+        <p>Fill out the form below and our team will get back to you within 30 minutes with a free diagnosis quote.</p>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" id="name" placeholder="Rahul Sharma">
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" id="phone" placeholder="+91 99999 99999">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="email" placeholder="rahul@email.com">
+        </div>
+        <div class="form-group">
+          <label>Device Type</label>
+          <select id="device">
+            <option value="">Select your device...</option>
+            <option>Laptop</option>
+            <option>Desktop Computer</option>
+            <option>Smartphone</option>
+            <option>Tablet</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Service Required</label>
+          <select id="service">
+            <option value="">Select a service...</option>
+            <option>Data Recovery</option>
+            <option>Screen Replacement</option>
+            <option>Hardware Repair</option>
+            <option>OS Installation</option>
+            <option>Virus Removal</option>
+            <option>Laptop Cleaning</option>
+            <option>Battery Replacement</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Describe Your Issue</label>
+          <textarea id="message" placeholder="Please describe the problem with your device in detail..."></textarea>
+        </div>
+        <button class="btn-gold" onclick="submitForm()">Send Message →</button>
+        <div class="success-msg" id="successMsg">
+          ✅ Message sent successfully! Our team will contact you within 30 minutes.
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDE -->
+    <div class="reveal-right">
+      <div class="section-tag">Quick Contact</div>
+      <h2 class="section-title" style="font-size:2rem;margin-bottom:1.5rem">Get Quick Answers</h2>
+      <div class="quick-contact">
+        <a href="tel:+919999999999" class="qc-item">
+          <div class="qc-icon">📞</div>
+          <div class="qc-text">
+            <h4>Call Us Now</h4>
+            <p>+91 99999 99999 — Available 9am–8pm</p>
+          </div>
+        </a>
+        <a href="https://wa.me/919999999999" class="qc-item">
+          <div class="qc-icon">💬</div>
+          <div class="qc-text">
+            <h4>WhatsApp Us</h4>
+            <p>Send photos of your device for instant diagnosis</p>
+          </div>
+        </a>
+        <a href="mailto:info@techfixpro.in" class="qc-item">
+          <div class="qc-icon">✉️</div>
+          <div class="qc-text">
+            <h4>Email Us</h4>
+            <p>info@techfixpro.in — Reply within 2 hours</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- MAP -->
+      <div class="map-box">
+        <div class="map-pin">
+          <div class="map-pin-icon">📍</div>
+          <p>TechFix Pro</p>
+          <small>132, Station Road, Solapur 413001</small>
+        </div>
+      </div>
+
+      <!-- HOURS -->
+      <div class="hours-card">
+        <h3>🕐 Opening Hours</h3>
+        <div class="hours-row today"><span class="day">Monday – Friday</span><span class="time">9:00 AM – 8:00 PM</span></div>
+        <div class="hours-row"><span class="day">Saturday</span><span class="time">9:00 AM – 8:00 PM</span></div>
+        <div class="hours-row"><span class="day">Sunday</span><span class="time">10:00 AM – 5:00 PM</span></div>
+        <div class="hours-row" style="padding-top:0.8rem;border-top:1px solid rgba(201,162,39,0.2);margin-top:0.4rem">
+          <span class="day" style="color:var(--gold)">Emergency Repairs</span>
+          <span class="time" style="color:var(--gold)">24/7 Call</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="" class="logo"><div class="logo-icon">⚡</div>Tech<span>Fix</span> Pro</a>
+      <p>Solapur's most trusted laptop & computer repair specialists since 2014.</p>
+      <div class="social-links">
+        <a class="social-link" href="#">📘</a><a class="social-link" href="#">📸</a><a class="social-link" href="#">💬</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Services</h4><ul>
+      <li><a href="services.html">Data Recovery</a></li><li><a href="services.html">Computer Repair</a></li>
+      <li><a href="services.html">Laptop Cleaning</a></li><li><a href="services.html">OS Installation</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Quick Links</h4><ul>
+      <li><a href="">Home</a></li><li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul>
+      <li><a href="#">📍 Solapur, Maharashtra</a></li>
+      <li><a href="tel:+919999999999">📞 +91 99999 99999</a></li>
+      <li><a href="#">✉️ info@techfixpro.in</a></li>
+    </ul></div>
+  </div>
+  <div style="border-top:1px solid var(--glass-border);padding-top:1.5rem;display:flex;justify-content:space-between;">
+    <p style="color:var(--white-dim);font-size:0.85rem">© 2024 <span style="color:var(--gold)">TechFix Pro</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+const cursor=document.getElementById('cursor'),trail=document.getElementById('cursorTrail');
+let mx=0,my=0,tx=0,ty=0;
+document.addEventListener('mousemove',(e)=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+(function at(){tx+=(mx-tx)*0.1;ty+=(my-ty)*0.1;trail.style.left=tx+'px';trail.style.top=ty+'px';requestAnimationFrame(at);})();
+const obs=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.1});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el));
+function submitForm(){
+  const n=document.getElementById('name').value;
+  const e=document.getElementById('email').value;
+  const p=document.getElementById('phone').value;
+  if(!n||!e||!p){alert('Please fill in Name, Email, and Phone.');return;}
+  document.getElementById('successMsg').classList.add('show');
+  document.getElementById('name').value='';
+  document.getElementById('email').value='';
+  document.getElementById('phone').value='';
+  document.getElementById('message').value='';
+  document.getElementById('device').value='';
+  document.getElementById('service').value='';
+  setTimeout(()=>document.getElementById('successMsg').classList.remove('show'),5000);
+}
+</script>
+</body>
+</html>

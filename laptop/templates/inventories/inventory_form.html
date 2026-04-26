@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- HEADER -->
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h4>Inventory Calendar</h4>
+    <a href="#form" class="btn btn-primary">+ Add Inventory</a>
+</div>
+
+<!-- MESSAGES -->
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-primary">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+<!-- CALENDAR -->
+<table class="table table-bordered text-center">
+    <thead>
+        <tr>
+            <th>Mon</th><th>Tue</th><th>Wed</th>
+            <th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for week in calendar %}
+        <tr>
+            {% for day in week %}
+            <td style="vertical-align:top;height:120px">
+                {% if day %}
+                    <a href="?date={{ day.date }}">
+                        <strong>{{ day.day }}</strong>
+                    </a>
+
+                    {% for cat, qty in day.categories.items %}
+                        <div>{{ qty }} {{ cat }}</div>
+                    {% endfor %}
+
+                    {% if day.value %}
+                        <hr>
+                        <strong>₹ {{ day.value }}</strong>
+                    {% endif %}
+                {% endif %}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- INVENTORY TABLE -->
+{% if day_entries %}
+<hr>
+<h5>Inventory on {{ selected_date }}</h5>
+
+<table class="table table-sm table-striped">
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Item</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in day_entries %}
+        <tr>
+            <td>{{ i.category }}</td>
+            <td>{{ i.item_name }}</td>
+            <td>{{ i.quantity }}</td>
+            <td>{{ i.price }}</td>
+            <td>{{ i.total_price }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+<!-- ADD FORM -->
+<hr id="form">
+<h5>Add Inventory</h5>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary">Save</button>
+</form>
+
+{% endblock %}

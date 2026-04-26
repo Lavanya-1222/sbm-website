@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services – TechFix Pro</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#c9a227;--gold-light:#f0c84a;--gold-dark:#8a6e0f;--dark:#080a0e;--dark-2:#0e1117;--dark-3:#151b25;--dark-4:#1c2433;--white:#f5f0e8;--white-dim:rgba(245,240,232,0.7);--glass:rgba(255,255,255,0.04);--glass-border:rgba(201,162,39,0.2);--glass-gold:rgba(201,162,39,0.08);}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--white);overflow-x:hidden;cursor:none;}
+.cursor{position:fixed;width:12px;height:12px;border-radius:50%;background:var(--gold);pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform 0.1s,width 0.3s,height 0.3s;}
+.cursor-trail{position:fixed;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--gold);pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:all 0.15s ease;opacity:0.5;}
+::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:var(--dark-2);}::-webkit-scrollbar-thumb{background:var(--gold-dark);border-radius:3px;}
+nav{position:fixed;top:0;width:100%;z-index:1000;padding:1.2rem 5%;display:flex;align-items:center;justify-content:space-between;background:rgba(8,10,14,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--glass-border);}
+.logo{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:0.6rem;}
+.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;box-shadow:0 0 20px rgba(201,162,39,0.4);}
+.logo span{color:var(--gold);}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--white-dim);font-family:'Syne',sans-serif;font-size:0.9rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;position:relative;transition:color 0.3s;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width 0.3s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.nav-links a.active{color:var(--gold);}
+.nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--dark)!important;padding:0.7rem 1.8rem;border-radius:6px;font-weight:700!important;box-shadow:0 4px 20px rgba(201,162,39,0.3);}
+.nav-cta::after{display:none!important;}
+section{padding:6rem 5%;position:relative;}
+.section-tag{font-family:'Syne',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:0.8rem;}
+.section-tag::before{content:'';width:30px;height:2px;background:var(--gold);}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.15;margin-bottom:1rem;}
+.section-sub{color:var(--white-dim);font-size:1.05rem;line-height:1.8;max-width:580px;margin-bottom:3rem;}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--dark);padding:1rem 2.4rem;border:none;border-radius:8px;cursor:pointer;font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;box-shadow:0 0 30px rgba(201,162,39,0.35);transition:all 0.3s;}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(201,162,39,0.5);}
+.btn-glass{background:var(--glass);border:1px solid var(--glass-border);color:var(--white);padding:1rem 2.4rem;border-radius:8px;cursor:pointer;font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;backdrop-filter:blur(10px);transition:all 0.3s;}
+.btn-glass:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px);}
+.reveal{opacity:0;transform:translateY(50px);transition:all 0.8s cubic-bezier(0.23,1,0.32,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-left{opacity:0;transform:translateX(-50px);transition:all 0.8s cubic-bezier(0.23,1,0.32,1);}
+.reveal-left.visible{opacity:1;transform:translateX(0);}
+.reveal-right{opacity:0;transform:translateX(50px);transition:all 0.8s cubic-bezier(0.23,1,0.32,1);}
+.reveal-right.visible{opacity:1;transform:translateX(0);}
+
+/* PAGE HEADER */
+.page-header{min-height:40vh;display:flex;align-items:center;padding:8rem 5% 4rem;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--dark-2),var(--dark));}
+.page-header::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(201,162,39,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,39,0.04) 1px,transparent 1px);background-size:60px 60px;}
+.page-header::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 50%,rgba(201,162,39,0.1) 0%,transparent 60%);}
+.page-header-content{position:relative;z-index:1;}
+.breadcrumb{display:flex;align-items:center;gap:0.5rem;font-family:'Syne',sans-serif;font-size:0.85rem;color:var(--white-dim);margin-bottom:1rem;}
+.breadcrumb a{color:var(--gold);text-decoration:none;}
+
+/* SERVICES FILTER */
+.filter-bar{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;}
+.filter-btn{background:var(--glass);border:1px solid var(--glass-border);color:var(--white-dim);padding:0.6rem 1.5rem;border-radius:50px;cursor:pointer;font-family:'Syne',sans-serif;font-size:0.85rem;font-weight:600;letter-spacing:1px;transition:all 0.3s;}
+.filter-btn:hover,.filter-btn.active{background:var(--glass-gold);border-color:var(--gold);color:var(--gold);}
+
+/* BIG SERVICE CARDS */
+.services-main{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2rem;}
+.svc-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:24px;overflow:hidden;transition:all 0.5s cubic-bezier(0.23,1,0.32,1);cursor:pointer;transform-style:preserve-3d;}
+.svc-card:hover{transform:translateY(-12px);border-color:rgba(201,162,39,0.4);box-shadow:0 40px 80px rgba(0,0,0,0.5),0 0 40px rgba(201,162,39,0.1);}
+.svc-img{height:220px;display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative;overflow:hidden;}
+.svc-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,var(--dark-3) 100%);}
+.svc-body{padding:2rem;}
+.svc-body h3{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:0.8rem;}
+.svc-body p{color:var(--white-dim);font-size:0.95rem;line-height:1.7;margin-bottom:1.2rem;}
+.svc-features{display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.5rem;}
+.svc-feat{display:flex;align-items:center;gap:0.6rem;font-size:0.9rem;color:var(--white-dim);}
+.svc-feat::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0;}
+.svc-price{display:flex;align-items:center;justify-content:space-between;}
+.price-from{font-size:0.8rem;color:var(--white-dim);font-family:'Syne',sans-serif;}
+.price-val{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--gold);}
+
+/* PRICING TABLE */
+#pricing{background:var(--dark-2);}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:1rem;}
+.price-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:24px;padding:2.5rem;text-align:center;position:relative;overflow:hidden;transition:all 0.4s;}
+.price-card.featured{border-color:var(--gold);background:var(--glass-gold);}
+.price-card.featured::before{content:'Most Popular';position:absolute;top:1.5rem;right:-2rem;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--dark);font-family:'Syne',sans-serif;font-size:0.75rem;font-weight:700;padding:0.4rem 3rem;transform:rotate(35deg);}
+.price-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(0,0,0,0.4);}
+.price-card h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.price-amount{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:900;color:var(--white);margin-bottom:0.3rem;}
+.price-amount span{font-size:1.2rem;vertical-align:super;}
+.price-period{color:var(--white-dim);font-size:0.85rem;margin-bottom:1.5rem;}
+.price-features{list-style:none;text-align:left;margin-bottom:2rem;}
+.price-features li{padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.9rem;color:var(--white-dim);display:flex;align-items:center;gap:0.6rem;}
+.price-features li::before{content:'✓';color:var(--gold);font-weight:700;}
+
+/* FAQ */
+#faq{background:var(--dark-3);}
+.faq-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1rem;}
+.faq-item{background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;padding:1.5rem;cursor:pointer;transition:all 0.3s;}
+.faq-item:hover,.faq-item.open{border-color:rgba(201,162,39,0.4);background:var(--glass-gold);}
+.faq-q{display:flex;justify-content:space-between;align-items:center;font-family:'Syne',sans-serif;font-weight:700;gap:1rem;}
+.faq-icon{font-size:1.5rem;color:var(--gold);transition:transform 0.3s;flex-shrink:0;}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s;color:var(--white-dim);font-size:0.9rem;line-height:1.7;}
+.faq-item.open .faq-a{max-height:200px;padding-top:1rem;}
+
+footer{background:var(--dark-2);border-top:1px solid var(--glass-border);padding:4rem 5% 2rem;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:3rem;margin-bottom:3rem;}
+.footer-brand p{color:var(--white-dim);font-size:0.95rem;line-height:1.8;margin:1.2rem 0;max-width:280px;}
+.footer-col h4{font-family:'Syne',sans-serif;font-weight:700;margin-bottom:1.2rem;color:var(--gold);font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:0.8rem;}
+.footer-col ul a{color:var(--white-dim);text-decoration:none;font-size:0.9rem;transition:color 0.3s;display:flex;align-items:center;gap:0.4rem;}
+.footer-col ul a:hover{color:var(--gold);}
+.footer-col ul a::before{content:'›';color:var(--gold-dark);}
+.social-links{display:flex;gap:1rem;margin-top:1rem;}
+.social-link{width:40px;height:40px;background:var(--glass);border:1px solid var(--glass-border);border-radius:10px;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1.1rem;transition:all 0.3s;}
+.social-link:hover{background:linear-gradient(135deg,var(--gold-dark),var(--gold));border-color:var(--gold);transform:translateY(-3px);}
+.footer-bottom{border-top:1px solid var(--glass-border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;}
+.footer-bottom p{color:var(--white-dim);font-size:0.85rem;}
+.footer-bottom span{color:var(--gold);}
+@media(max-width:900px){.pricing-grid{grid-template-columns:1fr;}.faq-grid{grid-template-columns:1fr;}.services-main{grid-template-columns:1fr;}.footer-grid{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-trail" id="cursorTrail"></div>
+
+<nav>
+  <a href="/" class="logo"><div class="logo-icon">⚡</div>Tech<span>Fix</span> Pro</a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">Get Quote →</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-content">
+    <div class="breadcrumb"><a href="/">Home</a> <span>›</span> Services</div>
+    <div class="section-tag">What We Offer</div>
+    <h1 class="section-title" style="font-family:'Playfair Display',serif">Fast & Reliable Repairs<br>for <span style="color:var(--gold)">Every Device</span></h1>
+    <p style="color:var(--white-dim);max-width:550px;line-height:1.8;margin-top:1rem">From screen replacements to complex motherboard repairs — certified technicians with genuine parts and a 90-day warranty on all services.</p>
+  </div>
+</div>
+
+<!-- SERVICES LIST -->
+<section>
+  <div class="filter-bar reveal">
+    <button class="filter-btn active">All Services</button>
+    <button class="filter-btn">Laptops</button>
+    <button class="filter-btn">Desktops</button>
+    <button class="filter-btn">Smartphones</button>
+    <button class="filter-btn">Software</button>
+  </div>
+
+  <div class="services-main">
+    <div class="svc-card reveal" style="transition-delay:0.1s">
+      <div class="svc-img" style="background:linear-gradient(135deg,#0e1117,#151b25)">💾</div>
+      <div class="svc-body">
+        <h3>Data Recovery</h3>
+        <p>Advanced recovery from crashed HDDs, SSDs, flash drives, and RAID arrays. We retrieve deleted files, corrupted partitions, and physically damaged drives.</p>
+        <div class="svc-features">
+          <div class="svc-feat">HDD & SSD recovery</div>
+          <div class="svc-feat">RAID array recovery</div>
+          <div class="svc-feat">Deleted file retrieval</div>
+          <div class="svc-feat">95% success rate</div>
+        </div>
+        <div class="svc-price">
+          <div><div class="price-from">Starting from</div><div class="price-val">₹999</div></div>
+          <a href="contact.html" class="btn-gold" style="padding:0.7rem 1.5rem;font-size:0.85rem">Book Now →</a>
+        </div>
+      </div>
+    </div>
+    <div class="svc-card reveal" style="transition-delay:0.2s">
+      <div class="svc-img" style="background:linear-gradient(135deg,#0e1117,#1c2433)">🖥️</div>
+      <div class="svc-body">
+        <h3>Computer & Laptop Repair</h3>
+        <p>Complete hardware diagnostics and repair for all makes and models. Motherboard, RAM, GPU, cooling system repairs with genuine components.</p>
+        <div class="svc-features">
+          <div class="svc-feat">All brands serviced</div>
+          <div class="svc-feat">Genuine spare parts</div>
+          <div class="svc-feat">Screen replacement</div>
+          <div class="svc-feat">Keyboard & battery</div>
+        </div>
+        <div class="svc-price">
+          <div><div class="price-from">Starting from</div><div class="price-val">₹499</div></div>
+          <a href="contact.html" class="btn-gold" style="padding:0.7rem 1.5rem;font-size:0.85rem">Book Now →</a>
+        </div>
+      </div>
+    </div>
+    <div class="svc-card reveal" style="transition-delay:0.3s">
+      <div class="svc-img" style="background:linear-gradient(135deg,#151b25,#0e1117)">📱</div>
+      <div class="svc-body">
+        <h3>Smartphone Repair</h3>
+        <p>iPhone, Samsung, OnePlus, Xiaomi — we repair all smartphones. Screen replacement, battery, charging port, speaker, and camera repairs.</p>
+        <div class="svc-features">
+          <div class="svc-feat">Screen replacement (60 min)</div>
+          <div class="svc-feat">Battery replacement</div>
+          <div class="svc-feat">Water damage repair</div>
+          <div class="svc-feat">Back glass repair</div>
+        </div>
+        <div class="svc-price">
+          <div><div class="price-from">Starting from</div><div class="price-val">₹299</div></div>
+          <a href="contact.html" class="btn-gold" style="padding:0.7rem 1.5rem;font-size:0.85rem">Book Now →</a>
+        </div>
+      </div>
+    </div>
+    <div class="svc-card reveal" style="transition-delay:0.1s">
+      <div class="svc-img" style="background:linear-gradient(135deg,#0e1117,#151b25)">🧹</div>
+      <div class="svc-body">
+        <h3>Laptop Deep Cleaning</h3>
+        <p>Professional cleaning service to tackle overheating issues. We disassemble, clean, re-apply thermal compound, and reassemble for peak performance.</p>
+        <div class="svc-features">
+          <div class="svc-feat">Full disassembly clean</div>
+          <div class="svc-feat">Thermal repaste</div>
+          <div class="svc-feat">Fan replacement if needed</div>
+          <div class="svc-feat">Performance benchmark</div>
+        </div>
+        <div class="svc-price">
+          <div><div class="price-from">Starting from</div><div class="price-val">₹349</div></div>
+          <a href="contact.html" class="btn-gold" style="padding:0.7rem 1.5rem;font-size:0.85rem">Book Now →</a>
+        </div>
+      </div>
+    </div>
+    <div class="svc-card reveal" style="transition-delay:0.2s">
+      <div class="svc-img" style="background:linear-gradient(135deg,#1c2433,#0e1117)">⚙️</div>
+      <div class="svc-body">
+        <h3>OS Installation & Setup</h3>
+        <p>Fresh Windows 11, macOS, or Linux installation with all drivers, essential software, and performance tweaks for a blazing-fast experience.</p>
+        <div class="svc-features">
+          <div class="svc-feat">Windows 11 / 10 install</div>
+          <div class="svc-feat">Driver installation</div>
+          <div class="svc-feat">Software setup</div>
+          <div class="svc-feat">Data migration</div>
+        </div>
+        <div class="svc-price">
+          <div><div class="price-from">Starting from</div><div class="price-val">₹399</div></div>
+          <a href="contact.html" class="btn-gold" style="padding:0.7rem 1.5rem;font-size:0.85rem">Book Now →</a>
+        </div>
+      </div>
+    </div>
+    <div class="svc-card reveal" style="transition-delay:0.3s">
+      <div class="svc-img" style="background:linear-gradient(135deg,#151b25,#1c2433)">🛡️</div>
+      <div class="svc-body">
+        <h3>Virus & Malware Removal</h3>
+        <p>Complete system sanitization with deep scan malware removal. We eliminate viruses, ransomware, spyware and harden your system against future threats.</p>
+        <div class="svc-features">
+          <div class="svc-feat">Deep scan removal</div>
+          <div class="svc-feat">Ransomware recovery</div>
+          <div class="svc-feat">Security hardening</div>
+          <div class="svc-feat">Antivirus setup</div>
+        </div>
+        <div class="svc-price">
+          <div><div class="price-from">Starting from</div><div class="price-val">₹449</div></div>
+          <a href="contact.html" class="btn-gold" style="padding:0.7rem 1.5rem;font-size:0.85rem">Book Now →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-tag reveal">Service Plans</div>
+  <h2 class="section-title reveal">Transparent Pricing,<br>No Hidden Charges</h2>
+  <p class="section-sub reveal">Choose a plan that suits your needs. All plans include free diagnosis, 90-day warranty, and certified technicians.</p>
+  <div class="pricing-grid">
+    <div class="price-card reveal" style="transition-delay:0.1s">
+      <h3>Basic</h3>
+      <div class="price-amount"><span>₹</span>499</div>
+      <div class="price-period">single repair</div>
+      <ul class="price-features">
+        <li>Single device repair</li>
+        <li>Free diagnosis</li>
+        <li>30-day warranty</li>
+        <li>Genuine parts</li>
+        <li>Same-day service</li>
+      </ul>
+      <a href="contact.html" class="btn-glass" style="width:100%;justify-content:center">Get Started</a>
+    </div>
+    <div class="price-card featured reveal" style="transition-delay:0.2s">
+      <h3>Professional</h3>
+      <div class="price-amount"><span>₹</span>999</div>
+      <div class="price-period">comprehensive repair</div>
+      <ul class="price-features">
+        <li>Multiple issues repair</li>
+        <li>Free diagnosis</li>
+        <li>90-day warranty</li>
+        <li>Genuine parts</li>
+        <li>Priority service</li>
+        <li>Home pickup & delivery</li>
+        <li>Post-repair support</li>
+      </ul>
+      <a href="contact.html" class="btn-gold" style="width:100%;justify-content:center">Get Started</a>
+    </div>
+    <div class="price-card reveal" style="transition-delay:0.3s">
+      <h3>Business</h3>
+      <div class="price-amount"><span>₹</span>Custom</div>
+      <div class="price-period">bulk / enterprise</div>
+      <ul class="price-features">
+        <li>Multiple device management</li>
+        <li>Dedicated technician</li>
+        <li>1-year warranty</li>
+        <li>Annual maintenance</li>
+        <li>24/7 priority support</li>
+        <li>On-site service</li>
+        <li>Monthly billing</li>
+      </ul>
+      <a href="contact.html" class="btn-glass" style="width:100%;justify-content:center">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-tag reveal">FAQ</div>
+  <h2 class="section-title reveal">Frequently Asked Questions</h2>
+  <div class="faq-grid" id="faqGrid">
+    <div class="faq-item reveal">
+      <div class="faq-q">How long does a typical repair take? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Most repairs are completed same-day or within 24 hours. Complex motherboard repairs or data recovery may take 2-3 business days. We always provide an accurate timeline after free diagnosis.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">Do you use genuine spare parts? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes, we use only OEM and manufacturer-approved spare parts for all repairs. We never use cheap aftermarket components that could cause further damage to your device.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">Is there a warranty on repairs? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Absolutely! All our repairs come with a minimum 90-day warranty. If the same issue reoccurs within the warranty period, we fix it free of charge, no questions asked.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">Can you recover data from a physically damaged drive? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes! We have specialized tools and cleanroom techniques for physically damaged drives. Our data recovery success rate is over 95% even for severely damaged media.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">Do you offer pick-up and delivery service? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes, we offer free doorstep pickup and delivery within Solapur city for our Professional and Business plan customers. We also accept courier shipments from other cities.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">What payment methods do you accept? <span class="faq-icon">+</span></div>
+      <div class="faq-a">We accept cash, UPI (GPay, PhonePe, Paytm), debit/credit cards, and net banking. For business clients, we also offer invoice-based monthly billing with credit terms.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="/" class="logo"><div class="logo-icon">⚡</div>Tech<span>Fix</span> Pro</a>
+      <p>Solapur's most trusted laptop & computer repair specialists since 2014.</p>
+      <div class="social-links">
+        <a class="social-link" href="#">📘</a><a class="social-link" href="#">📸</a><a class="social-link" href="#">💬</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Services</h4><ul>
+      <li><a href="#">Data Recovery</a></li><li><a href="#">Computer Repair</a></li>
+      <li><a href="#">Laptop Cleaning</a></li><li><a href="#">OS Installation</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Quick Links</h4><ul>
+      <li><a href="/">Home</a></li><li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul>
+      <li><a href="#">📍 Solapur, Maharashtra</a></li>
+      <li><a href="tel:+919999999999">📞 +91 99999 99999</a></li>
+      <li><a href="#">✉️ info@techfixpro.in</a></li>
+    </ul></div>
+  </div>
+  <div style="border-top:1px solid var(--glass-border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;">
+    <p style="color:var(--white-dim);font-size:0.85rem">© 2024 <span style="color:var(--gold)">TechFix Pro</span>. All rights reserved.</p>
+    <p style="color:var(--white-dim);font-size:0.85rem">Made with <span style="color:var(--gold)">♦</span> in Solapur</p>
+  </div>
+</footer>
+
+<script>
+const cursor=document.getElementById('cursor'),trail=document.getElementById('cursorTrail');
+let mx=0,my=0,tx=0,ty=0;
+document.addEventListener('mousemove',(e)=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+(function animateTrail(){tx+=(mx-tx)*0.1;ty+=(my-ty)*0.1;trail.style.left=tx+'px';trail.style.top=ty+'px';requestAnimationFrame(animateTrail);})();
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el));
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');});
+});
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.addEventListener('click',()=>{
+    const open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!open)item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
