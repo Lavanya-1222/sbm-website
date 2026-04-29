@@ -31,7 +31,7 @@
         pointer-events: none;
     }
     
-    /* Typing Animation Container */
+    /* Typing Animation Container - Only in Hero */
     .typing-container {
         display: flex;
         justify-content: center;
@@ -131,7 +131,7 @@
         color: var(--gold-dark);
     }
     
-    /* INFO CARDS - Reduced gap (margin/padding decreased) */
+    /* INFO CARDS */
     .info-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -199,7 +199,7 @@
         font-size: 0.8rem;
     }
     
-    /* Main Contact Section - Reduced top padding */
+    /* Main Contact Section */
     .contact-main-section {
         background: var(--cream);
         color: #1e1a14;
@@ -216,7 +216,7 @@
     }
     
     .contact-main-section .section-title {
-        color: #1e1a14;
+        color: #fff;
     }
     
     .contact-grid {
@@ -310,6 +310,28 @@
         min-height: 120px;
     }
     
+    /* Loading Spinner */
+    .loading-spinner {
+        display: none;
+        width: 20px;
+        height: 20px;
+        border: 2px solid rgba(0,0,0,0.2);
+        border-top: 2px solid #1a1a1a;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+        margin-left: 10px;
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+    .btn-gold.loading {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+    
     /* Success Message */
     .success-msg {
         display: none;
@@ -325,6 +347,24 @@
     }
     
     .success-msg.show {
+        display: block;
+        animation: fadeInUp 0.4s ease;
+    }
+    
+    .error-msg {
+        display: none;
+        background: rgba(220,53,69,0.12);
+        border: 1px solid #dc3545;
+        border-radius: 14px;
+        padding: 1rem;
+        text-align: center;
+        margin-top: 1.5rem;
+        color: #dc3545;
+        font-family: 'Syne', sans-serif;
+        font-size: 0.9rem;
+    }
+    
+    .error-msg.show {
         display: block;
         animation: fadeInUp 0.4s ease;
     }
@@ -395,15 +435,36 @@
         font-size: 0.85rem;
     }
     
-    /* Real Map Styles */
+    /* Real Map Styles - Enhanced marker highlighting */
     .real-map-container {
         width: 100%;
         height: 280px;
         border-radius: 24px;
         overflow: hidden;
         margin-top: 1rem;
-        border: 1px solid rgba(201,162,39,0.2);
-        box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+        border: 2px solid var(--gold);
+        box-shadow: 0 10px 30px -10px rgba(0,0,0,0.15);
+        position: relative;
+    }
+    
+    .real-map-container::after {
+        content: "⭐ SBM Solutions ⭐";
+        position: absolute;
+        bottom: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, var(--gold), #e6b800);
+        color: #1a1a1a;
+        padding: 6px 14px;
+        border-radius: 40px;
+        font-family: 'Syne', sans-serif;
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 1px;
+        z-index: 10;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        pointer-events: none;
+        white-space: nowrap;
     }
     
     .real-map-container iframe {
@@ -502,9 +563,15 @@
         .typing-static, .typing-dynamic {
             font-size: 1.5rem;
         }
+        
+        .real-map-container::after {
+            font-size: 0.6rem;
+            padding: 4px 10px;
+            white-space: nowrap;
+        }
     }
     
-    /* Animation Reveal for contact elements */
+    /* Animation Reveal for contact elements - REPEATS on scroll up/down (removed unobserve) */
     .reveal-contact {
         opacity: 0;
         transform: translateY(30px);
@@ -538,12 +605,10 @@
         transform: translateX(0);
     }
     
-    /* Reduce gap between sections - section elements spacing */
     section {
         padding: 2rem 5% !important;
     }
     
-    /* First section after hero has even less padding */
     section:first-of-type {
         padding-top: 0.5rem !important;
     }
@@ -555,12 +620,10 @@
 <!-- ===== CONTACT PAGE HERO SECTION (White Background with Typing Animation) ===== -->
 <div class="contact-hero">
     <div class="hero-bg-pattern"></div>
-    
-
 
     <div class="section-tag">Get In Touch with SBM</div>
     
-    <!-- Typing Animation Container -->
+    <!-- Typing Animation Container - Only in Hero -->
     <div class="typing-container">
         <span class="typing-static">Let's Fix Your</span>
         <span class="typing-dynamic" id="typingText"></span>
@@ -569,7 +632,7 @@
     <p class="contact-subtitle">Drop in, call, or fill the form. We respond ASAP during business hours.</p>
 </div>
 
-<!-- ===== INFO CARDS SECTION (Reduced Gap) ===== -->
+<!-- ===== INFO CARDS SECTION ===== -->
 <section style="padding-top: 0.5rem !important; padding-bottom: 1rem !important;">
     <div class="info-grid">
         <div class="info-card reveal-contact" style="transition-delay: 0.1s">
@@ -590,7 +653,7 @@
     </div>
 </section>
 
-<!-- ===== MAIN CONTACT SECTION (Reduced Gap) ===== -->
+<!-- ===== MAIN CONTACT SECTION ===== -->
 <section class="contact-main-section" style="padding-top: 1rem !important; padding-bottom: 2rem !important;">
     <div class="contact-grid">
         <!-- LEFT SIDE: CONTACT FORM -->
@@ -599,59 +662,68 @@
                 <h2>Send Us a <span>Direct Message</span></h2>
                 <p>Fill out the form below and our team will get back to you within 30 minutes with a free diagnosis quote.</p>
                 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Your Name</label>
-                        <input type="text" id="contactName" placeholder="Rahul Sharma">
+                <form id="contactForm" method="POST" action="{% url 'contact' %}">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Your Name</label>
+                            <input type="text" name="name" id="contactName" placeholder="Rahul Sharma" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" name="phone" id="contactPhone" placeholder="+91 80875 94890">
+                        </div>
                     </div>
+                    
                     <div class="form-group">
-                        <label>Phone Number</label>
-                        <input type="tel" id="contactPhone" placeholder="+91 80875 94890">
+                        <label>Email Address</label>
+                        <input type="email" name="email" id="contactEmail" placeholder="rahul@example.com" required>
                     </div>
-                </div>
-                
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" id="contactEmail" placeholder="rahul@example.com">
-                </div>
-                
-                <div class="form-row">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Device Type</label>
+                            <select name="device" id="contactDevice">
+                                <option value="">Select your device...</option>
+                                <option>Laptop</option>
+                                <option>Desktop Computer</option>
+                                <option>Printer</option>
+                                <option>Camera</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Service Required</label>
+                            <select name="service" id="contactService">
+                                <option value="">Select a service...</option>
+                                <option>Data Recovery</option>
+                                <option>Screen Replacement</option>
+                                <option>Hardware Repair</option>
+                                <option>OS Installation</option>
+                                <option>Virus Removal</option>
+                                <option>Laptop Cleaning</option>
+                                <option>Battery Replacement</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    
                     <div class="form-group">
-                        <label>Device Type</label>
-                        <select id="contactDevice">
-                            <option value="">Select your device...</option>
-                            <option>Laptop</option>
-                            <option>Desktop Computer</option>
-                            <option>Printer</option>
-                            <option>Camera</option>
-                            <option>Other</option>
-                        </select>
+                        <label>Describe Your Issue</label>
+                        <textarea name="message" id="contactMessage" placeholder="Please describe the problem with your device in detail..."></textarea>
                     </div>
-                    <div class="form-group">
-                        <label>Service Required</label>
-                        <select id="contactService">
-                            <option value="">Select a service...</option>
-                            <option>Data Recovery</option>
-                            <option>Screen Replacement</option>
-                            <option>Hardware Repair</option>
-                            <option>OS Installation</option>
-                            <option>Virus Removal</option>
-                            <option>Laptop Cleaning</option>
-                            <option>Battery Replacement</option>
-                            <option>Other</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label>Describe Your Issue</label>
-                    <textarea id="contactMessage" placeholder="Please describe the problem with your device in detail..."></textarea>
-                </div>
-                
-                <button class="btn-gold" onclick="submitContactForm()" style="width: 100%; justify-content: center;">Send Message →</button>
+                    
+                    <button type="submit" class="btn-gold" id="submitBtn" style="width: 100%; justify-content: center;">
+                        Send Message → 
+                        <span class="loading-spinner" id="loadingSpinner"></span>
+                    </button>
+                </form>
                 
                 <div class="success-msg" id="contactSuccessMsg">
                     ✅ Message sent successfully! Our team will contact you ASAP.
+                </div>
+                <div class="error-msg" id="contactErrorMsg">
+                    ❌ Something went wrong. Please try again or call us directly.
                 </div>
             </div>
         </div>
@@ -685,13 +757,14 @@
                 </a>
             </div>
             
-            <!-- Real Google Map Embed -->
+            <!-- Real Google Map Embed - Enhanced with marker highlighting via gold border and label overlay -->
             <div class="real-map-container">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3812.123456789012!2d75.89012345678901!3d17.67890123456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc591e8e6b45678%3A0x1234567890abcdef!2sAshok%20Chowk%2C%20Shop%20No.-%208%2C%20Ghanate%20Complex%2C%20opposite%20WIT%20Boys%20Hostel%20Road%2C%20New%20Paccha%20peth%2C%20Solapur%2C%20Maharashtra%20413006!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3803.896366030196!2d75.920798!3d17.6658209!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc5db000b314dcf%3A0x78510fbd07de2a82!2sSBM%20Solutions%20%26%20Multiservice!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin" 
                     allowfullscreen="" 
                     loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="SBM Solutions & Multiservice Location Map - Ashok Chowk, Solapur">
                 </iframe>
             </div>
         </div>
@@ -709,7 +782,7 @@
 
 {% block extra_js %}
 <script>
-    // Typing Animation - Continuous Loop
+    // Typing Animation - Continuous Loop (Only in Hero Section)
     const words = ['Device Today', 'Laptop Now', 'Computer Fast', 'Tech Problem'];
     let wordIndex = 0;
     let charIndex = 0;
@@ -717,6 +790,7 @@
     let typingElement = document.getElementById('typingText');
     
     function typeEffect() {
+        if (!typingElement) return;
         const currentWord = words[wordIndex];
         
         if (isDeleting) {
@@ -744,69 +818,102 @@
         setTimeout(typeEffect, speed);
     }
     
-    // Start typing animation when page loads
+    // Scroll Reveal Observer - REPEATS on every scroll (does NOT unobserve)
+    // This allows animations to trigger again when scrolling back up
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            } else {
+                // Remove the 'visible' class when element is out of view, so it can animate again when scrolled back
+                entry.target.classList.remove('visible');
+            }
+        });
+    }, { threshold: 0.2, rootMargin: "0px 0px -20px 0px" }); // Slightly adjusted threshold
+    
+    // Form Submit Handler with AJAX
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const spinner = document.getElementById('loadingSpinner');
+            const successMsg = document.getElementById('contactSuccessMsg');
+            const errorMsg = document.getElementById('contactErrorMsg');
+            
+            // Hide previous messages
+            if (successMsg) successMsg.classList.remove('show');
+            if (errorMsg) errorMsg.classList.remove('show');
+            
+            // Show loading state
+            if (submitBtn) {
+                submitBtn.classList.add('loading');
+                submitBtn.disabled = true;
+            }
+            if (spinner) spinner.style.display = 'inline-block';
+            
+            // Get form data
+            const formData = new FormData(this);
+            
+            try {
+                const response = await fetch(window.location.href, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.success) {
+                    if (successMsg) successMsg.classList.add('show');
+                    this.reset();
+                    setTimeout(() => {
+                        if (successMsg) successMsg.classList.remove('show');
+                    }, 5000);
+                } else {
+                    if (errorMsg) errorMsg.classList.add('show');
+                    setTimeout(() => {
+                        if (errorMsg) errorMsg.classList.remove('show');
+                    }, 5000);
+                }
+            } catch (error) {
+                if (errorMsg) errorMsg.classList.add('show');
+                setTimeout(() => {
+                    if (errorMsg) errorMsg.classList.remove('show');
+                }, 5000);
+            } finally {
+                if (submitBtn) {
+                    submitBtn.classList.remove('loading');
+                    submitBtn.disabled = false;
+                }
+                if (spinner) spinner.style.display = 'none';
+            }
+        });
+    }
+    
+    // Start animations when page loads
     document.addEventListener('DOMContentLoaded', function() {
+        // Start typing animation
         if (typingElement) {
             setTimeout(typeEffect, 500);
         }
         
-        // Scroll Reveal Observer
-        const contactObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
-        
-        document.querySelectorAll('.reveal-contact, .reveal-left-contact, .reveal-right-contact').forEach(el => {
-            contactObserver.observe(el);
+        // Observe all reveal elements - will animate every time they enter viewport
+        const revealElements = document.querySelectorAll('.reveal-contact, .reveal-left-contact, .reveal-right-contact');
+        revealElements.forEach(el => {
+            revealObserver.observe(el);
         });
         
-        // Initial check for visible elements
-        const allRevealElements = document.querySelectorAll('.reveal-contact, .reveal-left-contact, .reveal-right-contact');
-        allRevealElements.forEach(el => {
+        // Pre-check for elements already in view (trigger immediately)
+        revealElements.forEach(el => {
             const rect = el.getBoundingClientRect();
-            if (rect.top < window.innerHeight - 100) {
+            if (rect.top < window.innerHeight - 50) {
                 el.classList.add('visible');
             }
         });
     });
-    
-    // Contact Form Submission Handler
-    function submitContactForm() {
-        const name = document.getElementById('contactName').value.trim();
-        const email = document.getElementById('contactEmail').value.trim();
-        const phone = document.getElementById('contactPhone').value.trim();
-        
-        if (!name) {
-            alert('Please enter your name.');
-            return;
-        }
-        if (!email && !phone) {
-            alert('Please enter either email or phone number.');
-            return;
-        }
-        if (email && !email.includes('@')) {
-            alert('Please enter a valid email address.');
-            return;
-        }
-        
-        const successMsg = document.getElementById('contactSuccessMsg');
-        successMsg.classList.add('show');
-        
-        document.getElementById('contactName').value = '';
-        document.getElementById('contactEmail').value = '';
-        document.getElementById('contactPhone').value = '';
-        document.getElementById('contactDevice').value = '';
-        document.getElementById('contactService').value = '';
-        document.getElementById('contactMessage').value = '';
-        
-        setTimeout(() => {
-            successMsg.classList.remove('show');
-        }, 5000);
-        
-        console.log('Form submitted:', { name, email, phone });
-    }
 </script>
 {% endblock %}

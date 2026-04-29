@@ -1649,10 +1649,50 @@
     </div>
 </div>
 {% endblock %}
-
 {% block extra_js %}
 <script>
-    // FAQ Accordion - FIXED: Better toggle functionality
+    // Reset animations when navigating via anchor links
+    function resetAndRevealAnimations() {
+        // Remove visible class from all animated elements
+        const animatedElements = document.querySelectorAll('.reveal-services, .reveal-process, .reveal-pricing, .reveal-testi, .reveal-faq, .reveal-general, .reveal-title, .reveal-tag');
+        animatedElements.forEach(el => {
+            el.classList.remove('visible');
+        });
+        
+        // Small delay to ensure DOM is ready
+        setTimeout(() => {
+            // Re-observe all elements
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+            
+            // Observe all animated elements
+            document.querySelectorAll('.reveal-services, .reveal-process, .reveal-pricing, .reveal-testi, .reveal-faq, .reveal-general, .reveal-title, .reveal-tag').forEach(el => {
+                revealObserver.observe(el);
+            });
+            
+            // Also observe cards that might not have the class
+            document.querySelectorAll('.svc-card, .process-step, .price-card, .testi-card, .faq-item, .section-title, .section-tag, .section-sub').forEach(el => {
+                if (!el.classList.contains('reveal-services') && 
+                    !el.classList.contains('reveal-process') && 
+                    !el.classList.contains('reveal-pricing') && 
+                    !el.classList.contains('reveal-testi') && 
+                    !el.classList.contains('reveal-faq') && 
+                    !el.classList.contains('reveal-general') && 
+                    !el.classList.contains('reveal-title') && 
+                    !el.classList.contains('reveal-tag')) {
+                    el.classList.add('reveal-general');
+                    revealObserver.observe(el);
+                }
+            });
+        }, 50);
+    }
+    
+    // FAQ Accordion
     document.querySelectorAll('.faq-item').forEach(item => {
         item.addEventListener('click', () => {
             const isOpen = item.classList.contains('open');
@@ -1670,96 +1710,163 @@
                 video.play().catch(e => console.log('Video autoplay prevented:', e));
             }, 1000);
         }
+        
+        // Initial animation setup
+        initAnimations();
     });
     
-    // Enhanced Scroll Reveal Observer
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+    // Initialize animations (reusable function)
+    function initAnimations() {
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+        
+        // Register all elements with their specific reveal classes
+        document.querySelectorAll('.reveal-services, .reveal-process, .reveal-pricing, .reveal-testi, .reveal-faq, .reveal-general, .reveal-title, .reveal-tag').forEach(el => {
+            revealObserver.observe(el);
+        });
+        
+        document.querySelectorAll('.svc-card').forEach(el => {
+            if (!el.classList.contains('reveal-services')) {
+                el.classList.add('reveal-services');
+                revealObserver.observe(el);
             }
         });
-    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+        
+        document.querySelectorAll('.process-step').forEach(el => {
+            if (!el.classList.contains('reveal-process')) {
+                el.classList.add('reveal-process');
+                revealObserver.observe(el);
+            }
+        });
+        
+        document.querySelectorAll('.price-card').forEach(el => {
+            if (!el.classList.contains('reveal-pricing')) {
+                el.classList.add('reveal-pricing');
+                revealObserver.observe(el);
+            }
+        });
+        
+        document.querySelectorAll('.testi-card').forEach(el => {
+            if (!el.classList.contains('reveal-testi')) {
+                el.classList.add('reveal-testi');
+                revealObserver.observe(el);
+            }
+        });
+        
+        document.querySelectorAll('.faq-item').forEach((el, idx) => {
+            if (!el.classList.contains('reveal-faq')) {
+                el.classList.add('reveal-faq');
+                el.style.setProperty('--index', idx);
+                revealObserver.observe(el);
+            }
+        });
+        
+        document.querySelectorAll('.section-title').forEach(el => {
+            if (!el.classList.contains('reveal-title')) {
+                el.classList.add('reveal-title');
+                revealObserver.observe(el);
+            }
+        });
+        
+        document.querySelectorAll('.section-tag').forEach(el => {
+            if (!el.classList.contains('reveal-tag')) {
+                el.classList.add('reveal-tag');
+                revealObserver.observe(el);
+            }
+        });
+        
+        document.querySelectorAll('.section-sub, .cta-section .btn-gold, .hero-btns .btn-gold').forEach(el => {
+            if (!el.classList.contains('reveal-general')) {
+                el.classList.add('reveal-general');
+                revealObserver.observe(el);
+            }
+        });
+    }
     
-    // Register all elements with their specific reveal classes
-    document.querySelectorAll('.reveal-services, .reveal-process, .reveal-pricing, .reveal-testi, .reveal-faq, .reveal-general, .reveal-title, .reveal-tag').forEach(el => {
-        revealObserver.observe(el);
-    });
-    
-    document.querySelectorAll('.svc-card').forEach(el => {
-        if (!el.classList.contains('reveal-services')) {
-            el.classList.add('reveal-services');
-            revealObserver.observe(el);
-        }
-    });
-    
-    document.querySelectorAll('.process-step').forEach(el => {
-        if (!el.classList.contains('reveal-process')) {
-            el.classList.add('reveal-process');
-            revealObserver.observe(el);
-        }
-    });
-    
-    document.querySelectorAll('.price-card').forEach(el => {
-        if (!el.classList.contains('reveal-pricing')) {
-            el.classList.add('reveal-pricing');
-            revealObserver.observe(el);
-        }
-    });
-    
-    document.querySelectorAll('.testi-card').forEach(el => {
-        if (!el.classList.contains('reveal-testi')) {
-            el.classList.add('reveal-testi');
-            revealObserver.observe(el);
-        }
-    });
-    
-    document.querySelectorAll('.faq-item').forEach((el, idx) => {
-        if (!el.classList.contains('reveal-faq')) {
-            el.classList.add('reveal-faq');
-            el.style.setProperty('--index', idx);
-            revealObserver.observe(el);
-        }
-    });
-    
-    document.querySelectorAll('.section-title').forEach(el => {
-        if (!el.classList.contains('reveal-title')) {
-            el.classList.add('reveal-title');
-            revealObserver.observe(el);
-        }
-    });
-    
-    document.querySelectorAll('.section-tag').forEach(el => {
-        if (!el.classList.contains('reveal-tag')) {
-            el.classList.add('reveal-tag');
-            revealObserver.observe(el);
-        }
-    });
-    
-    document.querySelectorAll('.section-sub, .cta-section .btn-gold, .hero-btns .btn-gold').forEach(el => {
-        if (!el.classList.contains('reveal-general')) {
-            el.classList.add('reveal-general');
-            revealObserver.observe(el);
-        }
-    });
-    
-    // Laptop Zoom Animation
+    // Laptop Zoom Animation (with reset capability)
     (function() {
+        function initZoomAnimation() {
+            const laptopImage = document.getElementById('zoomLaptopImage');
+            if (laptopImage) {
+                // Remove existing class if any
+                laptopImage.classList.remove('animate-zoom');
+                // Force reflow
+                void laptopImage.offsetWidth;
+                // Add class to trigger animation
+                setTimeout(function() {
+                    laptopImage.classList.add('animate-zoom');
+                }, 50);
+            }
+        }
+        
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', initZoomAnimation);
         } else {
             initZoomAnimation();
         }
         
-        function initZoomAnimation() {
-            const laptopImage = document.getElementById('zoomLaptopImage');
-            if (laptopImage) {
-                laptopImage.style.willChange = 'transform, opacity';
-                setTimeout(function() {
-                    laptopImage.classList.add('animate-zoom');
-                }, 150);
-            }
+        // Re-trigger laptop zoom when section comes into view
+        const laptopSection = document.querySelector('.ideal-laptop-section');
+        if (laptopSection) {
+            const laptopObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const laptopImage = document.getElementById('zoomLaptopImage');
+                        if (laptopImage && !laptopImage.classList.contains('animate-zoom')) {
+                            setTimeout(() => {
+                                laptopImage.classList.add('animate-zoom');
+                            }, 100);
+                        }
+                    }
+                });
+            }, { threshold: 0.3 });
+            laptopObserver.observe(laptopSection);
         }
     })();
+    
+    // Detect hash changes and reset animations for the target section
+    window.addEventListener('hashchange', function() {
+        resetAndRevealAnimations();
+        
+        // Scroll slightly after animations reset
+        setTimeout(() => {
+            const targetId = window.location.hash.substring(1);
+            if (targetId) {
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        }, 100);
+    });
+    
+    // Also reset when navigating via same-page links (click handlers)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href').substring(1);
+            if (targetId && document.getElementById(targetId)) {
+                e.preventDefault();
+                resetAndRevealAnimations();
+                setTimeout(() => {
+                    document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
+        });
+    });
+    
+    // Optional: Use Page Visibility API to re-trigger when tab becomes active
+    document.addEventListener('visibilitychange', function() {
+        if (!document.hidden) {
+            // Reset animations when page becomes visible again
+            setTimeout(() => {
+                resetAndRevealAnimations();
+            }, 200);
+        }
+    });
 </script>
 {% endblock %}
