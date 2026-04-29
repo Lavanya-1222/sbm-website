@@ -4,6 +4,10 @@
 {% block title %}SBM Laptop & Computer Repair{% endblock %}
 
 {% block extra_css %}
+
+<!-- ============================================ -->
+<!-- STYLE SECTION 1: BASE VARIABLES & GLOBALS -->
+<!-- ============================================ -->
 <style>
     /* ========= BASE VARIABLES ========= */
     :root {
@@ -31,12 +35,17 @@
     html { scroll-behavior: smooth; }
 
     body {
-        font-family: 'DM Sans', sans-serif;
+        font-family: 'Syne', sans-serif;
         background: var(--dark);
         color: var(--white);
         overflow-x: hidden;
     }
+</style>
 
+<!-- ============================================ -->
+<!-- STYLE SECTION 2: LIGHT/DARK THEME STYLES -->
+<!-- ============================================ -->
+<style>
     /* ========= LIGHT/DARK THEME STYLES ========= */
     section.light-theme {
         background: var(--cream);
@@ -85,7 +94,12 @@
         background: linear-gradient(115deg, #faf1df, #fff3e0);
         color: #1e1a14;
     }
+</style>
 
+<!-- ============================================ -->
+<!-- STYLE SECTION 3: HERO SECTION -->
+<!-- ============================================ -->
+<style>
     /* ========= HERO SECTION - REDUCED HEIGHT ========= */
     #hero {
         position: relative;
@@ -106,7 +120,6 @@
         z-index: 0;
     }
     
-    /* FIXED: Darker gradient for better video visibility */
     .hero-gradient {
         position: absolute;
         top: 0;
@@ -129,8 +142,13 @@
         height: 100%;
         object-fit: cover;
         z-index: 0;
-        opacity: 0.9;
+        opacity: 0;
+        transition: opacity 0.8s ease-in-out;
         pointer-events: none;
+    }
+    
+    .hero-video.loaded {
+        opacity: 0.9;
     }
     
     .hero-container {
@@ -174,7 +192,7 @@
     }
     
     .hero-title {
-        font-family: 'Playfair Display', serif;
+        font-family: 'Syne', sans-serif;
         font-size: 3.5rem;
         font-weight: 900;
         line-height: 1.2;
@@ -200,6 +218,7 @@
     
     .hero-sub {
         font-size: 1rem;
+        font-family: 'Syne', sans-serif;
         color: rgba(255,255,255,0.85);
         line-height: 1.7;
         margin-bottom: 2rem;
@@ -266,6 +285,27 @@
         flex-wrap: wrap;
     }
     
+    /* Responsive Hero */
+    @media (max-width: 968px) {
+        .hero-container { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
+        .hero-content { text-align: center; }
+        .hero-sub { margin-left: auto; margin-right: auto; }
+        .hero-btns, .hero-stats { justify-content: center; }
+        .hero-image-wrapper { order: -1; }
+        .hero-title { font-size: 2.5rem; }
+        #hero { min-height: 70vh; }
+    }
+    
+    @media (max-width: 576px) {
+        .hero-title { font-size: 1.8rem; }
+        #hero { min-height: 60vh; }
+    }
+</style>
+
+<!-- ============================================ -->
+<!-- STYLE SECTION 4: HEXAGONAL IMAGE SECTION -->
+<!-- ============================================ -->
+<style>
     /* ========= HEXAGONAL IMAGE ========= */
     .hero-image-wrapper {
         flex: 1;
@@ -292,22 +332,34 @@
     
     .rotating-border {
         position: absolute;
-        inset: -15px;
+        inset: -12px;
         background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--gold-dark), var(--gold));
         background-size: 300% 300%;
         clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-        animation: rotateHexagon 6s linear infinite, gradientShift 3s ease infinite;
-        z-index: 0;
+        animation: rotateHexagon 8s linear infinite, gradientShift 4s ease infinite;
+        z-index: 2;
+        border-radius: 0;
+        opacity: 1;
+    }
+    
+    .rotating-border::before {
+        content: '';
+        position: absolute;
+        inset: 3px;
+        background: rgba(8,10,14,0.95);
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        z-index: -1;
     }
     
     .rotating-glass {
         position: absolute;
         inset: -8px;
-        background: rgba(8,10,14,0.7);
+        background: rgba(201,162,39,0.15);
         backdrop-filter: blur(4px);
         clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
         animation: rotateGlassReverse 8s linear infinite;
-        z-index: 0;
+        z-index: 1;
+        border: 1px solid rgba(201,162,39,0.4);
     }
     
     @keyframes rotateHexagon {
@@ -331,8 +383,7 @@
         clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
         overflow: hidden;
         z-index: 10;
-        border: 3px solid var(--gold);
-        box-shadow: 0 0 20px rgba(201,162,39,0.5);
+        border: none;
         transition: all 0.3s ease;
     }
     
@@ -343,6 +394,283 @@
         transition: transform 0.5s ease;
     }
     
+    .hero-image-wrapper:hover .hero-image img {
+        transform: scale(1.05);
+    }
+    
+    @media (max-width: 576px) {
+        .image-container { max-width: 280px; }
+        .rotating-border { inset: -8px; }
+        .rotating-glass { inset: -5px; }
+    }
+</style>
+
+<!-- ============================================ -->
+<!-- STYLE SECTION 5: ANIMATIONS & REVEAL EFFECTS -->
+<!-- ============================================ -->
+<style>
+    /* ========= ENHANCED ANIMATIONS FOR SECTIONS ========= */
+    .reveal {
+        opacity: 0;
+        transition: all 0.8s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+    }
+    
+    .reveal-services {
+        transform: translateY(40px) scale(0.96);
+    }
+    .reveal-services.visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    
+    .reveal-process {
+        transform: translateY(30px) rotateX(8deg);
+        transform-origin: top;
+    }
+    .reveal-process.visible {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+    
+    .reveal-pricing {
+        transform: translateX(-40px);
+    }
+    .reveal-pricing.visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    .reveal-pricing:nth-child(2) {
+        transform: translateX(40px);
+    }
+    .reveal-pricing:nth-child(2).visible {
+        transform: translateX(0);
+    }
+    .reveal-pricing:nth-child(3) {
+        transform: translateY(30px);
+    }
+    .reveal-pricing:nth-child(3).visible {
+        transform: translateY(0);
+    }
+    
+    .reveal-testi {
+        transform: scale(0.9) rotate(-2deg);
+    }
+    .reveal-testi.visible {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+    }
+    
+    .reveal-faq {
+        transform: translateY(20px);
+        transition-delay: calc(var(--index, 0) * 0.05s);
+    }
+    .reveal-faq.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .reveal-general {
+        transform: translateY(30px);
+    }
+    .reveal-general.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .section-title.reveal-title {
+        transform: translateY(20px);
+    }
+    .section-title.reveal-title.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .section-tag.reveal-tag {
+        transform: scaleX(0.8);
+        opacity: 0;
+    }
+    .section-tag.reveal-tag.visible {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+</style>
+
+<!-- ============================================ -->
+<!-- STYLE SECTION 6: SERVICE CARDS SECTION -->
+<!-- ============================================ -->
+<style>
+    /* ========= SERVICE CARDS ========= */
+    .svc-card {
+        background: rgba(255,255,255,0.08);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(201,162,39,0.2);
+        border-radius: 24px;
+        overflow: hidden;
+        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        cursor: pointer;
+        position: relative;
+        box-shadow: 0 10px 20px -8px rgba(0,0,0,0.3);
+    }
+    
+    .svc-card:hover {
+        transform: translateY(-15px) scale(1.02);
+        border-color: var(--gold);
+        box-shadow: 0 30px 45px -12px rgba(0,0,0,0.5), 0 0 0 2px rgba(201,162,39,0.3);
+        background: rgba(255,255,255,0.2);
+    }
+    
+    .svc-card::after {
+        content: '';
+        position: absolute;
+        bottom: -25px;
+        left: 5%;
+        width: 90%;
+        height: 30px;
+        background: radial-gradient(ellipse at center, rgba(0,0,0,0.6), transparent);
+        filter: blur(12px);
+        z-index: -1;
+        border-radius: 50%;
+        opacity: 0;
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        pointer-events: none;
+    }
+    
+    .svc-card:hover::after {
+        opacity: 1;
+        transform: translateY(-5px) scale(1.05);
+    }
+    
+    .svc-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(201,162,39,0.3), transparent);
+        transition: left 0.6s ease;
+        z-index: 1;
+        pointer-events: none;
+    }
+    
+    .svc-card:hover::before {
+        left: 100%;
+    }
+    
+    .services-main {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .svc-img {
+        height: 220px;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        background: linear-gradient(135deg, #0e1117, #151b25);
+    }
+    
+    .svc-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        display: block;
+    }
+    
+    .svc-card:hover .svc-img img {
+        transform: scale(1.12);
+    }
+    
+    .svc-img::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60%;
+        background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+        pointer-events: none;
+        opacity: 0.6;
+        transition: opacity 0.3s ease;
+    }
+    
+    .svc-card:hover .svc-img::after {
+        opacity: 0.9;
+        background: linear-gradient(to top, rgba(201,162,39,0.3), transparent);
+    }
+    
+    .svc-body { 
+        padding: 1.8rem; 
+        position: relative; 
+        z-index: 2;
+        background: inherit;
+    }
+    
+    .svc-body h3 {
+        font-family: 'Syne', sans-serif;
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 0.8rem;
+        transition: color 0.3s ease;
+    }
+    
+    .svc-card:hover .svc-body h3 {
+        color: var(--gold);
+    }
+    
+    .svc-body p {
+        font-family: 'Syne', sans-serif;
+        color: rgba(255,255,255,0.7);
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 1.2rem;
+    }
+    
+    .svc-features {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .svc-feat {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-family: 'Syne', sans-serif;
+        font-size: 0.85rem;
+        color: rgba(255,255,255,0.7);
+        transition: transform 0.2s ease;
+    }
+    
+    .svc-card:hover .svc-feat {
+        transform: translateX(5px);
+    }
+    
+    .svc-feat::before {
+        content: '✓';
+        color: var(--gold);
+        font-weight: 700;
+    }
+    
+    /* Responsive Services */
+    @media (max-width: 968px) {
+        .services-main { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+    }
+    
+    @media (min-width: 769px) and (max-width: 1024px) {
+        .services-main { grid-template-columns: repeat(2, 1fr); }
+    }
+</style>
+
+<!-- ============================================ -->
+<!-- STYLE SECTION 7: MARQUEE SECTION -->
+<!-- ============================================ -->
+<style>
     /* ========= MARQUEE SECTION ========= */
     .marquee-section {
         overflow: hidden;
@@ -378,298 +706,244 @@
         from { transform: translateX(0); }
         to { transform: translateX(-50%); }
     }
-    
-    /* ========= SECTION STYLES ========= */
-    section { padding: 5rem 5%; transition: all 0.4s; }
-    
-    .section-tag {
-        font-family: 'Syne', sans-serif;
-        font-size: 0.8rem;
-        font-weight: 700;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: var(--gold);
-        margin-bottom: 1rem;
+</style>
+
+<!-- ============================================ -->
+<!-- STYLE SECTION 8: IDEAL LAPTOP SECTION -->
+<!-- ============================================ -->
+<style>
+    /* Fixed Ideal Laptop Section */
+    .ideal-laptop-section {
+        position: relative;
+        min-height: 70vh;
+        height: 70vh;
         display: flex;
         align-items: center;
-        gap: 0.8rem;
+        overflow: hidden;
+        background: #ffffff;
     }
     
-    .section-tag::before {
-        content: '';
-        width: 40px;
-        height: 2px;
-        background: var(--gold);
-        transition: width 0.4s ease;
+    .ideal-white-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #ffffff;
+        z-index: 0;
     }
-    section:hover .section-tag::before { width: 70px; }
     
-    .section-title {
-        font-family: 'Playfair Display', serif;
-        font-size: 2.5rem;
+    .ideal-image-container {
+        position: absolute !important;
+        top: 10px;
+        left: 10px;
+        right: 20px;
+        bottom: 20px;
+        width: calc(100% - 30px);
+        height: calc(100% - 30px);
+        z-index: 10;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+    
+    .ideal-bg-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .ideal-content-wrapper {
+        position: absolute;
+        z-index: 20;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    
+    .ideal-container {
+        position: relative;
+        z-index: 10;
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        padding: 1rem 6%;
+        width: 100%;
+    }
+    
+    .ideal-content {
+        animation: fadeInLeft 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1) both;
+    }
+    
+    @keyframes fadeInLeft {
+        from { opacity: 0; transform: translateX(-40px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+    
+    .ideal-main-title {
+        font-family: 'Syne', sans-serif;
+        font-size: clamp(2rem, 4vw, 3.5rem);
         font-weight: 900;
         line-height: 1.2;
         margin-bottom: 1rem;
+        color: #000;
     }
     
-    .section-sub {
-        font-family: 'DM Sans', sans-serif;
-        color: rgba(255,255,255,0.7);
-        font-size: 1rem;
-        line-height: 1.7;
-        max-width: 600px;
-        margin-bottom: 2rem;
-    }
-    
-    .text-center { text-align: center; }
-    .mx-auto { margin-left: auto; margin-right: auto; }
-    
- 
-/* ========= FIXED SERVICE CARD STYLES WITH IMAGES ========= */
-.services-main {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Glassy Card Effect */
-.svc-card {
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(201,162,39,0.2);
-    border-radius: 24px;
-    overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-    cursor: pointer;
-    position: relative;
-}
-
-/* 3D Hover Effect with Golden Shadow */
-.svc-card:hover {
-    transform: translateY(-15px) scale(1.02);
-    border-color: var(--gold);
-    box-shadow: 0 35px 55px -20px rgba(0,0,0,0.4), 0 0 0 2px rgba(201,162,39,0.3);
-    background: rgba(255,255,255,0.2);
-}
-
-/* Dark shadow on hover */
-.svc-card:hover::after {
-    content: '';
-    position: absolute;
-    bottom: -20px;
-    left: 10%;
-    width: 80%;
-    height: 30px;
-    background: rgba(0,0,0,0.3);
-    filter: blur(15px);
-    z-index: -1;
-    border-radius: 50%;
-}
-
-/* Shine effect on hover */
-.svc-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(201,162,39,0.3), transparent);
-    transition: left 0.6s ease;
-    z-index: 1;
-    pointer-events: none;
-}
-
-.svc-card:hover::before {
-    left: 100%;
-}
-
-/* FIXED: Image container */
-.svc-img {
-    height: 220px;
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    background: linear-gradient(135deg, #0e1117, #151b25);
-}
-
-/* FIXED: Image styling - covers completely */
-.svc-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-    display: block;
-}
-
-/* Zoom effect on hover */
-.svc-card:hover .svc-img img {
-    transform: scale(1.12);
-}
-
-/* Overlay gradient on image */
-.svc-img::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 60%;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-    pointer-events: none;
-    opacity: 0.6;
-    transition: opacity 0.3s ease;
-}
-
-.svc-card:hover .svc-img::after {
-    opacity: 0.9;
-    background: linear-gradient(to top, rgba(201,162,39,0.3), transparent);
-}
-
-/* Card body */
-.svc-body { 
-    padding: 1.8rem; 
-    position: relative; 
-    z-index: 2;
-    background: inherit;
-}
-
-.svc-body h3 {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 0.8rem;
-    transition: color 0.3s ease;
-}
-
-.svc-card:hover .svc-body h3 {
-    color: var(--gold);
-}
-
-.svc-body p {
-    font-family: 'DM Sans', sans-serif;
-    color: rgba(255,255,255,0.7);
-    font-size: 0.9rem;
-    line-height: 1.6;
-    margin-bottom: 1.2rem;
-}
-
-.svc-features {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.svc-feat {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.7);
-    transition: transform 0.2s ease;
-}
-
-.svc-card:hover .svc-feat {
-    transform: translateX(5px);
-}
-
-.svc-feat::before {
-    content: '✓';
-    color: var(--gold);
-    font-weight: 700;
-}
-
-.svc-price {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 0.5rem;
-    border-top: 1px solid rgba(201,162,39,0.2);
-}
-
-.price-from {
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.6);
-    font-family: 'Syne', sans-serif;
-}
-
-.price-val {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    font-weight: 900;
-    color: var(--gold);
-    transition: transform 0.2s ease;
-}
-
-.svc-card:hover .price-val {
-    transform: scale(1.05);
-}
-
-/* Button inside card */
-.svc-card .btn-gold {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.8rem;
-}
-
-    /* ========= TRUST STRIP ========= */
-    .trust-strip { padding: 3rem 5%; }
-    .trust-strip.light-variant { background: #fcf6e8; }
-    
-    .trust-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    
-    .trust-item {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 1rem;
-        background: rgba(255,255,255,0.03);
-        border-radius: 16px;
-        transition: all 0.4s;
-    }
-    
-    .trust-item:hover {
-        background: rgba(201,162,39,0.15);
-        transform: translateX(10px) scale(1.02);
-        backdrop-filter: blur(5px);
-    }
-    
-    .trust-check {
-        width: 45px;
-        height: 45px;
-        background: rgba(201,162,39,0.15);
-        border: 1px solid var(--gold);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .ideal-main-title span {
         color: var(--gold);
-        font-size: 1.2rem;
-        transition: 0.3s;
-    }
-    .trust-item:hover .trust-check {
-        background: var(--gold);
-        color: #1a1a1a;
-        transform: rotate(360deg);
+        display: inline-block;
     }
     
-    /* ========= PROCESS SECTION ========= */
-    .process-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1.5rem;
-        margin-top: 2rem;
+    .ideal-desc {
+        font-size: 1rem;
+        font-family: 'Syne', sans-serif;
+        color: #333;
+        line-height: 1.7;
+        margin-bottom: 2rem;
+        max-width: 500px;
     }
     
+    .ideal-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        background: linear-gradient(135deg, #f0c84a, #c9a227, #8a6e0f);
+        color: #0d0a02;
+        padding: 0.9rem 2.2rem;
+        border-radius: 50px;
+        font-family: 'Syne', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
+    }
+    
+    .ideal-btn i {
+        font-size: 0.9rem;
+        transition: transform 0.25s ease;
+    }
+    
+    .ideal-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(201, 162, 39, 0.5);
+        gap: 1rem;
+    }
+    
+    .ideal-btn:hover i {
+        transform: translate(3px, -3px);
+    }
+    
+    .ideal-image-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        overflow: visible;
+    }
+    
+    .ideal-image {
+        width: 100%;
+        max-width: 550px;
+        height: auto;
+        filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.3));
+        transition: all 0.4s ease;
+        opacity: 0;
+        transform: scale(0.1);
+    }
+    
+    .ideal-image.animate-zoom {
+        animation: smoothZoomIn 1.5s cubic-bezier(0.2, 0.9, 0.4, 1.05) forwards;
+    }
+    
+    @keyframes smoothZoomIn {
+        0% { opacity: 0; transform: scale(0.1); }
+        30% { opacity: 0.3; transform: scale(0.3); }
+        60% { opacity: 0.7; transform: scale(0.7); }
+        85% { opacity: 0.95; transform: scale(1.05); }
+        100% { opacity: 1; transform: scale(1); }
+    }
+    
+    .ideal-image-wrapper:hover .ideal-image {
+        transform: scale(1.02);
+    }
+    
+    /* Responsive Ideal Section */
+    @media (max-width: 968px) {
+        .ideal-laptop-section {
+            min-height: auto;
+            height: auto;
+            padding: 0 0 4rem 0;
+        }
+        
+        .ideal-image-container {
+            position: relative !important;
+            top: 20px;
+            left: 20px;
+            width: calc(100% - 40px);
+            height: 50vh;
+            bottom: auto;
+        }
+        
+        .ideal-content-wrapper {
+            position: relative;
+            padding-top: 50vh;
+        }
+        
+        .ideal-container {
+            grid-template-columns: 1fr;
+            text-align: center;
+            gap: 2rem;
+            padding: 2rem 6%;
+        }
+        
+        .ideal-content {
+            text-align: center;
+        }
+        
+        .ideal-desc {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .ideal-btn {
+            margin: 0 auto;
+        }
+        
+        .ideal-image-wrapper {
+            order: -1;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+        
+        .ideal-image {
+            max-width: 100%;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .ideal-main-title { font-size: 1.8rem; }
+        .ideal-image-wrapper { max-width: 250px; }
+    }
+</style>
+
+<!-- ============================================ -->
+<!-- STYLE SECTION 9: PROCESS SECTION -->
+<!-- ============================================ -->
+<style>
+    /* ========= PROCESS GRID ========= */
     .process-step {
         text-align: center;
         padding: 1.5rem;
@@ -677,12 +951,35 @@
         backdrop-filter: blur(5px);
         border-radius: 20px;
         transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        position: relative;
+        box-shadow: 0 8px 18px -6px rgba(0,0,0,0.2);
+    }
+    
+    .process-step::after {
+        content: '';
+        position: absolute;
+        bottom: -20px;
+        left: 10%;
+        width: 80%;
+        height: 20px;
+        background: radial-gradient(ellipse at center, rgba(0,0,0,0.5), transparent);
+        filter: blur(10px);
+        z-index: -1;
+        border-radius: 50%;
+        opacity: 0;
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        pointer-events: none;
+    }
+    
+    .process-step:hover::after {
+        opacity: 0.8;
+        transform: translateY(-3px);
     }
     
     .process-step:hover {
         background: rgba(201,162,39,0.12);
         transform: translateY(-12px) scale(1.03);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        box-shadow: 0 25px 35px -12px rgba(0,0,0,0.4);
     }
     
     .step-num {
@@ -694,15 +991,17 @@
         align-items: center;
         justify-content: center;
         margin: 0 auto 1rem;
-        font-family: 'Playfair Display', serif;
+        font-family: 'Syne', sans-serif;
         font-size: 1.4rem;
         font-weight: 900;
         color: #1a1a1a;
         transition: 0.3s;
+        box-shadow: 0 5px 12px rgba(0,0,0,0.2);
     }
+    
     .process-step:hover .step-num {
         transform: scale(1.15);
-        box-shadow: 0 0 20px var(--gold);
+        box-shadow: 0 8px 22px var(--gold);
     }
     
     .process-step h3 {
@@ -712,11 +1011,27 @@
     }
     
     .process-step p {
-        font-family: 'DM Sans', sans-serif;
+        font-family: 'Syne', sans-serif;
         color: rgba(255,255,255,0.6);
         font-size: 0.85rem;
     }
     
+    .process-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    @media (max-width: 968px) {
+        .process-grid { grid-template-columns: 1fr; }
+    }
+</style>
+
+<!-- ============================================ -->
+<!-- STYLE SECTION 10: PRICING SECTION -->
+<!-- ============================================ -->
+<style>
     /* ========= PRICING SECTION ========= */
     .pricing-grid {
         display: grid;
@@ -765,17 +1080,40 @@
     }
     
     .price-amount {
-        font-family: 'Playfair Display', serif;
+        font-family: 'Syne', sans-serif;
         font-size: 3rem;
         font-weight: 900;
         margin-bottom: 0.3rem;
     }
     
-    .price-features li {
-        font-family: 'DM Sans', sans-serif;
+    .price-period {
+        font-family: 'Syne', sans-serif;
+        font-size: 0.8rem;
+        color: rgba(0,0,0,0.5);
     }
     
-    /* ========= TESTIMONIALS SECTION WITH TRANSPARENT DARK BG ========= */
+    .price-features {
+        list-style: none;
+        padding: 1rem 0;
+    }
+    
+    .price-features li {
+        font-family: 'Syne', sans-serif;
+        padding: 0.3rem 0;
+        font-size: 0.85rem;
+    }
+    
+    @media (max-width: 968px) {
+        .pricing-grid { grid-template-columns: 1fr; }
+        .price-card.featured { transform: scale(1); }
+    }
+</style>
+
+<!-- ============================================ -->
+<!-- STYLE SECTION 11: TESTIMONIALS SECTION -->
+<!-- ============================================ -->
+<style>
+    /* ========= TESTIMONIALS SECTION ========= */
     .testimonials-section {
         background: linear-gradient(135deg, rgba(8,10,14,0.95), rgba(21,27,37,0.92));
         position: relative;
@@ -820,7 +1158,6 @@
         box-shadow: 0 25px 40px -15px rgba(201,162,39,0.3);
     }
     
-    /* GOLDEN STARS */
     .testi-stars {
         color: var(--gold);
         margin-bottom: 1rem;
@@ -828,12 +1165,8 @@
         letter-spacing: 3px;
     }
     
-    .testi-stars i {
-        margin-right: 2px;
-    }
-    
     .testi-text {
-        font-family: 'DM Sans', sans-serif;
+        font-family: 'Syne', sans-serif;
         color: rgba(255,255,255,0.8);
         font-size: 0.9rem;
         line-height: 1.7;
@@ -866,11 +1199,20 @@
     }
     
     .testi-role {
-        font-family: 'DM Sans', sans-serif;
+        font-family: 'Syne', sans-serif;
         color: var(--gold);
         font-size: 0.75rem;
     }
     
+    @media (max-width: 968px) {
+        .testi-grid { grid-template-columns: 1fr; }
+    }
+</style>
+
+<!-- ============================================ -->
+<!-- STYLE SECTION 12: FAQ SECTION (FIXED VISIBILITY) -->
+<!-- ============================================ -->
+<style>
     /* ========= FAQ SECTION ========= */
     .faq-grid {
         display: grid;
@@ -913,6 +1255,7 @@
         font-size: 1.3rem;
         color: var(--gold);
         transition: transform 0.3s;
+        font-weight: 700;
     }
     
     .faq-item.open .faq-icon { transform: rotate(45deg); }
@@ -921,10 +1264,23 @@
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.5s ease-out, padding 0.3s;
-        color: rgba(255,255,255,0.6);
-        font-family: 'DM Sans', sans-serif;
+        font-family: 'Syne', sans-serif;
         font-size: 0.85rem;
         line-height: 1.7;
+    }
+    
+    /* FIXED: Text color for FAQ answer in both light and dark themes */
+    .faq-a {
+        color: rgba(0, 0, 0, 0.7);
+    }
+    
+    section.light-theme .faq-a {
+        color: rgba(0, 0, 0, 0.7);
+    }
+    
+    /* For dark theme FAQ items (when not in light-theme section) */
+    .faq-item .faq-a {
+        color: rgba(255, 255, 255, 0.7);
     }
     
     .faq-item.open .faq-a {
@@ -932,6 +1288,15 @@
         padding-top: 1rem;
     }
     
+    @media (max-width: 968px) {
+        .faq-grid { grid-template-columns: 1fr; }
+    }
+</style>
+
+<!-- ============================================ -->
+<!-- STYLE SECTION 13: CTA SECTION -->
+<!-- ============================================ -->
+<style>
     /* ========= CTA SECTION ========= */
     .cta-section {
         text-align: center;
@@ -940,49 +1305,61 @@
         border-top: 1px solid rgba(201,162,39,0.15);
         border-bottom: 1px solid rgba(201,162,39,0.15);
     }
+    
     .cta-section .btn-gold {
         animation: subtleBounce 2s infinite ease;
     }
+    
     @keyframes subtleBounce {
         0%, 100% { transform: translateY(0); }
         50% { transform: translateY(-5px); }
     }
     
-    /* ========= REVEAL ANIMATION ========= */
-    .reveal {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.8s cubic-bezier(0.2, 0.9, 0.3, 1.2);
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    
-    /* ========= RESPONSIVE ========= */
-    @media (max-width: 968px) {
-        .hero-container { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
-        .hero-content { text-align: center; }
-        .hero-sub { margin-left: auto; margin-right: auto; }
-        .hero-btns, .hero-stats { justify-content: center; }
-        .hero-image-wrapper { order: -1; }
-        .hero-title { font-size: 2.5rem; }
-        .services-main { grid-template-columns: 1fr; max-width: 500px; }
-        .trust-grid, .process-grid, .pricing-grid, .testi-grid, .faq-grid { grid-template-columns: 1fr; }
-        .price-card.featured { transform: scale(1); }
-        #hero { min-height: 70vh; }
+    .section-title {
+        font-family: 'Syne', sans-serif;
     }
     
-    @media (min-width: 769px) and (max-width: 1024px) {
-        .services-main { grid-template-columns: repeat(2, 1fr); }
+    .section-sub {
+        font-family: 'Syne', sans-serif;
     }
     
-    @media (max-width: 576px) {
-        .hero-title { font-size: 1.8rem; }
-        .section-title { font-size: 1.8rem; }
-        .image-container { max-width: 280px; }
-        .rotating-border { inset: -5px; }
-        .rotating-glass { inset: -2px; }
-        #hero { min-height: 60vh; }
+    section { padding: 5rem 5%; transition: all 0.4s; }
+    
+    .section-tag {
+        font-family: 'Syne', sans-serif;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
     }
+    
+    .section-tag::before {
+        content: '';
+        width: 40px;
+        height: 2px;
+        background: var(--gold);
+        transition: width 0.4s ease;
+    }
+    
+    .section-tag::after {
+        content: '';
+        width: 40px;
+        height: 2px;
+        background: var(--gold);
+        transition: width 0.4s ease;
+    }
+    
+    section:hover .section-tag::before { width: 70px; }
+    
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
 </style>
+
 {% endblock %}
 
 {% block content %}
@@ -1002,11 +1379,10 @@
             <h1 class="hero-title">
                 Repair. Upgrade.<br>
                 Buy Smart with <span class="gold">SBM</span>
-               
             </h1>
             <p class="hero-sub">
-                 Expert repair services and top-quality laptops for sale in Solapur. 
-    Fast diagnosis, skilled technicians, and dependable solutions you can trust.
+                Expert repair services and top-quality laptops for sale in Solapur. 
+                Fast diagnosis, skilled technicians, and dependable solutions you can trust.
             </p>
             <div class="hero-btns">
                 <a href="{% url 'contact' %}" class="btn-gold">Contact</a>
@@ -1024,29 +1400,14 @@
     </div>
 </section>
 
-{% comment %} <!-- ===== MARQUEE SECTION ===== -->
-<div class="marquee-section">
-    <div class="marquee-track">
-        <div class="marquee-item"><span class="dot">✦</span> IT Devices Repaired</div>
-        <div class="marquee-item"><span class="dot">✦</span> Genuine Parts</div>
-        <div class="marquee-item"><span class="dot">✦</span> Certified Technicians</div>
-        <div class="marquee-item"><span class="dot">✦</span> Fast Turnaround</div>
-        <div class="marquee-item"><span class="dot">✦</span> Quality Guarantee</div>
-        <div class="marquee-item"><span class="dot">✦</span> Data Recovery</div>
-        <div class="marquee-item"><span class="dot">✦</span> Virus Protection</div>
-        <div class="marquee-item"><span class="dot">✦</span> IT Devices Repaired</div>
-        <div class="marquee-item"><span class="dot">✦</span> Genuine Parts</div>
-    </div>
-</div>  {% endcomment %}
-
 <!-- ===== SERVICES SECTION (LIGHT THEME) ===== -->
 <section class="light-theme" style="text-align: center;">
-    <div class="section-tag reveal" style="justify-content: center;">Our services</div>
-    <h2 class="section-title reveal">Fast and Reliable Repairs for Every <span style="color:var(--gold)">Device</span></h2>
-    <p class="section-sub reveal" style="margin-left: auto; margin-right: auto; text-align: center; max-width: 700px;">From screen replacements to complex motherboard repairs — certified technicians with genuine parts and a 90-day warranty on all services.</p>
-    
+    <div class="section-tag reveal-tag" style="justify-content: center;">Our services</div>
+    <h2 class="section-title reveal-title">Fast and Reliable Repairs for Every <span style="color:var(--gold)">Device</span></h2>
+    <p class="section-sub reveal-general" style="margin-left: auto; margin-right: auto; text-align: center; max-width: 700px;">From screen replacements to complex motherboard repairs</p>
+
     <div class="services-main">
-        <div class="svc-card reveal">
+        <div class="svc-card reveal-services">
             <div class="svc-img"><img src="{% static 'images/computer_repaire.jpg' %}" alt="Computer & Laptop Repair"></div>
             <div class="svc-body">
                 <h3>Computer & Laptop Repair</h3>
@@ -1058,7 +1419,7 @@
                 </div>
             </div>
         </div>
-        <div class="svc-card reveal">
+        <div class="svc-card reveal-services">
             <div class="svc-img"><img src="{% static 'images/laptop_cleaning.jpeg' %}" alt="Laptop Deep Cleaning"></div>
             <div class="svc-body">
                 <h3>Laptop Deep Cleaning</h3>
@@ -1070,7 +1431,7 @@
                 </div>
             </div>
         </div>
-        <div class="svc-card reveal">
+        <div class="svc-card reveal-services">
             <div class="svc-img"><img src="{% static 'images/os_installation.jpeg' %}" alt="OS Installation"></div>
             <div class="svc-body">
                 <h3>OS Installation & Setup</h3>
@@ -1082,7 +1443,7 @@
                 </div>
             </div>
         </div>
-        <div class="svc-card reveal">
+        <div class="svc-card reveal-services">
             <div class="svc-img"><img src="{% static 'images/virus_protection.jpg' %}" alt="Virus Protection"></div>
             <div class="svc-body">
                 <h3>Virus Protection Installation</h3>
@@ -1094,7 +1455,19 @@
                 </div>
             </div>
         </div>
-        <div class="svc-card reveal">
+        <div class="svc-card reveal-services">
+            <div class="svc-img"><img src="{% static 'images/printer_tonner.png' %}" alt="Data Recovery"></div>
+            <div class="svc-body">
+                <h3>Printer Repaire & Reffiling</h3>
+                <p>Professional  printer repair and high-quality toner refilling for smooth and efficient performance.</p>
+                <div class="svc-features">
+                    <div class="svc-feat">Printer repair & servicing</div>
+                    <div class="svc-feat">Toner & cartridge refilling</div>
+                    <div class="svc-feat">Cartridge replacement</div>
+                </div>
+            </div>
+        </div>
+        <div class="svc-card reveal-services">
             <div class="svc-img"><img src="{% static 'images/data_recovery.jpg' %}" alt="Data Recovery"></div>
             <div class="svc-body">
                 <h3>Data Recovery</h3>
@@ -1108,47 +1481,69 @@
         </div>
     </div>
 </section>
-{% comment %} 
-<!-- ===== TRUST STRIP ===== -->
-<div class="trust-strip light-variant">
-    <div class="trust-grid">
-        <div class="trust-item reveal">
-            <div class="trust-check">✓</div>
-            <div><h4>Skilled Technicians</h4><p>Certified professionals with A+ training</p></div>
-        </div>
-        <div class="trust-item reveal">
-            <div class="trust-check">✓</div>
-            <div><h4>10+ Years Experience</h4><p>Serving Solapur with excellence</p></div>
-        </div>
-        <div class="trust-item reveal">
-            <div class="trust-check">✓</div>
-            <div><h4>Quality Guarantee</h4><p>90-day warranty on all repairs</p></div>
+
+<!-- ===== MARQUEE SECTION ===== -->
+<div class="marquee-section">
+    <div class="marquee-track">
+        <div class="marquee-item"><span class="dot">✦</span> IT Devices Repaired</div>
+        <div class="marquee-item"><span class="dot">✦</span> Genuine Parts</div>
+        <div class="marquee-item"><span class="dot">✦</span> Certified Technicians</div>
+        <div class="marquee-item"><span class="dot">✦</span> Fast Turnaround</div>
+        <div class="marquee-item"><span class="dot">✦</span> Quality Guarantee</div>
+        <div class="marquee-item"><span class="dot">✦</span> Data Recovery</div>
+        <div class="marquee-item"><span class="dot">✦</span> Virus Protection</div>
+        <div class="marquee-item"><span class="dot">✦</span> IT Devices Repaired</div>
+        <div class="marquee-item"><span class="dot">✦</span> Genuine Parts</div>
+    </div>
+</div>
+
+<!-- ===== IDEAL LAPTOP SECTION ===== -->
+<section class="ideal-laptop-section">
+    <div class="ideal-white-container"></div>
+    <div class="ideal-image-container">
+        <img src="{% static 'images/background_sale_section.png' %}" alt="Laptop Background" class="ideal-bg-image">
+    </div>
+    <div class="ideal-content-wrapper">
+        <div class="ideal-container">
+            <div class="ideal-content">
+                <h1 class="ideal-main-title">Find the <span>ideal laptop</span></h1>
+                <p class="ideal-desc">
+                    Discover the perfect laptop tailored to your workflow, creativity, and lifestyle. 
+                    From gaming beasts to ultra-portable productivity machines — we have it all.
+                </p>
+                <a href="{% url 'contact' %}" class="ideal-btn">
+                    Find Now <i class="fas fa-arrow-up-right"></i>
+                </a>
+            </div>
+            <div class="ideal-image-wrapper">
+                <img src="{% static 'images/transperant_laptop.png' %}" alt="Laptop Showcase" class="ideal-image" id="zoomLaptopImage">
+            </div>
         </div>
     </div>
-</div> {% endcomment %}
+</section>
 
 <!-- ===== PROCESS SECTION ===== -->
 <section style="background: rgba(8,10,14,0.96);">
-    <div class="section-tag reveal text-center" style="justify-content: center;">Our Process</div>
-    <h2 class="section-title reveal text-center">Simple 4-Step Process</h2>
-    <p class="section-sub reveal text-center mx-auto">A transparent, stress-free repair journey from diagnosis to delivery.</p>
+    <div class="section-tag reveal-tag text-center" style="justify-content: center;">Our Process</div>
+    <h2 class="section-title reveal-title text-center">Simple 4-Step Process</h2>
+    <p class="section-sub reveal-general text-center mx-auto">A transparent, stress-free repair journey from diagnosis to delivery.</p>
     
     <div class="process-grid">
-        <div class="process-step reveal"><div class="step-num">01</div><h3>Contact & Book</h3><p>Call or fill our form</p></div>
-        <div class="process-step reveal"><div class="step-num">02</div><h3>Drop or Courier</h3><p>Bring it to our lab</p></div>
-        <div class="process-step reveal"><div class="step-num">03</div><h3>Diagnose & Repair</h3><p>Expert repairs</p></div>
-        <div class="process-step reveal"><div class="step-num">04</div><h3>Test & Deliver</h3><p>Quality checks done</p></div>
+        <div class="process-step reveal-process"><div class="step-num">01</div><h3>Contact & Book</h3><p>Call or fill our form</p></div>
+        <div class="process-step reveal-process"><div class="step-num">02</div><h3>Drop or Courier</h3><p>Bring it to our lab</p></div>
+        <div class="process-step reveal-process"><div class="step-num">03</div><h3>Diagnose & Repair</h3><p>Expert repairs</p></div>
+        <div class="process-step reveal-process"><div class="step-num">04</div><h3>Test & Deliver</h3><p>Quality checks done</p></div>
     </div>
 </section>
 
 <!-- ===== PRICING SECTION ===== -->
 <section class="light-theme">
-    <div class="section-tag reveal text-center" style="justify-content: center;">Service Plans</div>
-    <h2 class="section-title reveal text-center">Transparent Pricing,<br>No Hidden Charges</h2>
-    <p class="section-sub reveal text-center mx-auto">Choose a plan that suits your needs. All plans include free diagnosis and 90-day warranty.</p>
+    <div class="section-tag reveal-tag text-center" style="justify-content: center;">Service Plans</div>
+    <h2 class="section-title reveal-title text-center">Transparent Pricing,<br>No Hidden Charges</h2>
+    <p class="section-sub reveal-general text-center mx-auto">Choose a plan that suits your needs. All plans include free diagnosis and 90-day warranty.</p>
     
     <div class="pricing-grid">
-        <div class="price-card reveal">
+        <div class="price-card reveal-pricing">
             <h3>Basic</h3>
             <div class="price-amount"><span>₹</span>499</div>
             <div class="price-period">single repair</div>
@@ -1160,7 +1555,7 @@
             </ul>
             <a href="{% url 'contact' %}" class="btn-glass" style="width:100%;justify-content:center">Get Started</a>
         </div>
-        <div class="price-card featured reveal">
+        <div class="price-card featured reveal-pricing">
             <h3>Professional</h3>
             <div class="price-amount"><span>₹</span>999</div>
             <div class="price-period">comprehensive repair</div>
@@ -1173,7 +1568,7 @@
             </ul>
             <a href="{% url 'contact' %}" class="btn-gold" style="width:100%;justify-content:center">Get Started</a>
         </div>
-        <div class="price-card reveal">
+        <div class="price-card reveal-pricing">
             <h3>Business</h3>
             <div class="price-amount"><span>₹</span>Custom</div>
             <div class="price-period">bulk / enterprise</div>
@@ -1188,23 +1583,23 @@
     </div>
 </section>
 
-<!-- ===== TESTIMONIALS SECTION WITH TRANSPARENT BG ===== -->
+<!-- ===== TESTIMONIALS SECTION ===== -->
 <section class="testimonials-section">
-    <div class="section-tag reveal text-center" style="justify-content: center;">Client Stories</div>
-    <h2 class="section-title reveal text-center">Trusted by Thousands</h2>
+    <div class="section-tag reveal-tag text-center" style="justify-content: center;">Client Stories</div>
+    <h2 class="section-title reveal-title text-center">Trusted by Thousands</h2>
     
     <div class="testi-grid">
-        <div class="testi-card reveal">
+        <div class="testi-card reveal-testi">
             <div class="testi-stars">★★★★★</div>
             <p class="testi-text">"My laptop was completely dead. SBM diagnosed and fixed it within 2 days. Amazing service!"</p>
             <div class="testi-author"><div class="testi-avatar">R</div><div><div class="testi-name">Vikas Dindegavkar</div><div class="testi-role">Software Engineer</div></div></div>
         </div>
-        <div class="testi-card reveal">
+        <div class="testi-card reveal-testi">
             <div class="testi-stars">★★★★★</div>
             <p class="testi-text">"Recovered 5 years of family photos from a crashed hard drive. Miracle workers!"</p>
             <div class="testi-author"><div class="testi-avatar">P</div><div><div class="testi-name">Priya Kulkarni</div><div class="testi-role">Teacher</div></div></div>
         </div>
-        <div class="testi-card reveal">
+        <div class="testi-card reveal-testi">
             <div class="testi-stars">★★★★★</div>
             <p class="testi-text">"Fixed my gaming laptop's overheating issue. Temperature dropped by 25°C. Great value!"</p>
             <div class="testi-author"><div class="testi-avatar">A</div><div><div class="testi-name">Aman Patil</div><div class="testi-role">Gamer</div></div></div>
@@ -1214,31 +1609,31 @@
 
 <!-- ===== FAQ SECTION ===== -->
 <section class="light-theme">
-    <div class="section-tag reveal text-center" style="justify-content: center;">FAQ</div>
-    <h2 class="section-title reveal text-center">Frequently Asked Questions</h2>
+    <div class="section-tag reveal-tag text-center" style="justify-content: center;">FAQ</div>
+    <h2 class="section-title reveal-title text-center">Frequently Asked Questions</h2>
     
     <div class="faq-grid" id="faqGrid">
-        <div class="faq-item reveal">
+        <div class="faq-item reveal-faq" style="--index:0">
             <div class="faq-q">How long does a typical repair take? <span class="faq-icon">+</span></div>
             <div class="faq-a">Most repairs are completed same-day or within 24 hours. Complex motherboard repairs may take 2-3 business days.</div>
         </div>
-        <div class="faq-item reveal">
+        <div class="faq-item reveal-faq" style="--index:1">
             <div class="faq-q">Do you use genuine spare parts? <span class="faq-icon">+</span></div>
             <div class="faq-a">Yes, we use only OEM and manufacturer-approved spare parts for all repairs.</div>
         </div>
-        <div class="faq-item reveal">
+        <div class="faq-item reveal-faq" style="--index:2">
             <div class="faq-q">Is there a warranty on repairs? <span class="faq-icon">+</span></div>
             <div class="faq-a">Absolutely! All our repairs come with a minimum 90-day warranty.</div>
         </div>
-        <div class="faq-item reveal">
+        <div class="faq-item reveal-faq" style="--index:3">
             <div class="faq-q">Can you recover data from a damaged drive? <span class="faq-icon">+</span></div>
             <div class="faq-a">Yes! Our data recovery success rate is over 95% even for severely damaged media.</div>
         </div>
-        <div class="faq-item reveal">
+        <div class="faq-item reveal-faq" style="--index:4">
             <div class="faq-q">Do you offer pick-up and delivery? <span class="faq-icon">+</span></div>
             <div class="faq-a">Yes, we offer free doorstep pickup and delivery within Solapur city.</div>
         </div>
-        <div class="faq-item reveal">
+        <div class="faq-item reveal-faq" style="--index:5">
             <div class="faq-q">What payment methods do you accept? <span class="faq-icon">+</span></div>
             <div class="faq-a">We accept cash, UPI, debit/credit cards, and net banking.</div>
         </div>
@@ -1247,9 +1642,9 @@
 
 <!-- ===== CTA SECTION ===== -->
 <div class="cta-section light-cta">
-    <h2 class="section-title reveal">Ready to Revive<br>Your <span style="color:var(--gold)">Device?</span></h2>
-    <p class="section-sub reveal mx-auto" style="margin-bottom: 2rem;">Contact us today for a free diagnosis and get your device back in perfect condition.</p>
-    <div class="reveal">
+    <h2 class="section-title reveal-title">Ready to Revive<br>Your <span style="color:var(--gold)">Device?</span></h2>
+    <p class="section-sub reveal-general mx-auto" style="margin-bottom: 2rem;">Contact us today for a free diagnosis and get your device back in perfect condition.</p>
+    <div class="reveal-general">
         <a href="{% url 'contact' %}" class="btn-gold">Book Free Diagnosis →</a>
     </div>
 </div>
@@ -1257,7 +1652,7 @@
 
 {% block extra_js %}
 <script>
-    // FAQ Accordion
+    // FAQ Accordion - FIXED: Better toggle functionality
     document.querySelectorAll('.faq-item').forEach(item => {
         item.addEventListener('click', () => {
             const isOpen = item.classList.contains('open');
@@ -1266,15 +1661,105 @@
         });
     });
     
-    // Scroll Reveal Animation
+    // Staggered Video Load
+    document.addEventListener('DOMContentLoaded', function() {
+        const video = document.querySelector('.hero-video');
+        if (video) {
+            setTimeout(() => {
+                video.classList.add('loaded');
+                video.play().catch(e => console.log('Video autoplay prevented:', e));
+            }, 1000);
+        }
+    });
+    
+    // Enhanced Scroll Reveal Observer
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
     
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    // Register all elements with their specific reveal classes
+    document.querySelectorAll('.reveal-services, .reveal-process, .reveal-pricing, .reveal-testi, .reveal-faq, .reveal-general, .reveal-title, .reveal-tag').forEach(el => {
+        revealObserver.observe(el);
+    });
+    
+    document.querySelectorAll('.svc-card').forEach(el => {
+        if (!el.classList.contains('reveal-services')) {
+            el.classList.add('reveal-services');
+            revealObserver.observe(el);
+        }
+    });
+    
+    document.querySelectorAll('.process-step').forEach(el => {
+        if (!el.classList.contains('reveal-process')) {
+            el.classList.add('reveal-process');
+            revealObserver.observe(el);
+        }
+    });
+    
+    document.querySelectorAll('.price-card').forEach(el => {
+        if (!el.classList.contains('reveal-pricing')) {
+            el.classList.add('reveal-pricing');
+            revealObserver.observe(el);
+        }
+    });
+    
+    document.querySelectorAll('.testi-card').forEach(el => {
+        if (!el.classList.contains('reveal-testi')) {
+            el.classList.add('reveal-testi');
+            revealObserver.observe(el);
+        }
+    });
+    
+    document.querySelectorAll('.faq-item').forEach((el, idx) => {
+        if (!el.classList.contains('reveal-faq')) {
+            el.classList.add('reveal-faq');
+            el.style.setProperty('--index', idx);
+            revealObserver.observe(el);
+        }
+    });
+    
+    document.querySelectorAll('.section-title').forEach(el => {
+        if (!el.classList.contains('reveal-title')) {
+            el.classList.add('reveal-title');
+            revealObserver.observe(el);
+        }
+    });
+    
+    document.querySelectorAll('.section-tag').forEach(el => {
+        if (!el.classList.contains('reveal-tag')) {
+            el.classList.add('reveal-tag');
+            revealObserver.observe(el);
+        }
+    });
+    
+    document.querySelectorAll('.section-sub, .cta-section .btn-gold, .hero-btns .btn-gold').forEach(el => {
+        if (!el.classList.contains('reveal-general')) {
+            el.classList.add('reveal-general');
+            revealObserver.observe(el);
+        }
+    });
+    
+    // Laptop Zoom Animation
+    (function() {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initZoomAnimation);
+        } else {
+            initZoomAnimation();
+        }
+        
+        function initZoomAnimation() {
+            const laptopImage = document.getElementById('zoomLaptopImage');
+            if (laptopImage) {
+                laptopImage.style.willChange = 'transform, opacity';
+                setTimeout(function() {
+                    laptopImage.classList.add('animate-zoom');
+                }, 150);
+            }
+        }
+    })();
 </script>
 {% endblock %}
