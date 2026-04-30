@@ -422,6 +422,24 @@
         color: #1e1a14;
     }
     
+    /* ----- NEW: Style for actual brand images inside quick contact (WhatsApp & Gmail) ----- */
+    .qc-brand-img {
+        width: 52px;
+        height: 52px;
+        object-fit: contain;
+        border-radius: 16px;
+        background: #ffffff;
+        padding: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        transition: transform 0.2s ease;
+        flex-shrink: 0;
+    }
+    
+    .qc-item:hover .qc-brand-img {
+        transform: scale(1.02);
+    }
+    /* End new image styles */
+    
     .qc-text h4 {
         font-family: 'Syne', sans-serif;
         font-weight: 800;
@@ -558,6 +576,12 @@
             width: 45px;
             height: 45px;
             font-size: 1.2rem;
+        }
+        
+        .qc-brand-img {
+            width: 45px;
+            height: 45px;
+            padding: 6px;
         }
         
         .typing-static, .typing-dynamic {
@@ -728,12 +752,13 @@
             </div>
         </div>
         
-        <!-- RIGHT SIDE: QUICK CONTACT & REAL MAP -->
+        <!-- RIGHT SIDE: QUICK CONTACT & REAL MAP - now with actual WhatsApp and Gmail images -->
         <div class="reveal-right-contact">
             <div class="section-tag">Quick Contact</div>
             <h2 class="section-title" style="font-size: 1.8rem; margin-bottom: 1.5rem;">Get Quick Answers</h2>
             
             <div class="quick-contact">
+                <!-- Call Us: keep original emoji/icon style -->
                 <a href="tel:+918087594890" class="qc-item">
                     <div class="qc-icon">📞</div>
                     <div class="qc-text">
@@ -741,15 +766,19 @@
                         <p>+91 80875 94890 — Available 11am–10pm</p>
                     </div>
                 </a>
-                <a href="https://wa.me/918087594890" class="qc-item">
-                    <div class="qc-icon">💬</div>
+                
+                <!-- WhatsApp Us: replaced emoji with actual WhatsApp image (official logo) -->
+                <a href="https://wa.me/918087594890" class="qc-item" target="_blank" rel="noopener noreferrer">
+                    <img class="qc-brand-img" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="background: #ffffff; padding: 8px; border-radius: 16px;">
                     <div class="qc-text">
                         <h4>WhatsApp Us</h4>
                         <p>Send photos of your device for instant diagnosis</p>
                     </div>
                 </a>
+                
+                <!-- Email Us: replaced emoji with actual Gmail image (official Gmail 2020 icon) -->
                 <a href="mailto:sbmsolutions@gmail.com" class="qc-item">
-                    <div class="qc-icon">✉️</div>
+                    <img class="qc-brand-img" src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail" style="background: #ffffff; padding: 8px; border-radius: 16px;">
                     <div class="qc-text">
                         <h4>Email Us</h4>
                         <p>sbmsolutions@gmail.com — Reply within 2 hours</p>

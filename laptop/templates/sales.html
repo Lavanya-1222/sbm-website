@@ -1108,8 +1108,907 @@
     font-size: 1rem;
   }
 }
-</style>
+/* ===== LIGHT THEME CATEGORY SECTION ===== */
+.light-theme-cat {
+  background: linear-gradient(135deg, #fef9e6 0%, #fffcf5 100%);
+  padding: 5rem 5%;
+}
 
+.light-theme-cat .section-h2 {
+  color: #1e1a14;
+}
+
+.light-theme-cat .section-sub {
+  color: #555;
+}
+
+/* Category Filter Buttons */
+.cat-filter-btn {
+  background: transparent;
+  border: 2px solid rgba(201, 162, 39, 0.3);
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1e1a14;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cat-filter-btn:hover {
+  border-color: var(--gold);
+  background: rgba(201, 162, 39, 0.1);
+}
+
+.cat-filter-btn.active {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  border-color: var(--gold);
+  color: #0d0a02;
+  box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
+}
+
+/* Category Grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* New Card Design - IMAGE COVERS COMPLETELY (no background visible) */
+.cat-card-new {
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  cursor: pointer;
+  position: relative;
+}
+
+.cat-card-new:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Image wrapper - NO BACKGROUND visible, image covers completely */
+.cat-card-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  background: transparent;
+}
+
+.cat-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.cat-card-new:hover .cat-card-img {
+  transform: scale(1.08);
+}
+
+/* Badges */
+.cat-sale-badge,
+.cat-new-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.cat-sale-badge {
+  background: linear-gradient(135deg, #e92e2e, #c41e1e);
+  color: white;
+}
+
+.cat-new-badge {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: #0d0a02;
+}
+
+/* Card Info Section */
+.cat-card-info {
+  padding: 1.5rem;
+  background: white;
+}
+
+.cat-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #1e1a14;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.cat-card-specs {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.cat-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.cat-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--gold-dark);
+}
+
+.cat-old-price {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.85rem;
+  color: #999;
+  text-decoration: line-through;
+}
+
+/* View Details Button */
+.cat-card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.cat-card-btn:hover {
+  gap: 0.75rem;
+  color: var(--gold);
+}
+
+/* Panel Switching */
+.cat-panel {
+  display: none;
+}
+
+.cat-panel.active {
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .category-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .cat-filter-btn {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.75rem;
+  }
+  
+  .cat-card-img-wrapper {
+    height: 200px;
+  }
+}
+</style>
+<style>
+/* ══════════════════════════════════════════════════════════════
+     PREMIUM SOLUTIONS SECTION - DARK & ATTRACTIVE
+══════════════════════════════════════════════════════════════ */
+.premium-solutions-section {
+  position: relative;
+  padding: 3rem 5%;
+  /* TRANSPARENT LIGHT BLACK BACKGROUND + IMAGE */
+  background: rgba(0, 0, 0, 0.7);  /* Light black transparent background */
+  overflow: hidden;
+}
+
+.premium-solutions-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('{% static "images/print_section_background.png" %}');  /* Change path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.40;  /* Adjust for visibility */
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Ensure content stays above background */
+.solutions-container {
+  position: relative;
+  z-index: 2;
+}
+
+.solutions-bg-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(201, 162, 39, 0.08), transparent 60%);
+  pointer-events: none;
+  animation: slowRotate 30s linear infinite;
+}
+
+@keyframes slowRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.solutions-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.solutions-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-tag-gold {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.tag-line {
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.solutions-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+
+.gold-text {
+  color: var(--gold);
+  position: relative;
+  display: inline-block;
+}
+
+.gold-text::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.solutions-subtitle {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.6);
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+/* Solutions Grid */
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+/* Solution Cards */
+.solution-card {
+  position: relative;
+  padding: 0 3rem;
+  border-radius: 28px;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  cursor: pointer;
+  {% comment %} background: rgba(21, 27, 37, 0.65); {% endcomment %}
+  {% comment %} backdrop-filter: blur(10px); {% endcomment %}
+  border: 1px solid rgba(201, 162, 39, 0.15);
+}
+
+.solution-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.solution-card:hover::before {
+  opacity: 1;
+}
+
+.solution-card:hover {
+  transform: translateY(-12px);
+  border-color: rgba(201, 162, 39, 0.4);
+  {% comment %} background: rgba(21, 27, 37, 0.85); {% endcomment %}
+  {% comment %} box-shadow: 0 30px 50px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(201, 162, 39, 0.2); {% endcomment %}
+}
+
+.card-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 1;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  z-index: -1;
+}
+
+.cctv-card .card-bg {
+  background-image: url('{% static 'images/camera.png' %}');
+}
+
+.printer-card .card-bg {
+  background-image: url('{% static 'images/printer.png' %}');
+}
+
+.solution-card:hover .card-bg {
+  opacity: 0.15;
+  transform: scale(1.05);
+}
+
+.card-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 70% 30%, rgba(201, 162, 39, 0.12), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.solution-card:hover .card-glow {
+  opacity: 1;
+}
+
+.card-icon {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, rgba(201, 162, 39, 0.15), rgba(201, 162, 39, 0.05));
+  border: 1px solid rgba(201, 162, 39, 0.3);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: all 0.4s ease;
+}
+
+.solution-card:hover .card-icon {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  border-color: var(--gold);
+  transform: scale(1.05);
+}
+
+.card-icon i {
+  font-size: 2rem;
+  color: var(--gold);
+  transition: all 0.4s ease;
+}
+
+.solution-card:hover .card-icon i {
+  color: #080a0e;
+}
+
+.card-badge {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  padding: 5px 14px;
+  border-radius: 30px;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #080a0e;
+  text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
+}
+
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.card-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.85rem;
+  color: #fff;
+  background: rgba(255,255,255,0.05);
+  padding: 5px 12px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.solution-card:hover .feature {
+  background: rgba(201, 162, 39, 0.15);
+  color: #fff;
+}
+
+.feature i {
+  color: var(--gold);
+  font-size: 0.7rem;
+}
+
+.card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 10px 0;
+  margin-bottom: 1rem;
+}
+
+.card-btn span {
+  position: relative;
+}
+
+.card-btn span::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.card-btn:hover span::after {
+  width: 100%;
+}
+
+.card-btn i {
+  transition: transform 0.3s ease;
+}
+
+.card-btn:hover {
+  gap: 1rem;
+}
+
+.card-btn:hover i {
+  transform: translateX(5px);
+}
+
+/* ══════════════════════════════════════════════════════════════
+     PREMIUM ACCESSORIES SECTION
+══════════════════════════════════════════════════════════════ */
+.accessories-premium-section {
+  padding: 5rem 5%;
+  background: linear-gradient(135deg, #0e1117 0%, #0a0d14 100%);
+  position: relative;
+}
+
+.accessories-premium-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.3), transparent);
+}
+
+.accessories-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.accessories-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.accessories-subtitle {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.5);
+}
+
+.accessories-premium-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.2rem;
+}
+
+.premium-accessory-card {
+  background: rgba(21, 27, 37, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(201, 162, 39, 0.12);
+  border-radius: 20px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  cursor: pointer;
+}
+
+.premium-accessory-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(201, 162, 39, 0.4);
+  background: rgba(21, 27, 37, 0.85);
+  box-shadow: 0 15px 30px -10px rgba(0,0,0,0.5);
+}
+
+.accessory-icon-circle {
+  width: 55px;
+  height: 55px;
+  background: linear-gradient(135deg, rgba(201, 162, 39, 0.15), rgba(201, 162, 39, 0.05));
+  border: 1px solid rgba(201, 162, 39, 0.25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  transition: all 0.3s ease;
+}
+
+.premium-accessory-card:hover .accessory-icon-circle {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  border-color: var(--gold);
+  transform: scale(1.05);
+}
+
+.accessory-icon-circle i {
+  font-size: 1.4rem;
+  color: var(--gold);
+  transition: all 0.3s ease;
+}
+
+.premium-accessory-card:hover .accessory-icon-circle i {
+  color: #080a0e;
+}
+
+.premium-accessory-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+
+.premium-accessory-card p {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 0.8rem;
+}
+
+.accessory-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+
+.accessory-link {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.accessory-link:hover {
+  color: var(--gold);
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .accessories-premium-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 968px) {
+  .solutions-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+  }
+  
+  .card-icon {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .card-icon i {
+    font-size: 1.5rem;
+  }
+  
+  .solution-card {
+    padding: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .accessories-premium-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .premium-accessory-card {
+    padding: 1rem;
+  }
+  
+  .card-badge {
+    position: static;
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+  
+  .card-features {
+    gap: 0.5rem;
+  }
+  
+  .feature {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+  }
+}
+
+@media (max-width: 540px) {
+  .accessories-premium-grid {
+    grid-template-columns: 1fr;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+/* Content wrapper - NO padding on top */
+.solution-card-content {
+  position: relative;
+  z-index: 2;
+  {% comment %} padding: 0 2rem 2rem 2rem;  /* No padding on top, only left/right/bottom */ {% endcomment %}
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+  background: transparent;
+}
+
+/* Header row - contains title and badge on SAME LINE, at VERY TOP */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0;  /* NO margin */
+  padding: 1rem 0;  /* Minimal padding for spacing */
+}
+
+/* Title - on LEFT, NO margin/padding from top */
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #000;
+  background: rgba(255,255,255,0.9);
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 8px;
+  margin: 0;  /* NO margin top */
+  width: auto;
+  max-width: 70%;
+  text-shadow: none;
+  letter-spacing: -0.5px;
+}
+
+/* Badge - on RIGHT, same line as title */
+.card-badge {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #080a0e;
+  text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
+  white-space: nowrap;
+  margin: 0;  /* NO margin */
+}
+
+/* Features container - with some top spacing */
+.card-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 1.5rem 0 0 0;  /* Top margin only to separate from title */
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #000;
+  background: rgba(250, 242, 242, 0.94);
+  padding: 6px 14px;
+  border-radius: 30px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.feature i {
+  color: var(--gold);
+  font-size: 0.7rem;
+}
+
+/* Button - at VERY BOTTOM of card */
+.card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #080a0e;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-top: auto;  /* Pushes button to bottom */
+  width: fit-content;
+  padding: 10px 24px;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(201, 162, 39, 0.4);
+  border: none;
+  cursor: pointer;
+}
+
+.card-btn span {
+  position: relative;
+}
+
+.card-btn span::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #080a0e;
+  transition: width 0.3s ease;
+}
+
+.card-btn:hover span::after {
+  width: 100%;
+}
+
+.card-btn i {
+  transition: transform 0.3s ease;
+}
+
+.card-btn:hover {
+  gap: 1rem;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(201, 162, 39, 0.5);
+}
+
+.card-btn:hover i {
+  transform: translateX(5px);
+}
+
+/* Ensure card has proper flex layout */
+.solution-card {
+  position: relative;
+  min-height: 550px;
+  border-radius: 28px;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Make content area fill the card */
+.solution-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.solution-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+</style>
 {% endblock %}
 
 {% block content %}
@@ -1204,126 +2103,536 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════
-     CATEGORY CARDS — "Explore the lineup"
-══════════════════════════════════════════════════════════════ -->
-<section class="cat-section">
+<!-- ===== CATEGORY SECTION - LIGHT THEME ===== -->
+<section class="cat-section light-theme-cat">
   <div class="cat-header">
     <div>
       <div class="section-tag-gold anim up">Explore the Lineup</div>
       <h2 class="section-h2 anim up delay-1">Take a closer look at<br><span class="a">our latest models</span></h2>
     </div>
     <div class="anim right delay-2" style="text-align:right;">
-      <p class="section-sub" style="margin-left:auto;">Premium refurbished & new laptops — engineered for performance, priced for everyone in Solapur.</p>
+      <p class="section-sub" style="margin-left:auto; color: #555;">Premium refurbished & new laptops — engineered for performance, priced for everyone in Solapur.</p>
     </div>
   </div>
 
-  <!-- Tabs -->
-  <div style="max-width:1300px;margin:0 auto 2rem;display:flex;justify-content:flex-end;" class="anim up delay-2">
-    <div class="shop-tabs">
-      <button class="shop-tab active" data-tab="cat-all">All</button>
-      <button class="shop-tab" data-tab="cat-popular">Popular</button>
-      <button class="shop-tab" data-tab="cat-new">New Added</button>
+  <!-- Category Filter Buttons - ONLY 2 TABS -->
+  <div style="max-width:1300px;margin:0 auto 2.5rem;display:flex;justify-content:center; gap: 1rem;" class="anim up delay-2">
+       <button class="cat-filter-btn active" data-cat-filter="new">✨ New Arrivals</button>
+    <button class="cat-filter-btn " data-cat-filter="popular">🔥 Popular</button>
+
+  </div>
+
+  <!-- POPULAR Laptops Panel (6 cards) -->
+  <div id="cat-popular" class="cat-panel active">
+    <div class="category-grid">
+      <!-- Popular Card 1 -->
+      <div class="cat-card-new anim up delay-1">
+        <div class="cat-card-img-wrapper">
+          <img src="{% static 'images/p-16-i7-13th-Generation-15.png' %}" alt="i7 Laptop" class="cat-card-img">
+          <span class="cat-sale-badge">🔥 Best Seller</span>
+        </div>
+        <div class="cat-card-info">
+          <h3 class="cat-card-title">i7 13th Generation 15"</h3>
+          <div class="cat-card-specs">Intel Core i7 · 16GB RAM · 512GB SSD</div>
+          <div class="cat-price-row">
+            <span class="cat-price">₹38,000</span>
+            <span class="cat-old-price">₹45,000</span>
+          </div>
+          {% comment %} <a href="{% url 'contact' %}" class="cat-card-btn">View Details →</a> {% endcomment %}
+        </div>
+      </div>
+
+      <!-- Popular Card 2 -->
+      <div class="cat-card-new anim up delay-2">
+        <div class="cat-card-img-wrapper">
+          <img src="{% static 'images/p-6.png' %}" alt="i7 Laptop" class="cat-card-img">
+          <span class="cat-sale-badge">🔥 Best Seller</span>
+        </div>
+        <div class="cat-card-info">
+          <h3 class="cat-card-title">i7 11th Generation 16.5"</h3>
+          <div class="cat-card-specs">Intel Core i7 · 16GB RAM · 1TB SSD</div>
+          <div class="cat-price-row">
+            <span class="cat-price">₹42,000</span>
+          </div>
+          {% comment %} <a href="{% url 'contact' %}" class="cat-card-btn">View Details →</a> {% endcomment %}
+        </div>
+      </div>
+
+      <!-- Popular Card 3 -->
+      <div class="cat-card-new anim up delay-3">
+        <div class="cat-card-img-wrapper">
+          <img src="{% static 'images/p-2.png' %}" alt="i5 Laptop" class="cat-card-img">
+          <span class="cat-sale-badge">🔥 Best Seller</span>
+        </div>
+        <div class="cat-card-info">
+          <h3 class="cat-card-title">i5 7th Generation 13.5"</h3>
+          <div class="cat-card-specs">Intel Core i5 · 8GB RAM · 256GB SSD</div>
+          <div class="cat-price-row">
+            <span class="cat-price">₹18,500</span>
+          </div>
+          <a href="{% url 'contact' %}" class="cat-card-btn">View Details →</a>
+        </div>
+      </div>
+
+      <!-- Popular Card 4 -->
+      <div class="cat-card-new anim up delay-4">
+        <div class="cat-card-img-wrapper">
+          <img src="{% static 'images/p-12-i3-6th-Generation-13-5.png' %}" alt="i3 Laptop" class="cat-card-img">
+          <span class="cat-sale-badge">🔥 Best Seller</span>
+        </div>
+        <div class="cat-card-info">
+          <h3 class="cat-card-title">i3 6th Generation 13.5"</h3>
+          <div class="cat-card-specs">Intel Core i3 · 4GB RAM · 256GB HDD</div>
+          <div class="cat-price-row">
+            <span class="cat-price">₹15,000</span>
+          </div>
+          <a href="{% url 'contact' %}" class="cat-card-btn">View Details →</a>
+        </div>
+      </div>
+
+      <!-- Popular Card 5 -->
+      <div class="cat-card-new anim up delay-5">
+        <div class="cat-card-img-wrapper">
+          <img src="{% static 'images/p-5.png' %}" alt="i3 Laptop" class="cat-card-img">
+          <span class="cat-sale-badge">🔥 Best Seller</span>
+        </div>
+        <div class="cat-card-info">
+          <h3 class="cat-card-title">i3 4th Generation 13.5"</h3>
+          <div class="cat-card-specs">Intel Core i3 · 4GB RAM · 320GB HDD</div>
+          <div class="cat-price-row">
+            <span class="cat-price">₹9,500</span>
+          </div>
+          <a href="{% url 'contact' %}" class="cat-card-btn">View Details →</a>
+        </div>
+      </div>
+
+      <!-- Popular Card 6 -->
+      <div class="cat-card-new anim up delay-1">
+        <div class="cat-card-img-wrapper">
+          <img src="{% static 'images/p-15-i3-6th-Generation-16-5.png' %}" alt="i3 Laptop" class="cat-card-img">
+          <span class="cat-sale-badge">🔥 Best Seller</span>
+        </div>
+        <div class="cat-card-info">
+          <h3 class="cat-card-title">i3 6th Generation 16.5"</h3>
+          <div class="cat-card-specs">Intel Core i3 · 8GB RAM · 512GB HDD</div>
+          <div class="cat-price-row">
+            <span class="cat-price">₹8,500</span>
+            <span class="cat-old-price">₹12,000</span>
+          </div>
+          <a href="{% url 'contact' %}" class="cat-card-btn">View Details →</a>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- All tab panel -->
-  <div id="cat-all" class="tab-panel active" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; max-width:1300px; margin:0 auto;">
-    <!-- Card 1 -->
-    <div class="cat-card anim up delay-1">
-      <div class="cat-card-img"><img src="{% static "images/p-12-i3-6th-Generation-13-5.png" %}" alt="i3" style="width:100%; height:auto;"></div>
-      <div class="cat-card-title">i3 6th Generation 13.5"</div>
-      <div class="cat-card-sub">i3 · 4GB RAM · 256GB HDD</div>
-      <div class="cat-price">₹15,000</div>
-    </div>
-    <!-- Card 2 -->
-    <div class="cat-card anim up delay-2">
-      <span class="cat-card-badge">Sale</span>
-      <div class="cat-card-img"><img src="{% static "images/p-16-i7-13th-Generation-15.png" %}" alt="i7" style="width:100%; height:auto;"></div>
-      <div class="cat-card-title">i7 13th Generation 15"</div>
-      <div class="cat-card-sub">i7 · 16GB · 512GB SSD</div>
-      <div class="cat-price">₹38,000 <span style="font-size:0.8rem; text-decoration:line-through; opacity:0.6;">₹45,000</span></div>
-    </div>
-    <!-- Card 3 -->
-    <div class="cat-card anim up delay-3">
-      <span class="cat-card-badge">Sale</span>
-      <div class="cat-card-img"><img src="{% static "images/p-15-i3-6th-Generation-16-5.png" %}"  alt="i3" style="width:100%; height:auto;"></div>
-      <div class="cat-card-title">i3 6th Generation 16.5"</div>
-      <div class="cat-card-sub">i3 · 8GB · 512GB HDD</div>
-      <div class="cat-price">₹8,500 <span style="font-size:0.8rem; text-decoration:line-through; opacity:0.6;">₹12,000</span></div>
-    </div>
-    <!-- Card 4 -->
-    <div class="cat-card anim up delay-4">
-      <span class="cat-card-badge">Sale</span>
-      <div class="cat-card-img"><img src="{% static 'images/p-6.png' %}" alt="i7" style="width:100%; height:auto;"></div>
-      <div class="cat-card-title">i7 11th Generation 16.5"</div>
-      <div class="cat-card-sub">i7 · 16GB · 1TB SSD</div>
-      <div class="cat-price">₹42,000</div>
-    </div>
-    <!-- Card 5 -->
-    <div class="cat-card anim up delay-5">
-      <div class="cat-card-img"><img src="{% static 'images/p-5.png' %}" alt="i3" style="width:100%; height:auto;"></div>
-      <div class="cat-card-title">i3 4th Generation 13.5"</div>
-      <div class="cat-card-sub">i3 · 4GB · 320GB HDD</div>
-      <div class="cat-price">₹9,500</div>
-    </div>
-    <!-- Card 6 -->
-    <div class="cat-card anim up delay-1">
-      <div class="cat-card-img"><img src="{% static 'images/p-2.png' %}"  alt="i5" style="width:100%; height:auto;"></div>
-      <div class="cat-card-title">i5 7th Generation 13.5"</div>
-      <div class="cat-card-sub">i5 · 8GB · 256GB SSD</div>
-      <div class="cat-price">₹18,500</div>
-    </div>
-  </div>
+  <!-- NEW ARRIVALS Laptops Panel (9 cards) -->
+  <div id="cat-new" class="cat-panel">
+    <div class="category-grid">
+      <!-- New Card 1 -->
+      <div class="cat-card-new anim up delay-1">
+        <div class="cat-card-img-wrapper">
+          <img src="{% static 'images/p-16-i7-13th-Generation-15.png' %}" alt="i7 Laptop" class="cat-card-img">
+          <span class="cat-new-badge">✨ New</span>
+        </div>
+        <div class="cat-card-info">
+          <h3 class="cat-card-title">i7 13th Gen Ultra 15"</h3>
+          <div class="cat-card-specs">Intel Core i7 · 32GB RAM · 1TB NVMe SSD</div>
+          <div class="cat-price-row">
+            <span class="cat-price">₹55,000</span>
+          </div>
+          <a href="{% url 'contact' %}" class="cat-card-btn">View Details →</a>
+        </div>
+      </div>
 
-  <!-- Popular tab panel -->
-  <div id="cat-popular" class="tab-panel" style="grid-template-columns:repeat(3,1fr); gap:1.5rem; max-width:1300px; margin:0 auto;">
-    <div class="cat-card"><div class="cat-card-img"><img src="{% static 'images/p-16-i7-13th-Generation-15.png' %}" style="width:100%"></div><div class="cat-card-title">i7 13th Gen</div><div class="cat-price">₹38,000</div></div>
-    <div class="cat-card"><div class="cat-card-img"><img src="{% static 'images/p-16-i7-13th-Generation-18.png' %}" style="width:100%"></div><div class="cat-card-title">i7 11th Gen</div><div class="cat-price">₹42,000</div></div>
-    <div class="cat-card"><div class="cat-card-img"><img src="{% static 'images/p-16-i7-13th-Generation-17.png' %}" style="width:100%"></div><div class="cat-card-title">i5 7th Gen</div><div class="cat-price">₹18,500</div></div>
-  </div>
+      <!-- New Card 2 -->
+      <div class="cat-card-new anim up delay-2">
+        <div class="cat-card-img-wrapper">
+          <img src="{% static 'images/p-6.png' %}" alt="Ryzen Laptop" class="cat-card-img">
+          <span class="cat-new-badge">✨ New</span>
+        </div>
+        <div class="cat-card-info">
+          <h3 class="cat-card-title">Ryzen 7 7840HS 16"</h3>
+          <div class="cat-card-specs">AMD Ryzen 7 · 16GB RAM · 512GB SSD</div>
+          <div class="cat-price-row">
+            <span class="cat-price">₹48,000</span>
+          </div>
+          <a href="{% url 'contact' %}" class="cat-card-btn">View Details →</a>
+        </div>
+      </div>
 
-  <!-- New added tab panel -->
-  <div id="cat-new" class="tab-panel" style="grid-template-columns:repeat(3,1fr); gap:1.5rem; max-width:1300px; margin:0 auto;">
-    <div class="cat-card"><span class="cat-card-badge new">New</span><div class="cat-card-img"><img src="https://template-kit.evonicmedia.com/layout114/wp-content/uploads/2025/01/p-12-i3-6th-Generation-13-6.jpg" style="width:100%"></div><div class="cat-card-title">i3 6th Gen</div><div class="cat-price">₹15,000</div></div>
-    <div class="cat-card"><span class="cat-card-badge new">New</span><div class="cat-card-img"><img src="https://template-kit.evonicmedia.com/layout114/wp-content/uploads/2025/01/p-16-i7-13th-Generation-18.jpg" style="width:100%"></div><div class="cat-card-title">i7 13th Gen</div><div class="cat-price">₹38,000</div></div>
+      <!-- New Card 3 -->
+      <div class="cat-card-new anim up delay-3">
+        <div class="cat-card-img-wrapper">
+          <img src="{% static 'images/p-2.png' %}" alt="i5 Laptop" class="cat-card-img">
+          <span class="cat-new-badge">✨ New</span>
+        </div>
+        <div class="cat-card-info">
+          <h3 class="cat-card-title">i5 12th Gen Slim 14"</h3>
+          <div class="cat-card-specs">Intel Core i5 · 16GB RAM · 512GB SSD</div>
+          <div class="cat-price-row">
+            <span class="cat-price">₹35,000</span>
+          </div>
+          <a href="{% url 'contact' %}" class="cat-card-btn">View Details →</a>
+        </div>
+      </div>
+
+      <!-- New Card 4 -->
+      <div class="cat-card-new anim up delay-4">
+        <div class="cat-card-img-wrapper">
+          <img src="{% static 'images/p-12-i3-6th-Generation-13-5.png' %}" alt="i3 Laptop" class="cat-card-img">
+          <span class="cat-new-badge">✨ New</span>
+        </div>
+        <div class="cat-card-info">
+          <h3 class="cat-card-title">i3 12th Gen Essential 15.6"</h3>
+          <div class="cat-card-specs">Intel Core i3 · 8GB RAM · 256GB SSD</div>
+          <div class="cat-price-row">
+            <span class="cat-price">₹22,000</span>
+          </div>
+          <a href="{% url 'contact' %}" class="cat-card-btn">View Details →</a>
+        </div>
+      </div>
+
+      <!-- New Card 5 -->
+      <div class="cat-card-new anim up delay-5">
+        <div class="cat-card-img-wrapper">
+          <img src="{% static 'images/p-5.png' %}" alt="Ryzen Laptop" class="cat-card-img">
+          <span class="cat-new-badge">✨ New</span>
+        </div>
+        <div class="cat-card-info">
+          <h3 class="cat-card-title">Ryzen 5 7530U 15.6"</h3>
+          <div class="cat-card-specs">AMD Ryzen 5 · 16GB RAM · 1TB HDD</div>
+          <div class="cat-price-row">
+            <span class="cat-price">₹28,500</span>
+          </div>
+          <a href="{% url 'contact' %}" class="cat-card-btn">View Details →</a>
+        </div>
+      </div>
+
+      <!-- New Card 6 -->
+      <div class="cat-card-new anim up delay-1">
+        <div class="cat-card-img-wrapper">
+          <img src="{% static 'images/p-15-i3-6th-Generation-16-5.png' %}" alt="i7 Laptop" class="cat-card-img">
+          <span class="cat-new-badge">✨ New</span>
+        </div>
+        <div class="cat-card-info">
+          <h3 class="cat-card-title">i7 12th Gen Gaming 17.3"</h3>
+          <div class="cat-card-specs">Intel Core i7 · 32GB RAM · 1TB SSD</div>
+          <div class="cat-price-row">
+            <span class="cat-price">₹65,000</span>
+          </div>
+          <a href="{% url 'contact' %}" class="cat-card-btn">View Details →</a>
+        </div>
+      </div>
+
+      <!-- New Card 7 -->
+      <div class="cat-card-new anim up delay-2">
+        <div class="cat-card-img-wrapper">
+          <img src="{% static 'images/p-16-i7-13th-Generation-18.png' %}" alt="Ultrabook" class="cat-card-img">
+          <span class="cat-new-badge">✨ New</span>
+        </div>
+        <div class="cat-card-info">
+          <h3 class="cat-card-title">Ultra 9 Premium 14"</h3>
+          <div class="cat-card-specs">Intel Core Ultra 9 · 32GB RAM · 2TB SSD</div>
+          <div class="cat-price-row">
+            <span class="cat-price">₹85,000</span>
+          </div>
+          <a href="{% url 'contact' %}" class="cat-card-btn">View Details →</a>
+        </div>
+      </div>
+
+      <!-- New Card 8 -->
+      <div class="cat-card-new anim up delay-3">
+        <div class="cat-card-img-wrapper">
+          <img src="{% static 'images/p-16-i7-13th-Generation-17.png' %}" alt="Business Laptop" class="cat-card-img">
+          <span class="cat-new-badge">✨ New</span>
+        </div>
+        <div class="cat-card-info">
+          <h3 class="cat-card-title">i7 Business Pro 15.6"</h3>
+          <div class="cat-card-specs">Intel Core i7 · 16GB RAM · 512GB SSD</div>
+          <div class="cat-price-row">
+            <span class="cat-price">₹42,000</span>
+          </div>
+          <a href="{% url 'contact' %}" class="cat-card-btn">View Details →</a>
+        </div>
+      </div>
+
+      <!-- New Card 9 -->
+      <div class="cat-card-new anim up delay-4">
+        <div class="cat-card-img-wrapper">
+          <img src="{% static 'images/p-2.png' %}" alt="i5 Laptop" class="cat-card-img">
+          <span class="cat-new-badge">✨ New</span>
+        </div>
+        <div class="cat-card-info">
+          <h3 class="cat-card-title">i5 12th Gen Creator 15"</h3>
+          <div class="cat-card-specs">Intel Core i5 · 32GB RAM · 1TB SSD</div>
+          <div class="cat-price-row">
+            <span class="cat-price">₹45,000</span>
+          </div>
+          <a href="{% url 'contact' %}" class="cat-card-btn">View Details →</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
-
 <!-- ══════════════════════════════════════════════════════════
-     GPU CATEGORY PANELS — Premium + Best Selling
+     PREMIUM SECURITY & PRINTING SOLUTIONS
+     CLEAN CARDS WITH FULLY VISIBLE BACKGROUND IMAGES
 ══════════════════════════════════════════════════════════════ -->
-<section class="gpu-section">
-  <div style="max-width:1300px;margin:0 auto 2.5rem;" class="anim up">
-    <div class="section-tag-gold">Premium Categories</div>
-    <h2 class="section-h2">Specialized Machines for<br><span class="a">Every Power User</span></h2>
+<section class="premium-solutions-section">
+  <div class="solutions-container">
+    <div class="solutions-header anim up">
+      <div class="section-tag-gold">
+        {% comment %} <span class="tag-line"></span> {% endcomment %}
+        Security & Office Solutions
+        <span class="tag-line"></span>
+      </div>
+      <h2 class="solutions-title"><span class="gold-text">Smart </span> Security & Smart Printing</h2>
+      <p class="solutions-subtitle">We provide CCTV cameras for safety and efficient printers for everyday business and personal use.</p>
+    </div>
+
+    <div class="solutions-grid">
+      <!-- Card 1: CCTV Security Cameras -->
+<div class="solution-card anim left">
+  <div class="card-bg" style="background-image: url('{% static 'images/camera.png' %}');"></div>
+  <div class="solution-card-content">
+    <div class="card-header">
+      <h3 class="card-title">CCTV Security Cameras</h3>
+      <span class="card-badge">24/7 Protection</span>
+    </div>
+    <div class="card-features">
+      <div class="feature"><i class="fas fa-check-circle"></i> HD 1080p</div>
+      <div class="feature"><i class="fas fa-check-circle"></i> Night Vision</div>
+      <div class="feature"><i class="fas fa-check-circle"></i> Motion Detection</div>
+      <div class="feature"><i class="fas fa-check-circle"></i> Remote Access</div>
+    </div>
+    <a href="#" class="card-btn">
+      <span>Explore Cameras</span>
+      <i class="fas fa-arrow-right"></i>
+    </a>
   </div>
-  <div class="gpu-grid">
-    <div class="gpu-card anim left">
-      <div class="gpu-card-bg" style="background-image:url('https://template-kit.evonicmedia.com/layout114/wp-content/uploads/2024/12/banner-main-1.jpg');"></div>
-      <div class="gpu-card-overlay"></div>
-      <div class="gpu-card-content">
-        <div class="gpu-card-sub">Graphic Powerhouses</div>
-        <div class="gpu-card-title">Next Gen GPU Series</div>
-        <div class="gpu-card-title" style="font-size:1.1rem;color:var(--gold);">Video Editors</div>
-        <div class="gpu-card-desc">Dedicated RTX-ready laptops. Edit 4K footage, render complex scenes.</div>
-        <a href="{% url 'contact' %}" class="gpu-card-btn"><i class="fas fa-arrow-up-right"></i> Shop Now</a>
+</div>
+
+<!-- Card 2: Business Printers -->
+<div class="solution-card anim right delay-1">
+  <div class="card-bg" style="background-image: url('{% static 'images/printer.png' %}');"></div>
+  <div class="solution-card-content">
+    <div class="card-header">
+      <h3 class="card-title">Business Printers</h3>
+      <span class="card-badge">Fast & Efficient</span>
+    </div>
+    <div class="card-features">
+      <div class="feature"><i class="fas fa-check-circle"></i> Business Printers</div>
+      <div class="feature"><i class="fas fa-check-circle"></i> Wireless / Wired Printers</div>
+      <div class="feature"><i class="fas fa-check-circle"></i> Color Printers</div>
+      <div class="feature"><i class="fas fa-check-circle"></i> Black & White Printers</div>
+    </div>
+    <a href="#" class="card-btn">
+      <span>Explore Printers</span>
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+</div>
+    </div>
+  </div>
+</section>
+<!-- ══════════════════════════════════════════════════════════
+     ACCESSORIES SHOWCASE - MODERN GRID
+══════════════════════════════════════════════════════════════ -->
+<section class="accessories-premium-section">
+  <div class="accessories-header anim up">
+    <div class="section-tag-gold">Essential Add-ons</div>
+    <h2 class="accessories-title">Complete Your <span class="gold-text">Setup</span></h2>
+    <p class="accessories-subtitle">Everything you need for a complete security and printing solution</p>
+  </div>
+
+  <div class="accessories-premium-grid">
+    <!-- Accessory 1 -->
+    <div class="premium-accessory-card anim up delay-1">
+      <div class="accessory-icon-circle">
+        <i class="fas fa-hdd"></i>
+      </div>
+      <h4>High Speed SSD</h4>
+      <p>128GB-2TB specialized</p>
+      <div class="accessory-price">start ₹1500</div>
+      <a href="{% url 'contact' %}" class="accessory-link">Shop Now →</a>
+    </div>
+    <!-- Accessory 1 -->
+    <div class="premium-accessory-card anim up delay-1">
+      <div class="accessory-icon-circle">
+        <i class="fas fa-hdd"></i>
+      </div>
+      <h4>Ram</h4>
+      <p>128GB-2TB specialized</p>
+      <div class="accessory-price">start ₹1500</div>
+      <a href="{% url 'contact' %}" class="accessory-link">Shop Now →</a>
+    </div>
+
+    <!-- Accessory 2 -->
+    <div class="premium-accessory-card anim up delay-2">
+      <div class="accessory-icon-circle">
+        <i class="fas fa-plug"></i>
+      </div>
+      <h4>All Type convertors</h4>
+      <p>BNC cables & connectors</p>
+      <div class="accessory-price">From ₹299</div>
+      <a href="{% url 'contact' %}" class="accessory-link">Shop Now →</a>
+    </div>
+
+    <!-- Accessory 3 -->
+
+    <div class="premium-accessory-card anim up delay-3">
+      <div class="accessory-icon-circle">
+        <i class="fas fa-fill-drip"></i>
+      </div>
+      <h4>Toner </h4>
+      <p>Compatible cartridges</p>
+      <div class="accessory-price">From ₹499</div>
+      <a href="{% url 'contact' %}" class="accessory-link">Shop Now →</a>
+    </div>
+    <!-- Accessory 3 -->
+
+    <div class="premium-accessory-card anim up delay-3">
+      <div class="accessory-icon-circle">
+        <i class="fas fa-fill-drip"></i>
+      </div>
+      <h4>Cartridge </h4>
+      <p>Compatible cartridges</p>
+      <div class="accessory-price">From ₹499</div>
+      <a href="{% url 'contact' %}" class="accessory-link">Shop Now →</a>
+    </div>
+    <!-- Accessory 4 -->
+    <div class="premium-accessory-card anim up delay-4">
+      <div class="accessory-icon-circle">
+        <i class="fas fa-bolt"></i>
+      </div>
+      <h4>Power Cables</h4>
+      <p>12V adapters & boxes</p>
+      <div class="accessory-price">From ₹599</div>
+      <a href="{% url 'contact' %}" class="accessory-link">Shop Now →</a>
+    </div>
+
+    <!-- Accessory 5 -->
+    <div class="premium-accessory-card anim up delay-5">
+      <div class="accessory-icon-circle">
+        <i class="fas fa-file-alt"></i>
+      </div>
+      <h4>Batteries</h4>
+      <p>A4 & thermal paper</p>
+      <div class="accessory-price">From ₹199</div>
+      <a href="{% url 'contact' %}" class="accessory-link">Shop Now →</a>
+    </div>
+
+    <!-- Accessory 6 -->
+    <div class="premium-accessory-card anim up delay-1">
+      <div class="accessory-icon-circle">
+        <i class="fas fa-camera"></i>
+      </div>
+      <h4>Mouse</h4>
+      <p>Wall & ceiling mounts</p>
+      <div class="accessory-price">From ₹349</div>
+      <a href="{% url 'contact' %}" class="accessory-link">Shop Now →</a>
+    </div>
+    <div class="premium-accessory-card anim up delay-1">
+      <div class="accessory-icon-circle">
+        <i class="fas fa-camera"></i>
+      </div>
+      <h4>Keyboard</h4>
+      <p>Wall & ceiling mounts</p>
+      <div class="accessory-price">From ₹349</div>
+      <a href="{% url 'contact' %}" class="accessory-link">Shop Now →</a>
+    </div>
+  </div>
+</section>
+<!-- ══════════════════════════════════════════════════════════
+     CCTV & PRINTER ACCESSORIES SECTION
+══════════════════════════════════════════════════════════════ -->
+<section class="accessories-section">
+  <div style="max-width:1300px;margin:0 auto 2.5rem;" class="anim up">
+    <div class="section-tag-gold">Essential Accessories</div>
+    <h2 class="section-h2">Complete Your <span class="a">Security & Office Setup</span></h2>
+    <p class="section-sub" style="max-width: 600px; margin-top: 0.5rem;">Everything you need for a complete security and printing solution.</p>
+  </div>
+  
+  <div class="accessories-grid">
+    <!-- Accessory 1: CCTV Hard Drives -->
+    <div class="accessory-card anim up delay-1">
+      <div class="accessory-img-wrapper">
+        <img src="https://images.unsplash.com/photo-1531498390585-5b9cb67dfa1e?w=400&h=300&fit=crop" alt="CCTV Hard Drives">
+      </div>
+      <div class="accessory-info">
+        <h3 class="accessory-title">Surveillance Hard Drives</h3>
+        <p class="accessory-desc">1TB to 4TB specialized HDDs for 24/7 CCTV recording.</p>
+        <div class="accessory-price">From ₹3,499</div>
+        <a href="{% url 'contact' %}" class="accessory-btn">Shop Now →</a>
       </div>
     </div>
-    <div class="gpu-card anim right delay-1">
-      <div class="gpu-card-bg" style="background-image:url('https://template-kit.evonicmedia.com/layout114/wp-content/uploads/2024/12/banner-main-4-1.jpg');"></div>
-      <div class="gpu-card-overlay"></div>
-      <div class="gpu-card-content">
-        <div class="gpu-card-sub">Best Sellers 2026</div>
-        <div class="gpu-card-title">Premium Laptops</div>
-        <div class="gpu-card-title" style="font-size:1.1rem;color:var(--gold);">Business Series</div>
-        <div class="gpu-card-desc">Special offers you can't miss. Top-rated business laptops.</div>
-        <a href="{% url 'contact' %}" class="gpu-card-btn"><i class="fas fa-arrow-up-right"></i> Shop Now</a>
+
+    <!-- Accessory 2: CCTV Cables & Connectors -->
+    <div class="accessory-card anim up delay-2">
+      <div class="accessory-img-wrapper">
+        <img src="https://images.unsplash.com/photo-1551269901-5c5e14c25df7?w=400&h=300&fit=crop" alt="CCTV Cables">
+      </div>
+      <div class="accessory-info">
+        <h3 class="accessory-title">CCTV Cables & Connectors</h3>
+        <p class="accessory-desc">BNC cables, power adapters, and connectors for easy installation.</p>
+        <div class="accessory-price">From ₹299</div>
+        <a href="{% url 'contact' %}" class="accessory-btn">Shop Now →</a>
+      </div>
+    </div>
+
+    <!-- Accessory 3: Printer Toner Cartridges -->
+    <div class="accessory-card anim up delay-3">
+      <div class="accessory-img-wrapper">
+        <img src="{% static 'images/catrage.png' %}" alt="Toner Cartridges">
+      </div>
+      <div class="accessory-info">
+        <h3 class="accessory-title">Printer Toner & Ink</h3>
+        <p class="accessory-desc">Compatible & genuine cartridges for HP, Canon, Epson printers.</p>
+        <div class="accessory-price">From ₹499</div>
+        <a href="{% url 'contact' %}" class="accessory-btn">Shop Now →</a>
+      </div>
+    </div>
+
+    <!-- Accessory 4: CCTV Power Supplies -->
+    <div class="accessory-card anim up delay-4">
+      <div class="accessory-img-wrapper">
+        <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=400&h=300&fit=crop" alt="Power Supplies">
+      </div>
+      <div class="accessory-info">
+        <h3 class="accessory-title">CCTV Power Supplies</h3>
+        <p class="accessory-desc">12V power adapters and centralized power boxes for multiple cameras.</p>
+        <div class="accessory-price">From ₹599</div>
+        <a href="{% url 'contact' %}" class="accessory-btn">Shop Now →</a>
+      </div>
+    </div>
+
+    <!-- Accessory 5: Printer Paper -->
+    <div class="accessory-card anim up delay-5">
+      <div class="accessory-img-wrapper">
+        <img src="{% static 'images/printer.png' %}" alt="Printer Paper">
+      </div>
+      <div class="accessory-info">
+        <h3 class="accessory-title">Business Printer Paper</h3>
+        <p class="accessory-desc">A4 sheets, thermal paper, and photo paper for all printing needs.</p>
+        <div class="accessory-price">From ₹199</div>
+        <a href="{% url 'contact' %}" class="accessory-btn">Shop Now →</a>
+      </div>
+    </div>
+
+    <!-- Accessory 6: Camera Mounts & Stands -->
+    <div class="accessory-card anim up delay-1">
+      <div class="accessory-img-wrapper">
+        <img src="https://images.unsplash.com/photo-1580128663079-6d44aec90d72?w=400&h=300&fit=crop" alt="Camera Mounts">
+      </div>
+      <div class="accessory-info">
+        <h3 class="accessory-title">CCTV Mounts & Stands</h3>
+        <p class="accessory-desc">Wall mounts, ceiling mounts, and adjustable stands for perfect angle.</p>
+        <div class="accessory-price">From ₹349</div>
+        <a href="{% url 'contact' %}" class="accessory-btn">Shop Now →</a>
       </div>
     </div>
   </div>
 </section>
-
 <!-- ══════════════════════════════════════════════════════════
      PROMO / BEST SELLERS ROW
 ══════════════════════════════════════════════════════════════ -->
@@ -1424,19 +2733,6 @@ const animObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
 document.querySelectorAll('.anim, .fullcover-card').forEach(el => animObserver.observe(el));
 
-// ══ Tab Switching (Category + Shop) ═════════════════════════
-document.querySelectorAll('[data-tab]').forEach(btn => {
-  btn.addEventListener('click', function() {
-    const targetId = this.getAttribute('data-tab');
-    const parent = this.closest('.cat-section, .shop-section');
-    if (!parent) return;
-    parent.querySelectorAll('[data-tab]').forEach(b => b.classList.remove('active'));
-    parent.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    this.classList.add('active');
-    const panel = parent.querySelector('#' + targetId);
-    if (panel) panel.classList.add('active');
-  });
-});
 
 // ══ 3D Tilt on Cards ════════════════════════════════════════
 document.querySelectorAll('.prod-card, .cat-card, .promo-small, .promo-feature, .fullcover-card').forEach(card => {
@@ -1485,7 +2781,29 @@ document.querySelectorAll('.fullcover-card').forEach(card => {
     });
   }
 });
+// ===== CATEGORY FILTER FUNCTIONALITY - ONLY 2 TABS =====
+document.querySelectorAll('.cat-filter-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const filterValue = this.getAttribute('data-cat-filter');
+    
+    // Update active button state
+    document.querySelectorAll('.cat-filter-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    
+    // Show/hide panels
+    document.querySelectorAll('.cat-panel').forEach(panel => {
+      panel.classList.remove('active');
+    });
+    
+    if (filterValue === 'popular') {
+      document.getElementById('cat-popular').classList.add('active');
+    } else if (filterValue === 'new') {
+      document.getElementById('cat-new').classList.add('active');
+    }
+  });
+});
 </script>
+
 {% endblock %}
 
 {% endblock %}
