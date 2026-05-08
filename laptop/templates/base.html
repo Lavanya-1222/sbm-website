@@ -415,16 +415,16 @@
     <!-- Nav Links - CENTER -->
     <ul class="nav-links" id="navLinks">
         <li><a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a></li>
-        <li><a href="{% url 'sales' %}" class="{% if request.resolver_match.url_name == 'sales' %}active{% endif %}">Sales</a></li>
+        <li><a href="{% url 'shop' %}" class="{% if request.resolver_match.url_name == 'shop' %}active{% endif %}">Shop</a></li>
         <li><a href="{% url 'services' %}" class="{% if request.resolver_match.url_name == 'services' %}active{% endif %}">Services</a></li>
         <li><a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">About</a></li>
         <li><a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contact</a></li>
-        <li><a href="{% url 'contact' %}" class="nav-cta">Get Quote →</a></li>
+        <li><a href="{% url 'contact' %}" class="nav-cta">Contact Us →</a></li>
     </ul>
     
     <!-- CTA Button - RIGHT SIDE (Desktop Only) -->
     <div class="nav-cta-wrapper">
-        <a href="{% url 'contact' %}" class="nav-cta">Get Quote →</a>
+        <a href="{% url 'contact' %}" class="nav-cta">Contact Us →</a>
     </div>
 </nav>
 
@@ -459,7 +459,7 @@
                 <a href="https://www.youtube.com/@sbmsalesandservices" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="YouTube">
                     <i class="fab fa-youtube"></i>
                 </a>
-                <a href="https://maps.app.goo.gl/AUXr2F2hsAibHAjTA" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Google">
+                <a href="https://maps.app.goo.gl/burPnQhjBcn7VUYz5" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Google">
                     <i class="fab fa-google"></i>
                 </a>
             </div>
@@ -470,7 +470,7 @@
             <h4 style="font-family: 'Syne', sans-serif; color: var(--gold); margin-bottom: 1.2rem; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;">Quick Links</h4>
             <ul style="list-style: none;">
                 <li style="margin-bottom: 0.8rem;"><a href="{% url 'home' %}" style="color: var(--white-dim); text-decoration: none; font-family: 'Syne', sans-serif; transition: color 0.3s; font-size: 0.9rem;">Home</a></li>
-                <li style="margin-bottom: 0.8rem;"><a href="{% url 'sales' %}" style="color: var(--white-dim); text-decoration: none; font-family: 'Syne', sans-serif; transition: color 0.3s; font-size: 0.9rem;">Sales</a></li>
+                <li style="margin-bottom: 0.8rem;"><a href="{% url 'shop' %}" style="color: var(--white-dim); text-decoration: none; font-family: 'Syne', sans-serif; transition: color 0.3s; font-size: 0.9rem;">Shop</a></li>
                 <li style="margin-bottom: 0.8rem;"><a href="{% url 'services' %}" style="color: var(--white-dim); text-decoration: none; font-family: 'Syne', sans-serif; transition: color 0.3s; font-size: 0.9rem;">Services</a></li>
                 <li style="margin-bottom: 0.8rem;"><a href="{% url 'about' %}" style="color: var(--white-dim); text-decoration: none; font-family: 'Syne', sans-serif; transition: color 0.3s; font-size: 0.9rem;">About</a></li>
                 <li style="margin-bottom: 0.8rem;"><a href="{% url 'contact' %}" style="color: var(--white-dim); text-decoration: none; font-family: 'Syne', sans-serif; transition: color 0.3s; font-size: 0.9rem;">Contact</a></li>

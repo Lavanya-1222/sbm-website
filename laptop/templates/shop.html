@@ -265,6 +265,12 @@
   background: var(--gold);
 }
 
+.section-tag-gold::after {
+  content: '';
+  width: 28px;
+  height: 2px;
+  background: var(--gold);
+}
 .section-h2 {
   font-family: 'Playfair Display', serif;
   font-size: clamp(1.8rem, 3vw, 2.8rem);
@@ -382,7 +388,7 @@
 .cat-card-sub { font-size: .82rem; color: var(--white-dim); margin-bottom: 1.25rem; }
 .cat-price { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; color: var(--gold); }
 
-/* ══ PRODUCT GRID ════════════════════════════════════════ */
+{% comment %} /* ══ PRODUCT GRID ════════════════════════════════════════ */
 .shop-section { padding: 5rem 5%; background: var(--dark-3); }
 
 .shop-header {
@@ -645,7 +651,7 @@
   width: fit-content;
 }
 
-.gpu-card-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(201,162,39,.5); }
+.gpu-card-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(201,162,39,.5); } {% endcomment %}
 
 /* ══ PROMO SECTION ════════════════════════════════════════ */
 .promo-section { padding: 5rem 5%; background: var(--dark-2); }
@@ -1653,212 +1659,187 @@
 }
 
 /* ══════════════════════════════════════════════════════════════
-     PREMIUM ACCESSORIES SECTION
+     ACCESSORIES SECTION - LIGHT THEME WITH CAROUSEL
+══════════════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════════════
+     ACCESSORIES SECTION - LIGHT THEME WITH CAROUSEL
 ══════════════════════════════════════════════════════════════ */
 .accessories-premium-section {
-  padding: 5rem 5%;
-  background: linear-gradient(135deg, #0e1117 0%, #0a0d14 100%);
+  padding: 3.5rem 5%;
+  background: #f5f0e8;
   position: relative;
-}
-
-.accessories-premium-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.3), transparent);
+  overflow: hidden;
 }
 
 .accessories-header {
   text-align: center;
   margin-bottom: 3rem;
+  position: relative;
+  z-index: 2;
 }
 
 .accessories-title {
   font-family: 'Playfair Display', serif;
   font-size: clamp(1.8rem, 3vw, 2.5rem);
   font-weight: 900;
-  color: #fff;
+  color: #1e1a14;
   margin-bottom: 0.5rem;
 }
 
 .accessories-subtitle {
   font-family: 'Syne', sans-serif;
   font-size: 0.9rem;
-  color: rgba(255,255,255,0.5);
+  color: #666;
 }
 
-.accessories-premium-grid {
-  max-width: 1300px;
+/* Swiper Carousel Container */
+.accessories-swiper {
+  position: relative;
+  z-index: 2;
+  padding: 1rem 0 2rem;
+  max-width: 1400px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 1.2rem;
+  overflow: visible;
 }
 
+.accessories-swiper .swiper-wrapper {
+  display: flex;
+  align-items: stretch;
+}
+
+.accessories-swiper .swiper-slide {
+  height: auto;
+  width: 220px;
+  flex-shrink: 0;
+}
+
+/* Accessory Card */
 .premium-accessory-card {
-  background: rgba(21, 27, 37, 0.6);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(201, 162, 39, 0.12);
+  position: relative;
   border-radius: 20px;
-  padding: 1.5rem 1rem;
-  text-align: center;
+  overflow: hidden;
   transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
   cursor: pointer;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Background Image - FULLY VISIBLE */
+.premium-accessory-card .card-bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  transition: transform 0.5s ease;
+}
+
+.premium-accessory-card:hover .card-bg-img {
+  transform: scale(1.08);
 }
 
 .premium-accessory-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(201, 162, 39, 0.4);
-  background: rgba(21, 27, 37, 0.85);
-  box-shadow: 0 15px 30px -10px rgba(0,0,0,0.5);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
-.accessory-icon-circle {
-  width: 55px;
-  height: 55px;
-  background: linear-gradient(135deg, rgba(201, 162, 39, 0.15), rgba(201, 162, 39, 0.05));
-  border: 1px solid rgba(201, 162, 39, 0.25);
-  border-radius: 50%;
+/* Card Content */
+.accessory-card-content {
+  position: relative;
+  z-index: 2;
+  padding: 12px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1rem;
-  transition: all 0.3s ease;
+  flex-direction: column;
+  height: 100%;
 }
 
-.premium-accessory-card:hover .accessory-icon-circle {
-  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-  border-color: var(--gold);
-  transform: scale(1.05);
-}
-
-.accessory-icon-circle i {
-  font-size: 1.4rem;
-  color: var(--gold);
-  transition: all 0.3s ease;
-}
-
-.premium-accessory-card:hover .accessory-icon-circle i {
-  color: #080a0e;
-}
-
+/* Title - BLACK text, NO background */
 .premium-accessory-card h4 {
   font-family: 'Playfair Display', serif;
-  font-size: 0.95rem;
+  font-size: 1.5rem;
   font-weight: 800;
-  color: #fff;
-  margin-bottom: 0.3rem;
+  color: #000;
+  margin: 0;
+  padding: 0;
+  width: fit-content;
 }
 
-.premium-accessory-card p {
+/* Description - BLACK text, NO background */
+.accessory-desc {
   font-family: 'Syne', sans-serif;
   font-size: 0.7rem;
-  color: rgba(255,255,255,0.5);
-  margin-bottom: 0.8rem;
+  color: #000;
+  margin-top: 4px;
+  padding: 0;
+  width: fit-content;
 }
 
+/* Price - at VERY BOTTOM, BLACK text, NO background */
 .accessory-price {
   font-family: 'Playfair Display', serif;
   font-size: 1rem;
   font-weight: 900;
-  color: var(--gold);
-  margin-bottom: 0.8rem;
+  color: #000;
+  margin-top: 13rem;
+  padding: 0;
+  padding-top: 8px;
+  width: fit-content;
 }
 
-.accessory-link {
-  font-family: 'Syne', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.6);
-  text-decoration: none;
-  transition: color 0.3s ease;
+/* Hide Swiper Navigation Buttons */
+.swiper-button-next,
+.swiper-button-prev {
+  display: none;
 }
 
-.accessory-link:hover {
-  color: var(--gold);
+.swiper-pagination {
+  display: none;
 }
 
 /* Responsive */
-@media (max-width: 1100px) {
-  .accessories-premium-grid {
-    grid-template-columns: repeat(3, 1fr);
+@media (max-width: 1200px) {
+  .accessories-swiper .swiper-slide {
+    width: 200px;
   }
-}
-
-@media (max-width: 968px) {
-  .solutions-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
-  .card-title {
-    font-size: 1.5rem;
-  }
-  
-  .card-icon {
-    width: 55px;
-    height: 55px;
-  }
-  
-  .card-icon i {
-    font-size: 1.5rem;
-  }
-  
-  .solution-card {
-    padding: 1.8rem;
+  .premium-accessory-card {
+    height: 280px;
   }
 }
 
 @media (max-width: 768px) {
-  .accessories-premium-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+  .accessories-premium-section {
+    padding: 3rem 1rem;
   }
-  
   .premium-accessory-card {
-    padding: 1rem;
+    height: 260px;
   }
-  
-  .card-badge {
-    position: static;
-    display: inline-block;
-    margin-bottom: 1rem;
-  }
-  
-  .card-features {
-    gap: 0.5rem;
-  }
-  
-  .feature {
-    font-size: 0.7rem;
-    padding: 3px 8px;
+  .accessories-swiper .swiper-slide {
+    width: 200px;
   }
 }
 
 @media (max-width: 540px) {
-  .accessories-premium-grid {
-    grid-template-columns: 1fr;
-    max-width: 280px;
-    margin: 0 auto;
+  .accessories-swiper .swiper-slide {
+    width: 180px;
+  }
+  .premium-accessory-card {
+    height: 250px;
+  }
+  .premium-accessory-card h4 {
+    font-size: 0.9rem;
+  }
+  .accessory-desc {
+    font-size: 0.65rem;
+  }
+  .accessory-price {
+    font-size: 0.85rem;
   }
 }
-/* Content wrapper - NO padding on top */
-.solution-card-content {
-  position: relative;
-  z-index: 2;
-  {% comment %} padding: 0 2rem 2rem 2rem;  /* No padding on top, only left/right/bottom */ {% endcomment %}
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  flex: 1;
-  background: transparent;
-}
-
 /* Header row - contains title and badge on SAME LINE, at VERY TOP */
 .card-header {
   display: flex;
@@ -2008,6 +1989,299 @@
   display: flex;
   flex-direction: column;
 }
+
+/* ══════════════════════════════════════════════════════════════
+     PREMIUM MONITORS SECTION - ATTRACTIVE & MODERN
+══════════════════════════════════════════════════════════════ */
+.monitors-premium-section {
+  padding: 5rem 5%;
+  background-image: url('{% static 'images/monitor-bg.png' %}')
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated gradient orb background */
+.monitors-premium-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 40%, rgba(201,162,39,0.08), transparent 60%);
+  animation: orbFloat 20s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(5%, 5%) rotate(120deg); }
+  66% { transform: translate(-5%, 3%) rotate(240deg); }
+}
+
+/* Floating particles */
+.monitors-premium-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(2px 2px at 20px 30px, rgba(201,162,39,0.15), transparent),
+                    radial-gradient(1px 1px at 80px 150px, rgba(201,162,39,0.1), transparent);
+  background-repeat: no-repeat;
+  background-size: 200px 200px;
+  animation: particleMove 30s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes particleMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 200px 200px; }
+}
+
+.monitors-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.monitors-header .section-tag-gold {
+  justify-content: center;
+}
+
+.monitors-header .section-tag-gold::before,
+.monitors-header .section-tag-gold::after {
+  width: 50px;
+}
+
+.monitors-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+
+.monitors-subtitle {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.6);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Monitor Grid - 3 columns */
+.monitors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Monitor Card */
+.monitor-card {
+  position: relative;
+  {% comment %} background: rgba(21, 27, 37, 0.6); {% endcomment %}
+  backdrop-filter: blur(10px);
+  border-radius: 28px;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  cursor: pointer;
+  border: 1px solid rgba(201,162,39,0.12);
+  transform-style: preserve-3d;
+}
+
+.monitor-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-image: url('{% static 'images/monitor-bg.png' %}') 
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 2;
+}
+
+.monitor-card:hover::before {
+  opacity: 1;
+}
+
+.monitor-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  border-color: rgba(201,162,39,0.35);
+  background: rgba(21, 27, 37, 0.85);
+  box-shadow: 0 30px 50px -20px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,162,39,0.15);
+}
+
+/* Monitor Image Container */
+.monitor-img-wrapper {
+  position: relative;
+  padding: 2rem;
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
+}
+
+.monitor-img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  transition: transform 0.5s ease;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+}
+
+.monitor-card:hover .monitor-img {
+  transform: scale(1.05) translateY(-5px);
+}
+
+/* Badge */
+.monitor-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: linear-gradient(135deg, #e92e2e, #c41e1e);
+  padding: 5px 12px;
+  border-radius: 30px;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #fff;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.monitor-badge.bestseller {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: #080a0e;
+}
+
+/* Monitor Info */
+.monitor-info {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.monitor-brand {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.monitor-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.monitor-specs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.spec-item {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.05);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+/* Price Row */
+.monitor-price-row {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.monitor-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--gold);
+}
+
+.monitor-old-price {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.4);
+  text-decoration: line-through;
+}
+
+/* Shop Button */
+.monitor-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #080a0e;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+  padding: 10px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+}
+
+.monitor-btn:hover {
+  transform: translateY(-3px);
+  gap: 0.9rem;
+  box-shadow: 0 8px 25px rgba(201,162,39,0.5);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .monitors-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .monitors-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .monitors-premium-section {
+    padding: 3rem 1rem;
+  }
+  .monitor-name {
+    font-size: 1.1rem;
+  }
+  .monitor-price {
+    font-size: 1.2rem;
+  }
+}
 </style>
 {% endblock %}
 
@@ -2117,8 +2391,8 @@
 
   <!-- Category Filter Buttons - ONLY 2 TABS -->
   <div style="max-width:1300px;margin:0 auto 2.5rem;display:flex;justify-content:center; gap: 1rem;" class="anim up delay-2">
-       <button class="cat-filter-btn active" data-cat-filter="new">✨ New Arrivals</button>
-    <button class="cat-filter-btn " data-cat-filter="popular">🔥 Popular</button>
+       <button class="cat-filter-btn" data-cat-filter="new">✨ New Arrivals</button>
+    <button class="cat-filter-btn active" data-cat-filter="popular">🔥 Popular</button>
 
   </div>
 
@@ -2384,7 +2658,7 @@
       <div class="section-tag-gold">
         {% comment %} <span class="tag-line"></span> {% endcomment %}
         Security & Office Solutions
-        <span class="tag-line"></span>
+        {% comment %} <span class="tag-line"></span> {% endcomment %}
       </div>
       <h2 class="solutions-title"><span class="gold-text">Smart </span> Security & Smart Printing</h2>
       <p class="solutions-subtitle">We provide CCTV cameras for safety and efficient printers for everyday business and personal use.</p>
@@ -2436,111 +2710,378 @@
   </div>
 </section>
 <!-- ══════════════════════════════════════════════════════════
-     ACCESSORIES SHOWCASE - MODERN GRID
+     ACCESSORIES SHOWCASE - CAROUSEL WITH BUTTONS AT BOTTOM
 ══════════════════════════════════════════════════════════════ -->
 <section class="accessories-premium-section">
   <div class="accessories-header anim up">
-    <div class="section-tag-gold">Essential Add-ons</div>
+    <div class="section-tag-gold">Essential Accessories</div>
     <h2 class="accessories-title">Complete Your <span class="gold-text">Setup</span></h2>
-    <p class="accessories-subtitle">Everything you need for a complete security and printing solution</p>
+    <p class="accessories-subtitle">Everything you need accessories</p>
   </div>
 
-  <div class="accessories-premium-grid">
-    <!-- Accessory 1 -->
-    <div class="premium-accessory-card anim up delay-1">
-      <div class="accessory-icon-circle">
-        <i class="fas fa-hdd"></i>
+  <!-- Swiper Carousel - No Navigation Buttons -->
+  <div class="accessories-swiper swiper">
+    <div class="swiper-wrapper">
+      
+      <!-- Card 1: SSD -->
+
+    <div class="swiper-slide">
+      <div class="premium-accessory-card">
+        <div class="card-bg-img" style="background-image: url('{% static "images/laptop-stand-bg.png" %}');"></div>
+        <div class="accessory-card-content">
+          <div>
+            <h4>Laptop Stand</h4>
+            <p class="accessory-desc">Ergonomic adjustable stand</p>
+            <div class="accessory-price">From ₹249</div>
+          </div>
+          {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
+        </div>
       </div>
-      <h4>High Speed SSD</h4>
-      <p>128GB-2TB specialized</p>
-      <div class="accessory-price">start ₹1500</div>
-      <a href="{% url 'contact' %}" class="accessory-link">Shop Now →</a>
     </div>
-    <!-- Accessory 1 -->
-    <div class="premium-accessory-card anim up delay-1">
-      <div class="accessory-icon-circle">
-        <i class="fas fa-hdd"></i>
+      <!-- Card 2: RAM -->
+      <div class="swiper-slide">
+        <div class="premium-accessory-card">
+          <div class="card-bg-img" style="background-image: url('{% static "images/ram-bg.png" %}');"></div>
+          <div class="accessory-card-content">
+            <div>
+              <h4>RAM</h4>
+              <p class="accessory-desc">DDR3/DDR4 for smooth performance</p>
+              <div class="accessory-price">From ₹1499</div>
+            </div>
+            {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
+          </div>
+        </div>
       </div>
-      <h4>Ram</h4>
-      <p>128GB-2TB specialized</p>
-      <div class="accessory-price">start ₹1500</div>
-      <a href="{% url 'contact' %}" class="accessory-link">Shop Now →</a>
+
+      <!-- Card 3: Convertors -->
+      <div class="swiper-slide">
+        <div class="premium-accessory-card">
+          <div class="card-bg-img" style="background-image: url('{% static "images/convertor-bg.png" %}');"></div>
+          <div class="accessory-card-content">
+            <div>
+              <h4>Convertors</h4>
+              <p class="accessory-desc">HDMI, USB & Lan adapters</p>
+              <div class="accessory-price">From ₹99</div>
+            </div>
+            {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Toner -->
+      <div class="swiper-slide">
+        <div class="premium-accessory-card">
+          <div class="card-bg-img" style="background-image: url('{% static "images/toner-bg.png" %}');"></div>
+          <div class="accessory-card-content">
+            <div>
+              <h4>Toner</h4>
+              <p class="accessory-desc">Premium toner for clear prints</p>
+              <div class="accessory-price">From ₹199</div>
+            </div>
+            {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5: Cartage -->
+      <div class="swiper-slide">
+        <div class="premium-accessory-card">
+          <div class="card-bg-img" style="background-image: url('{% static "images/Cartage-bg.png" %}');"></div>
+          <div class="accessory-card-content">
+            <div>
+              <h4>Cartage</h4>
+              <p class="accessory-desc">Original & compatible Cartages</p>
+              <div class="accessory-price">From ₹499</div>
+            </div>
+            {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6: Power Cables -->
+      <div class="swiper-slide">
+        <div class="premium-accessory-card">
+          <div class="card-bg-img" style="background-image: url('{% static "images/power-cable-bg.png" %}');"></div>
+          <div class="accessory-card-content">
+            <div>
+              <h4>Power Cables</h4>
+              <p class="accessory-desc">Adapters & extension cords</p>
+              <div class="accessory-price">From ₹149</div>
+            </div>
+            {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 7: Batteries -->
+      <div class="swiper-slide">
+        <div class="premium-accessory-card">
+          <div class="card-bg-img" style="background-image: url('{% static "images/battery-bg.png" %}');"></div>
+          <div class="accessory-card-content">
+            <div>
+              <h4>Batteries</h4>
+              <p class="accessory-desc">Laptop batteries (all brands)</p>
+              <div class="accessory-price">From ₹999</div>
+            </div>
+            {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 8: Mouse -->
+      <div class="swiper-slide">
+        <div class="premium-accessory-card">
+          <div class="card-bg-img" style="background-image: url('{% static "images/mouse-bg.png" %}');"></div>
+          <div class="accessory-card-content">
+            <div>
+              <h4>Mouse</h4>
+              <p class="accessory-desc">Wireless & wired (all brands)</p>
+              <div class="accessory-price">From ₹199</div>
+            </div>
+            {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 9: Keyboard -->
+      <div class="swiper-slide">
+        <div class="premium-accessory-card">
+          <div class="card-bg-img" style="background-image: url('{% static "images/keyboard-bg.png" %}');"></div>
+          <div class="accessory-card-content">
+            <div>
+              <h4>Keyboard</h4>
+              <p class="accessory-desc">Wireless & wired keyboards</p>
+              <div class="accessory-price">From ₹349</div>
+            </div>
+            {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
+          </div>
+        </div>
+      </div>
+
+    <!-- Card 10: Laptop Fan -->
+      <div class="swiper-slide">
+        <div class="premium-accessory-card">
+          <div class="card-bg-img" style="background-image: url('{% static "images/ssd-bg.png" %}');"></div>
+          <div class="accessory-card-content">
+            <div>
+              <h4>SSD</h4>
+              <p class="accessory-desc">Fast SSDs for all devices</p>
+              <div class="accessory-price">From ₹1499</div>
+            </div>
+            {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
+          </div>
+        </div>
+      </div>
+    <!-- Card 11: Laptop Stand -->
+    
+    <div class="swiper-slide">
+      <div class="premium-accessory-card">
+        <div class="card-bg-img" style="background-image: url('{% static "images/laptop-fan-bg.png" %}');"></div>
+        <div class="accessory-card-content">
+          <div>
+            <h4>Laptop Fan</h4>
+            <p class="accessory-desc">Cooling fan for laptops</p>
+            <div class="accessory-price">From ₹399</div>
+          </div>
+          {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
+        </div>
+      </div>
     </div>
 
-    <!-- Accessory 2 -->
-    <div class="premium-accessory-card anim up delay-2">
-      <div class="accessory-icon-circle">
-        <i class="fas fa-plug"></i>
+    <!-- Card 12: Webcam -->
+    <div class="swiper-slide">
+      <div class="premium-accessory-card">
+        <div class="card-bg-img" style="background-image: url('{% static "images/webcam-bg.png" %}');"></div>
+        <div class="accessory-card-content">
+          <div>
+            <h4>Webcam</h4>
+            <p class="accessory-desc">HD webcam for video calls</p>
+            <div class="accessory-price">From ₹899</div>
+          </div>
+          {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
+        </div>
       </div>
-      <h4>All Type convertors</h4>
-      <p>BNC cables & connectors</p>
-      <div class="accessory-price">From ₹299</div>
-      <a href="{% url 'contact' %}" class="accessory-link">Shop Now →</a>
     </div>
 
-    <!-- Accessory 3 -->
-
-    <div class="premium-accessory-card anim up delay-3">
-      <div class="accessory-icon-circle">
-        <i class="fas fa-fill-drip"></i>
+    <!-- Card 13: Monitor Mount -->
+    <div class="swiper-slide">
+      <div class="premium-accessory-card">
+        <div class="card-bg-img" style="background-image: url('{% static "images/monitor-mount-bg.png" %}');"></div>
+        <div class="accessory-card-content">
+          <div>
+            <h4>Monitor Mount</h4>
+            <p class="accessory-desc">Adjustable monitor arm</p>
+            <div class="accessory-price">From ₹299</div>
+          </div>
+          {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
+        </div>
       </div>
-      <h4>Toner </h4>
-      <p>Compatible cartridges</p>
-      <div class="accessory-price">From ₹499</div>
-      <a href="{% url 'contact' %}" class="accessory-link">Shop Now →</a>
-    </div>
-    <!-- Accessory 3 -->
-
-    <div class="premium-accessory-card anim up delay-3">
-      <div class="accessory-icon-circle">
-        <i class="fas fa-fill-drip"></i>
-      </div>
-      <h4>Cartridge </h4>
-      <p>Compatible cartridges</p>
-      <div class="accessory-price">From ₹499</div>
-      <a href="{% url 'contact' %}" class="accessory-link">Shop Now →</a>
-    </div>
-    <!-- Accessory 4 -->
-    <div class="premium-accessory-card anim up delay-4">
-      <div class="accessory-icon-circle">
-        <i class="fas fa-bolt"></i>
-      </div>
-      <h4>Power Cables</h4>
-      <p>12V adapters & boxes</p>
-      <div class="accessory-price">From ₹599</div>
-      <a href="{% url 'contact' %}" class="accessory-link">Shop Now →</a>
     </div>
 
-    <!-- Accessory 5 -->
-    <div class="premium-accessory-card anim up delay-5">
-      <div class="accessory-icon-circle">
-        <i class="fas fa-file-alt"></i>
+    <!-- Card 14: Router -->
+    <div class="swiper-slide">
+      <div class="premium-accessory-card">
+        <div class="card-bg-img" style="background-image: url('{% static "images/router-bg.png" %}');"></div>
+        <div class="accessory-card-content">
+          <div>
+            <h4>Router</h4>
+            <p class="accessory-desc">High-speed WiFi router</p>
+            <div class="accessory-price">From ₹1499</div>
+          </div>
+          {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
+        </div>
       </div>
-      <h4>Batteries</h4>
-      <p>A4 & thermal paper</p>
-      <div class="accessory-price">From ₹199</div>
-      <a href="{% url 'contact' %}" class="accessory-link">Shop Now →</a>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PREMIUM MONITORS SECTION - ATTRACTIVE & MODERN
+══════════════════════════════════════════════════════════════════ -->
+<section class="monitors-premium-section">
+  <div class="monitors-header anim up">
+    <div class="section-tag-gold">
+      Premium Display Collection
+    </div>
+    <h2 class="monitors-title">Ultimate Visual <span class="gold-text">Experience</span></h2>
+    <p class="monitors-subtitle">Crystal clear displays for work, gaming, and creative professionals</p>
+  </div>
+
+  <div class="monitors-grid">
+    
+    <!-- Monitor 1: Gaming Monitor -->
+    <div class="monitor-card anim up delay-1">
+      <div class="monitor-img-wrapper">
+        <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&h=300&fit=crop" alt="Gaming Monitor" class="monitor-img">
+        <div class="monitor-badge">🔥 Gaming</div>
+      </div>
+      <div class="monitor-info">
+        <div class="monitor-brand">ASUS ROG</div>
+        <h3 class="monitor-name">27" Gaming Monitor</h3>
+        <div class="monitor-specs">
+          <span class="spec-item">165Hz</span>
+          <span class="spec-item">1ms</span>
+          <span class="spec-item">IPS Panel</span>
+        </div>
+        <div class="monitor-price-row">
+          <span class="monitor-price">₹18,999</span>
+          <span class="monitor-old-price">₹24,999</span>
+        </div>
+        <a href="{% url 'contact' %}" class="monitor-btn">Shop Now <i class="fas fa-arrow-right"></i></a>
+      </div>
     </div>
 
-    <!-- Accessory 6 -->
-    <div class="premium-accessory-card anim up delay-1">
-      <div class="accessory-icon-circle">
-        <i class="fas fa-camera"></i>
+    <!-- Monitor 2: Professional Monitor -->
+    <div class="monitor-card anim up delay-2">
+      <div class="monitor-img-wrapper">
+        <img src="https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=400&h=300&fit=crop" alt="Professional Monitor" class="monitor-img">
+        <div class="monitor-badge bestseller">⭐ Best Seller</div>
       </div>
-      <h4>Mouse</h4>
-      <p>Wall & ceiling mounts</p>
-      <div class="accessory-price">From ₹349</div>
-      <a href="{% url 'contact' %}" class="accessory-link">Shop Now →</a>
-    </div>
-    <div class="premium-accessory-card anim up delay-1">
-      <div class="accessory-icon-circle">
-        <i class="fas fa-camera"></i>
+      <div class="monitor-info">
+        <div class="monitor-brand">Dell UltraSharp</div>
+        <h3 class="monitor-name">24" Professional Monitor</h3>
+        <div class="monitor-specs">
+          <span class="spec-item">4K UHD</span>
+          <span class="spec-item">USB-C</span>
+          <span class="spec-item">HDR400</span>
+        </div>
+        <div class="monitor-price-row">
+          <span class="monitor-price">₹22,499</span>
+          <span class="monitor-old-price">₹28,999</span>
+        </div>
+        <a href="{% url 'contact' %}" class="monitor-btn">Shop Now <i class="fas fa-arrow-right"></i></a>
       </div>
-      <h4>Keyboard</h4>
-      <p>Wall & ceiling mounts</p>
-      <div class="accessory-price">From ₹349</div>
-      <a href="{% url 'contact' %}" class="accessory-link">Shop Now →</a>
     </div>
+
+    <!-- Monitor 3: Curved Monitor -->
+    <div class="monitor-card anim up delay-3">
+      <div class="monitor-img-wrapper">
+        <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop" alt="Curved Monitor" class="monitor-img">
+        <div class="monitor-badge">✨ Curved</div>
+      </div>
+      <div class="monitor-info">
+        <div class="monitor-brand">Samsung Odyssey</div>
+        <h3 class="monitor-name">34" Curved Ultrawide</h3>
+        <div class="monitor-specs">
+          <span class="spec-item">3440x1440</span>
+          <span class="spec-item">144Hz</span>
+          <span class="spec-item">1000R</span>
+        </div>
+        <div class="monitor-price-row">
+          <span class="monitor-price">₹32,999</span>
+          <span class="monitor-old-price">₹42,999</span>
+        </div>
+        <a href="{% url 'contact' %}" class="monitor-btn">Shop Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- Monitor 4: Budget Monitor -->
+    <div class="monitor-card anim up delay-1">
+      <div class="monitor-img-wrapper">
+        <img src="{% static "images/22in-monitor.png" %}" alt="Budget Monitor" class="monitor-img">
+        <div class="monitor-badge">💰 Value</div>
+      </div>
+      <div class="monitor-info">
+        <div class="monitor-brand">DELL</div>
+        <h3 class="monitor-name">22" LED Monitor</h3>
+        <div class="monitor-specs">
+          <span class="spec-item">1080p</span>
+          <span class="spec-item">75Hz</span>
+          <span class="spec-item">VGA/HDMI</span>
+        </div>
+        <div class="monitor-price-row">
+          <span class="monitor-price">₹7,499</span>
+          <span class="monitor-old-price">₹10,999</span>
+        </div>
+        <a href="{% url 'contact' %}" class="monitor-btn">Shop Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- Monitor 5: Touch Monitor -->
+    <div class="monitor-card anim up delay-2">
+      <div class="monitor-img-wrapper">
+        <img src="https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=400&h=300&fit=crop" alt="Touch Monitor" class="monitor-img">
+        <div class="monitor-badge bestseller">👆 Touch</div>
+      </div>
+      <div class="monitor-info">
+        <div class="monitor-brand">HP</div>
+        <h3 class="monitor-name">24" Touch Monitor</h3>
+        <div class="monitor-specs">
+          <span class="spec-item">Touchscreen</span>
+          <span class="spec-item">IPS</span>
+          <span class="spec-item">Built-in Speaker</span>
+        </div>
+        <div class="monitor-price-row">
+          <span class="monitor-price">₹16,999</span>
+          <span class="monitor-old-price">₹21,999</span>
+        </div>
+        <a href="{% url 'contact' %}" class="monitor-btn">Shop Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- Monitor 6: Portable Monitor -->
+    <div class="monitor-card anim up delay-3">
+      <div class="monitor-img-wrapper">
+        <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop" alt="Portable Monitor" class="monitor-img">
+        <div class="monitor-badge">📱 Portable</div>
+      </div>
+      <div class="monitor-info">
+        <div class="monitor-brand">ViewSonic</div>
+        <h3 class="monitor-name">15.6" Portable Monitor</h3>
+        <div class="monitor-specs">
+          <span class="spec-item">1080p</span>
+          <span class="spec-item">USB-C</span>
+          <span class="spec-item">Travel Friendly</span>
+        </div>
+        <div class="monitor-price-row">
+          <span class="monitor-price">₹12,999</span>
+          <span class="monitor-old-price">₹17,999</span>
+        </div>
+        <a href="{% url 'contact' %}" class="monitor-btn">Shop Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+
   </div>
 </section>
 <!-- ══════════════════════════════════════════════════════════
@@ -2548,7 +3089,7 @@
 ══════════════════════════════════════════════════════════════ -->
 <section class="accessories-section">
   <div style="max-width:1300px;margin:0 auto 2.5rem;" class="anim up">
-    <div class="section-tag-gold">Essential Accessories</div>
+    <div class="section-tag-gold">Essential Monitors</div>
     <h2 class="section-h2">Complete Your <span class="a">Security & Office Setup</span></h2>
     <p class="section-sub" style="max-width: 600px; margin-top: 0.5rem;">Everything you need for a complete security and printing solution.</p>
   </div>
@@ -2580,14 +3121,14 @@
       </div>
     </div>
 
-    <!-- Accessory 3: Printer Toner Cartridges -->
+    <!-- Accessory 3: Printer Toner Cartages -->
     <div class="accessory-card anim up delay-3">
       <div class="accessory-img-wrapper">
-        <img src="{% static 'images/catrage.png' %}" alt="Toner Cartridges">
+        <img src="{% static 'images/catrage.png' %}" alt="Toner Cartages">
       </div>
       <div class="accessory-info">
         <h3 class="accessory-title">Printer Toner & Ink</h3>
-        <p class="accessory-desc">Compatible & genuine cartridges for HP, Canon, Epson printers.</p>
+        <p class="accessory-desc">Compatible & genuine Cartages for HP, Canon, Epson printers.</p>
         <div class="accessory-price">From ₹499</div>
         <a href="{% url 'contact' %}" class="accessory-btn">Shop Now →</a>
       </div>
@@ -2667,40 +3208,6 @@
         <div class="promo-small-price">₹18,500</div>
       </div>
     </a>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════
-     SHOP SECTION — Full product grid with tabs
-══════════════════════════════════════════════════════════════ -->
-<section class="shop-section" id="shop-section">
-  <div class="shop-header">
-    <div class="anim up">
-      <div class="section-tag-gold">All Products</div>
-      <h2 class="section-h2">Browse Our <span class="a">Full Inventory</span></h2>
-    </div>
-    <div class="shop-tabs anim right">
-      <button class="shop-tab active" data-tab="shop-all">All</button>
-      <button class="shop-tab" data-tab="shop-budget">Budget</button>
-      <button class="shop-tab" data-tab="shop-gaming">Gaming</button>
-    </div>
-  </div>
-
-  <div id="shop-all" class="tab-panel active" style="display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem;">
-    <div class="prod-card anim up delay-1"><div class="prod-img-wrap"><img src="https://template-kit.evonicmedia.com/layout114/wp-content/uploads/2024/12/p-2.jpg" class="prod-img"></div><div class="prod-info"><div class="prod-brand">Intel</div><div class="prod-name">i5 7th Gen 13.5"</div><div class="prod-specs">i5 · 8GB · 256GB SSD</div><div class="prod-price-row"><div class="prod-price">₹18,500</div><button class="prod-cart-btn"><i class="fas fa-shopping-cart"></i></button></div></div></div>
-    <div class="prod-card anim up delay-2"><span class="prod-sale-badge">Sale</span><div class="prod-img-wrap"><img src="https://template-kit.evonicmedia.com/layout114/wp-content/uploads/2024/12/p-3.jpg" class="prod-img"></div><div class="prod-info"><div class="prod-brand">Intel</div><div class="prod-name">i7 9th Gen 16.5"</div><div class="prod-specs">i7 · 12GB · 512GB SSD</div><div class="prod-price-row"><div class="prod-old">₹35,000</div><div class="prod-price">₹29,000</div></div><button class="prod-cart-btn"><i class="fas fa-shopping-cart"></i></button></div></div>
-    <div class="prod-card anim up delay-3"><div class="prod-img-wrap"><img src="https://template-kit.evonicmedia.com/layout114/wp-content/uploads/2024/12/p-4.jpg" class="prod-img"></div><div class="prod-info"><div class="prod-brand">Intel</div><div class="prod-name">i3 5th Gen 13.5"</div><div class="prod-specs">i3 · 6GB · 500GB HDD</div><div class="prod-price-row"><div class="prod-price">₹11,000</div><button class="prod-cart-btn"><i class="fas fa-shopping-cart"></i></button></div></div></div>
-    <div class="prod-card anim up delay-4"><span class="prod-sale-badge">Sale</span><div class="prod-img-wrap"><img src="https://template-kit.evonicmedia.com/layout114/wp-content/uploads/2024/12/p-7.jpg" class="prod-img"></div><div class="prod-info"><div class="prod-brand">Intel</div><div class="prod-name">i7 9th Gen Pro</div><div class="prod-specs">i7 · 16GB · 512GB SSD</div><div class="prod-price-row"><div class="prod-old">₹42,000</div><div class="prod-price">₹34,000</div><button class="prod-cart-btn"><i class="fas fa-shopping-cart"></i></button></div></div></div>
-  </div>
-
-  <div id="shop-budget" class="tab-panel" style="display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem;">
-    <div class="prod-card"><div class="prod-img-wrap"><img src="https://template-kit.evonicmedia.com/layout114/wp-content/uploads/2024/12/p-5.jpg" class="prod-img"></div><div class="prod-info"><div class="prod-name">i3 4th Gen 13.5"</div><div class="prod-price">₹9,500</div><button class="prod-cart-btn"><i class="fas fa-shopping-cart"></i></button></div></div>
-    <div class="prod-card"><div class="prod-img-wrap"><img src="https://template-kit.evonicmedia.com/layout114/wp-content/uploads/2024/12/p-4.jpg" class="prod-img"></div><div class="prod-info"><div class="prod-name">i3 5th Gen 13.5"</div><div class="prod-price">₹11,000</div><button class="prod-cart-btn"><i class="fas fa-shopping-cart"></i></button></div></div>
-  </div>
-
-  <div id="shop-gaming" class="tab-panel" style="display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem;">
-    <div class="prod-card"><span class="prod-sale-badge">Sale</span><div class="prod-img-wrap"><img src="https://template-kit.evonicmedia.com/layout114/wp-content/uploads/2024/12/p-6.jpg" class="prod-img"></div><div class="prod-info"><div class="prod-name">i7 11th Gen 16.5"</div><div class="prod-price">₹42,000</div><button class="prod-cart-btn"><i class="fas fa-shopping-cart"></i></button></div></div>
-    <div class="prod-card"><span class="prod-sale-badge">Sale</span><div class="prod-img-wrap"><img src="https://template-kit.evonicmedia.com/layout114/wp-content/uploads/2025/01/p-16-i7-13th-Generation-15.jpg" class="prod-img"></div><div class="prod-info"><div class="prod-name">i7 13th Gen 15"</div><div class="prod-price">₹38,000</div><button class="prod-cart-btn"><i class="fas fa-shopping-cart"></i></button></div></div>
   </div>
 </section>
 
@@ -2801,6 +3308,47 @@ document.querySelectorAll('.cat-filter-btn').forEach(btn => {
       document.getElementById('cat-new').classList.add('active');
     }
   });
+});
+// Initialize Accessories Swiper Carousel - INFINITE LOOP, FULL CARDS VISIBLE
+const accessoriesSwiper = new Swiper('.accessories-swiper', {
+  slidesPerView: 'auto',  // Auto width based on content
+  spaceBetween: 25,
+  loop: true,  // Infinite loop
+  centeredSlides: false,
+  autoplay: {
+    delay: 4000,
+    disableOnInteraction: false,
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+      spaceBetween: 15,
+    },
+    640: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    },
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 25,
+    },
+    1024: {
+      slidesPerView: 4,
+      spaceBetween: 30,
+    },
+    1200: {
+      slidesPerView: 5,
+      spaceBetween: 30,
+    },
+  }
 });
 </script>
 

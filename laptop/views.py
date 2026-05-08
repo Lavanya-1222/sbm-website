@@ -617,5 +617,5 @@ def contact(request):
     
     return render(request, "contact.html")
 
-def sales(request):
-    return render(request,"sales.html")
+def shop(request):
+    return render(request,"shop.html")
