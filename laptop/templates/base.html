@@ -51,7 +51,7 @@
         }
         
         nav.scrolled {
-            padding: 0.7rem 5%;
+            padding: 0.5rem 5%;
             background: #ffffff;
             box-shadow: 0 4px 30px rgba(0,0,0,0.1);
         }
@@ -71,12 +71,10 @@
         }
         
         .logo-img {
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             object-fit: contain;
             border-radius: 12px;
-            {% comment %} background: #f5f0e8; {% endcomment %}
-            {% comment %} padding: 4px; {% endcomment %}
         }
         
         /* Fallback styling when image fails to load */
@@ -146,10 +144,10 @@
         .nav-cta {
             background: linear-gradient(135deg, var(--gold), var(--gold-dark));
             color: #1a1a1a !important;
-            padding: 0.7rem 1.8rem;
+            padding: 0.6rem 1.5rem;
             border-radius: 6px;
             font-family: 'Syne', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 700 !important;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -196,7 +194,7 @@
             
             .nav-links {
                 position: fixed;
-                top: 70px;
+                top: 65px;
                 left: 0;
                 right: 0;
                 background: #ffffff;
@@ -253,8 +251,8 @@
             }
         }
 
-        /* Common Section Styles */
-        section { padding: 6rem 5%; position: relative; }
+        /* Common Section Styles - REDUCED PADDING */
+        section { padding: 3rem 5%; position: relative; }
         .section-tag {
             font-family: 'Syne', sans-serif;
             font-size: 0.8rem;
@@ -262,7 +260,7 @@
             letter-spacing: 3px;
             text-transform: uppercase;
             color: var(--gold);
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             display: flex;
             align-items: center;
             gap: 0.8rem;
@@ -275,20 +273,20 @@
         }
         .section-title {
             font-family: 'Syne', sans-serif;
-            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 900;
             line-height: 1.15;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
         .btn-gold {
             background: linear-gradient(135deg, var(--gold), var(--gold-dark));
             color: #1a1a1a;
-            padding: 1rem 2.4rem;
+            padding: 0.8rem 2rem;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             font-family: 'Syne', sans-serif;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             font-weight: 700;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -306,7 +304,7 @@
             background: var(--glass);
             border: 1px solid var(--glass-border);
             color: var(--white);
-            padding: 1rem 2.4rem;
+            padding: 0.8rem 2rem;
             border-radius: 8px;
             text-decoration: none;
             font-family: 'Syne', sans-serif;
@@ -331,7 +329,7 @@
         .footer-social {
             display: flex;
             gap: 1rem;
-            margin-top: 1.2rem;
+            {% comment %} margin-top: 1.2rem; {% endcomment %}
             flex-wrap: wrap;
         }
         
@@ -372,7 +370,6 @@
             height: 55px;
             object-fit: contain;
             border-radius: 12px;
-            {% comment %} background: #f5f0e8; {% endcomment %}
             padding: 4px;
         }
         
@@ -433,8 +430,8 @@
 </main>
 
 <!-- ===== FOOTER WITH SOCIAL MEDIA ICONS & LARGER LOGO ===== -->
-<footer style="background: var(--dark-2); border-top: 1px solid var(--glass-border); padding: 4rem 5% 2rem;">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+<footer style="background: var(--dark-2); border-top: 1px solid var(--glass-border); padding: 3rem 5% 1.5rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
         <!-- Brand Column with Social Icons -->
         <div class="footer-brand">
             <a href="{% url 'home' %}" class="logo" style="text-decoration:none; display: flex; align-items: center; gap: 0.8rem;">
@@ -444,7 +441,7 @@
                 <div style="display: none; width: 55px; height: 55px; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border-radius: 12px; align-items: center; justify-content: center; font-size: 1.5rem; color: #1a1a1a;">⚡</div>
                 <span style="font-size: 1.5rem; font-weight: 900;">SBM <span style="color: var(--gold);">Sales & Services</span></span>
             </a>
-            <p style="margin-top: 1.2rem;">Solapur's most trusted laptop & computer repair specialists since 2016.</p>
+            <p style="margin-top: 1rem;">Solapur's most trusted laptop & computer repair specialists since 2016.</p>
             <!-- Social Media Icons -->
             <div class="footer-social">
                 <a href="https://www.instagram.com/sbmsalesandservices" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
@@ -469,11 +466,11 @@
         <div>
             <h4 style="font-family: 'Syne', sans-serif; color: var(--gold); margin-bottom: 1.2rem; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;">Quick Links</h4>
             <ul style="list-style: none;">
-                <li style="margin-bottom: 0.8rem;"><a href="{% url 'home' %}" style="color: var(--white-dim); text-decoration: none; font-family: 'Syne', sans-serif; transition: color 0.3s; font-size: 0.9rem;">Home</a></li>
-                <li style="margin-bottom: 0.8rem;"><a href="{% url 'shop' %}" style="color: var(--white-dim); text-decoration: none; font-family: 'Syne', sans-serif; transition: color 0.3s; font-size: 0.9rem;">Shop</a></li>
-                <li style="margin-bottom: 0.8rem;"><a href="{% url 'services' %}" style="color: var(--white-dim); text-decoration: none; font-family: 'Syne', sans-serif; transition: color 0.3s; font-size: 0.9rem;">Services</a></li>
-                <li style="margin-bottom: 0.8rem;"><a href="{% url 'about' %}" style="color: var(--white-dim); text-decoration: none; font-family: 'Syne', sans-serif; transition: color 0.3s; font-size: 0.9rem;">About</a></li>
-                <li style="margin-bottom: 0.8rem;"><a href="{% url 'contact' %}" style="color: var(--white-dim); text-decoration: none; font-family: 'Syne', sans-serif; transition: color 0.3s; font-size: 0.9rem;">Contact</a></li>
+                <li style="margin-bottom: 0.7rem;"><a href="{% url 'home' %}" style="color: var(--white-dim); text-decoration: none; font-family: 'Syne', sans-serif; transition: color 0.3s; font-size: 0.9rem;">Home</a></li>
+                <li style="margin-bottom: 0.7rem;"><a href="{% url 'shop' %}" style="color: var(--white-dim); text-decoration: none; font-family: 'Syne', sans-serif; transition: color 0.3s; font-size: 0.9rem;">Shop</a></li>
+                <li style="margin-bottom: 0.7rem;"><a href="{% url 'services' %}" style="color: var(--white-dim); text-decoration: none; font-family: 'Syne', sans-serif; transition: color 0.3s; font-size: 0.9rem;">Services</a></li>
+                <li style="margin-bottom: 0.7rem;"><a href="{% url 'about' %}" style="color: var(--white-dim); text-decoration: none; font-family: 'Syne', sans-serif; transition: color 0.3s; font-size: 0.9rem;">About</a></li>
+                <li style="margin-bottom: 0.7rem;"><a href="{% url 'contact' %}" style="color: var(--white-dim); text-decoration: none; font-family: 'Syne', sans-serif; transition: color 0.3s; font-size: 0.9rem;">Contact</a></li>
             </ul>
         </div>
         
@@ -481,13 +478,13 @@
         <div>
             <h4 style="font-family: 'Syne', sans-serif; color: var(--gold); margin-bottom: 1.2rem; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;">Get In Touch</h4>
             <ul style="list-style: none;">
-                <li style="color: var(--white-dim); font-family: 'Syne', sans-serif; margin-bottom: 1rem; display: flex; gap: 0.8rem; align-items: flex-start; font-size: 0.9rem; line-height: 1.5;">
+                <li style="color: var(--white-dim); font-family: 'Syne', sans-serif; margin-bottom: 0.8rem; display: flex; gap: 0.8rem; align-items: flex-start; font-size: 0.9rem; line-height: 1.5;">
                     <span style="color: var(--gold); font-size: 1.1rem;">📍</span> Old Wit College Boys Hostel Opposite, New Paccha Peth, Solapur-413005, Maharashtra
                 </li>
-                <li style="color: var(--white-dim); font-family: 'Syne', sans-serif; margin-bottom: 0.8rem; display: flex; gap: 0.8rem; align-items: center;">
+                <li style="color: var(--white-dim); font-family: 'Syne', sans-serif; margin-bottom: 0.7rem; display: flex; gap: 0.8rem; align-items: center;">
                     <span style="color: var(--gold); font-size: 1.1rem;">📞</span> 8087594890 / 8847788982
                 </li>
-                <li style="color: var(--white-dim); font-family: 'Syne', sans-serif; margin-bottom: 0.8rem; display: flex; gap: 0.8rem; align-items: center;">
+                <li style="color: var(--white-dim); font-family: 'Syne', sans-serif; margin-bottom: 0.7rem; display: flex; gap: 0.8rem; align-items: center;">
                     <span style="color: var(--gold); font-size: 1.1rem;">✉️</span> sbmsolutions@gmail.com
                 </li>
             </ul>
@@ -495,7 +492,7 @@
     </div>
     
     <!-- Copyright Row -->
-    <div style="border-top: 1px solid var(--glass-border); padding-top: 1.8rem; text-align: center;">
+    <div style="border-top: 1px solid var(--glass-border); padding-top: 1.5rem; text-align: center;">
         <p style="color: var(--white-dim); font-family: 'Syne', sans-serif; font-size: 0.85rem;">© 2026 <span style="color: var(--gold); font-weight: 700;">SBM Sales & Services</span>. All rights reserved.</p>
     </div>
 </footer>

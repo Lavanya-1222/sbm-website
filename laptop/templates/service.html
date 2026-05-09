@@ -1,390 +1,2060 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Services – TechFix Pro</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Premium IT Services | SBM Solutions{% endblock %}
+
+{% block extra_css %}
 <style>
-:root{--gold:#c9a227;--gold-light:#f0c84a;--gold-dark:#8a6e0f;--dark:#080a0e;--dark-2:#0e1117;--dark-3:#151b25;--dark-4:#1c2433;--white:#f5f0e8;--white-dim:rgba(245,240,232,0.7);--glass:rgba(255,255,255,0.04);--glass-border:rgba(201,162,39,0.2);--glass-gold:rgba(201,162,39,0.08);}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--white);overflow-x:hidden;cursor:none;}
-.cursor{position:fixed;width:12px;height:12px;border-radius:50%;background:var(--gold);pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform 0.1s,width 0.3s,height 0.3s;}
-.cursor-trail{position:fixed;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--gold);pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:all 0.15s ease;opacity:0.5;}
-::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:var(--dark-2);}::-webkit-scrollbar-thumb{background:var(--gold-dark);border-radius:3px;}
-nav{position:fixed;top:0;width:100%;z-index:1000;padding:1.2rem 5%;display:flex;align-items:center;justify-content:space-between;background:rgba(8,10,14,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--glass-border);}
-.logo{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:0.6rem;}
-.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;box-shadow:0 0 20px rgba(201,162,39,0.4);}
-.logo span{color:var(--gold);}
-.nav-links{display:flex;gap:2.5rem;list-style:none;}
-.nav-links a{text-decoration:none;color:var(--white-dim);font-family:'Syne',sans-serif;font-size:0.9rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;position:relative;transition:color 0.3s;}
-.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width 0.3s;}
-.nav-links a:hover{color:var(--gold);}
-.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
-.nav-links a.active{color:var(--gold);}
-.nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--dark)!important;padding:0.7rem 1.8rem;border-radius:6px;font-weight:700!important;box-shadow:0 4px 20px rgba(201,162,39,0.3);}
-.nav-cta::after{display:none!important;}
-section{padding:6rem 5%;position:relative;}
-.section-tag{font-family:'Syne',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:0.8rem;}
-.section-tag::before{content:'';width:30px;height:2px;background:var(--gold);}
-.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.15;margin-bottom:1rem;}
-.section-sub{color:var(--white-dim);font-size:1.05rem;line-height:1.8;max-width:580px;margin-bottom:3rem;}
-.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--dark);padding:1rem 2.4rem;border:none;border-radius:8px;cursor:pointer;font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;box-shadow:0 0 30px rgba(201,162,39,0.35);transition:all 0.3s;}
-.btn-gold:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(201,162,39,0.5);}
-.btn-glass{background:var(--glass);border:1px solid var(--glass-border);color:var(--white);padding:1rem 2.4rem;border-radius:8px;cursor:pointer;font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;backdrop-filter:blur(10px);transition:all 0.3s;}
-.btn-glass:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px);}
-.reveal{opacity:0;transform:translateY(50px);transition:all 0.8s cubic-bezier(0.23,1,0.32,1);}
-.reveal.visible{opacity:1;transform:translateY(0);}
-.reveal-left{opacity:0;transform:translateX(-50px);transition:all 0.8s cubic-bezier(0.23,1,0.32,1);}
-.reveal-left.visible{opacity:1;transform:translateX(0);}
-.reveal-right{opacity:0;transform:translateX(50px);transition:all 0.8s cubic-bezier(0.23,1,0.32,1);}
-.reveal-right.visible{opacity:1;transform:translateX(0);}
+/* ============================================ */
+/* SERVICES PAGE - PREMIUM EXPRESSIVE DESIGN */
+/* ============================================ */
 
-/* PAGE HEADER */
-.page-header{min-height:40vh;display:flex;align-items:center;padding:8rem 5% 4rem;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--dark-2),var(--dark));}
-.page-header::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(201,162,39,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,39,0.04) 1px,transparent 1px);background-size:60px 60px;}
-.page-header::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 50%,rgba(201,162,39,0.1) 0%,transparent 60%);}
-.page-header-content{position:relative;z-index:1;}
-.breadcrumb{display:flex;align-items:center;gap:0.5rem;font-family:'Syne',sans-serif;font-size:0.85rem;color:var(--white-dim);margin-bottom:1rem;}
-.breadcrumb a{color:var(--gold);text-decoration:none;}
 
-/* SERVICES FILTER */
-.filter-bar{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;}
-.filter-btn{background:var(--glass);border:1px solid var(--glass-border);color:var(--white-dim);padding:0.6rem 1.5rem;border-radius:50px;cursor:pointer;font-family:'Syne',sans-serif;font-size:0.85rem;font-weight:600;letter-spacing:1px;transition:all 0.3s;}
-.filter-btn:hover,.filter-btn.active{background:var(--glass-gold);border-color:var(--gold);color:var(--gold);}
+/* Floating Stats Cards */
+.floating-stats {
+    position: relative;
+    padding: 0 5% 4rem;
+    margin-top: -50px;
+    z-index: 10;
+}
 
-/* BIG SERVICE CARDS */
-.services-main{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2rem;}
-.svc-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:24px;overflow:hidden;transition:all 0.5s cubic-bezier(0.23,1,0.32,1);cursor:pointer;transform-style:preserve-3d;}
-.svc-card:hover{transform:translateY(-12px);border-color:rgba(201,162,39,0.4);box-shadow:0 40px 80px rgba(0,0,0,0.5),0 0 40px rgba(201,162,39,0.1);}
-.svc-img{height:220px;display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative;overflow:hidden;}
-.svc-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,var(--dark-3) 100%);}
-.svc-body{padding:2rem;}
-.svc-body h3{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:0.8rem;}
-.svc-body p{color:var(--white-dim);font-size:0.95rem;line-height:1.7;margin-bottom:1.2rem;}
-.svc-features{display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.5rem;}
-.svc-feat{display:flex;align-items:center;gap:0.6rem;font-size:0.9rem;color:var(--white-dim);}
-.svc-feat::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0;}
-.svc-price{display:flex;align-items:center;justify-content:space-between;}
-.price-from{font-size:0.8rem;color:var(--white-dim);font-family:'Syne',sans-serif;}
-.price-val{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--gold);}
+.stats-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
 
-/* PRICING TABLE */
-#pricing{background:var(--dark-2);}
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:1rem;}
-.price-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:24px;padding:2.5rem;text-align:center;position:relative;overflow:hidden;transition:all 0.4s;}
-.price-card.featured{border-color:var(--gold);background:var(--glass-gold);}
-.price-card.featured::before{content:'Most Popular';position:absolute;top:1.5rem;right:-2rem;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--dark);font-family:'Syne',sans-serif;font-size:0.75rem;font-weight:700;padding:0.4rem 3rem;transform:rotate(35deg);}
-.price-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(0,0,0,0.4);}
-.price-card h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
-.price-amount{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:900;color:var(--white);margin-bottom:0.3rem;}
-.price-amount span{font-size:1.2rem;vertical-align:super;}
-.price-period{color:var(--white-dim);font-size:0.85rem;margin-bottom:1.5rem;}
-.price-features{list-style:none;text-align:left;margin-bottom:2rem;}
-.price-features li{padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.9rem;color:var(--white-dim);display:flex;align-items:center;gap:0.6rem;}
-.price-features li::before{content:'✓';color:var(--gold);font-weight:700;}
+.stat-float-card {
+    background: rgba(21, 27, 37, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(201,162,39,0.25);
+    border-radius: 28px;
+    padding: 1.8rem 1rem;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    transform: translateY(0);
+}
 
-/* FAQ */
-#faq{background:var(--dark-3);}
-.faq-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1rem;}
-.faq-item{background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;padding:1.5rem;cursor:pointer;transition:all 0.3s;}
-.faq-item:hover,.faq-item.open{border-color:rgba(201,162,39,0.4);background:var(--glass-gold);}
-.faq-q{display:flex;justify-content:space-between;align-items:center;font-family:'Syne',sans-serif;font-weight:700;gap:1rem;}
-.faq-icon{font-size:1.5rem;color:var(--gold);transition:transform 0.3s;flex-shrink:0;}
-.faq-item.open .faq-icon{transform:rotate(45deg);}
-.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s;color:var(--white-dim);font-size:0.9rem;line-height:1.7;}
-.faq-item.open .faq-a{max-height:200px;padding-top:1rem;}
+.stat-float-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--gold);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 25px rgba(201,162,39,0.15);
+}
 
-footer{background:var(--dark-2);border-top:1px solid var(--glass-border);padding:4rem 5% 2rem;}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:3rem;margin-bottom:3rem;}
-.footer-brand p{color:var(--white-dim);font-size:0.95rem;line-height:1.8;margin:1.2rem 0;max-width:280px;}
-.footer-col h4{font-family:'Syne',sans-serif;font-weight:700;margin-bottom:1.2rem;color:var(--gold);font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;}
-.footer-col ul{list-style:none;}
-.footer-col ul li{margin-bottom:0.8rem;}
-.footer-col ul a{color:var(--white-dim);text-decoration:none;font-size:0.9rem;transition:color 0.3s;display:flex;align-items:center;gap:0.4rem;}
-.footer-col ul a:hover{color:var(--gold);}
-.footer-col ul a::before{content:'›';color:var(--gold-dark);}
-.social-links{display:flex;gap:1rem;margin-top:1rem;}
-.social-link{width:40px;height:40px;background:var(--glass);border:1px solid var(--glass-border);border-radius:10px;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1.1rem;transition:all 0.3s;}
-.social-link:hover{background:linear-gradient(135deg,var(--gold-dark),var(--gold));border-color:var(--gold);transform:translateY(-3px);}
-.footer-bottom{border-top:1px solid var(--glass-border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;}
-.footer-bottom p{color:var(--white-dim);font-size:0.85rem;}
-.footer-bottom span{color:var(--gold);}
-@media(max-width:900px){.pricing-grid{grid-template-columns:1fr;}.faq-grid{grid-template-columns:1fr;}.services-main{grid-template-columns:1fr;}.footer-grid{grid-template-columns:1fr 1fr;}}
+.stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+}
+
+.stat-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 0.5rem;
+}
+
+/* Core Services - Full Width Image Cards */
+.core-services {
+    padding: 4rem 5%;
+    background: #0e1117;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-heading .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: rgba(201,162,39,0.1);
+    padding: 0.3rem 1.2rem;
+    border-radius: 40px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+
+.section-heading h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 0.8rem;
+}
+
+.section-heading p {
+    font-family: 'Syne', sans-serif;
+    color: rgba(255,255,255,0.5);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.services-showcase {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.service-showcase-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-bottom: 3rem;
+    background: #151b25;
+    border-radius: 28px;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    border: 1px solid rgba(201,162,39,0.1);
+}
+
+.service-showcase-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(201,162,39,0.3);
+    box-shadow: 0 30px 50px rgba(0,0,0,0.3);
+}
+
+.service-showcase-card.reverse {
+    direction: rtl;
+}
+
+.service-showcase-card.reverse .service-info {
+    direction: ltr;
+}
+
+.service-image {
+    position: relative;
+    min-height: 380px;
+    overflow: hidden;
+}
+
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.service-showcase-card:hover .service-image img {
+    transform: scale(1.05);
+}
+
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 1.5rem;
+}
+
+.image-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: #1a1a1a;
+    padding: 0.3rem 1rem;
+    border-radius: 30px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.service-info {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.service-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.service-info .subtitle {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.8rem;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.service-info p {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+}
+
+.feature-list {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.feature-list li {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.7);
+    padding: 0.4rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.feature-list li i {
+    color: var(--gold);
+    font-size: 0.7rem;
+}
+
+/* Sectors We Serve - Full Image Immersion */
+.sectors-serve {
+    padding: 5rem 5%;
+    background: #0a0c12;
+    position: relative;
+}
+
+.sectors-showcase {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.sector-card-big {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 0;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #151b25, #0e1117);
+    border-radius: 32px;
+    overflow: hidden;
+    border: 1px solid rgba(201,162,39,0.12);
+    transition: all 0.4s ease;
+}
+
+.sector-card-big:hover {
+    transform: translateX(8px);
+    border-color: rgba(201,162,39,0.3);
+}
+
+.sector-content {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sector-icon {
+    width: 65px;
+    height: 65px;
+    background: linear-gradient(135deg, rgba(201,162,39,0.15), rgba(201,162,39,0.05));
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.sector-icon i {
+    font-size: 2rem;
+    color: var(--gold);
+}
+
+.sector-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.sector-content p {
+    font-family: 'Syne', sans-serif;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.sector-stats {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.sector-stat {
+    text-align: center;
+}
+
+.sector-stat .number {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--gold);
+}
+
+.sector-stat .label {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+}
+
+.sector-image {
+    position: relative;
+    min-height: 320px;
+    overflow: hidden;
+}
+
+.sector-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.sector-card-big:hover .sector-image img {
+    transform: scale(1.05);
+}
+
+/* Testimonial Section */
+.testimonial-showcase {
+    padding: 5rem 5%;
+    background: linear-gradient(135deg, #0e1117, #151b25);
+}
+
+.testimonial-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+}
+
+.testimonial-premium {
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(201,162,39,0.12);
+    border-radius: 28px;
+    padding: 1.8rem;
+    transition: all 0.4s ease;
+}
+
+.testimonial-premium:hover {
+    transform: translateY(-8px);
+    border-color: rgba(201,162,39,0.3);
+    background: rgba(201,162,39,0.05);
+}
+
+.testimonial-premium .stars {
+    color: var(--gold);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.testimonial-premium .quote {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+    font-style: italic;
+}
+
+.client-info {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.client-avatar {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #1a1a1a;
+}
+
+.client-details h5 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #fff;
+}
+
+.client-details p {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.7rem;
+    color: var(--gold);
+}
+
+/* CTA Banner */
+.cta-banner {
+    padding: 5rem 5%;
+    background: linear-gradient(135deg, #c9a227, #8a6e0f);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);
+    animation: rotateBg 20s linear infinite;
+}
+
+@keyframes rotateBg {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.cta-banner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 900;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.cta-banner p {
+    font-family: 'Syne', sans-serif;
+    color: rgba(26,26,26,0.8);
+    max-width: 500px;
+    margin: 0 auto 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: #1a1a1a;
+    color: var(--gold);
+    padding: 0.9rem 2.2rem;
+    border-radius: 50px;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s;
+    position: relative;
+    z-index: 1;
+}
+
+.cta-btn:hover {
+    transform: translateY(-3px);
+    background: #ffffff;
+    color: #1a1a1a;
+    gap: 1rem;
+}
+/* ============================================ */
+/* ADD THESE ANIMATIONS TO YOUR SERVICES SECTION */
+/* ============================================ */
+
+/* Section Container Animation */
+.services-main {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Individual Card Entrance Animation - Staggered */
+.svc-card {
+    opacity: 0;
+    animation: cardReveal 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+}
+
+.svc-card:nth-child(1) { animation-delay: 0.1s; }
+.svc-card:nth-child(2) { animation-delay: 0.2s; }
+.svc-card:nth-child(3) { animation-delay: 0.3s; }
+.svc-card:nth-child(4) { animation-delay: 0.4s; }
+.svc-card:nth-child(5) { animation-delay: 0.5s; }
+.svc-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes cardReveal {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Card Hover Glow Effect */
+.svc-card {
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.svc-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 30px 40px -15px rgba(0, 0, 0, 0.4);
+}
+
+/* Shimmer Border Effect on Hover */
+.svc-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, 
+        transparent 0%, 
+        #c9a227 30%, 
+        #f0c84a 50%, 
+        #c9a227 70%, 
+        transparent 100%);
+    border-radius: 22px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+}
+
+.svc-card:hover::before {
+    opacity: 1;
+    animation: borderRotate 3s linear infinite;
+}
+
+@keyframes borderRotate {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 200% 0%; }
+}
+
+/* Image Zoom Animation on Hover */
+.svc-img img {
+    transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.svc-card:hover .svc-img img {
+    transform: scale(1.08);
+}
+
+/* Text Slide Up Animation for Content */
+.svc-body h3,
+.svc-body p,
+.svc-feat {
+    opacity: 0;
+    animation: textSlide 0.5s ease forwards;
+}
+
+.svc-card .svc-body h3 { animation-delay: 0.1s; }
+.svc-card .svc-body p { animation-delay: 0.2s; }
+.svc-card .svc-feat:nth-child(1) { animation-delay: 0.3s; }
+.svc-card .svc-feat:nth-child(2) { animation-delay: 0.4s; }
+.svc-card .svc-feat:nth-child(3) { animation-delay: 0.5s; }
+
+@keyframes textSlide {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Icon Pulsing Animation */
+.svc-card .svc-img::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background: rgba(201,162,39,0.3);
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.svc-card:hover .svc-img::after {
+    opacity: 1;
+    animation: pulseRing 1.5s ease-out infinite;
+}
+
+@keyframes pulseRing {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* Checkmark Icon Animation on Hover */
+.svc-feat::before {
+    content: '✓';
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 0.7rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.svc-card:hover .svc-feat::before {
+    animation: checkBounce 0.5s ease;
+}
+
+@keyframes checkBounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); color: #fff; }
+    100% { transform: scale(1); }
+}
+
+/* Floating Effect on Cards */
+@keyframes floatCard {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.svc-card:nth-child(odd):hover {
+    animation: floatCard 3s ease-in-out infinite;
+}
+
+/* Glow Effect on Section Title */
+.section-title {
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    animation: titleLine 1.5s ease-out forwards;
+}
+
+@keyframes titleLine {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+/* Section Tag Pulse Animation */
+.section-tag {
+    animation: tagPulse 2s ease-in-out infinite;
+}
+
+@keyframes tagPulse {
+    0%, 100% { 
+        letter-spacing: 2px;
+        opacity: 0.8;
+    }
+    50% { 
+        letter-spacing: 4px;
+        opacity: 1;
+    }
+}
+
+/* Smooth Scroll Reveal for Cards (when scrolling into view) */
+.svc-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.svc-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Add this JavaScript at the bottom of your page */
+/* Responsive */
+@media (max-width: 1024px) {
+    .stats-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .service-showcase-card {
+        grid-template-columns: 1fr;
+    }
+    .sector-card-big {
+        grid-template-columns: 1fr;
+    }
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+        max-width: 450px;
+        margin: 0 auto;
+    }
+    .sector-image {
+        min-height: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-wrapper {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .floating-stats {
+        margin-top: -30px;
+    }
+    .service-info h3 {
+        font-size: 1.4rem;
+    }
+    .service-info {
+        padding: 1.5rem;
+    }
+}
 </style>
-</head>
-<body>
-<div class="cursor" id="cursor"></div>
-<div class="cursor-trail" id="cursorTrail"></div>
+{% endblock %}
 
-<nav>
-  <a href="/" class="logo"><div class="logo-icon">⚡</div>Tech<span>Fix</span> Pro</a>
-  <ul class="nav-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="services.html" class="active">Services</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html">Contact</a></li>
-    <li><a href="contact.html" class="nav-cta">Get Quote →</a></li>
-  </ul>
-</nav>
+{% block content %}
 
-<!-- PAGE HEADER -->
-<div class="page-header">
-  <div class="page-header-content">
-    <div class="breadcrumb"><a href="/">Home</a> <span>›</span> Services</div>
-    <div class="section-tag">What We Offer</div>
-    <h1 class="section-title" style="font-family:'Playfair Display',serif">Fast & Reliable Repairs<br>for <span style="color:var(--gold)">Every Device</span></h1>
-    <p style="color:var(--white-dim);max-width:550px;line-height:1.8;margin-top:1rem">From screen replacements to complex motherboard repairs — certified technicians with genuine parts and a 90-day warranty on all services.</p>
-  </div>
-</div>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<!-- SERVICES LIST -->
-<section>
-  <div class="filter-bar reveal">
-    <button class="filter-btn active">All Services</button>
-    <button class="filter-btn">Laptops</button>
-    <button class="filter-btn">Desktops</button>
-    <button class="filter-btn">Smartphones</button>
-    <button class="filter-btn">Software</button>
-  </div>
+        body {
+            font-family: 'Syne', sans-serif;
+            background: #0a0c10;
+            overflow-x: hidden;
+        }
 
-  <div class="services-main">
-    <div class="svc-card reveal" style="transition-delay:0.1s">
-      <div class="svc-img" style="background:linear-gradient(135deg,#0e1117,#151b25)">💾</div>
-      <div class="svc-body">
-        <h3>Data Recovery</h3>
-        <p>Advanced recovery from crashed HDDs, SSDs, flash drives, and RAID arrays. We retrieve deleted files, corrupted partitions, and physically damaged drives.</p>
-        <div class="svc-features">
-          <div class="svc-feat">HDD & SSD recovery</div>
-          <div class="svc-feat">RAID array recovery</div>
-          <div class="svc-feat">Deleted file retrieval</div>
-          <div class="svc-feat">95% success rate</div>
-        </div>
-        <div class="svc-price">
-          <div><div class="price-from">Starting from</div><div class="price-val">₹999</div></div>
-          <a href="contact.html" class="btn-gold" style="padding:0.7rem 1.5rem;font-size:0.85rem">Book Now →</a>
-        </div>
-      </div>
+        /* ============================================ */
+        /* HERO SECTION - SERVICE PAGE */
+        /* ============================================ */
+        .service-hero {
+            position: relative;
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #050708;
+        }
+
+        /* Background Image with Opacity */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.35;
+            filter: brightness(0.7) contrast(1.1);
+        }
+
+        /* Dark Gradient Overlay for depth */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(0,0,0,0.4) 0%, rgba(8,10,14,0.85) 100%);
+            z-index: 1;
+        }
+
+        /* Animated Gold Particles */
+        .particles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(201,162,39,0.6), rgba(201,162,39,0));
+            border-radius: 50%;
+            pointer-events: none;
+            animation: floatParticle linear infinite;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Hero Main Container */
+        .hero-container {
+            position: relative;
+            z-index: 10;
+            max-width: 1400px;
+            width: 90%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        /* Left Content - Text Area */
+        .hero-content {
+            animation: fadeInUp 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1) both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(201,162,39,0.12);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(201,162,39,0.35);
+            padding: 0.4rem 1.2rem;
+            border-radius: 60px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #c9a227;
+            margin-bottom: 1.5rem;
+            animation: glowPulse 2.5s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(201,162,39,0.2);
+                border-color: rgba(201,162,39,0.35);
+            }
+            50% {
+                box-shadow: 0 0 15px 3px rgba(201,162,39,0.25);
+                border-color: #c9a227;
+            }
+        }
+
+        .hero-badge i {
+            font-size: 0.7rem;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 900;
+            line-height: 1.15;
+            color: #ffffff;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-title .gold-text {
+            background: linear-gradient(135deg, #c9a227, #f0c84a, #c9a227);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+            animation: shimmer 3s ease infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .hero-description {
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        /* Trust Stats Row */
+        .hero-stats {
+            display: flex;
+            gap: 1.8rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #c9a227;
+            letter-spacing: 1px;
+        }
+
+        .stat-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: rgba(255,255,255,0.55);
+        }
+
+        /* CTA Buttons */
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #c9a227, #8a6e0f);
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-family: 'Syne', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #0a0c10;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(201,162,39,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(201,162,39,0.45);
+            gap: 0.9rem;
+            background: linear-gradient(135deg, #dbb42c, #9e7a15);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid rgba(201,162,39,0.6);
+            padding: 0.85rem 2rem;
+            border-radius: 50px;
+            font-family: 'Syne', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #c9a227;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+        }
+
+        .btn-outline:hover {
+            background: rgba(201,162,39,0.12);
+            border-color: #c9a227;
+            transform: translateY(-3px);
+            gap: 0.9rem;
+        }
+
+        /* ============================================ */
+        /* FLOATING BOOKING CARD - RIGHT SIDE */
+        /* ============================================ */
+        .booking-card-wrapper {
+            animation: fadeInRight 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.2s both;
+            position: relative;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .booking-card {
+            background: rgba(15, 18, 25, 0.85);
+            backdrop-filter: blur(18px);
+            border-radius: 32px;
+            border: 1px solid rgba(201,162,39,0.3);
+            padding: 2rem 1.8rem;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,162,39,0.1);
+            transition: all 0.4s ease;
+            animation: cardFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes cardFloat {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .booking-card:hover {
+            border-color: rgba(201,162,39,0.6);
+            box-shadow: 0 30px 55px -15px rgba(201,162,39,0.2);
+        }
+
+        .booking-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .booking-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(201,162,39,0.2), rgba(201,162,39,0.05));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            border: 1px solid rgba(201,162,39,0.4);
+        }
+
+        .booking-icon i {
+            font-size: 1.6rem;
+            color: #c9a227;
+        }
+
+        .booking-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.3rem;
+        }
+
+        .booking-header p {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.55);
+        }
+
+        /* Booking Form */
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #c9a227;
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.9rem 1rem 0.9rem 2.5rem;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(201,162,39,0.25);
+            border-radius: 16px;
+            font-family: 'Syne', sans-serif;
+            font-size: 0.8rem;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #c9a227;
+            background: rgba(255,255,255,0.1);
+            box-shadow: 0 0 0 3px rgba(201,162,39,0.2);
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .form-group select option {
+            background: #0f1219;
+            color: #fff;
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* Date & Time Row */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+        }
+
+        /* Book Button */
+        .book-btn {
+            background: linear-gradient(135deg, #c9a227, #8a6e0f);
+            border: none;
+            padding: 1rem;
+            border-radius: 20px;
+            font-family: 'Syne', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #0a0c10;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-top: 0.5rem;
+        }
+
+        .book-btn:hover {
+            transform: translateY(-2px);
+            gap: 1rem;
+            box-shadow: 0 10px 25px rgba(201,162,39,0.4);
+        }
+
+        /* Urgency Note */
+        .urgency-note {
+            text-align: center;
+            margin-top: 1.2rem;
+            font-size: 0.65rem;
+            color: rgba(201,162,39,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+        }
+
+        .urgency-note i {
+            font-size: 0.6rem;
+        }
+
+        /* 3D Rotating Element - Decorative */
+        .hero-3d-decor {
+            position: absolute;
+            bottom: 5%;
+            right: 3%;
+            width: 120px;
+            height: 120px;
+            z-index: 5;
+            pointer-events: none;
+            opacity: 0.4;
+            animation: rotate3D 20s linear infinite;
+        }
+
+        @keyframes rotate3D {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+                padding: 4rem 0;
+            }
+            .hero-content {
+                text-align: center;
+            }
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-stats {
+                justify-content: center;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .booking-card {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .booking-card {
+                padding: 1.5rem;
+            }
+            .hero-badge {
+                font-size: 0.6rem;
+            }
+        }
+
+        /* Additional Animation for Gold Shine */
+        @keyframes goldShine {
+            0% {
+                background-position: -200% center;
+            }
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        /* 3D Hover effect on card */
+        .booking-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .booking-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+
+<section class="service-hero">
+    <!-- Background Image with Opacity -->
+    <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=1920&h=1080&fit=crop" alt="Service Background" class="hero-bg">
+    <div class="hero-overlay"></div>
+
+    <!-- Animated Gold Particles -->
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <!-- 3D Rotating Decorative Element -->
+    <div class="hero-3d-decor">
+        <svg width="120" height="120" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="50,10 90,30 90,70 50,90 10,70 10,30" stroke="#c9a227" stroke-width="1.5" fill="none" opacity="0.4"/>
+            <polygon points="50,20 80,35 80,65 50,80 20,65 20,35" stroke="#c9a227" stroke-width="1" fill="none" opacity="0.25"/>
+            <circle cx="50" cy="50" r="8" fill="#c9a227" opacity="0.3"/>
+        </svg>
     </div>
-    <div class="svc-card reveal" style="transition-delay:0.2s">
-      <div class="svc-img" style="background:linear-gradient(135deg,#0e1117,#1c2433)">🖥️</div>
-      <div class="svc-body">
-        <h3>Computer & Laptop Repair</h3>
-        <p>Complete hardware diagnostics and repair for all makes and models. Motherboard, RAM, GPU, cooling system repairs with genuine components.</p>
-        <div class="svc-features">
-          <div class="svc-feat">All brands serviced</div>
-          <div class="svc-feat">Genuine spare parts</div>
-          <div class="svc-feat">Screen replacement</div>
-          <div class="svc-feat">Keyboard & battery</div>
+
+    <div class="hero-container">
+        <!-- Left Content -->
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-microchip"></i>
+                PROFESSIONAL TECH SERVICE
+                <i class="fas fa-bolt"></i>
+            </div>
+            <h1 class="hero-title">
+                Expert Repair.<br>
+                <span class="gold-text">Same-Day Service.</span>
+            </h1>
+            <p class="hero-description">
+                Certified technicians, genuine parts, and 12-month warranty on all repairs. 
+                From motherboard issues to liquid damage — we fix it all.
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">5000+</span>
+                    <span class="stat-label">Devices Repaired</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">98%</span>
+                    <span class="stat-label">Success Rate</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Support</span>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="#" class="btn-primary">
+                    <i class="fas fa-calendar-check"></i> Schedule Repair
+                </a>
+                <a href="#" class="btn-outline">
+                    <i class="fas fa-phone-alt"></i> Emergency Call
+                </a>
+            </div>
         </div>
-        <div class="svc-price">
-          <div><div class="price-from">Starting from</div><div class="price-val">₹499</div></div>
-          <a href="contact.html" class="btn-gold" style="padding:0.7rem 1.5rem;font-size:0.85rem">Book Now →</a>
+
+        <!-- Right Side - Floating Booking Card -->
+        <div class="booking-card-wrapper">
+            <div class="booking-card">
+                <div class="booking-header">
+                    <div class="booking-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Book Your Service Today</h3>
+                    <p>Free diagnostic • Best price guarantee</p>
+                </div>
+                <form class="booking-form" id="quickBookingForm">
+                    <div class="form-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-phone-alt"></i>
+                        <input type="tel" placeholder="Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-laptop"></i>
+                        <select required>
+                            <option value="" disabled selected>Select Device Type</option>
+                            <option>Laptop Repair</option>
+                            <option>Desktop Repair</option>
+                            <option>Data Recovery</option>
+                            <option>Virus Removal</option>
+                            <option>Printer Repair</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <i class="fas fa-calendar-day"></i>
+                            <input type="date" required id="bookingDate">
+                        </div>
+                        <div class="form-group">
+                            <i class="fas fa-clock"></i>
+                            <select required>
+                                <option value="" disabled selected>Time</option>
+                                <option>10:00 AM - 12:00 PM</option>
+                                <option>12:00 PM - 02:00 PM</option>
+                                <option>02:00 PM - 04:00 PM</option>
+                                <option>04:00 PM - 06:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="book-btn">
+                        <i class="fas fa-check-circle"></i> Book Now - Free Quote
+                    </button>
+                    <div class="urgency-note">
+                        <i class="fas fa-clock"></i> Same-day pickup available • Limited slots
+                    </div>
+                </form>
+            </div>
         </div>
-      </div>
     </div>
-    <div class="svc-card reveal" style="transition-delay:0.3s">
-      <div class="svc-img" style="background:linear-gradient(135deg,#151b25,#0e1117)">📱</div>
-      <div class="svc-body">
-        <h3>Smartphone Repair</h3>
-        <p>iPhone, Samsung, OnePlus, Xiaomi — we repair all smartphones. Screen replacement, battery, charging port, speaker, and camera repairs.</p>
-        <div class="svc-features">
-          <div class="svc-feat">Screen replacement (60 min)</div>
-          <div class="svc-feat">Battery replacement</div>
-          <div class="svc-feat">Water damage repair</div>
-          <div class="svc-feat">Back glass repair</div>
-        </div>
-        <div class="svc-price">
-          <div><div class="price-from">Starting from</div><div class="price-val">₹299</div></div>
-          <a href="contact.html" class="btn-gold" style="padding:0.7rem 1.5rem;font-size:0.85rem">Book Now →</a>
-        </div>
-      </div>
-    </div>
-    <div class="svc-card reveal" style="transition-delay:0.1s">
-      <div class="svc-img" style="background:linear-gradient(135deg,#0e1117,#151b25)">🧹</div>
-      <div class="svc-body">
-        <h3>Laptop Deep Cleaning</h3>
-        <p>Professional cleaning service to tackle overheating issues. We disassemble, clean, re-apply thermal compound, and reassemble for peak performance.</p>
-        <div class="svc-features">
-          <div class="svc-feat">Full disassembly clean</div>
-          <div class="svc-feat">Thermal repaste</div>
-          <div class="svc-feat">Fan replacement if needed</div>
-          <div class="svc-feat">Performance benchmark</div>
-        </div>
-        <div class="svc-price">
-          <div><div class="price-from">Starting from</div><div class="price-val">₹349</div></div>
-          <a href="contact.html" class="btn-gold" style="padding:0.7rem 1.5rem;font-size:0.85rem">Book Now →</a>
-        </div>
-      </div>
-    </div>
-    <div class="svc-card reveal" style="transition-delay:0.2s">
-      <div class="svc-img" style="background:linear-gradient(135deg,#1c2433,#0e1117)">⚙️</div>
-      <div class="svc-body">
-        <h3>OS Installation & Setup</h3>
-        <p>Fresh Windows 11, macOS, or Linux installation with all drivers, essential software, and performance tweaks for a blazing-fast experience.</p>
-        <div class="svc-features">
-          <div class="svc-feat">Windows 11 / 10 install</div>
-          <div class="svc-feat">Driver installation</div>
-          <div class="svc-feat">Software setup</div>
-          <div class="svc-feat">Data migration</div>
-        </div>
-        <div class="svc-price">
-          <div><div class="price-from">Starting from</div><div class="price-val">₹399</div></div>
-          <a href="contact.html" class="btn-gold" style="padding:0.7rem 1.5rem;font-size:0.85rem">Book Now →</a>
-        </div>
-      </div>
-    </div>
-    <div class="svc-card reveal" style="transition-delay:0.3s">
-      <div class="svc-img" style="background:linear-gradient(135deg,#151b25,#1c2433)">🛡️</div>
-      <div class="svc-body">
-        <h3>Virus & Malware Removal</h3>
-        <p>Complete system sanitization with deep scan malware removal. We eliminate viruses, ransomware, spyware and harden your system against future threats.</p>
-        <div class="svc-features">
-          <div class="svc-feat">Deep scan removal</div>
-          <div class="svc-feat">Ransomware recovery</div>
-          <div class="svc-feat">Security hardening</div>
-          <div class="svc-feat">Antivirus setup</div>
-        </div>
-        <div class="svc-price">
-          <div><div class="price-from">Starting from</div><div class="price-val">₹449</div></div>
-          <a href="contact.html" class="btn-gold" style="padding:0.7rem 1.5rem;font-size:0.85rem">Book Now →</a>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
-
-<!-- PRICING -->
-<section id="pricing">
-  <div class="section-tag reveal">Service Plans</div>
-  <h2 class="section-title reveal">Transparent Pricing,<br>No Hidden Charges</h2>
-  <p class="section-sub reveal">Choose a plan that suits your needs. All plans include free diagnosis, 90-day warranty, and certified technicians.</p>
-  <div class="pricing-grid">
-    <div class="price-card reveal" style="transition-delay:0.1s">
-      <h3>Basic</h3>
-      <div class="price-amount"><span>₹</span>499</div>
-      <div class="price-period">single repair</div>
-      <ul class="price-features">
-        <li>Single device repair</li>
-        <li>Free diagnosis</li>
-        <li>30-day warranty</li>
-        <li>Genuine parts</li>
-        <li>Same-day service</li>
-      </ul>
-      <a href="contact.html" class="btn-glass" style="width:100%;justify-content:center">Get Started</a>
-    </div>
-    <div class="price-card featured reveal" style="transition-delay:0.2s">
-      <h3>Professional</h3>
-      <div class="price-amount"><span>₹</span>999</div>
-      <div class="price-period">comprehensive repair</div>
-      <ul class="price-features">
-        <li>Multiple issues repair</li>
-        <li>Free diagnosis</li>
-        <li>90-day warranty</li>
-        <li>Genuine parts</li>
-        <li>Priority service</li>
-        <li>Home pickup & delivery</li>
-        <li>Post-repair support</li>
-      </ul>
-      <a href="contact.html" class="btn-gold" style="width:100%;justify-content:center">Get Started</a>
-    </div>
-    <div class="price-card reveal" style="transition-delay:0.3s">
-      <h3>Business</h3>
-      <div class="price-amount"><span>₹</span>Custom</div>
-      <div class="price-period">bulk / enterprise</div>
-      <ul class="price-features">
-        <li>Multiple device management</li>
-        <li>Dedicated technician</li>
-        <li>1-year warranty</li>
-        <li>Annual maintenance</li>
-        <li>24/7 priority support</li>
-        <li>On-site service</li>
-        <li>Monthly billing</li>
-      </ul>
-      <a href="contact.html" class="btn-glass" style="width:100%;justify-content:center">Contact Us</a>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section id="faq">
-  <div class="section-tag reveal">FAQ</div>
-  <h2 class="section-title reveal">Frequently Asked Questions</h2>
-  <div class="faq-grid" id="faqGrid">
-    <div class="faq-item reveal">
-      <div class="faq-q">How long does a typical repair take? <span class="faq-icon">+</span></div>
-      <div class="faq-a">Most repairs are completed same-day or within 24 hours. Complex motherboard repairs or data recovery may take 2-3 business days. We always provide an accurate timeline after free diagnosis.</div>
-    </div>
-    <div class="faq-item reveal">
-      <div class="faq-q">Do you use genuine spare parts? <span class="faq-icon">+</span></div>
-      <div class="faq-a">Yes, we use only OEM and manufacturer-approved spare parts for all repairs. We never use cheap aftermarket components that could cause further damage to your device.</div>
-    </div>
-    <div class="faq-item reveal">
-      <div class="faq-q">Is there a warranty on repairs? <span class="faq-icon">+</span></div>
-      <div class="faq-a">Absolutely! All our repairs come with a minimum 90-day warranty. If the same issue reoccurs within the warranty period, we fix it free of charge, no questions asked.</div>
-    </div>
-    <div class="faq-item reveal">
-      <div class="faq-q">Can you recover data from a physically damaged drive? <span class="faq-icon">+</span></div>
-      <div class="faq-a">Yes! We have specialized tools and cleanroom techniques for physically damaged drives. Our data recovery success rate is over 95% even for severely damaged media.</div>
-    </div>
-    <div class="faq-item reveal">
-      <div class="faq-q">Do you offer pick-up and delivery service? <span class="faq-icon">+</span></div>
-      <div class="faq-a">Yes, we offer free doorstep pickup and delivery within Solapur city for our Professional and Business plan customers. We also accept courier shipments from other cities.</div>
-    </div>
-    <div class="faq-item reveal">
-      <div class="faq-q">What payment methods do you accept? <span class="faq-icon">+</span></div>
-      <div class="faq-a">We accept cash, UPI (GPay, PhonePe, Paytm), debit/credit cards, and net banking. For business clients, we also offer invoice-based monthly billing with credit terms.</div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <a href="/" class="logo"><div class="logo-icon">⚡</div>Tech<span>Fix</span> Pro</a>
-      <p>Solapur's most trusted laptop & computer repair specialists since 2014.</p>
-      <div class="social-links">
-        <a class="social-link" href="#">📘</a><a class="social-link" href="#">📸</a><a class="social-link" href="#">💬</a>
-      </div>
-    </div>
-    <div class="footer-col"><h4>Services</h4><ul>
-      <li><a href="#">Data Recovery</a></li><li><a href="#">Computer Repair</a></li>
-      <li><a href="#">Laptop Cleaning</a></li><li><a href="#">OS Installation</a></li>
-    </ul></div>
-    <div class="footer-col"><h4>Quick Links</h4><ul>
-      <li><a href="/">Home</a></li><li><a href="services.html">Services</a></li>
-      <li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li>
-    </ul></div>
-    <div class="footer-col"><h4>Contact</h4><ul>
-      <li><a href="#">📍 Solapur, Maharashtra</a></li>
-      <li><a href="tel:+919999999999">📞 +91 99999 99999</a></li>
-      <li><a href="#">✉️ info@techfixpro.in</a></li>
-    </ul></div>
-  </div>
-  <div style="border-top:1px solid var(--glass-border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;">
-    <p style="color:var(--white-dim);font-size:0.85rem">© 2024 <span style="color:var(--gold)">TechFix Pro</span>. All rights reserved.</p>
-    <p style="color:var(--white-dim);font-size:0.85rem">Made with <span style="color:var(--gold)">♦</span> in Solapur</p>
-  </div>
-</footer>
 
 <script>
-const cursor=document.getElementById('cursor'),trail=document.getElementById('cursorTrail');
-let mx=0,my=0,tx=0,ty=0;
-document.addEventListener('mousemove',(e)=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
-(function animateTrail(){tx+=(mx-tx)*0.1;ty+=(my-ty)*0.1;trail.style.left=tx+'px';trail.style.top=ty+'px';requestAnimationFrame(animateTrail);})();
-const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});
-document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el));
-document.querySelectorAll('.filter-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');});
+    // ============================================
+    // ANIMATED PARTICLES - GOLD DUST EFFECT
+    // ============================================
+    (function createParticles() {
+        const container = document.getElementById('particlesContainer');
+        if (!container) return;
+        
+        const particleCount = 45;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            // Random size between 2px and 8px
+            const size = Math.random() * 6 + 2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            
+            // Random starting position
+            particle.style.left = Math.random() * 100 + '%';
+            
+            // Random animation duration between 8s and 25s
+            const duration = Math.random() * 17 + 8;
+            particle.style.animationDuration = duration + 's';
+            
+            // Random delay
+            particle.style.animationDelay = Math.random() * 10 + 's';
+            
+            // Random opacity variant
+            particle.style.opacity = Math.random() * 0.5 + 0.2;
+            
+            container.appendChild(particle);
+        }
+    })();
+
+    // Set minimum date for booking (today's date)
+    (function setMinDate() {
+        const dateInput = document.getElementById('bookingDate');
+        if (dateInput) {
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const dd = String(today.getDate()).padStart(2, '0');
+            dateInput.min = `${yyyy}-${mm}-${dd}`;
+            // Set default to tomorrow for better UX
+            const tomorrow = new Date(today);
+            tomorrow.setDate(today.getDate() + 1);
+            const tmrY = tomorrow.getFullYear();
+            const tmrM = String(tomorrow.getMonth() + 1).padStart(2, '0');
+            const tmrD = String(tomorrow.getDate()).padStart(2, '0');
+            dateInput.value = `${tmrY}-${tmrM}-${tmrD}`;
+        }
+    })();
+
+    // Form submission handling (demo)
+    const bookingForm = document.getElementById('quickBookingForm');
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Create success animation / alert
+            const btn = bookingForm.querySelector('.book-btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Processing...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check-circle"></i> Request Sent! We\'ll Call You';
+                btn.style.background = 'linear-gradient(135deg, #2a7a3e, #1e5a2e)';
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    btn.style.background = '';
+                    bookingForm.reset();
+                    // Reset date after reset
+                    const today = new Date();
+                    const tomorrow = new Date(today);
+                    tomorrow.setDate(today.getDate() + 1);
+                    const tmrY = tomorrow.getFullYear();
+                    const tmrM = String(tomorrow.getMonth() + 1).padStart(2, '0');
+                    const tmrD = String(tomorrow.getDate()).padStart(2, '0');
+                    const dateInput = document.getElementById('bookingDate');
+                    if (dateInput) dateInput.value = `${tmrY}-${tmrM}-${tmrD}`;
+                }, 2500);
+            }, 1200);
+        });
+    }
+
+    // Add mouse parallax effect to booking card (3D depth)
+    const bookingCard = document.querySelector('.booking-card');
+    if (bookingCard) {
+        const wrapper = document.querySelector('.booking-card-wrapper');
+        if (wrapper) {
+            wrapper.addEventListener('mousemove', (e) => {
+                const rect = wrapper.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 25;
+                const rotateY = (centerX - x) / 25;
+                bookingCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+            });
+            wrapper.addEventListener('mouseleave', () => {
+                bookingCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+            });
+        }
+    }
+
+    // Floating animation for gold particles - additional random movement
+    const particles = document.querySelectorAll('.particle');
+    setInterval(() => {
+        particles.forEach(p => {
+            const randomX = (Math.random() - 0.5) * 15;
+            const randomY = (Math.random() - 0.5) * 15;
+            p.style.transform = `translate(${randomX}px, ${randomY}px)`;
+            setTimeout(() => {
+                p.style.transform = 'translate(0, 0)';
+            }, 800);
+        });
+    }, 4000);
+</script>
+
+<!-- Core Services Showcase -->
+<section class="core-services">
+    <div class="section-heading">
+        <div class="tag reveal"><span>✦</span> PREMIUM SERVICES <span>✦</span></div>
+        <h2 class="reveal">What <span style="color: var(--gold);">We Do</span> Best</h2>
+        <p class="reveal">Comprehensive IT solutions tailored to your needs</p>
+    </div>
+
+    <div class="services-showcase">
+        <!-- Service 1 -->
+        <div class="service-showcase-card reveal">
+            <div class="service-image">
+                <img src="{% static 'images/computer_repaire.jpg' %}" alt="Laptop Repair Service">
+                <div class="image-overlay">
+                    <span class="image-badge">⭐ Most Requested</span>
+                </div>
+            </div>
+            <div class="service-info">
+                <h3>Hardware Repair & Diagnostics</h3>
+                <div class="subtitle">Expert Component-Level Repair</div>
+                <p>Advanced diagnostics and precision repairs for all laptop and desktop brands. Motherboard repair, screen replacement, keyboard fix, battery replacement, and chip-level servicing with 100% genuine parts.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> Same-day repair available</li>
+                    <li><i class="fas fa-check-circle"></i> 90-day warranty on repairs</li>
+                    <li><i class="fas fa-check-circle"></i> Free pickup & delivery</li>
+                </ul>
+                <a href="{% url 'contact' %}" class="btn-glass">Book Service →</a>
+            </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-showcase-card reverse reveal">
+            <div class="service-image">
+                <img src="{% static 'images/laptop_cleaning.jpeg' %}" alt="Deep Cleaning Service">
+                <div class="image-overlay">
+                    <span class="image-badge">✨ Premium Care</span>
+                </div>
+            </div>
+            <div class="service-info">
+                <h3>Deep Cleaning & Thermal Management</h3>
+                <div class="subtitle">Extend Device Lifespan</div>
+                <p>Professional disassembly, dust removal, thermal paste reapplied, fan cleaning, and performance optimization. Prevents overheating, reduces fan noise, and improves overall system stability.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> Full internal cleaning</li>
+                    <li><i class="fas fa-check-circle"></i> Premium thermal paste</li>
+                    <li><i class="fas fa-check-circle"></i> Temperature tested</li>
+                </ul>
+                <a href="{% url 'contact' %}" class="btn-glass">Book Service →</a>
+            </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-showcase-card reveal">
+            <div class="service-image">
+                <img src="{% static 'images/data_recovery.jpg' %}" alt="Data Recovery">
+                <div class="image-overlay">
+                    <span class="image-badge">🔐 Critical Service</span>
+                </div>
+            </div>
+            <div class="service-info">
+                <h3>Data Recovery & Backup Solutions</h3>
+                <div class="subtitle">Recover What Matters Most</div>
+                <p>Professional data recovery from failed HDDs, SSDs, USB drives, memory cards, and RAID arrays. 95% success rate for critical business and personal data recovery.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> Clean room environment</li>
+                    <li><i class="fas fa-check-circle"></i> No data, no fee policy</li>
+                    <li><i class="fas fa-check-circle"></i> Emergency recovery available</li>
+                </ul>
+                <a href="{% url 'contact' %}" class="btn-glass">Book Service →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= Sectors We Serve ================= -->
+
+<style>
+/* SECTION */
+.sector-service-section{
+    padding:90px 8%;
+    background:#0f0f0f;
+    overflow:hidden;
+}
+
+/* heading */
+.section-heading{
+    text-align:center;
+    margin-bottom:70px;
+    color:#fff;
+}
+
+.section-heading .tag{
+    color:#d4af37;
+    font-weight:600;
+    margin-bottom:10px;
+}
+
+.section-heading h2{
+    font-size:46px;
+    margin-bottom:10px;
+}
+
+.section-heading h2 span{
+    color:#d4af37;
+}
+
+.section-heading p{
+    color:#bbb;
+}
+
+
+/* EACH ROW */
+.sector-row{
+    position:relative;
+    display:flex;
+    align-items:center;
+    margin-bottom:100px;
+    min-height:320px;
+}
+
+.sector-row.reverse{
+    flex-direction:row-reverse;
+}
+
+
+/* IMAGE */
+.sector-img{
+    width:72%;   /* bigger image */
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 20px 40px rgba(0,0,0,.25);
+}
+
+.sector-img img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+    transition:.7s;
+}
+
+.sector-row:hover .sector-img img{
+    transform:scale(1.08);
+}
+
+
+/* CARD (little overlap only) */
+.sector-box{
+    width:34%;
+    background:#fff;
+    color:#111;
+    padding:35px;
+    border-radius:18px;
+    position:absolute;
+    right:5%;   /* little overlap */
+    top:50%;
+    transform:translateY(-50%);
+    box-shadow:0 15px 35px rgba(0,0,0,.18);
+    z-index:10;
+    transition:.4s;
+}
+
+.reverse .sector-box{
+    left:5%;
+    right:auto;
+}
+
+.sector-row:hover .sector-box{
+    transform:translateY(-50%) translateY(-8px);
+}
+
+
+/* ICON */
+.sector-icon{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#d4af37;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+    margin-bottom:18px;
+}
+
+
+/* TEXT */
+.sector-box h3{
+    font-size:26px;
+    margin-bottom:12px;
+}
+
+.sector-box p{
+    font-size:15px;
+    line-height:1.7;
+    color:#555;
+}
+
+
+/* animation */
+.reveal-row{
+    opacity:0;
+    transform:translateY(70px);
+    transition:1s ease;
+}
+
+.reveal-row.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+
+/* MOBILE */
+@media(max-width:991px){
+
+    .sector-row,
+    .sector-row.reverse{
+        flex-direction:column;
+        min-height:auto;
+        margin-bottom:70px;
+    }
+
+    .sector-img{
+        width:100%;
+    }
+
+    .sector-img img{
+        height:240px;
+    }
+
+    .sector-box{
+        position:relative;
+        width:90%;
+        left:auto !important;
+        right:auto !important;
+        top:auto;
+        transform:none !important;
+        margin-top:-40px;   /* slight overlap mobile */
+        padding:25px;
+    }
+
+    .section-heading h2{
+        font-size:32px;
+    }
+}
+</style>
+
+
+<section class="sector-service-section">
+
+    <div class="section-heading">
+        <div class="tag">✦ WE SERVE ✦</div>
+        <h2>Trusted Across <span>All Sectors</span></h2>
+        <p>Partnering with leading institutions and businesses</p>
+    </div>
+
+
+    <!-- Row 1 -->
+    <div class="sector-row reveal-row">
+        <div class="sector-img">
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=900" alt="">
+        </div>
+        <div class="sector-box">
+            <div class="sector-icon"><i class="fas fa-graduation-cap"></i></div>
+            <h3>Educational Institutions</h3>
+            <p>Complete IT infrastructure management for colleges, schools and universities.</p>
+        </div>
+    </div>
+
+
+    <!-- Row 2 -->
+    <div class="sector-row reverse reveal-row">
+        <div class="sector-img">
+            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=900" alt="">
+        </div>
+        <div class="sector-box">
+            <div class="sector-icon"><i class="fas fa-hospital-user"></i></div>
+            <h3>Hospitals & Medicals</h3>
+            <p>Reliable IT support for hospitals, clinics and healthcare institutions.</p>
+        </div>
+    </div>
+
+
+    <!-- Row 3 -->
+    <div class="sector-row reveal-row">
+        <div class="sector-img">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900" alt="">
+        </div>
+        <div class="sector-box">
+            <div class="sector-icon"><i class="fas fa-building"></i></div>
+            <h3>Corporate Companies</h3>
+            <p>End-to-end IT solutions for offices and enterprise companies.</p>
+        </div>
+    </div>
+
+
+    <!-- Row 4 -->
+    <div class="sector-row reverse reveal-row">
+        <div class="sector-img">
+            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=900" alt="">
+        </div>
+        <div class="sector-box">
+            <div class="sector-icon"><i class="fas fa-landmark"></i></div>
+            <h3>Government & Banking</h3>
+            <p>Secure and compliant IT services for banks and government offices.</p>
+        </div>
+    </div>
+
+
+    <!-- Row 5 -->
+    <div class="sector-row reveal-row">
+        <div class="sector-img">
+            <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=900" alt="">
+        </div>
+        <div class="sector-box">
+            <div class="sector-icon"><i class="fas fa-home"></i></div>
+            <h3>Home Customers</h3>
+            <p>Personalized repair services for laptops, printers and networking.</p>
+        </div>
+    </div>
+
+</section>
+
+
+<script>
+const reveals = document.querySelectorAll('.reveal-row');
+
+function revealRows(){
+    reveals.forEach((item)=>{
+        let top = item.getBoundingClientRect().top;
+        let screen = window.innerHeight - 100;
+
+        if(top < screen){
+            item.classList.add('active');
+        }
+    });
+}
+
+window.addEventListener('scroll', revealRows);
+revealRows();
+</script>
+<!-- Testimonials from Different Sectors -->
+<section class="testimonial-showcase">
+    <div class="section-heading">
+        <div class="tag reveal"><span>✦</span> CLIENT STORIES <span>✦</span></div>
+        <h2 class="reveal">What Our <span style="color: var(--gold);">Partners Say</span></h2>
+        <p class="reveal">Real feedback from the organizations we serve</p>
+    </div>
+
+    <div class="testimonial-grid">
+        <div class="testimonial-premium reveal">
+            <div class="stars">★★★★★</div>
+            <p class="quote">"SBM has been managing our college computer labs for 3+ years. Excellent service, quick response, and very professional team. Highly recommended for educational institutions."</p>
+            <div class="client-info">
+                <div class="client-avatar">D</div>
+                <div class="client-details">
+                    <h5>Dr. Patil</h5>
+                    <p>College Principal</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonial-premium reveal">
+            <div class="stars">★★★★★</div>
+            <p class="quote">"As a hospital, we can't afford downtime. SBM provides 24/7 support and has never let us down. Their team understands healthcare IT requirements perfectly."</p>
+            <div class="client-info">
+                <div class="client-avatar">S</div>
+                <div class="client-details">
+                    <h5>Dr. Sharma</h5>
+                    <p>Hospital Director</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonial-premium reveal">
+            <div class="stars">★★★★★</div>
+            <p class="quote">"Our company has been using SBM for all IT needs since 2019. Reliable, affordable, and their technicians are very knowledgeable. Best IT partner we've had."</p>
+            <div class="client-info">
+                <div class="client-avatar">R</div>
+                <div class="client-details">
+                    <h5>Rajesh Mehta</h5>
+                    <p>IT Manager, TechCorp</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="cta-banner">
+    <h2 class="reveal">Ready to Transform Your IT Experience?</h2>
+    <p class="reveal">Join 500+ businesses and 10,000+ happy customers who trust SBM</p>
+    <a href="{% url 'contact' %}" class="cta-btn reveal">Get Free Consultation <i class="fas fa-arrow-right"></i></a>
+</section>
+
+<script>
+// Counter animation
+document.addEventListener('DOMContentLoaded', function() {
+    const counters = document.querySelectorAll('.stat-number');
+    
+    const animateCounter = (counter) => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        let count = 0;
+        const increment = target / 80;
+        
+        const updateCount = () => {
+            if (count < target) {
+                count += increment;
+                counter.innerText = Math.floor(count);
+                setTimeout(updateCount, 20);
+            } else {
+                counter.innerText = target;
+            }
+        };
+        updateCount();
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    counters.forEach(counter => observer.observe(counter));
 });
-document.querySelectorAll('.faq-item').forEach(item=>{
-  item.addEventListener('click',()=>{
-    const open=item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
-    if(!open)item.classList.add('open');
-  });
+
+// Reveal animations
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+<script>
+// ============================================
+// SERVICES SECTION ANIMATIONS
+// ============================================
+
+// Scroll Reveal Animation for Service Cards
+function initServiceCardReveal() {
+    const serviceCards = document.querySelectorAll('.svc-card');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, index * 100);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+    
+    serviceCards.forEach(card => {
+        observer.observe(card);
+    });
+}
+
+// Magnetic Button Effect (if you want it on your buttons)
+function initMagneticEffect() {
+    const btns = document.querySelectorAll('.btn-gold, .ideal-btn');
+    
+    btns.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = (e.clientX - rect.left - rect.width / 2) * 0.25;
+            const y = (e.clientY - rect.top - rect.height / 2) * 0.25;
+            btn.style.transform = `translate(${x}px, ${y}px)`;
+        });
+        
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = 'translate(0, 0)';
+        });
+    });
+}
+
+// Ripple Effect on Buttons
+function initRippleEffect() {
+    const btns = document.querySelectorAll('.btn-gold, .ideal-btn');
+    
+    btns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            ripple.style.position = 'absolute';
+            ripple.style.width = '100px';
+            ripple.style.height = '100px';
+            ripple.style.borderRadius = '50%';
+            ripple.style.background = 'rgba(255,255,255,0.3)';
+            ripple.style.transform = 'translate(-50%, -50%) scale(0)';
+            ripple.style.animation = 'rippleExpand 0.5s ease-out';
+            ripple.style.left = e.clientX - btn.getBoundingClientRect().left + 'px';
+            ripple.style.top = e.clientY - btn.getBoundingClientRect().top + 'px';
+            ripple.style.pointerEvents = 'none';
+            btn.style.position = 'relative';
+            btn.style.overflow = 'hidden';
+            btn.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 500);
+        });
+    });
+}
+
+// Add Ripple Animation Keyframes
+function addRippleStyles() {
+    if (!document.querySelector('#ripple-animation-style')) {
+        const style = document.createElement('style');
+        style.id = 'ripple-animation-style';
+        style.textContent = `
+            @keyframes rippleExpand {
+                from { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+                to { transform: translate(-50%, -50%) scale(4); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+}
+
+// Initialize all animations
+document.addEventListener('DOMContentLoaded', () => {
+    initServiceCardReveal();
+    initMagneticEffect();
+    initRippleEffect();
+    addRippleStyles();
 });
 </script>
-</body>
-</html>
+{% endblock %}

@@ -1,0 +1,898 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Gaming Laptops Collection | SBM Solution{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ============================================ */
+/* GAMING LAPTOPS GALLERY - LIGHT THEME */
+/* ============================================ */
+
+.gaming-gallery-page {
+    background: #fef9e6;
+    margin-top: 1.5rem;
+}
+
+/* Hero Section - Light Theme */
+.gallery-hero-light {
+    padding: 3rem 5% 2rem;
+    background: linear-gradient(135deg, #d6ac11 0%, #fffcf5 100%);
+    text-align: center;
+    border-bottom: 1px solid rgba(201,162,39,0.15);
+}
+
+.gallery-badge-light {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(201,162,39,0.1);
+    border: 1px solid rgba(201,162,39,0.3);
+    padding: 0.2rem 1.2rem;
+    border-radius: 50px;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #b47c2e;
+    {% comment %} margin-bottom: 1rem; {% endcomment %}
+}
+
+.gallery-title-light {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 2rem);
+    font-weight: 700;
+    color: #1e293b;
+    {% comment %} margin-bottom: 0.8rem; {% endcomment %}
+}
+
+.gallery-title-light span {
+    background: linear-gradient(135deg, #c9a227, #e9bc3f);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.gallery-subtitle-light {
+    font-family: 'Syne', sans-serif;
+    color: #64748b;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 0.9rem;
+}
+
+/* Gallery Grid Section */
+.gallery-grid-light {
+    padding: 3rem 5%;
+    background: #fef9e6;
+}
+
+.products-grid-light {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+/* Product Card - Light Theme, Clean Design */
+.product-card-light {
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    cursor: pointer;
+    border: 1px solid rgba(201,162,39,0.15);
+}
+
+.product-card-light:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    border-color: rgba(201,162,39,0.35);
+}
+
+/* Card Image */
+.card-img-light {
+    position: relative;
+    height: 220px;
+    background: #bebdb4;
+    {% comment %} background: #f1e894; {% endcomment %}
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.card-img-light img {
+    width: 85%;
+    height: 85%;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+}
+
+.product-card-light:hover .card-img-light img {
+    transform: scale(1.05);
+}
+
+/* No badges - removed completely */
+
+/* Card Info */
+.card-info-light {
+    padding: 1.2rem;
+}
+
+.product-brand-light {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #c9a227;
+    margin-bottom: 0.3rem;
+}
+
+.product-name-light {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+/* Specs Tags */
+.specs-tags-light {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.8rem;
+}
+
+.spec-tag-light {
+    background: #f1f5f9;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.6rem;
+    color: #475569;
+}
+
+/* Price Row */
+.price-row-light {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.current-price-light {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #c9a227;
+}
+
+.old-price-light {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.7rem;
+    color: #94a3b8;
+    text-decoration: line-through;
+}
+
+/* View Details Button */
+.details-btn-light {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.6rem;
+    background: rgba(201,162,39,0.08);
+    border: 1px solid rgba(201,162,39,0.25);
+    border-radius: 12px;
+    color: #b47c2e;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.details-btn-light:hover {
+    background: linear-gradient(135deg, #c9a227, #b88d1f);
+    border-color: transparent;
+    color: white;
+    transform: translateY(-2px);
+    gap: 0.7rem;
+}
+
+/* Modal for Product Details - Light Theme */
+.product-modal-light {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.modal-content-light {
+    max-width: 950px;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    background: #ffffff;
+    border-radius: 28px;
+    position: relative;
+    animation: modalInLight 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(201,162,39,0.2);
+}
+
+@keyframes modalInLight {
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.close-modal-light {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    font-size: 1.8rem;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #f1f5f9;
+    z-index: 10;
+}
+
+.close-modal-light:hover {
+    background: #c9a227;
+    color: white;
+    transform: rotate(90deg);
+}
+
+.modal-body-light {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.modal-image-light {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+    background: #faf6eb;
+    border-radius: 20px;
+    padding: 1.5rem;
+}
+
+.modal-image-light img {
+    max-width: 100%;
+    height: auto;
+    max-height: 280px;
+    object-fit: contain;
+}
+
+.modal-details-light {
+    flex: 1.5;
+}
+
+.modal-details-light h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 0.2rem;
+}
+
+.modal-brand-light {
+    font-family: 'Syne', sans-serif;
+    color: #c9a227;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+.modal-specs-light {
+    margin: 1rem 0;
+}
+
+.spec-row-light {
+    display: flex;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #e9edf2;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.85rem;
+}
+
+.spec-label-light {
+    width: 130px;
+    font-weight: 700;
+    color: #c9a227;
+}
+
+.spec-value-light {
+    flex: 1;
+    color: #334155;
+}
+
+.modal-prices-light {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin: 1.2rem 0;
+    padding: 1rem;
+    background: rgba(201,162,39,0.06);
+    border-radius: 16px;
+}
+
+.modal-current-light {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #c9a227;
+    font-family: 'Playfair Display', serif;
+}
+
+.modal-old-light {
+    font-size: 0.9rem;
+    text-decoration: line-through;
+    color: #94a3b8;
+}
+
+.modal-discount-light {
+    background: #e92e2e;
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: white;
+}
+
+.modal-btns-light {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.modal-btn-light {
+    flex: 1;
+    padding: 0.8rem;
+    text-align: center;
+    border-radius: 12px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.modal-btn-primary-light {
+    background: linear-gradient(135deg, #c9a227, #b88d1f);
+    color: #0d0a02;
+}
+
+.modal-btn-primary-light:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(201,162,39,0.3);
+}
+
+.modal-btn-secondary-light {
+    background: #f1f5f9;
+    border: 1px solid rgba(201,162,39,0.3);
+    color: #b47c2e;
+}
+
+.modal-btn-secondary-light:hover {
+    background: rgba(201,162,39,0.1);
+    transform: translateY(-2px);
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    background: #c9a227;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    z-index: 99;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-3px);
+    background: #b88d1f;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .products-grid-light {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+        max-width: 380px;
+        margin: 0 auto;
+    }
+    .modal-body-light {
+        flex-direction: column;
+        padding: 1.5rem;
+    }
+    .modal-details-light h2 {
+        font-size: 1.3rem;
+    }
+    .spec-row-light {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+    .spec-label-light {
+        width: auto;
+    }
+    .modal-prices-light {
+        flex-wrap: wrap;
+    }
+    .modal-current-light {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 540px) {
+    .gallery-grid-light {
+        padding: 2rem 1rem;
+    }
+    .card-img-light {
+        height: 180px;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="gaming-gallery-page">
+
+<!-- Hero Section -->
+<section class="gallery-hero-light">
+    <div class="gallery-badge-light">
+        <span>🎮</span>
+        GAMING COLLECTION
+        <span>🎮</span>
+    </div>
+    {% comment %} <h3 class="gallery-title-light">Ultimate Gaming <span>Laptops</span></h3> {% endcomment %}
+    {% comment %} <p class="gallery-subtitle-light">Discover our premium collection of high-performance gaming laptops. Built for victory, designed for champions.</p> {% endcomment %}
+</section>
+
+<!-- Gallery Grid -->
+<section class="gallery-grid-light">
+    <div class="products-grid-light" id="gamingProductsGrid">
+        <!-- Products loaded dynamically -->
+    </div>
+</section>
+
+<!-- Back to Top Button -->
+<div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+</div>
+
+</div>
+
+<!-- Product Details Modal -->
+<div id="productModalLight" class="product-modal-light">
+    <div class="modal-content-light">
+        <div class="close-modal-light">&times;</div>
+        <div class="modal-body-light" id="modalBodyLight">
+            <!-- Dynamic content -->
+        </div>
+    </div>
+</div>
+
+<script>
+// ============================================
+// GAMING LAPTOPS DATABASE - LIGHT THEME GALLERY
+// ============================================
+const gamingLaptopsData = [
+    {
+        id: 1,
+        name: "ASUS ROG Strix G16",
+        brand: "ASUS",
+        price: "₹1,38,990",
+        oldPrice: "₹1,89,990",
+        discount: "27% OFF",
+        img: "{% static 'images/p-16-i7-13th-Generation-15.png' %}",
+        specs: {
+            processor: "Intel Core i9-13980HX (13th Gen)",
+            graphics: "NVIDIA GeForce RTX 4080 12GB",
+            ram: "32GB DDR5 5600MHz",
+            storage: "1TB NVMe SSD",
+            display: "16-inch QHD+ (2560x1600) 240Hz",
+            cooling: "Liquid Metal + Triple Fans",
+            keyboard: "RGB Per-Key Mechanical",
+            battery: "90Wh",
+            weight: "2.5kg"
+        },
+       
+    },
+    {
+        id: 2,
+        name: "HP Victus 15",
+        brand: "HP",
+        price: "₹62,990",
+        oldPrice: "₹82,990",
+        discount: "24% OFF",
+        img: "{% static 'images/p-6.png' %}",
+        specs: {
+            processor: "AMD Ryzen 7 7840HS",
+            graphics: "NVIDIA RTX 3050 6GB",
+            ram: "16GB DDR5",
+            storage: "512GB SSD",
+            display: "15.6-inch FHD 144Hz",
+            cooling: "Dual Fans",
+            keyboard: "Backlit Keyboard",
+            battery: "70Wh",
+            weight: "2.3kg"
+        },
+        
+    },
+    {
+        id: 3,
+        name: "Dell G16",
+        brand: "Dell",
+        price: "₹1,25,990",
+        oldPrice: "₹1,65,990",
+        discount: "24% OFF",
+        img: "{% static 'images/p-2.png' %}",
+        specs: {
+            processor: "Intel Core i7-13700HX",
+            graphics: "NVIDIA RTX 4060 8GB",
+            ram: "16GB DDR5",
+            storage: "1TB SSD",
+            display: "16-inch QHD+ 165Hz",
+            cooling: "Alienware Cryo-tech",
+            keyboard: "RGB Backlit",
+            battery: "86Wh",
+            weight: "2.6kg"
+        },
+        {% comment %} fullDescription: "Dell G16 brings Alienware-inspired cooling and performance. Perfect for gamers who want premium build quality." {% endcomment %}
+    },
+    {
+        id: 4,
+        name: "Lenovo Legion Pro 5",
+        brand: "Lenovo",
+        price: "₹1,45,990",
+        oldPrice: "₹1,95,990",
+        discount: "26% OFF",
+        img: "{% static 'images/p-16-i7-13th-Generation-17.png' %}",
+        specs: {
+            processor: "AMD Ryzen 9 7945HX",
+            graphics: "NVIDIA RTX 4070 8GB",
+            ram: "32GB DDR5",
+            storage: "1TB SSD",
+            display: "16-inch WQXGA 240Hz",
+            cooling: "ColdFront 5.0",
+            keyboard: "RGB Per-Key",
+            battery: "80Wh",
+            weight: "2.5kg"
+        },
+        {% comment %} fullDescription: "Lenovo Legion Pro 5 is a beast for serious gamers. AMD Ryzen 9 combined with RTX 4070 delivers exceptional gaming performance." {% endcomment %}
+    },
+    {
+        id: 5,
+        name: "Acer Predator Helios 16",
+        brand: "Acer",
+        price: "₹1,55,990",
+        oldPrice: "₹2,10,990",
+        discount: "26% OFF",
+        img: "{% static 'images/p-5.png' %}",
+        specs: {
+            processor: "Intel Core i9-13900HX",
+            graphics: "NVIDIA RTX 4080 12GB",
+            ram: "32GB DDR5",
+            storage: "1TB SSD",
+            display: "16-inch Mini-LED 250Hz",
+            cooling: "AeroBlade 3D Fans",
+            keyboard: "Per-Key RGB",
+            battery: "90Wh",
+            weight: "2.6kg"
+        },
+        {% comment %} fullDescription: "Acer Predator Helios 16 features cutting-edge Mini-LED display and top-tier performance for competitive gaming." {% endcomment %}
+    },
+    {
+        id: 6,
+        name: "MSI Katana 15",
+        brand: "MSI",
+        price: "₹75,990",
+        oldPrice: "₹99,990",
+        discount: "24% OFF",
+        img: "{% static 'images/p-15-i3-6th-Generation-16-5.png' %}",
+        specs: {
+            processor: "Intel Core i7-13620H",
+            graphics: "NVIDIA RTX 4060 8GB",
+            ram: "16GB DDR5",
+            storage: "512GB SSD",
+            display: "15.6-inch FHD 144Hz",
+            cooling: "Cooler Boost 5",
+            keyboard: "RGB Backlit",
+            battery: "53.5Wh",
+            weight: "2.25kg"
+        },
+        {% comment %} fullDescription: "MSI Katana 15 offers great price-to-performance ratio. Perfect for gamers on a budget who want RTX 4060 power." {% endcomment %}
+    },
+    {
+        id: 7,
+        name: "Apple MacBook Pro M3",
+        brand: "Apple",
+        price: "₹1,99,990",
+        oldPrice: "₹2,49,990",
+        discount: "20% OFF",
+        img: "{% static 'images/p-16-i7-13th-Generation-18.png' %}",
+        specs: {
+            processor: "Apple M3 Pro Chip",
+            graphics: "18-core GPU",
+            ram: "18GB Unified",
+            storage: "512GB SSD",
+            display: "14.2-inch Liquid Retina XDR",
+            cooling: "Active Cooling",
+            keyboard: "Magic Keyboard",
+            battery: "Up to 18 hours",
+            weight: "1.6kg"
+        },
+        {% comment %} fullDescription: "Apple MacBook Pro M3 is perfect for creative professionals and casual gaming with exceptional build quality and display." {% endcomment %}
+    },
+    {
+        id: 8,
+        name: "ASUS TUF Gaming A15",
+        brand: "ASUS",
+        price: "₹58,990",
+        oldPrice: "₹75,990",
+        discount: "22% OFF",
+        img: "{% static 'images/p-16-i7-13th-Generation-15.png' %}",
+        specs: {
+            processor: "AMD Ryzen 7 7735HS",
+            graphics: "NVIDIA RTX 3050 6GB",
+            ram: "16GB DDR5",
+            storage: "512GB SSD",
+            display: "15.6-inch FHD 144Hz",
+            cooling: "Military-grade cooling",
+            keyboard: "RGB Backlit",
+            battery: "90Wh",
+            weight: "2.3kg"
+        },
+        {% comment %} fullDescription: "ASUS TUF Gaming A15 is built to last with military-grade durability. Great for budget-conscious gamers." {% endcomment %}
+    },
+    {
+        id: 9,
+        name: "Alienware m18 R2",
+        brand: "Alienware",
+        price: "₹2,49,990",
+        oldPrice: "₹3,29,990",
+        discount: "24% OFF",
+        img: "{% static 'images/p-6.png' %}",
+        specs: {
+            processor: "Intel Core i9-14900HX",
+            graphics: "NVIDIA RTX 4090 16GB",
+            ram: "64GB DDR5",
+            storage: "2TB SSD",
+            display: "18-inch QHD+ 165Hz",
+            cooling: "Cryo-tech + Vapor Chamber",
+            keyboard: "CherryMX Mechanical",
+            battery: "97Wh",
+            weight: "3.8kg"
+        },
+        {% comment %} fullDescription: "Alienware m18 R2 is the ultimate desktop replacement. With RTX 4090, it can handle any game at max settings." {% endcomment %}
+    },
+    {
+        id: 10,
+        name: "Lenovo LOQ 15",
+        brand: "Lenovo",
+        price: "₹65,990",
+        oldPrice: "₹85,990",
+        discount: "23% OFF",
+        img: "{% static 'images/p-2.png' %}",
+        specs: {
+            processor: "Intel Core i5-13500H",
+            graphics: "NVIDIA RTX 4050 6GB",
+            ram: "16GB DDR5",
+            storage: "512GB SSD",
+            display: "15.6-inch FHD 144Hz",
+            cooling: "AI-Powered Cooling",
+            keyboard: "White Backlit",
+            battery: "60Wh",
+            weight: "2.4kg"
+        },
+        {% comment %} fullDescription: "Lenovo LOQ 15 is an affordable gaming laptop with latest-gen components. Perfect for esports titles and casual gaming." {% endcomment %}
+    }
+];
+
+// Render Products
+function renderGamingProducts() {
+    const grid = document.getElementById('gamingProductsGrid');
+    
+    grid.innerHTML = gamingLaptopsData.map(product => `
+        <div class="product-card-light" data-id="${product.id}">
+            <div class="card-img-light">
+                <img src="${product.img}" alt="${product.name}" onerror="this.src='https://placehold.co/400x300?text=${encodeURIComponent(product.name)}'">
+            </div>
+            <div class="card-info-light">
+                <div class="product-brand-light">${product.brand}</div>
+                <h3 class="product-name-light">${product.name}</h3>
+                <div class="specs-tags-light">
+                    <span class="spec-tag-light">${product.specs.processor.split(' ').slice(0,2).join(' ')}</span>
+                    <span class="spec-tag-light">${product.specs.graphics.split(' ').slice(0,2).join(' ')}</span>
+                    <span class="spec-tag-light">${product.specs.ram}</span>
+                </div>
+                <div class="price-row-light">
+                    <span class="current-price-light">${product.price}</span>
+                    <span class="old-price-light">${product.oldPrice}</span>
+                </div>
+                <button class="details-btn-light" onclick="showProductDetailsLight(${product.id})">
+                    View Details <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Show Product Details Modal
+function showProductDetailsLight(productId) {
+    const product = gamingLaptopsData.find(p => p.id === productId);
+    if (!product) return;
+    
+    const modal = document.getElementById('productModalLight');
+    const modalBody = document.getElementById('modalBodyLight');
+    
+    modalBody.innerHTML = `
+        <div class="modal-image-light">
+            <img src="${product.img}" alt="${product.name}" onerror="this.src='https://placehold.co/500x400?text=${encodeURIComponent(product.name)}'">
+        </div>
+        <div class="modal-details-light">
+            <h2>${product.name}</h2>
+            <div class="modal-brand-light">${product.brand}</div>
+            
+            <div class="modal-specs-light">
+                <div class="spec-row-light">
+                    <div class="spec-label-light">Processor</div>
+                    <div class="spec-value-light">${product.specs.processor}</div>
+                </div>
+                <div class="spec-row-light">
+                    <div class="spec-label-light">Graphics Card</div>
+                    <div class="spec-value-light">${product.specs.graphics}</div>
+                </div>
+                <div class="spec-row-light">
+                    <div class="spec-label-light">RAM</div>
+                    <div class="spec-value-light">${product.specs.ram}</div>
+                </div>
+                <div class="spec-row-light">
+                    <div class="spec-label-light">Storage</div>
+                    <div class="spec-value-light">${product.specs.storage}</div>
+                </div>
+                <div class="spec-row-light">
+                    <div class="spec-label-light">Display</div>
+                    <div class="spec-value-light">${product.specs.display}</div>
+                </div>
+                <div class="spec-row-light">
+                    <div class="spec-label-light">Cooling System</div>
+                    <div class="spec-value-light">${product.specs.cooling}</div>
+                </div>
+                <div class="spec-row-light">
+                    <div class="spec-label-light">Keyboard</div>
+                    <div class="spec-value-light">${product.specs.keyboard}</div>
+                </div>
+                <div class="spec-row-light">
+                    <div class="spec-label-light">Battery</div>
+                    <div class="spec-value-light">${product.specs.battery}</div>
+                </div>
+                <div class="spec-row-light">
+                    <div class="spec-label-light">Weight</div>
+                    <div class="spec-value-light">${product.specs.weight}</div>
+                </div>
+            </div>
+            
+            <div class="modal-prices-light">
+                <span class="modal-current-light">${product.price}</span>
+                <span class="modal-old-light">${product.oldPrice}</span>
+                <span class="modal-discount-light">Save ${product.discount}</span>
+            </div>
+            
+            {% comment %} <p style="color: #475569; font-family: 'Syne', sans-serif; font-size: 0.85rem; line-height: 1.5; margin: 1rem 0;">
+                ${product.fullDescription}
+            </p> {% endcomment %}
+            
+            <div class="modal-btns-light">
+                <a href="{% url 'contact' %}" class="modal-btn-light modal-btn-primary-light">
+                    <i class="fas fa-shopping-cart"></i> Buy Now
+                </a>
+                <a href="{% url 'contact' %}##contact-main" class="modal-btn-light modal-btn-secondary-light">
+                    <i class="fas fa-headset"></i> Enquire Now
+                </a>
+            </div>
+        </div>
+    `;
+    
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    renderGamingProducts();
+    
+    // Modal close
+    const modal = document.getElementById('productModalLight');
+    const closeBtn = document.querySelector('.close-modal-light');
+    
+    closeBtn.onclick = () => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    };
+    
+    window.onclick = (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    };
+    
+    // Back to Top Button
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('show');
+        } else {
+            backToTop.classList.remove('show');
+        }
+    });
+    
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+});
+
+// Add scroll reveal animation
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.product-card-light').forEach((card, index) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    card.style.transition = `all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1) ${index * 0.05}s`;
+    revealObserver.observe(card);
+});
+</script>
+{% endblock %}

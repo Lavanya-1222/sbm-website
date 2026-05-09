@@ -6,7 +6,7 @@
 {% block extra_css %}
 <style>
 /* ══════════════════════════════════════════════════════════════
-   SBM SALES PAGE — GOLD DARK PREMIUM
+   SBM SALES PAGE — GOLD DARK PREMIUM (SIZES ONLY REDUCED)
    ══════════════════════════════════════════════════════════════ */
 
 :root {
@@ -38,15 +38,15 @@
 .sales-page { overflow-x: hidden; }
 .sales-page * { box-sizing: border-box; }
 
-/* ══ HERO BANNER — CLEAN WHITE BACKGROUND WITH 30px GAP & PROPER ROUNDED CORNERS ═══════ */
+/* ══ HERO BANNER — REDUCED HEIGHT ═══════ */
 .hero-slideshow-section {
   position: relative;
-  min-height: 90vh;
-  height: 90vh;
+  min-height: 70vh;
+  height: 70vh;
   display: flex;
   align-items: center;
   overflow: hidden;
-  margin-top: 4%;
+  margin-top: 3%;
   background: #ffffff;
 }
 
@@ -72,19 +72,19 @@
   z-index: 0;
 }
 
-/* Swiper Slideshow container - WITH 30px GAP from all sides */
+/* Swiper Slideshow container - WITH 25px GAP from all sides (reduced from 30px) */
 .hero-swiper {
   position: absolute !important;
-  top: 30px;
-  left: 30px;
-  right: 30px;
-  bottom: 30px;
-  width: calc(100% - 60px);
-  height: calc(100% - 60px);
+  top: 25px;
+  left: 25px;
+  right: 25px;
+  bottom: 25px;
+  width: calc(100% - 50px);
+  height: calc(100% - 50px);
   z-index: 10;
-  border-radius: 20px;
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.12);
 }
 
 .hero-swiper .swiper-wrapper {
@@ -126,9 +126,9 @@
 .hero-content-container {
   position: relative;
   z-index: 15;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 5rem 6%;
+  padding: 3rem 6%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -138,12 +138,12 @@
 
 .hero-content-container h2 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1rem, 5vw, 3.7rem);
+  font-size: clamp(1rem, 4.5vw, 3rem);
   font-weight: 900;
   line-height: 1.2;
   color: #fff;
-  margin-bottom: 1.5rem;
-  max-width: 550px;
+  margin-bottom: 1.2rem;
+  max-width: 500px;
   animation: fadeInRight 0.9s var(--spring) both;
 }
 
@@ -155,7 +155,7 @@
 
 .hero-buttons {
   display: flex;
-  gap: 1.2rem;
+  gap: 1rem;
   flex-wrap: wrap;
   justify-content: flex-end;
   animation: fadeInRight 0.9s var(--spring) 0.2s both;
@@ -179,7 +179,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
+  height: 2px;
   z-index: 20;
   background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold-light) 50%, var(--gold) 70%, transparent 100%);
   animation: scanGlow 2s ease-in-out infinite;
@@ -190,40 +190,40 @@
   50% { opacity: 1; }
 }
 
-/* Buttons - Dark text for white background */
+/* Buttons - Dark text for white background - REDUCED PADDING */
 .btn-gold {
   background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
   color: #0d0a02;
-  padding: 13px 32px;
+  padding: 10px 28px;
   border-radius: 8px;
   font-family: 'Syne', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.5rem;
   transition: all var(--t3) var(--ease);
-  box-shadow: 0 4px 15px rgba(201,162,39,0.3);
+  box-shadow: 0 3px 12px rgba(201,162,39,0.3);
   border: none;
   cursor: pointer;
 }
 
 .btn-gold:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(201,162,39,0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(201,162,39,0.5);
 }
 
 .btn-glass {
   background: rgba(0,0,0,0.05);
   border: 1px solid rgba(201,162,39,0.3);
   color: #1a1a2e;
-  padding: 12px 28px;
+  padding: 9px 24px;
   border-radius: 8px;
   font-family: 'Syne', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -238,83 +238,83 @@
   background: rgba(201,162,39,0.1);
   border-color: var(--gold);
   color: var(--gold);
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 
-/* ══ SECTION COMMONS ════════════════════════════════════════ */
-.sp { padding: 6rem 5%; }
-.sp-inner { max-width: 1300px; margin: 0 auto; }
+/* ══ SECTION COMMONS - REDUCED PADDING ════════════════════════════════════════ */
+.sp { padding: 4rem 5%; }
+.sp-inner { max-width: 1200px; margin: 0 auto; }
 
 .section-tag-gold {
   font-family: 'Syne', sans-serif;
-  font-size: .72rem;
+  font-size: .65rem;
   font-weight: 700;
   letter-spacing: .16em;
   text-transform: uppercase;
   color: var(--gold);
   display: flex;
   align-items: center;
-  gap: .7rem;
-  margin-bottom: 1rem;
+  gap: .6rem;
+  margin-bottom: 0.8rem;
 }
 
 .section-tag-gold::before {
   content: '';
-  width: 28px;
+  width: 25px;
   height: 2px;
   background: var(--gold);
 }
 
 .section-tag-gold::after {
   content: '';
-  width: 28px;
+  width: 25px;
   height: 2px;
   background: var(--gold);
 }
 .section-h2 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
   font-weight: 900;
   color: var(--dark);
   line-height: 1.15;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 }
 
 .section-h2 .a { color: var(--gold); }
 
 .section-sub {
-  font-size: .95rem;
+  font-size: .85rem;
   color: var(--white-dim);
-  line-height: 1.7;
-  max-width: 540px;
+  line-height: 1.6;
+  max-width: 500px;
 }
 
-/* ══ CATEGORY BANNER SECTION ════════════════════════════════ */
-.cat-section { padding: 5rem 5%; background: var(--dark-2); }
+/* ══ CATEGORY BANNER SECTION - REDUCED PADDING ════════════════════════════════ */
+.cat-section { padding: 4rem 5%; background: var(--dark-2); }
 
 .cat-header {
-  max-width: 1300px;
-  margin: 0 auto 3.5rem;
+  max-width: 1200px;
+  margin: 0 auto 2.5rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  gap: 2rem;
   align-items: end;
 }
 
 .cat-cards {
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: 1.2rem;
 }
 
 .cat-card {
   background: var(--dark-card);
   backdrop-filter: blur(20px) saturate(140%);
   border: 1px solid rgba(201,162,39,.1);
-  border-radius: 20px;
-  padding: 2rem 1.75rem;
+  border-radius: 18px;
+  padding: 1.5rem 1.5rem;
   position: relative;
   overflow: hidden;
   cursor: pointer;
@@ -334,40 +334,40 @@
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
   opacity: 0;
   transition: opacity var(--t3);
-  border-radius: 20px 20px 0 0;
+  border-radius: 18px 18px 0 0;
 }
 
 .cat-card:hover {
-  transform: translateY(-8px) rotateX(2deg);
+  transform: translateY(-6px) rotateX(2deg);
   border-color: rgba(201,162,39,.3);
-  box-shadow: 0 24px 60px rgba(0,0,0,.5), 0 0 40px rgba(201,162,39,.1);
+  box-shadow: 0 20px 50px rgba(0,0,0,.5), 0 0 30px rgba(201,162,39,.1);
 }
 
 .cat-card:hover::before { opacity: 1; }
-.cat-card:hover .cat-card-img { transform: scale(1.05) translateY(-4px); filter: brightness(1.05); }
+.cat-card:hover .cat-card-img { transform: scale(1.04) translateY(-3px); filter: brightness(1.05); }
 
 .cat-card-img {
   width: 100%;
-  height: 200px;
+  height: 170px;
   object-fit: contain;
   display: block;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
   transition: transform var(--t4) var(--ease), filter var(--t3);
   filter: brightness(.92);
 }
 
 .cat-card-badge {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0.8rem;
+  right: 0.8rem;
   background: var(--red-sale);
   color: #fff;
   font-family: 'Syne', sans-serif;
-  font-size: .65rem;
+  font-size: .6rem;
   font-weight: 700;
   letter-spacing: .08em;
   text-transform: uppercase;
-  padding: 3px 10px;
+  padding: 3px 8px;
   border-radius: 4px;
   z-index: 2;
 }
@@ -379,42 +379,41 @@
 
 .cat-card-title {
   font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--white);
-  margin-bottom: .5rem;
+  margin-bottom: 0.4rem;
 }
 
-.cat-card-sub { font-size: .82rem; color: var(--white-dim); margin-bottom: 1.25rem; }
-.cat-price { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; color: var(--gold); }
+.cat-card-sub { font-size: .75rem; color: var(--white-dim); margin-bottom: 1rem; }
+.cat-price { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 900; color: var(--gold); }
 
-{% comment %} /* ══ PRODUCT GRID ════════════════════════════════════════ */
-.shop-section { padding: 5rem 5%; background: var(--dark-3); }
+.shop-section { padding: 4rem 5%; background: var(--dark-3); }
 
 .shop-header {
-  max-width: 1300px;
-  margin: 0 auto 3rem;
+  max-width: 1200px;
+  margin: 0 auto 2rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 1.2rem;
 }
 
 .shop-tabs {
   display: flex;
-  gap: .4rem;
+  gap: .3rem;
   background: var(--glass);
   border: 1px solid rgba(201,162,39,.1);
   border-radius: 8px;
-  padding: .3rem;
+  padding: .25rem;
 }
 
 .shop-tab {
   font-family: 'Syne', sans-serif;
-  font-size: .78rem;
+  font-size: .7rem;
   font-weight: 700;
-  padding: .5rem 1.25rem;
+  padding: 0.4rem 1rem;
   border-radius: 6px;
   border: none;
   cursor: pointer;
@@ -430,22 +429,22 @@
 .shop-tab.active {
   background: linear-gradient(135deg, var(--gold), var(--gold-dark));
   color: #080a0e;
-  box-shadow: 0 2px 12px var(--gold-glow);
+  box-shadow: 0 2px 10px var(--gold-glow);
 }
 
 .product-grid {
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .prod-card {
   background: var(--dark-card);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(201,162,39,.1);
-  border-radius: 18px;
+  border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
   text-decoration: none;
@@ -467,28 +466,28 @@
 }
 
 .prod-card:hover {
-  transform: translateY(-8px) rotateY(2deg);
+  transform: translateY(-6px) rotateY(2deg);
   border-color: rgba(201,162,39,.3);
-  box-shadow: 0 20px 55px rgba(0,0,0,.55), 0 0 32px rgba(201,162,39,.09);
+  box-shadow: 0 18px 45px rgba(0,0,0,.55), 0 0 25px rgba(201,162,39,.09);
 }
 
 .prod-card:hover::before { opacity: 1; }
-.prod-card:hover .prod-img { transform: scale(1.06); filter: brightness(1); }
+.prod-card:hover .prod-img { transform: scale(1.05); filter: brightness(1); }
 
 .prod-img-wrap {
   position: relative;
   background: var(--dark-4);
-  height: 200px;
+  height: 170px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
+  padding: 1.2rem;
 }
 
 .prod-img {
   width: 100%;
-  max-height: 160px;
+  max-height: 140px;
   object-fit: contain;
   display: block;
   transition: transform var(--t4) var(--ease), filter var(--t3);
@@ -497,53 +496,53 @@
 
 .prod-sale-badge {
   position: absolute;
-  top: .75rem;
-  right: .75rem;
+  top: 0.6rem;
+  right: 0.6rem;
   background: var(--red-sale);
   color: #fff;
   font-family: 'Syne', sans-serif;
-  font-size: .62rem;
+  font-size: .55rem;
   font-weight: 700;
-  padding: 3px 9px;
+  padding: 2px 8px;
   border-radius: 4px;
   letter-spacing: .06em;
   text-transform: uppercase;
   z-index: 2;
 }
 
-.prod-info { padding: 1.25rem; }
+.prod-info { padding: 1rem; }
 
 .prod-brand {
   font-family: 'Syne', sans-serif;
-  font-size: .62rem;
+  font-size: .55rem;
   font-weight: 700;
   letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: .3rem;
+  margin-bottom: 0.25rem;
 }
 
 .prod-name {
   font-family: 'Playfair Display', serif;
-  font-size: .95rem;
+  font-size: .85rem;
   font-weight: 700;
   color: var(--white);
-  margin-bottom: .35rem;
+  margin-bottom: 0.3rem;
 }
 
-.prod-specs { font-size: .75rem; color: var(--white-3); margin-bottom: .85rem; }
+.prod-specs { font-size: .68rem; color: var(--white-3); margin-bottom: 0.7rem; }
 .prod-price-row { display: flex; justify-content: space-between; align-items: center; }
-.prod-price { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 900; color: var(--gold); }
-.prod-old { font-size: .72rem; color: var(--white-3); text-decoration: line-through; margin-right: .5rem; }
+.prod-price { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 900; color: var(--gold); }
+.prod-old { font-size: .65rem; color: var(--white-3); text-decoration: line-through; margin-right: 0.4rem; }
 
 .prod-cart-btn {
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: var(--gold-pale);
   border: 1px solid var(--gb);
   color: var(--gold);
-  font-size: .9rem;
+  font-size: 0.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -555,28 +554,28 @@
   background: var(--gold);
   color: #080a0e;
   transform: scale(1.1);
-  box-shadow: 0 4px 14px var(--gold-glow);
+  box-shadow: 0 3px 12px var(--gold-glow);
 }
 
 .tab-panel { display: none; }
 .tab-panel.active { display: grid; }
 
 /* ══ GPU CATEGORY PANELS ═══════════════════════════════════ */
-.gpu-section { padding: 5rem 5%; background: var(--dark-4); }
+.gpu-section { padding: 4rem 5%; background: var(--dark-4); }
 
 .gpu-grid {
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+  gap: 1.2rem;
 }
 
 .gpu-card {
   position: relative;
-  border-radius: 24px;
+  border-radius: 22px;
   overflow: hidden;
-  min-height: 340px;
+  min-height: 280px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -595,7 +594,7 @@
 }
 
 .gpu-card:hover .gpu-card-bg {
-  transform: scale(1.07);
+  transform: scale(1.06);
   filter: brightness(.65) saturate(1.1);
 }
 
@@ -609,40 +608,40 @@
 .gpu-card-content {
   position: relative;
   z-index: 3;
-  padding: 2.5rem;
+  padding: 2rem;
 }
 
 .gpu-card-sub {
   font-family: 'Syne', sans-serif;
-  font-size: .7rem;
+  font-size: .65rem;
   font-weight: 700;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: .5rem;
+  margin-bottom: 0.4rem;
 }
 
 .gpu-card-title {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
   font-weight: 900;
   color: var(--white);
   line-height: 1.15;
-  margin-bottom: .5rem;
+  margin-bottom: 0.4rem;
 }
 
-.gpu-card-desc { font-size: .85rem; color: var(--white-dim); margin-bottom: 1.5rem; max-width: 380px; }
+.gpu-card-desc { font-size: .8rem; color: var(--white-dim); margin-bottom: 1.2rem; max-width: 350px; }
 
 .gpu-card-btn {
   display: inline-flex;
   align-items: center;
-  gap: .5rem;
+  gap: 0.4rem;
   background: linear-gradient(135deg, var(--gold-light), var(--gold));
   color: #080a0e;
-  padding: 10px 22px;
+  padding: 8px 18px;
   border-radius: 6px;
   font-family: 'Syne', sans-serif;
-  font-size: .8rem;
+  font-size: .7rem;
   font-weight: 700;
   letter-spacing: .06em;
   text-transform: uppercase;
@@ -651,60 +650,60 @@
   width: fit-content;
 }
 
-.gpu-card-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(201,162,39,.5); } {% endcomment %}
+.gpu-card-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(201,162,39,.5); }
 
-/* ══ PROMO SECTION ════════════════════════════════════════ */
-.promo-section { padding: 5rem 5%; background: var(--dark-2); }
+/* ══ PROMO SECTION - REDUCED ════════════════════════════════════════ */
+.promo-section { padding: 4rem 5%; background: var(--dark-2); }
 
 .promo-grid {
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  gap: 1.5rem;
+  gap: 1.2rem;
 }
 
 .promo-feature {
   background: var(--dark-card);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(201,162,39,.12);
-  border-radius: 24px;
+  border-radius: 22px;
   overflow: hidden;
   transition: all var(--t4) var(--ease);
   text-decoration: none;
   display: block;
 }
 
-.promo-feature:hover { transform: translateY(-6px); border-color: rgba(201,162,39,.28); box-shadow: 0 24px 60px rgba(0,0,0,.5); }
+.promo-feature:hover { transform: translateY(-5px); border-color: rgba(201,162,39,.28); box-shadow: 0 20px 50px rgba(0,0,0,.5); }
 
 .promo-feat-img {
   width: 100%;
-  height: 260px;
+  height: 220px;
   object-fit: contain;
   background: var(--dark-4);
-  padding: 2rem;
+  padding: 1.5rem;
   transition: transform var(--t4);
 }
 
-.promo-feature:hover .promo-feat-img { transform: scale(1.04); }
+.promo-feature:hover .promo-feat-img { transform: scale(1.03); }
 
-.promo-feat-body { padding: 1.75rem; }
+.promo-feat-body { padding: 1.5rem; }
 
 .promo-feat-title {
   font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 900;
   color: var(--white);
-  margin-bottom: .5rem;
+  margin-bottom: 0.4rem;
 }
 
-.promo-feat-new { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; color: var(--gold); }
+.promo-feat-new { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; color: var(--gold); }
 
 .promo-small {
   background: var(--dark-card);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(201,162,39,.12);
-  border-radius: 20px;
+  border-radius: 18px;
   overflow: hidden;
   transition: all var(--t4) var(--ease);
   text-decoration: none;
@@ -712,35 +711,35 @@
   flex-direction: column;
 }
 
-.promo-small:hover { transform: translateY(-6px); border-color: rgba(201,162,39,.28); box-shadow: 0 20px 50px rgba(0,0,0,.5); }
+.promo-small:hover { transform: translateY(-5px); border-color: rgba(201,162,39,.28); box-shadow: 0 18px 40px rgba(0,0,0,.5); }
 
 .promo-small-img {
   width: 100%;
-  height: 170px;
+  height: 150px;
   object-fit: contain;
   background: var(--dark-4);
-  padding: 1.5rem;
+  padding: 1.2rem;
   transition: transform var(--t4);
 }
 
-.promo-small:hover .promo-small-img { transform: scale(1.06); }
+.promo-small:hover .promo-small-img { transform: scale(1.05); }
 
-.promo-small-body { padding: 1.25rem; }
+.promo-small-body { padding: 1rem; }
 
 .promo-small-title {
   font-family: 'Playfair Display', serif;
-  font-size: .97rem;
+  font-size: .85rem;
   font-weight: 700;
   color: var(--white);
-  margin-bottom: .4rem;
+  margin-bottom: 0.3rem;
 }
 
-.promo-small-price { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 900; color: var(--gold); }
+.promo-small-price { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 900; color: var(--gold); }
 
-/* ══ FULL COVER CARDS SECTION — UPDATED WITH DOUBLE HEIGHT & BETTER FONTS ═══════════ */
+/* ══ FULL COVER CARDS SECTION — REDUCED SIZES ═══════════════════════════════════════════ */
 
 .fullcover-cards-section {
-  padding: 2rem 5%;
+  padding: 3rem 5%;
   background: var(--white);
   position: relative;
   overflow: hidden;
@@ -765,7 +764,7 @@
 }
 
 .fullcover-container {
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
@@ -773,7 +772,7 @@
 
 .section-header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
 }
 
 .section-header .section-tag-gold {
@@ -783,39 +782,39 @@
 .section-header .section-tag-gold::before,
 .section-header .section-tag-gold::after {
   content: '';
-  width: 40px;
+  width: 35px;
   height: 2px;
   background: var(--gold);
   opacity: 0.6;
 }
 
 .section-header .section-tag-gold::after {
-  margin-left: 0.7rem;
+  margin-left: 0.6rem;
 }
 
 .section-header .section-tag-gold::before {
-  margin-right: 0.7rem;
+  margin-right: 0.6rem;
 }
 
 /* 3-column grid for the cards */
 .fullcover-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
-/* Individual card — DOUBLE HEIGHT (was aspect-ratio 4/3, now 16/9 or taller) */
+/* Individual card — REDUCED HEIGHT */
 .fullcover-card {
   position: relative;
-  border-radius: 24px;
+  border-radius: 22px;
   overflow: hidden;
   cursor: pointer;
   text-decoration: none;
   display: block;
-  aspect-ratio: 3 / 4;  /* Taller card — 3:4 ratio gives double the height feel */
-  min-height: 480px;    /* Ensures minimum height */
+  aspect-ratio: 3 / 4;
+  min-height: 400px;
   transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
 }
 
 /* Background image — covers entire card completely */
@@ -856,17 +855,17 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 1rem;
+  margin-top: 0.8rem;
   justify-content: flex-end;
-  padding: 2.5rem 2rem 2.5rem 2rem;
+  padding: 2rem 1.5rem 2rem 1.5rem;
   text-align: left;
-  gap: 0.5rem;
+  gap: 0.3rem;
 }
 
 /* Subtitle — "Gaming Machines" style (appears FIRST now) */
 .fullcover-card-subtitle {
   font-family: 'Space Grotesk', 'Syne', monospace;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -880,12 +879,12 @@
 /* Main title — "Powerful GPU Series" (appears SECOND now) */
 .fullcover-card-title {
   font-family: 'Playfair Display', 'Georgia', serif;
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
   font-weight: 800;
   color: #ffffff;
-  margin: 0.25rem 0;
+  margin: 0.2rem 0;
   line-height: 1.2;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
   letter-spacing: -0.02em;
   opacity: 0;
   transform: translateY(15px);
@@ -896,13 +895,12 @@
 .fullcover-card-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.7rem;
-  {% comment %} background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark)); {% endcomment %}
+  gap: 0.6rem;
   color: gold;
-  padding: 0.8rem 1.8rem;
+  padding: 0.6rem 1.5rem;
   border-radius: 50px;
   font-family: 'Space Grotesk', 'Syne', monospace;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -911,8 +909,8 @@
   width: fit-content;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  margin-top: 0.5rem;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+  margin-top: 0.3rem;
   opacity: 0;
   transform: translateY(15px);
   animation: slideUpFade 0.5s ease forwards 0.3s;
@@ -920,29 +918,29 @@
 
 /* Button icon animation */
 .fullcover-card-btn i {
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   transition: transform 0.25s ease;
 }
 
 .fullcover-card-btn:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 8px 25px rgba(201,162,39,0.5);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(201,162,39,0.5);
   background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-  gap: 0.9rem;
+  gap: 0.8rem;
 }
 
 .fullcover-card-btn:hover i {
-  transform: translate(3px, -3px);
+  transform: translate(3px, -2px);
 }
 
 /* Card hover effects */
 .fullcover-card:hover {
-  transform: translateY(-12px) scale(1.02);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+  transform: translateY(-10px) scale(1.01);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.5);
 }
 
 .fullcover-card:hover .fullcover-card-bg {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 .fullcover-card:hover .fullcover-card-overlay {
@@ -986,55 +984,55 @@
 /* Responsive design */
 @media (max-width: 1024px) {
   .fullcover-grid {
-    gap: 1.5rem;
+    gap: 1.2rem;
   }
   .fullcover-card-content {
-    padding: 2rem 1.5rem;
+    padding: 1.5rem 1.2rem;
   }
   .fullcover-card-title {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
   .fullcover-card {
-    aspect-ratio: 2 / 3;  /* Still tall but adjusted for tablet */
+    aspect-ratio: 2 / 3;
   }
 }
 
 @media (max-width: 768px) {
   .fullcover-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
-    max-width: 450px;
+    gap: 1.5rem;
+    max-width: 380px;
     margin: 0 auto;
   }
   .fullcover-card {
     aspect-ratio: 3 / 4;
-    min-height: 420px;
+    min-height: 360px;
   }
   .fullcover-card-content {
-    padding: 1.8rem 1.5rem;
+    padding: 1.5rem 1.2rem;
   }
   .fullcover-card-title {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
   .fullcover-card-subtitle {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
   }
   .fullcover-card-btn {
-    padding: 0.7rem 1.5rem;
-    font-size: 0.7rem;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.6rem;
   }
 }
 
 @media (max-width: 540px) {
   .fullcover-card {
     aspect-ratio: 3 / 4;
-    min-height: 380px;
+    min-height: 340px;
   }
   .fullcover-card-title {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
   .fullcover-card-content {
-    padding: 1.5rem;
+    padding: 1.2rem;
   }
 }
 
@@ -1058,13 +1056,13 @@
 
 /* ══ RESPONSIVE ═══════════════════════════════════════════ */
 @media (max-width: 1024px) {
-  .cat-header { grid-template-columns: 1fr; gap: 1rem; }
+  .cat-header { grid-template-columns: 1fr; gap: 0.8rem; }
   .product-grid { grid-template-columns: repeat(3, 1fr); }
   .promo-grid { grid-template-columns: 1fr 1fr; }
   .promo-feature { grid-column: span 2; }
   .gpu-grid { grid-template-columns: 1fr; }
   .hero-swiper {
-    border-radius: 36px;
+    border-radius: 30px;
   }
 }
 
@@ -1075,17 +1073,17 @@
   .promo-feature { grid-column: auto; }
   .shop-header { flex-direction: column; align-items: flex-start; }
   .hero-swiper {
-    top: 20px;
-    left: 20px;
-    right: 20px;
-    bottom: 20px;
-    width: calc(100% - 40px);
-    height: calc(100% - 40px);
-    border-radius: 28px;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    width: calc(100% - 30px);
+    height: calc(100% - 30px);
+    border-radius: 25px;
   }
   .hero-slideshow-section {
-    min-height: 70vh;
-    height: 70vh;
+    min-height: 55vh;
+    height: 55vh;
   }
   .hero-content-container {
     align-items: center;
@@ -1095,29 +1093,29 @@
     justify-content: center;
   }
   .hero-content-container h2 {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 }
 
 @media (max-width: 540px) {
   .product-grid { grid-template-columns: 1fr; }
   .hero-swiper {
-    top: 15px;
-    left: 15px;
-    right: 15px;
-    bottom: 15px;
-    width: calc(100% - 30px);
-    height: calc(100% - 30px);
-    border-radius: 20px;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    width: calc(100% - 24px);
+    height: calc(100% - 24px);
+    border-radius: 18px;
   }
   .hero-content-container h2 {
-    font-size: 1rem;
+    font-size: 0.85rem;
   }
 }
 /* ===== LIGHT THEME CATEGORY SECTION ===== */
 .light-theme-cat {
   background: linear-gradient(135deg, #fef9e6 0%, #fffcf5 100%);
-  padding: 5rem 5%;
+  padding: 4rem 5%;
 }
 
 .light-theme-cat .section-h2 {
@@ -1132,10 +1130,10 @@
 .cat-filter-btn {
   background: transparent;
   border: 2px solid rgba(201, 162, 39, 0.3);
-  padding: 0.75rem 2rem;
+  padding: 0.6rem 1.6rem;
   border-radius: 50px;
   font-family: 'Syne', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1153,39 +1151,39 @@
   background: linear-gradient(135deg, var(--gold), var(--gold-dark));
   border-color: var(--gold);
   color: #0d0a02;
-  box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
+  box-shadow: 0 3px 12px rgba(201, 162, 39, 0.3);
 }
 
 /* Category Grid */
 .category-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  max-width: 1300px;
+  gap: 1.5rem;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 /* New Card Design - IMAGE COVERS COMPLETELY (no background visible) */
 .cat-card-new {
   background: #ffffff;
-  border-radius: 20px;
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
   transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
   cursor: pointer;
   position: relative;
 }
 
 .cat-card-new:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
 }
 
 /* Image wrapper - NO BACKGROUND visible, image covers completely */
 .cat-card-img-wrapper {
   position: relative;
   width: 100%;
-  height: 240px;
+  height: 200px;
   overflow: hidden;
   background: transparent;
 }
@@ -1198,19 +1196,19 @@
 }
 
 .cat-card-new:hover .cat-card-img {
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
 
 /* Badges */
 .cat-sale-badge,
 .cat-new-badge {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  padding: 5px 12px;
-  border-radius: 6px;
+  top: 10px;
+  right: 10px;
+  padding: 4px 10px;
+  border-radius: 5px;
   font-family: 'Syne', sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   font-weight: 800;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -1229,45 +1227,45 @@
 
 /* Card Info Section */
 .cat-card-info {
-  padding: 1.5rem;
+  padding: 1.2rem;
   background: white;
 }
 
 .cat-card-title {
   font-family: 'Playfair Display', serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 800;
   color: #1e1a14;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   line-height: 1.3;
 }
 
 .cat-card-specs {
   font-family: 'Syne', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: #666;
-  margin-bottom: 1rem;
-  line-height: 1.5;
+  margin-bottom: 0.8rem;
+  line-height: 1.4;
 }
 
 .cat-price-row {
   display: flex;
   align-items: baseline;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
   flex-wrap: wrap;
 }
 
 .cat-price {
   font-family: 'Playfair Display', serif;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 900;
   color: var(--gold-dark);
 }
 
 .cat-old-price {
   font-family: 'Syne', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   color: #999;
   text-decoration: line-through;
 }
@@ -1276,9 +1274,9 @@
 .cat-card-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   font-family: 'Syne', sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1288,7 +1286,7 @@
 }
 
 .cat-card-btn:hover {
-  gap: 0.75rem;
+  gap: 0.6rem;
   color: var(--gold);
 }
 
@@ -1305,36 +1303,35 @@
 @media (max-width: 1024px) {
   .category-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: 1.2rem;
   }
 }
 
 @media (max-width: 768px) {
   .category-grid {
     grid-template-columns: 1fr;
-    max-width: 400px;
+    max-width: 380px;
     margin: 0 auto;
   }
   
   .cat-filter-btn {
-    padding: 0.5rem 1.2rem;
-    font-size: 0.75rem;
+    padding: 0.4rem 1rem;
+    font-size: 0.65rem;
   }
   
   .cat-card-img-wrapper {
-    height: 200px;
+    height: 180px;
   }
 }
 </style>
 <style>
 /* ══════════════════════════════════════════════════════════════
-     PREMIUM SOLUTIONS SECTION - DARK & ATTRACTIVE
+     PREMIUM SOLUTIONS SECTION - DARK & ATTRACTIVE (SIZES REDUCED)
 ══════════════════════════════════════════════════════════════ */
 .premium-solutions-section {
   position: relative;
   padding: 3rem 5%;
-  /* TRANSPARENT LIGHT BLACK BACKGROUND + IMAGE */
-  background: rgba(0, 0, 0, 0.7);  /* Light black transparent background */
+  background: rgba(0, 0, 0, 0.7);
   overflow: hidden;
 }
 
@@ -1345,11 +1342,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('{% static "images/print_section_background.png" %}');  /* Change path */
+  background-image: url('{% static "images/print_section_background.png" %}');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.40;  /* Adjust for visibility */
+  opacity: 0.40;
   z-index: 0;
   pointer-events: none;
 }
@@ -1377,7 +1374,7 @@
 }
 
 .solutions-container {
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
@@ -1385,36 +1382,36 @@
 
 .solutions-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
 }
 
 .section-tag-gold {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.8rem;
   font-family: 'Syne', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 }
 
 .tag-line {
-  width: 40px;
+  width: 35px;
   height: 2px;
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 
 .solutions-title {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
   font-weight: 900;
   color: #fff;
-  margin-bottom: 1rem;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  margin-bottom: 0.8rem;
+  text-shadow: 0 2px 15px rgba(0,0,0,0.3);
 }
 
 .gold-text {
@@ -1426,18 +1423,18 @@
 .gold-text::after {
   content: '';
   position: absolute;
-  bottom: -5px;
+  bottom: -4px;
   left: 0;
   right: 0;
-  height: 3px;
+  height: 2px;
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 
 .solutions-subtitle {
   font-family: 'Syne', sans-serif;
-  font-size: 1rem;
+  font-size: 0.85rem;
   color: rgba(255,255,255,0.6);
-  max-width: 550px;
+  max-width: 500px;
   margin: 0 auto;
 }
 
@@ -1445,19 +1442,17 @@
 .solutions-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 /* Solution Cards */
 .solution-card {
   position: relative;
-  padding: 0 3rem;
-  border-radius: 28px;
+  padding: 0 2rem;
+  border-radius: 24px;
   overflow: hidden;
   transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
   cursor: pointer;
-  {% comment %} background: rgba(21, 27, 37, 0.65); {% endcomment %}
-  {% comment %} backdrop-filter: blur(10px); {% endcomment %}
   border: 1px solid rgba(201, 162, 39, 0.15);
 }
 
@@ -1467,7 +1462,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
+  height: 2px;
   background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
   opacity: 0;
   transition: opacity 0.4s ease;
@@ -1478,10 +1473,8 @@
 }
 
 .solution-card:hover {
-  transform: translateY(-12px);
+  transform: translateY(-8px);
   border-color: rgba(201, 162, 39, 0.4);
-  {% comment %} background: rgba(21, 27, 37, 0.85); {% endcomment %}
-  {% comment %} box-shadow: 0 30px 50px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(201, 162, 39, 0.2); {% endcomment %}
 }
 
 .card-bg {
@@ -1507,7 +1500,7 @@
 
 .solution-card:hover .card-bg {
   opacity: 0.15;
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 .card-glow {
@@ -1528,26 +1521,26 @@
 }
 
 .card-icon {
-  width: 70px;
-  height: 70px;
+  width: 55px;
+  height: 55px;
   background: linear-gradient(135deg, rgba(201, 162, 39, 0.15), rgba(201, 162, 39, 0.05));
   border: 1px solid rgba(201, 162, 39, 0.3);
-  border-radius: 20px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
   transition: all 0.4s ease;
 }
 
 .solution-card:hover .card-icon {
   background: linear-gradient(135deg, var(--gold), var(--gold-dark));
   border-color: var(--gold);
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 .card-icon i {
-  font-size: 2rem;
+  font-size: 1.6rem;
   color: var(--gold);
   transition: all 0.4s ease;
 }
@@ -1558,46 +1551,46 @@
 
 .card-badge {
   position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
+  top: 1.2rem;
+  right: 1.2rem;
   background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-  padding: 5px 14px;
-  border-radius: 30px;
+  padding: 4px 12px;
+  border-radius: 25px;
   font-family: 'Syne', sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   font-weight: 800;
   letter-spacing: 0.05em;
   color: #080a0e;
   text-transform: uppercase;
-  box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
+  box-shadow: 0 3px 12px rgba(201, 162, 39, 0.3);
 }
 
 .card-title {
   font-family: 'Playfair Display', serif;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   font-weight: 900;
   color: #fff;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   line-height: 1.2;
 }
 
 .card-features {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.8rem;
-  margin-bottom: 2rem;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
 }
 
 .feature {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   font-family: 'Syne', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.7rem;
   color: #fff;
   background: rgba(255,255,255,0.05);
-  padding: 5px 12px;
-  border-radius: 30px;
+  padding: 4px 10px;
+  border-radius: 25px;
   transition: all 0.3s ease;
 }
 
@@ -1608,23 +1601,23 @@
 
 .feature i {
   color: var(--gold);
-  font-size: 0.7rem;
+  font-size: 0.6rem;
 }
 
 .card-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.6rem;
   font-family: 'Syne', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--gold);
   text-decoration: none;
   transition: all 0.3s ease;
-  padding: 10px 0;
-  margin-bottom: 1rem;
+  padding: 8px 0;
+  margin-bottom: 0.8rem;
 }
 
 .card-btn span {
@@ -1634,7 +1627,7 @@
 .card-btn span::after {
   content: '';
   position: absolute;
-  bottom: -3px;
+  bottom: -2px;
   left: 0;
   width: 0;
   height: 2px;
@@ -1651,284 +1644,32 @@
 }
 
 .card-btn:hover {
-  gap: 1rem;
+  gap: 0.8rem;
 }
 
 .card-btn:hover i {
-  transform: translateX(5px);
-}
-
-/* ══════════════════════════════════════════════════════════════
-     ACCESSORIES SECTION - LIGHT THEME WITH CAROUSEL
-══════════════════════════════════════════════════════════════ */
-/* ══════════════════════════════════════════════════════════════
-     ACCESSORIES SECTION - LIGHT THEME WITH CAROUSEL
-══════════════════════════════════════════════════════════════ */
-.accessories-premium-section {
-  padding: 3.5rem 5%;
-  background: #f5f0e8;
-  position: relative;
-  overflow: hidden;
-}
-
-.accessories-header {
-  text-align: center;
-  margin-bottom: 3rem;
-  position: relative;
-  z-index: 2;
-}
-
-.accessories-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.8rem, 3vw, 2.5rem);
-  font-weight: 900;
-  color: #1e1a14;
-  margin-bottom: 0.5rem;
-}
-
-.accessories-subtitle {
-  font-family: 'Syne', sans-serif;
-  font-size: 0.9rem;
-  color: #666;
-}
-
-/* Swiper Carousel Container */
-.accessories-swiper {
-  position: relative;
-  z-index: 2;
-  padding: 1rem 0 2rem;
-  max-width: 1400px;
-  margin: 0 auto;
-  overflow: visible;
-}
-
-.accessories-swiper .swiper-wrapper {
-  display: flex;
-  align-items: stretch;
-}
-
-.accessories-swiper .swiper-slide {
-  height: auto;
-  width: 220px;
-  flex-shrink: 0;
-}
-
-/* Accessory Card */
-.premium-accessory-card {
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-  cursor: pointer;
-  height: 300px;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-/* Card Background Image - FULLY VISIBLE */
-.premium-accessory-card .card-bg-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  z-index: 0;
-  transition: transform 0.5s ease;
-}
-
-.premium-accessory-card:hover .card-bg-img {
-  transform: scale(1.08);
-}
-
-.premium-accessory-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-/* Card Content */
-.accessory-card-content {
-  position: relative;
-  z-index: 2;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-/* Title - BLACK text, NO background */
-.premium-accessory-card h4 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: #000;
-  margin: 0;
-  padding: 0;
-  width: fit-content;
-}
-
-/* Description - BLACK text, NO background */
-.accessory-desc {
-  font-family: 'Syne', sans-serif;
-  font-size: 0.7rem;
-  color: #000;
-  margin-top: 4px;
-  padding: 0;
-  width: fit-content;
-}
-
-/* Price - at VERY BOTTOM, BLACK text, NO background */
-.accessory-price {
-  font-family: 'Playfair Display', serif;
-  font-size: 1rem;
-  font-weight: 900;
-  color: #000;
-  margin-top: 13rem;
-  padding: 0;
-  padding-top: 8px;
-  width: fit-content;
-}
-
-/* Hide Swiper Navigation Buttons */
-.swiper-button-next,
-.swiper-button-prev {
-  display: none;
-}
-
-.swiper-pagination {
-  display: none;
-}
-
-/* Responsive */
-@media (max-width: 1200px) {
-  .accessories-swiper .swiper-slide {
-    width: 200px;
-  }
-  .premium-accessory-card {
-    height: 280px;
-  }
-}
-
-@media (max-width: 768px) {
-  .accessories-premium-section {
-    padding: 3rem 1rem;
-  }
-  .premium-accessory-card {
-    height: 260px;
-  }
-  .accessories-swiper .swiper-slide {
-    width: 200px;
-  }
-}
-
-@media (max-width: 540px) {
-  .accessories-swiper .swiper-slide {
-    width: 180px;
-  }
-  .premium-accessory-card {
-    height: 250px;
-  }
-  .premium-accessory-card h4 {
-    font-size: 0.9rem;
-  }
-  .accessory-desc {
-    font-size: 0.65rem;
-  }
-  .accessory-price {
-    font-size: 0.85rem;
-  }
-}
-/* Header row - contains title and badge on SAME LINE, at VERY TOP */
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin: 0;  /* NO margin */
-  padding: 1rem 0;  /* Minimal padding for spacing */
-}
-
-/* Title - on LEFT, NO margin/padding from top */
-.card-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.4rem;
-  font-weight: 900;
-  color: #000;
-  background: rgba(255,255,255,0.9);
-  display: inline-block;
-  padding: 6px 16px;
-  border-radius: 8px;
-  margin: 0;  /* NO margin top */
-  width: auto;
-  max-width: 70%;
-  text-shadow: none;
-  letter-spacing: -0.5px;
-}
-
-/* Badge - on RIGHT, same line as title */
-.card-badge {
-  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-  padding: 6px 14px;
-  border-radius: 30px;
-  font-family: 'Syne', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  color: #080a0e;
-  text-transform: uppercase;
-  box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
-  white-space: nowrap;
-  margin: 0;  /* NO margin */
-}
-
-/* Features container - with some top spacing */
-.card-features {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  margin: 1.5rem 0 0 0;  /* Top margin only to separate from title */
-}
-
-.feature {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: 'Syne', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: #000;
-  background: rgba(250, 242, 242, 0.94);
-  padding: 6px 14px;
-  border-radius: 30px;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-}
-
-.feature i {
-  color: var(--gold);
-  font-size: 0.7rem;
+  transform: translateX(4px);
 }
 
 /* Button - at VERY BOTTOM of card */
 .card-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.6rem;
   font-family: 'Syne', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #080a0e;
   text-decoration: none;
   transition: all 0.3s ease;
-  margin-top: auto;  /* Pushes button to bottom */
+  margin-top: auto;
   width: fit-content;
-  padding: 10px 24px;
+  padding: 8px 20px;
   background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
   border-radius: 50px;
-  box-shadow: 0 4px 15px rgba(201, 162, 39, 0.4);
+  box-shadow: 0 3px 12px rgba(201, 162, 39, 0.4);
   border: none;
   cursor: pointer;
 }
@@ -1940,7 +1681,7 @@
 .card-btn span::after {
   content: '';
   position: absolute;
-  bottom: -3px;
+  bottom: -2px;
   left: 0;
   width: 0;
   height: 2px;
@@ -1957,20 +1698,20 @@
 }
 
 .card-btn:hover {
-  gap: 1rem;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(201, 162, 39, 0.5);
+  gap: 0.8rem;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(201, 162, 39, 0.5);
 }
 
 .card-btn:hover i {
-  transform: translateX(5px);
+  transform: translateX(4px);
 }
 
 /* Ensure card has proper flex layout */
 .solution-card {
   position: relative;
-  min-height: 550px;
-  border-radius: 28px;
+  min-height: 450px;
+  border-radius: 24px;
   overflow: hidden;
   transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
   cursor: pointer;
@@ -1991,11 +1732,260 @@
 }
 
 /* ══════════════════════════════════════════════════════════════
-     PREMIUM MONITORS SECTION - ATTRACTIVE & MODERN
+     ACCESSORIES SECTION - LIGHT THEME WITH CAROUSEL (SIZES REDUCED)
+══════════════════════════════════════════════════════════════ */
+.accessories-premium-section {
+  padding: 3rem 5%;
+  background: #f5f0e8;
+  position: relative;
+  overflow: hidden;
+}
+
+.accessories-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.accessories-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 900;
+  color: #1e1a14;
+  margin-bottom: 0.4rem;
+}
+
+.accessories-subtitle {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/* Swiper Carousel Container */
+.accessories-swiper {
+  position: relative;
+  z-index: 2;
+  padding: 0.8rem 0 1.5rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.accessories-swiper .swiper-wrapper {
+  display: flex;
+  align-items: stretch;
+}
+
+.accessories-swiper .swiper-slide {
+  height: auto;
+  width: 200px;
+  flex-shrink: 0;
+}
+
+/* Accessory Card */
+.premium-accessory-card {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  cursor: pointer;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Card Background Image - FULLY VISIBLE */
+.premium-accessory-card .card-bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  transition: transform 0.5s ease;
+}
+
+.premium-accessory-card:hover .card-bg-img {
+  transform: scale(1.06);
+}
+
+.premium-accessory-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Card Content */
+.accessory-card-content {
+  position: relative;
+  z-index: 2;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Title - BLACK text, NO background */
+.premium-accessory-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #000;
+  margin: 0;
+  padding: 0;
+  width: fit-content;
+}
+
+/* Description - BLACK text, NO background */
+.accessory-desc {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.6rem;
+  color: #000;
+  margin-top: 3px;
+  padding: 0;
+  width: fit-content;
+}
+
+/* Price - at VERY BOTTOM, BLACK text, NO background */
+.accessory-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: #000;
+  margin-top: 10rem;
+  padding: 0;
+  padding-top: 6px;
+  width: fit-content;
+}
+
+/* Hide Swiper Navigation Buttons */
+.swiper-button-next,
+.swiper-button-prev {
+  display: none;
+}
+
+.swiper-pagination {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .accessories-swiper .swiper-slide {
+    width: 180px;
+  }
+  .premium-accessory-card {
+    height: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  .accessories-premium-section {
+    padding: 2.5rem 1rem;
+  }
+  .premium-accessory-card {
+    height: 230px;
+  }
+  .accessories-swiper .swiper-slide {
+    width: 180px;
+  }
+}
+
+@media (max-width: 540px) {
+  .accessories-swiper .swiper-slide {
+    width: 160px;
+  }
+  .premium-accessory-card {
+    height: 220px;
+  }
+  .premium-accessory-card h4 {
+    font-size: 0.85rem;
+  }
+  .accessory-desc {
+    font-size: 0.55rem;
+  }
+  .accessory-price {
+    font-size: 0.75rem;
+  }
+}
+/* Header row - contains title and badge on SAME LINE, at VERY TOP */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 0.8rem 0;
+}
+
+/* Title - on LEFT, NO margin/padding from top */
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #000;
+  background: rgba(255,255,255,0.9);
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 8px;
+  margin: 0;
+  width: auto;
+  max-width: 70%;
+  text-shadow: none;
+  letter-spacing: -0.5px;
+}
+
+/* Badge - on RIGHT, same line as title */
+.card-badge {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  padding: 5px 12px;
+  border-radius: 25px;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #080a0e;
+  text-transform: uppercase;
+  box-shadow: 0 3px 12px rgba(201, 162, 39, 0.3);
+  white-space: nowrap;
+  margin: 0;
+}
+
+/* Features container - with some top spacing */
+.card-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1rem 0 0 0;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #000;
+  background: rgba(250, 242, 242, 0.94);
+  padding: 5px 12px;
+  border-radius: 25px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.feature i {
+  color: var(--gold);
+  font-size: 0.6rem;
+}
+
+/* ══════════════════════════════════════════════════════════════
+     PREMIUM MONITORS SECTION - ATTRACTIVE & MODERN (SIZES REDUCED)
 ══════════════════════════════════════════════════════════════ */
 .monitors-premium-section {
-  padding: 5rem 5%;
-  background-image: url('{% static 'images/monitor-bg.png' %}')
+  padding: 4rem 5%;
+  background: var(--dark-3);
   position: relative;
   overflow: hidden;
 }
@@ -2027,22 +2017,22 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: radial-gradient(2px 2px at 20px 30px, rgba(201,162,39,0.15), transparent),
-                    radial-gradient(1px 1px at 80px 150px, rgba(201,162,39,0.1), transparent);
+  background-image: radial-gradient(2px 2px at 20px 30px, rgba(201,162,39,0.12), transparent),
+                    radial-gradient(1px 1px at 80px 150px, rgba(201,162,39,0.08), transparent);
   background-repeat: no-repeat;
-  background-size: 200px 200px;
+  background-size: 150px 150px;
   animation: particleMove 30s linear infinite;
   pointer-events: none;
 }
 
 @keyframes particleMove {
   0% { background-position: 0 0; }
-  100% { background-position: 200px 200px; }
+  100% { background-position: 150px 150px; }
 }
 
 .monitors-header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
   position: relative;
   z-index: 2;
 }
@@ -2053,23 +2043,23 @@
 
 .monitors-header .section-tag-gold::before,
 .monitors-header .section-tag-gold::after {
-  width: 50px;
+  width: 40px;
 }
 
 .monitors-title {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
   font-weight: 900;
   color: #fff;
-  margin-bottom: 1rem;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  margin-bottom: 0.8rem;
+  text-shadow: 0 2px 15px rgba(0,0,0,0.3);
 }
 
 .monitors-subtitle {
   font-family: 'Syne', sans-serif;
-  font-size: 1rem;
+  font-size: 0.85rem;
   color: rgba(255,255,255,0.6);
-  max-width: 600px;
+  max-width: 550px;
   margin: 0 auto;
 }
 
@@ -2077,8 +2067,8 @@
 .monitors-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  max-width: 1300px;
+  gap: 1.5rem;
+  max-width: 1200px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
@@ -2087,9 +2077,8 @@
 /* Monitor Card */
 .monitor-card {
   position: relative;
-  {% comment %} background: rgba(21, 27, 37, 0.6); {% endcomment %}
   backdrop-filter: blur(10px);
-  border-radius: 28px;
+  border-radius: 24px;
   overflow: hidden;
   transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
   cursor: pointer;
@@ -2103,8 +2092,8 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
-  background-image: url('{% static 'images/monitor-bg.png' %}') 
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
   opacity: 0;
   transition: opacity 0.4s ease;
   z-index: 2;
@@ -2115,43 +2104,43 @@
 }
 
 .monitor-card:hover {
-  transform: translateY(-12px) scale(1.02);
+  transform: translateY(-8px) scale(1.01);
   border-color: rgba(201,162,39,0.35);
   background: rgba(21, 27, 37, 0.85);
-  box-shadow: 0 30px 50px -20px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,162,39,0.15);
+  box-shadow: 0 25px 40px -15px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,162,39,0.12);
 }
 
 /* Monitor Image Container */
 .monitor-img-wrapper {
   position: relative;
-  padding: 2rem;
+  padding: 1.5rem;
   text-align: center;
   overflow: hidden;
-  background: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
+  background: linear-gradient(135deg, rgba(0,0,0,0.25), rgba(0,0,0,0.08));
 }
 
 .monitor-img {
   width: 100%;
-  max-height: 200px;
+  max-height: 170px;
   object-fit: contain;
   transition: transform 0.5s ease;
-  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+  filter: drop-shadow(0 8px 15px rgba(0,0,0,0.25));
 }
 
 .monitor-card:hover .monitor-img {
-  transform: scale(1.05) translateY(-5px);
+  transform: scale(1.04) translateY(-3px);
 }
 
 /* Badge */
 .monitor-badge {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0.8rem;
+  right: 0.8rem;
   background: linear-gradient(135deg, #e92e2e, #c41e1e);
-  padding: 5px 12px;
-  border-radius: 30px;
+  padding: 4px 10px;
+  border-radius: 25px;
   font-family: 'Syne', sans-serif;
-  font-size: 0.65rem;
+  font-size: 0.55rem;
   font-weight: 800;
   letter-spacing: 0.05em;
   color: #fff;
@@ -2166,44 +2155,44 @@
 
 /* Monitor Info */
 .monitor-info {
-  padding: 1.5rem;
+  padding: 1.2rem;
   text-align: center;
 }
 
 .monitor-brand {
   font-family: 'Syne', sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
 .monitor-name {
   font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 800;
   color: #fff;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.6rem;
   line-height: 1.3;
 }
 
 .monitor-specs {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.8rem;
   flex-wrap: wrap;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 }
 
 .spec-item {
   font-family: 'Syne', sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   color: rgba(255,255,255,0.6);
   background: rgba(255,255,255,0.05);
-  padding: 4px 10px;
-  border-radius: 20px;
+  padding: 3px 8px;
+  border-radius: 15px;
 }
 
 /* Price Row */
@@ -2211,21 +2200,21 @@
   display: flex;
   justify-content: center;
   align-items: baseline;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
   flex-wrap: wrap;
 }
 
 .monitor-price {
   font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 900;
   color: var(--gold);
 }
 
 .monitor-old-price {
   font-family: 'Syne', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.7rem;
   color: rgba(255,255,255,0.4);
   text-decoration: line-through;
 }
@@ -2235,15 +2224,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
+  gap: 0.5rem;
   font-family: 'Syne', sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #080a0e;
   background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
-  padding: 10px 24px;
+  padding: 8px 20px;
   border-radius: 50px;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -2253,33 +2242,33 @@
 }
 
 .monitor-btn:hover {
-  transform: translateY(-3px);
-  gap: 0.9rem;
-  box-shadow: 0 8px 25px rgba(201,162,39,0.5);
+  transform: translateY(-2px);
+  gap: 0.7rem;
+  box-shadow: 0 6px 20px rgba(201,162,39,0.5);
 }
 
 /* Responsive */
 @media (max-width: 1024px) {
   .monitors-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: 1.2rem;
   }
 }
 
 @media (max-width: 768px) {
   .monitors-grid {
     grid-template-columns: 1fr;
-    max-width: 400px;
+    max-width: 380px;
     margin: 0 auto;
   }
   .monitors-premium-section {
     padding: 3rem 1rem;
   }
   .monitor-name {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
   .monitor-price {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 }
 </style>
@@ -2289,16 +2278,13 @@
 <div class="sales-page">
 
 <!-- ══════════════════════════════════════════════════════════
-     HERO SECTION — With White Rounded Container & No Grid Lines
-══════════════════════════════════════════════════════════════ -->
-<!-- ══════════════════════════════════════════════════════════
-     HERO SECTION — Clean White Background with 30px Gap & Proper Rounded Corners
+     HERO SECTION — With White Rounded Container
 ══════════════════════════════════════════════════════════════ -->
 <section class="hero-slideshow-section">
   <!-- White background container -->
   <div class="hero-image-container"></div>
   
-  <!-- Swiper Slideshow - 30px gap from all sides, perfectly rounded -->
+  <!-- Swiper Slideshow - 25px gap from all sides, perfectly rounded -->
   <div class="hero-swiper swiper">
     <div class="swiper-wrapper">
       <div class="swiper-slide" style="background-image: url('{% static "images/banner-main-1.jpg" %}');"></div>
@@ -2314,48 +2300,41 @@
       <a href="#shop-section" class="btn-gold">
         <i class="fas fa-arrow-up-right"></i> Shop Now
       </a>
- 
     </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════════════════════════
      NEW SECTION: FULL COVER CARDS WITH TEXT OVERLAY
-     Exactly matching the Elementor reference — image covers entire card,
-     only 3 text elements per card: Title, Subtitle, and Shop Now Button.
 ══════════════════════════════════════════════════════════════ -->
-<section class="fullcover-cards-section">
+<section id="fullcover-cards-section" class="fullcover-cards-section">
   <div class="fullcover-container">
     <div class="section-header anim up">
       <div class="section-tag-gold">Premium Selection</div>
-      <h2 class="section-h2">Find Your Perfect Laptop</span></h2>
-      <p class="section-sub" style="margin: 1rem auto 0;">Discover our latest high-performance machines</p>
+      <h2 class="section-h2">Find Your Perfect Laptop</h2>
+      <p class="section-sub" style="margin: 0.8rem auto 0;">Discover our latest high-performance machines</p>
     </div>
 
     <div class="fullcover-grid">
       
       <!-- Card 1: Powerful GPU Series / Gaming Machines -->
-<!-- Card 1: Powerful GPU Series / Gaming Machines -->
-<a href="#" class="fullcover-card anim up delay-1" data-link-url="https://your-link-here.com/gpu-series">
-  <div class="fullcover-card-bg" style="background-image: url('{% static "images/gaming-laptop.png" %}');"></div>
-  <div class="fullcover-card-content">
-    <div class="fullcover-card-subtitle">High-Performance GPU</div>
-    <h2 class="fullcover-card-title">Gaming Laptop</h2>
-    <span class="fullcover-card-btn">View All <i class="fas fa-arrow-up-right"></i></span>
-  </div>
-</a>
+      <a href="{% url 'gamingl' %}" class="fullcover-card anim up delay-1">
+        <div class="fullcover-card-bg" style="background-image: url('{% static "images/gaming-laptop.png" %}');"></div>
+        <div class="fullcover-card-content">
+          <div class="fullcover-card-subtitle">High-Performance GPU</div>
+          <h2 class="fullcover-card-title">Gaming Laptop</h2>
+          <span class="fullcover-card-btn">View All <i class="fas fa-arrow-up-right"></i></span>
+        </div>
+      </a>
 
       <!-- Card 2: AI-Powered Series / Business Laptops -->
       <a href="#" class="fullcover-card anim up delay-2" data-link-url="https://your-link-here.com/ai-series">
         <div class="fullcover-card-bg" style="background-image: url('{% static "images/business-laptop.png" %}');"></div>
         <div class="fullcover-card-overlay"></div>
         <div class="fullcover-card-content">
-        
           <div class="fullcover-card-subtitle">Optimized Power</div>
-            <h2 class="fullcover-card-title">Business Laptops</h2>
-          <span class="fullcover-card-btn">
-            View All <i class="fas fa-arrow-up-right"></i>
-          </span>
+          <h2 class="fullcover-card-title">Business Laptops</h2>
+          <span class="fullcover-card-btn">View All <i class="fas fa-arrow-up-right"></i></span>
         </div>
       </a>
 
@@ -2364,12 +2343,9 @@
         <div class="fullcover-card-bg" style="background-image: url('{% static "images/video-editors-laptop.png" %}');"></div>
         <div class="fullcover-card-overlay"></div>
         <div class="fullcover-card-content">
-          
           <div class="fullcover-card-subtitle">Creator-Grade Performance</div>
           <h2 class="fullcover-card-title">Video Editors</h2>
-          <span class="fullcover-card-btn">
-            View All <i class="fas fa-arrow-up-right"></i>
-          </span>
+          <span class="fullcover-card-btn">View All <i class="fas fa-arrow-up-right"></i></span>
         </div>
       </a>
 
@@ -2390,10 +2366,9 @@
   </div>
 
   <!-- Category Filter Buttons - ONLY 2 TABS -->
-  <div style="max-width:1300px;margin:0 auto 2.5rem;display:flex;justify-content:center; gap: 1rem;" class="anim up delay-2">
-       <button class="cat-filter-btn" data-cat-filter="new">✨ New Arrivals</button>
+  <div style="max-width:1200px;margin:0 auto 2rem;display:flex;justify-content:center; gap: 0.8rem;" class="anim up delay-2">
+    <button class="cat-filter-btn" data-cat-filter="new">✨ New Arrivals</button>
     <button class="cat-filter-btn active" data-cat-filter="popular">🔥 Popular</button>
-
   </div>
 
   <!-- POPULAR Laptops Panel (6 cards) -->
@@ -2412,7 +2387,6 @@
             <span class="cat-price">₹38,000</span>
             <span class="cat-old-price">₹45,000</span>
           </div>
-          {% comment %} <a href="{% url 'contact' %}" class="cat-card-btn">View Details →</a> {% endcomment %}
         </div>
       </div>
 
@@ -2428,7 +2402,6 @@
           <div class="cat-price-row">
             <span class="cat-price">₹42,000</span>
           </div>
-          {% comment %} <a href="{% url 'contact' %}" class="cat-card-btn">View Details →</a> {% endcomment %}
         </div>
       </div>
 
@@ -2648,17 +2621,15 @@
     </div>
   </div>
 </section>
+
 <!-- ══════════════════════════════════════════════════════════
      PREMIUM SECURITY & PRINTING SOLUTIONS
-     CLEAN CARDS WITH FULLY VISIBLE BACKGROUND IMAGES
 ══════════════════════════════════════════════════════════════ -->
 <section class="premium-solutions-section">
   <div class="solutions-container">
     <div class="solutions-header anim up">
       <div class="section-tag-gold">
-        {% comment %} <span class="tag-line"></span> {% endcomment %}
         Security & Office Solutions
-        {% comment %} <span class="tag-line"></span> {% endcomment %}
       </div>
       <h2 class="solutions-title"><span class="gold-text">Smart </span> Security & Smart Printing</h2>
       <p class="solutions-subtitle">We provide CCTV cameras for safety and efficient printers for everyday business and personal use.</p>
@@ -2666,49 +2637,50 @@
 
     <div class="solutions-grid">
       <!-- Card 1: CCTV Security Cameras -->
-<div class="solution-card anim left">
-  <div class="card-bg" style="background-image: url('{% static 'images/camera.png' %}');"></div>
-  <div class="solution-card-content">
-    <div class="card-header">
-      <h3 class="card-title">CCTV Security Cameras</h3>
-      <span class="card-badge">24/7 Protection</span>
-    </div>
-    <div class="card-features">
-      <div class="feature"><i class="fas fa-check-circle"></i> HD 1080p</div>
-      <div class="feature"><i class="fas fa-check-circle"></i> Night Vision</div>
-      <div class="feature"><i class="fas fa-check-circle"></i> Motion Detection</div>
-      <div class="feature"><i class="fas fa-check-circle"></i> Remote Access</div>
-    </div>
-    <a href="#" class="card-btn">
-      <span>Explore Cameras</span>
-      <i class="fas fa-arrow-right"></i>
-    </a>
-  </div>
-</div>
+      <div class="solution-card anim left">
+        <div class="card-bg" style="background-image: url('{% static 'images/camera.png' %}');"></div>
+        <div class="solution-card-content">
+          <div class="card-header">
+            <h3 class="card-title">CCTV Security Cameras</h3>
+            <span class="card-badge">24/7 Protection</span>
+          </div>
+          <div class="card-features">
+            <div class="feature"><i class="fas fa-check-circle"></i> HD 1080p</div>
+            <div class="feature"><i class="fas fa-check-circle"></i> Night Vision</div>
+            <div class="feature"><i class="fas fa-check-circle"></i> Motion Detection</div>
+            <div class="feature"><i class="fas fa-check-circle"></i> Remote Access</div>
+          </div>
+          <a href="#" class="card-btn">
+            <span>Explore Cameras</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
 
-<!-- Card 2: Business Printers -->
-<div class="solution-card anim right delay-1">
-  <div class="card-bg" style="background-image: url('{% static 'images/printer.png' %}');"></div>
-  <div class="solution-card-content">
-    <div class="card-header">
-      <h3 class="card-title">Business Printers</h3>
-      <span class="card-badge">Fast & Efficient</span>
-    </div>
-    <div class="card-features">
-      <div class="feature"><i class="fas fa-check-circle"></i> Business Printers</div>
-      <div class="feature"><i class="fas fa-check-circle"></i> Wireless / Wired Printers</div>
-      <div class="feature"><i class="fas fa-check-circle"></i> Color Printers</div>
-      <div class="feature"><i class="fas fa-check-circle"></i> Black & White Printers</div>
-    </div>
-    <a href="#" class="card-btn">
-      <span>Explore Printers</span>
-      <i class="fas fa-arrow-right"></i>
-    </a>
-  </div>
-</div>
+      <!-- Card 2: Business Printers -->
+      <div class="solution-card anim right delay-1">
+        <div class="card-bg" style="background-image: url('{% static 'images/printer.png' %}');"></div>
+        <div class="solution-card-content">
+          <div class="card-header">
+            <h3 class="card-title">Business Printers</h3>
+            <span class="card-badge">Fast & Efficient</span>
+          </div>
+          <div class="card-features">
+            <div class="feature"><i class="fas fa-check-circle"></i> Business Printers</div>
+            <div class="feature"><i class="fas fa-check-circle"></i> Wireless / Wired Printers</div>
+            <div class="feature"><i class="fas fa-check-circle"></i> Color Printers</div>
+            <div class="feature"><i class="fas fa-check-circle"></i> Black & White Printers</div>
+          </div>
+          <a href="#" class="card-btn">
+            <span>Explore Printers</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
 <!-- ══════════════════════════════════════════════════════════
      ACCESSORIES SHOWCASE - CAROUSEL WITH BUTTONS AT BOTTOM
 ══════════════════════════════════════════════════════════════ -->
@@ -2724,20 +2696,18 @@
     <div class="swiper-wrapper">
       
       <!-- Card 1: SSD -->
-
-    <div class="swiper-slide">
-      <div class="premium-accessory-card">
-        <div class="card-bg-img" style="background-image: url('{% static "images/laptop-stand-bg.png" %}');"></div>
-        <div class="accessory-card-content">
-          <div>
-            <h4>Laptop Stand</h4>
-            <p class="accessory-desc">Ergonomic adjustable stand</p>
-            <div class="accessory-price">From ₹249</div>
+      <div class="swiper-slide">
+        <div class="premium-accessory-card">
+          <div class="card-bg-img" style="background-image: url('{% static "images/laptop-stand-bg.png" %}');"></div>
+          <div class="accessory-card-content">
+            <div>
+              <h4>Laptop Stand</h4>
+              <p class="accessory-desc">Ergonomic adjustable stand</p>
+              <div class="accessory-price">From ₹249</div>
+            </div>
           </div>
-          {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
         </div>
       </div>
-    </div>
       <!-- Card 2: RAM -->
       <div class="swiper-slide">
         <div class="premium-accessory-card">
@@ -2748,7 +2718,6 @@
               <p class="accessory-desc">DDR3/DDR4 for smooth performance</p>
               <div class="accessory-price">From ₹1499</div>
             </div>
-            {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
           </div>
         </div>
       </div>
@@ -2763,7 +2732,6 @@
               <p class="accessory-desc">HDMI, USB & Lan adapters</p>
               <div class="accessory-price">From ₹99</div>
             </div>
-            {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
           </div>
         </div>
       </div>
@@ -2778,7 +2746,6 @@
               <p class="accessory-desc">Premium toner for clear prints</p>
               <div class="accessory-price">From ₹199</div>
             </div>
-            {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
           </div>
         </div>
       </div>
@@ -2793,7 +2760,6 @@
               <p class="accessory-desc">Original & compatible Cartages</p>
               <div class="accessory-price">From ₹499</div>
             </div>
-            {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
           </div>
         </div>
       </div>
@@ -2808,7 +2774,6 @@
               <p class="accessory-desc">Adapters & extension cords</p>
               <div class="accessory-price">From ₹149</div>
             </div>
-            {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
           </div>
         </div>
       </div>
@@ -2823,7 +2788,6 @@
               <p class="accessory-desc">Laptop batteries (all brands)</p>
               <div class="accessory-price">From ₹999</div>
             </div>
-            {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
           </div>
         </div>
       </div>
@@ -2838,7 +2802,6 @@
               <p class="accessory-desc">Wireless & wired (all brands)</p>
               <div class="accessory-price">From ₹199</div>
             </div>
-            {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
           </div>
         </div>
       </div>
@@ -2853,12 +2816,11 @@
               <p class="accessory-desc">Wireless & wired keyboards</p>
               <div class="accessory-price">From ₹349</div>
             </div>
-            {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
           </div>
         </div>
       </div>
 
-    <!-- Card 10: Laptop Fan -->
+      <!-- Card 10: Laptop Fan -->
       <div class="swiper-slide">
         <div class="premium-accessory-card">
           <div class="card-bg-img" style="background-image: url('{% static "images/ssd-bg.png" %}');"></div>
@@ -2868,70 +2830,64 @@
               <p class="accessory-desc">Fast SSDs for all devices</p>
               <div class="accessory-price">From ₹1499</div>
             </div>
-            {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
           </div>
         </div>
       </div>
-    <!-- Card 11: Laptop Stand -->
-    
-    <div class="swiper-slide">
-      <div class="premium-accessory-card">
-        <div class="card-bg-img" style="background-image: url('{% static "images/laptop-fan-bg.png" %}');"></div>
-        <div class="accessory-card-content">
-          <div>
-            <h4>Laptop Fan</h4>
-            <p class="accessory-desc">Cooling fan for laptops</p>
-            <div class="accessory-price">From ₹399</div>
+      <!-- Card 11: Laptop Stand -->
+      <div class="swiper-slide">
+        <div class="premium-accessory-card">
+          <div class="card-bg-img" style="background-image: url('{% static "images/laptop-fan-bg.png" %}');"></div>
+          <div class="accessory-card-content">
+            <div>
+              <h4>Laptop Fan</h4>
+              <p class="accessory-desc">Cooling fan for laptops</p>
+              <div class="accessory-price">From ₹399</div>
+            </div>
           </div>
-          {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
         </div>
       </div>
-    </div>
 
-    <!-- Card 12: Webcam -->
-    <div class="swiper-slide">
-      <div class="premium-accessory-card">
-        <div class="card-bg-img" style="background-image: url('{% static "images/webcam-bg.png" %}');"></div>
-        <div class="accessory-card-content">
-          <div>
-            <h4>Webcam</h4>
-            <p class="accessory-desc">HD webcam for video calls</p>
-            <div class="accessory-price">From ₹899</div>
+      <!-- Card 12: Webcam -->
+      <div class="swiper-slide">
+        <div class="premium-accessory-card">
+          <div class="card-bg-img" style="background-image: url('{% static "images/webcam-bg.png" %}');"></div>
+          <div class="accessory-card-content">
+            <div>
+              <h4>Webcam</h4>
+              <p class="accessory-desc">HD webcam for video calls</p>
+              <div class="accessory-price">From ₹899</div>
+            </div>
           </div>
-          {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
         </div>
       </div>
-    </div>
 
-    <!-- Card 13: Monitor Mount -->
-    <div class="swiper-slide">
-      <div class="premium-accessory-card">
-        <div class="card-bg-img" style="background-image: url('{% static "images/monitor-mount-bg.png" %}');"></div>
-        <div class="accessory-card-content">
-          <div>
-            <h4>Monitor Mount</h4>
-            <p class="accessory-desc">Adjustable monitor arm</p>
-            <div class="accessory-price">From ₹299</div>
+      <!-- Card 13: Monitor Mount -->
+      <div class="swiper-slide">
+        <div class="premium-accessory-card">
+          <div class="card-bg-img" style="background-image: url('{% static "images/monitor-mount-bg.png" %}');"></div>
+          <div class="accessory-card-content">
+            <div>
+              <h4>Monitor Mount</h4>
+              <p class="accessory-desc">Adjustable monitor arm</p>
+              <div class="accessory-price">From ₹299</div>
+            </div>
           </div>
-          {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
         </div>
       </div>
-    </div>
 
-    <!-- Card 14: Router -->
-    <div class="swiper-slide">
-      <div class="premium-accessory-card">
-        <div class="card-bg-img" style="background-image: url('{% static "images/router-bg.png" %}');"></div>
-        <div class="accessory-card-content">
-          <div>
-            <h4>Router</h4>
-            <p class="accessory-desc">High-speed WiFi router</p>
-            <div class="accessory-price">From ₹1499</div>
+      <!-- Card 14: Router -->
+      <div class="swiper-slide">
+        <div class="premium-accessory-card">
+          <div class="card-bg-img" style="background-image: url('{% static "images/router-bg.png" %}');"></div>
+          <div class="accessory-card-content">
+            <div>
+              <h4>Router</h4>
+              <p class="accessory-desc">High-speed WiFi router</p>
+              <div class="accessory-price">From ₹1499</div>
+            </div>
           </div>
-          {% comment %} <a href="{% url 'contact' %}" class="accessory-btn-bottom">Shop Now <i class="fas fa-arrow-right"></i></a> {% endcomment %}
         </div>
       </div>
-    </div>
     </div>
   </div>
 </section>
@@ -3084,132 +3040,7 @@
 
   </div>
 </section>
-<!-- ══════════════════════════════════════════════════════════
-     CCTV & PRINTER ACCESSORIES SECTION
-══════════════════════════════════════════════════════════════ -->
-<section class="accessories-section">
-  <div style="max-width:1300px;margin:0 auto 2.5rem;" class="anim up">
-    <div class="section-tag-gold">Essential Monitors</div>
-    <h2 class="section-h2">Complete Your <span class="a">Security & Office Setup</span></h2>
-    <p class="section-sub" style="max-width: 600px; margin-top: 0.5rem;">Everything you need for a complete security and printing solution.</p>
-  </div>
-  
-  <div class="accessories-grid">
-    <!-- Accessory 1: CCTV Hard Drives -->
-    <div class="accessory-card anim up delay-1">
-      <div class="accessory-img-wrapper">
-        <img src="https://images.unsplash.com/photo-1531498390585-5b9cb67dfa1e?w=400&h=300&fit=crop" alt="CCTV Hard Drives">
-      </div>
-      <div class="accessory-info">
-        <h3 class="accessory-title">Surveillance Hard Drives</h3>
-        <p class="accessory-desc">1TB to 4TB specialized HDDs for 24/7 CCTV recording.</p>
-        <div class="accessory-price">From ₹3,499</div>
-        <a href="{% url 'contact' %}" class="accessory-btn">Shop Now →</a>
-      </div>
-    </div>
 
-    <!-- Accessory 2: CCTV Cables & Connectors -->
-    <div class="accessory-card anim up delay-2">
-      <div class="accessory-img-wrapper">
-        <img src="https://images.unsplash.com/photo-1551269901-5c5e14c25df7?w=400&h=300&fit=crop" alt="CCTV Cables">
-      </div>
-      <div class="accessory-info">
-        <h3 class="accessory-title">CCTV Cables & Connectors</h3>
-        <p class="accessory-desc">BNC cables, power adapters, and connectors for easy installation.</p>
-        <div class="accessory-price">From ₹299</div>
-        <a href="{% url 'contact' %}" class="accessory-btn">Shop Now →</a>
-      </div>
-    </div>
-
-    <!-- Accessory 3: Printer Toner Cartages -->
-    <div class="accessory-card anim up delay-3">
-      <div class="accessory-img-wrapper">
-        <img src="{% static 'images/catrage.png' %}" alt="Toner Cartages">
-      </div>
-      <div class="accessory-info">
-        <h3 class="accessory-title">Printer Toner & Ink</h3>
-        <p class="accessory-desc">Compatible & genuine Cartages for HP, Canon, Epson printers.</p>
-        <div class="accessory-price">From ₹499</div>
-        <a href="{% url 'contact' %}" class="accessory-btn">Shop Now →</a>
-      </div>
-    </div>
-
-    <!-- Accessory 4: CCTV Power Supplies -->
-    <div class="accessory-card anim up delay-4">
-      <div class="accessory-img-wrapper">
-        <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=400&h=300&fit=crop" alt="Power Supplies">
-      </div>
-      <div class="accessory-info">
-        <h3 class="accessory-title">CCTV Power Supplies</h3>
-        <p class="accessory-desc">12V power adapters and centralized power boxes for multiple cameras.</p>
-        <div class="accessory-price">From ₹599</div>
-        <a href="{% url 'contact' %}" class="accessory-btn">Shop Now →</a>
-      </div>
-    </div>
-
-    <!-- Accessory 5: Printer Paper -->
-    <div class="accessory-card anim up delay-5">
-      <div class="accessory-img-wrapper">
-        <img src="{% static 'images/printer.png' %}" alt="Printer Paper">
-      </div>
-      <div class="accessory-info">
-        <h3 class="accessory-title">Business Printer Paper</h3>
-        <p class="accessory-desc">A4 sheets, thermal paper, and photo paper for all printing needs.</p>
-        <div class="accessory-price">From ₹199</div>
-        <a href="{% url 'contact' %}" class="accessory-btn">Shop Now →</a>
-      </div>
-    </div>
-
-    <!-- Accessory 6: Camera Mounts & Stands -->
-    <div class="accessory-card anim up delay-1">
-      <div class="accessory-img-wrapper">
-        <img src="https://images.unsplash.com/photo-1580128663079-6d44aec90d72?w=400&h=300&fit=crop" alt="Camera Mounts">
-      </div>
-      <div class="accessory-info">
-        <h3 class="accessory-title">CCTV Mounts & Stands</h3>
-        <p class="accessory-desc">Wall mounts, ceiling mounts, and adjustable stands for perfect angle.</p>
-        <div class="accessory-price">From ₹349</div>
-        <a href="{% url 'contact' %}" class="accessory-btn">Shop Now →</a>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- ══════════════════════════════════════════════════════════
-     PROMO / BEST SELLERS ROW
-══════════════════════════════════════════════════════════════ -->
-<section class="promo-section">
-  <div style="max-width:1300px;margin:0 auto 2.5rem;" class="anim up">
-    <div class="section-tag-gold">Featured Deals</div>
-    <h2 class="section-h2">Handpicked <span class="a">Best Sellers</span></h2>
-  </div>
-  <div class="promo-grid">
-    <a href="{% url 'contact' %}" class="promo-feature anim left">
-      <img src="https://template-kit.evonicmedia.com/layout114/wp-content/uploads/2024/12/banner-main-3-1.jpg" class="promo-feat-img" loading="lazy">
-      <div class="promo-feat-body">
-        <div class="promo-feat-title">High-Performance i7 Series</div>
-        <div class="cat-card-sub">Special offers you can't miss — these deals won't last forever!</div>
-        <div class="promo-feat-new">From ₹32,000</div>
-        <div style="margin-top:1rem;"><span class="btn-gold" style="font-size:.8rem;padding:10px 20px;"><i class="fas fa-arrow-up-right"></i> Shop Now</span></div>
-      </div>
-    </a>
-    <a href="{% url 'contact' %}" class="promo-small anim up delay-1">
-      <img src="https://template-kit.evonicmedia.com/layout114/wp-content/uploads/2024/12/p-3.jpg" class="promo-small-img" loading="lazy">
-      <div class="promo-small-body">
-        <div class="promo-small-title">i7 9th Gen — Most Popular</div>
-        <div class="cat-card-sub">Special offers you can't miss</div>
-        <div class="promo-small-price">₹28,000</div>
-      </div>
-    </a>
-    <a href="{% url 'contact' %}" class="promo-small anim up delay-2">
-      <img src="https://template-kit.evonicmedia.com/layout114/wp-content/uploads/2024/12/p-2.jpg" class="promo-small-img" loading="lazy">
-      <div class="promo-small-body">
-        <div class="promo-small-title">i5 7th Gen — Great Value</div>
-        <div class="cat-card-sub">Best performance for price</div>
-        <div class="promo-small-price">₹18,500</div>
-      </div>
-    </a>
-  </div>
-</section>
 
 </div>
 
@@ -3240,14 +3071,13 @@ const animObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
 document.querySelectorAll('.anim, .fullcover-card').forEach(el => animObserver.observe(el));
 
-
 // ══ 3D Tilt on Cards ════════════════════════════════════════
 document.querySelectorAll('.prod-card, .cat-card, .promo-small, .promo-feature, .fullcover-card').forEach(card => {
   card.addEventListener('mousemove', e => {
     const r = card.getBoundingClientRect();
     const x = (e.clientX - r.left) / r.width - .5;
     const y = (e.clientY - r.top) / r.height - .5;
-    card.style.transform = `perspective(700px) rotateY(${x*10}deg) rotateX(${-y*10}deg) translateY(-6px)`;
+    card.style.transform = `perspective(700px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateY(-5px)`;
   });
   card.addEventListener('mouseleave', () => { card.style.transform = ''; });
 });
@@ -3263,21 +3093,17 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 
 // ══ Handle Shop Now button links — you can customize the URLs here ══
-// Each card has a data-link-url attribute. Update these URLs as needed.
 document.querySelectorAll('.fullcover-card').forEach(card => {
   const btn = card.querySelector('.fullcover-card-btn');
   const linkUrl = card.getAttribute('data-link-url');
   
-  // Make the entire card clickable with the same URL
   if (linkUrl && linkUrl !== '#') {
     card.addEventListener('click', (e) => {
-      // Prevent if the btn itself was clicked (already handled by its own logic)
       if (e.target.closest('.fullcover-card-btn')) return;
       window.location.href = linkUrl;
     });
   }
   
-  // Button click handler
   if (btn && linkUrl && linkUrl !== '#') {
     const newBtn = btn.cloneNode(true);
     btn.parentNode.replaceChild(newBtn, btn);
@@ -3288,16 +3114,15 @@ document.querySelectorAll('.fullcover-card').forEach(card => {
     });
   }
 });
+
 // ===== CATEGORY FILTER FUNCTIONALITY - ONLY 2 TABS =====
 document.querySelectorAll('.cat-filter-btn').forEach(btn => {
   btn.addEventListener('click', function() {
     const filterValue = this.getAttribute('data-cat-filter');
     
-    // Update active button state
     document.querySelectorAll('.cat-filter-btn').forEach(b => b.classList.remove('active'));
     this.classList.add('active');
     
-    // Show/hide panels
     document.querySelectorAll('.cat-panel').forEach(panel => {
       panel.classList.remove('active');
     });
@@ -3309,11 +3134,12 @@ document.querySelectorAll('.cat-filter-btn').forEach(btn => {
     }
   });
 });
+
 // Initialize Accessories Swiper Carousel - INFINITE LOOP, FULL CARDS VISIBLE
 const accessoriesSwiper = new Swiper('.accessories-swiper', {
-  slidesPerView: 'auto',  // Auto width based on content
-  spaceBetween: 25,
-  loop: true,  // Infinite loop
+  slidesPerView: 'auto',
+  spaceBetween: 20,
+  loop: true,
   centeredSlides: false,
   autoplay: {
     delay: 4000,
@@ -3330,28 +3156,27 @@ const accessoriesSwiper = new Swiper('.accessories-swiper', {
   breakpoints: {
     0: {
       slidesPerView: 1,
-      spaceBetween: 15,
+      spaceBetween: 12,
     },
     640: {
       slidesPerView: 2,
-      spaceBetween: 20,
+      spaceBetween: 15,
     },
     768: {
       slidesPerView: 3,
-      spaceBetween: 25,
+      spaceBetween: 20,
     },
     1024: {
       slidesPerView: 4,
-      spaceBetween: 30,
+      spaceBetween: 25,
     },
     1200: {
       slidesPerView: 5,
-      spaceBetween: 30,
+      spaceBetween: 25,
     },
   }
 });
 </script>
-
 {% endblock %}
 
 {% endblock %}

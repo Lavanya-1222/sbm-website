@@ -619,3 +619,5 @@ def contact(request):
 
 def shop(request):
     return render(request,"shop.html")
+def gamingl(request):
+    return render(request,"gaming_l.html")
