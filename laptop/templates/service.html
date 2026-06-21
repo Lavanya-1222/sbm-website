@@ -836,192 +836,6 @@
             }
         }
 
-        /* Hero Main Container */
-        .hero-container {
-            position: relative;
-            z-index: 10;
-            max-width: 1400px;
-            width: 90%;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-            padding: 2rem 0;
-        }
-
-        /* Left Content - Text Area */
-        .hero-content {
-            animation: fadeInUp 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1) both;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: rgba(201,162,39,0.12);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(201,162,39,0.35);
-            padding: 0.4rem 1.2rem;
-            border-radius: 60px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            color: #c9a227;
-            margin-bottom: 1.5rem;
-            animation: glowPulse 2.5s ease-in-out infinite;
-        }
-
-        @keyframes glowPulse {
-            0%, 100% {
-                box-shadow: 0 0 0 0 rgba(201,162,39,0.2);
-                border-color: rgba(201,162,39,0.35);
-            }
-            50% {
-                box-shadow: 0 0 15px 3px rgba(201,162,39,0.25);
-                border-color: #c9a227;
-            }
-        }
-
-        .hero-badge i {
-            font-size: 0.7rem;
-        }
-
-        .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.2rem, 5vw, 3.8rem);
-            font-weight: 900;
-            line-height: 1.15;
-            color: #ffffff;
-            margin-bottom: 1.2rem;
-        }
-
-        .hero-title .gold-text {
-            background: linear-gradient(135deg, #c9a227, #f0c84a, #c9a227);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            position: relative;
-            display: inline-block;
-            animation: shimmer 3s ease infinite;
-        }
-
-        @keyframes shimmer {
-            0%, 100% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-        }
-
-        .hero-description {
-            font-size: 0.95rem;
-            line-height: 1.65;
-            color: rgba(255,255,255,0.75);
-            margin-bottom: 2rem;
-            max-width: 500px;
-        }
-
-        /* Trust Stats Row */
-        .hero-stats {
-            display: flex;
-            gap: 1.8rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .stat-item {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .stat-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: #c9a227;
-            letter-spacing: 1px;
-        }
-
-        .stat-label {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: rgba(255,255,255,0.55);
-        }
-
-        /* CTA Buttons */
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #c9a227, #8a6e0f);
-            border: none;
-            padding: 0.9rem 2rem;
-            border-radius: 50px;
-            font-family: 'Syne', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #0a0c10;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            text-decoration: none;
-            box-shadow: 0 8px 20px rgba(201,162,39,0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(201,162,39,0.45);
-            gap: 0.9rem;
-            background: linear-gradient(135deg, #dbb42c, #9e7a15);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1.5px solid rgba(201,162,39,0.6);
-            padding: 0.85rem 2rem;
-            border-radius: 50px;
-            font-family: 'Syne', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #c9a227;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            text-decoration: none;
-        }
-
-        .btn-outline:hover {
-            background: rgba(201,162,39,0.12);
-            border-color: #c9a227;
-            transform: translateY(-3px);
-            gap: 0.9rem;
-        }
 
         /* ============================================ */
         /* FLOATING BOOKING CARD - RIGHT SIDE */
@@ -1287,244 +1101,516 @@
         .booking-card:hover {
             transform: translateY(-5px);
         }
-    </style>
+</style>
 
+
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Syne', sans-serif; background: #0a0c10; overflow-x: hidden; }
+
+    /* ============================================ */
+    /* HERO — LIVE DIAGNOSTIC                        */
+    /* ============================================ */
+    .service-hero {
+        position: relative;
+        min-height: 100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        background: #07080b;
+    }
+
+    /* faint animated circuit-trace backdrop */
+    .circuit-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        opacity: 0.35;
+    }
+
+    .circuit-bg path {
+        fill: none;
+        stroke: #c9a227;
+        stroke-width: 1;
+        opacity: 0.18;
+    }
+
+    .circuit-bg .pulse-line {
+        opacity: 0.55;
+        stroke-dasharray: 6 14;
+        animation: dashTravel 6s linear infinite;
+    }
+
+    @keyframes dashTravel {
+        to { stroke-dashoffset: -400; }
+    }
+
+    .circuit-bg circle {
+        fill: #c9a227;
+        opacity: 0.3;
+    }
+
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse at 20% 50%, rgba(7,8,11,0.4) 0%, rgba(7,8,11,0.92) 75%);
+        z-index: 1;
+    }
+
+    .hero-container {
+        position: relative;
+        z-index: 5;
+        max-width: 1320px;
+        width: 90%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 3rem;
+        align-items: center;
+        padding: 7rem 0 4rem;
+    }
+
+    /* ---------- Left: copy ---------- */
+    .hero-content { animation: fadeInUp 0.9s cubic-bezier(0.2,0.9,0.4,1.1) both; }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #c9a227;
+        margin-bottom: 1.4rem;
+    }
+
+    .hero-eyebrow::before {
+        content: '';
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #c9a227;
+        box-shadow: 0 0 0 0 rgba(201,162,39,0.5);
+        animation: dotPing 2s ease-out infinite;
+    }
+
+    @keyframes dotPing {
+        0% { box-shadow: 0 0 0 0 rgba(201,162,39,0.5); }
+        70% { box-shadow: 0 0 0 8px rgba(201,162,39,0); }
+        100% { box-shadow: 0 0 0 0 rgba(201,162,39,0); }
+    }
+
+    .hero-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2.4rem, 5vw, 4rem);
+        font-weight: 900;
+        line-height: 1.12;
+        color: #fff;
+        margin-bottom: 1.3rem;
+    }
+
+    .hero-title .gold-text {
+        background: linear-gradient(135deg, #c9a227, #f0c84a, #c9a227);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: shimmer 4s ease infinite;
+    }
+
+    @keyframes shimmer {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+
+    .hero-description {
+        font-size: 0.98rem;
+        line-height: 1.7;
+        color: rgba(255,255,255,0.68);
+        margin-bottom: 2.2rem;
+        max-width: 480px;
+    }
+
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.6rem; }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #c9a227, #8a6e0f);
+        border: none;
+        padding: 0.9rem 2rem;
+        border-radius: 10px;
+        font-family: 'Syne', sans-serif;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        color: #0a0c10;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        text-decoration: none;
+        transition: all 0.3s cubic-bezier(0.2,0.9,0.4,1.1);
+        box-shadow: 0 8px 20px rgba(201,162,39,0.25);
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 28px rgba(201,162,39,0.4);
+        gap: 0.85rem;
+    }
+
+    .btn-outline {
+        background: transparent;
+        border: 1.5px solid rgba(201,162,39,0.45);
+        padding: 0.85rem 2rem;
+        border-radius: 10px;
+        font-family: 'Syne', sans-serif;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        color: #c9a227;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        transition: all 0.3s ease;
+    }
+
+    .btn-outline:hover {
+        background: rgba(201,162,39,0.1);
+        border-color: #c9a227;
+        transform: translateY(-3px);
+    }
+
+    /* quiet inline stats — no card chrome */
+    .hero-stats-row {
+        display: flex;
+        gap: 2.2rem;
+        padding-top: 1.6rem;
+        border-top: 1px solid rgba(201,162,39,0.15);
+    }
+
+    .hero-stats-row .stat-item { display: flex; flex-direction: column; gap: 0.15rem; }
+
+    .hero-stats-row .stat-number {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #fff;
+    }
+
+    .hero-stats-row .stat-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.4);
+    }
+ 
+    .hero-bg-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.28;
+    filter: grayscale(0.3) brightness(0.8);
+    }
+
+    .circuit-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        opacity: 0.7;
+    }
+
+    .circuit-bg path { fill: none; stroke: #c9a227; stroke-width: 1.1; opacity: 0.4; }
+
+    .circuit-bg .pulse-line {
+        opacity: 0.85;
+        stroke-dasharray: 6 14;
+        animation: dashTravel 6s linear infinite;
+    }
+
+    .circuit-bg circle { fill: #c9a227; opacity: 0.55; }
+
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse at 20% 50%, rgba(7,8,11,0.35) 0%, rgba(7,8,11,0.82) 75%);
+        z-index: 2;
+    }
+    /* ---------- Right: diagnostic visual ---------- */
+    .diagnostic-panel {
+        position: relative;
+        animation: fadeInRight 0.9s cubic-bezier(0.2,0.9,0.4,1.1) 0.15s both;
+    }
+
+    @keyframes fadeInRight {
+        from { opacity: 0; transform: translateX(40px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .laptop-scan-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+    filter: drop-shadow(0 0 18px rgba(201,162,39,0.25));
+    }
+
+    .laptop-scan-wrap svg { width: 100%; height: auto; display: block; overflow: visible; }
+
+    .laptop-outline { fill: none; stroke: #f0c84a; stroke-width: 2.2; }
+    .laptop-screen-fill { fill: #1a2030; }
+
+    .component-dot {
+        fill: #f0c84a;
+        opacity: 0.5;
+        animation: dotPulse 3.2s ease-in-out infinite;
+    }
+    .component-dot.d2 { animation-delay: 0.6s; }
+    .component-dot.d3 { animation-delay: 1.2s; }
+    .component-dot.d4 { animation-delay: 1.8s; }
+
+    @keyframes dotPulse {
+        0%, 100% { opacity: 0.45; r: 3.5; }
+        50% { opacity: 1; r: 6; }
+    }
+
+    .scan-clip-area { overflow: hidden; }
+
+    .scan-beam {
+        position: absolute;
+        left: 8%;
+        right: 8%;
+        height: 38%;
+        top: 14%;
+        overflow: hidden;
+        pointer-events: none;
+        border-radius: 6px;
+    }
+
+    .scan-beam::after {
+        content: '';
+        position: absolute;
+        left: 0; right: 0;
+        height: 28%;
+        background: linear-gradient(to bottom, transparent, rgba(201,162,39,0.55), transparent);
+        animation: scanSweep 3.2s ease-in-out infinite;
+    }
+
+    @keyframes scanSweep {
+        0% { top: -30%; }
+        50% { top: 100%; }
+        100% { top: -30%; }
+    }
+
+    /* terminal readout card */
+    .terminal-card {
+        margin-top: 1.8rem;
+        background: rgba(17, 21, 28, 0.85);
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(201,162,39,0.22);
+        border-radius: 14px;
+        padding: 1.1rem 1.3rem;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 0 25px 45px -15px rgba(0,0,0,0.5);
+    }
+
+    .terminal-head {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.7rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .terminal-head span {
+        width: 8px; height: 8px; border-radius: 50%;
+        background: rgba(255,255,255,0.15);
+    }
+
+    .terminal-head .label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.4);
+        margin-left: 0.3rem;
+    }
+
+    .terminal-body {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.74rem;
+        line-height: 1.9;
+        color: rgba(245,240,232,0.85);
+        min-height: 96px;
+    }
+
+    .terminal-body .ok { color: #34d399; }
+    .terminal-body .cursor {
+        display: inline-block;
+        width: 6px; height: 12px;
+        background: #c9a227;
+        margin-left: 2px;
+        animation: blinkCursor 0.9s steps(1) infinite;
+        vertical-align: middle;
+    }
+
+    @keyframes blinkCursor {
+        50% { opacity: 0; }
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1024px) {
+        .hero-container { grid-template-columns: 1fr; text-align: center; padding: 6rem 0 3rem; gap: 2.4rem; }
+        .hero-description { margin-left: auto; margin-right: auto; }
+        .hero-buttons, .hero-stats-row { justify-content: center; }
+        .laptop-scan-wrap { max-width: 320px; }
+    }
+
+    @media (max-width: 480px) {
+        .hero-stats-row { gap: 1.4rem; flex-wrap: wrap; }
+        .terminal-body { font-size: 0.68rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .scan-beam::after, .component-dot, .hero-eyebrow::before, .circuit-bg .pulse-line, .gold-text {
+            animation: none !important;
+        }
+    }
+</style>
 <section class="service-hero">
-    <!-- Background Image with Opacity -->
-    <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=1920&h=1080&fit=crop" alt="Service Background" class="hero-bg">
+    <img src="{% static 'images/services/coprate_services.png' %}" class="hero-bg-photo">
+    <svg class="circuit-bg" viewBox="0 0 1400 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,120 L260,120 L300,160 L600,160" />
+        <path d="M0,400 L180,400 L220,440 L520,440 L560,480 L900,480" />
+        <path d="M1400,180 L1140,180 L1100,220 L820,220" />
+        <path d="M1400,520 L1220,520 L1180,560 L860,560" class="pulse-line" />
+        <path d="M120,0 L120,200" class="pulse-line" />
+        <path d="M1300,260 L1300,600" />
+        <circle cx="300" cy="160" r="3"/>
+        <circle cx="600" cy="160" r="3"/>
+        <circle cx="900" cy="480" r="3"/>
+        <circle cx="1100" cy="220" r="3"/>
+        <circle cx="860" cy="560" r="3"/>
+    </svg>
     <div class="hero-overlay"></div>
 
-    <!-- Animated Gold Particles -->
-    <div class="particles-container" id="particlesContainer"></div>
-
-    <!-- 3D Rotating Decorative Element -->
-    <div class="hero-3d-decor">
-        <svg width="120" height="120" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="50,10 90,30 90,70 50,90 10,70 10,30" stroke="#c9a227" stroke-width="1.5" fill="none" opacity="0.4"/>
-            <polygon points="50,20 80,35 80,65 50,80 20,65 20,35" stroke="#c9a227" stroke-width="1" fill="none" opacity="0.25"/>
-            <circle cx="50" cy="50" r="8" fill="#c9a227" opacity="0.3"/>
-        </svg>
-    </div>
-
     <div class="hero-container">
-        <!-- Left Content -->
+        <!-- Left: copy -->
         <div class="hero-content">
-            <div class="hero-badge">
-                <i class="fas fa-microchip"></i>
-                PROFESSIONAL TECH SERVICE
-                <i class="fas fa-bolt"></i>
-            </div>
+            <div class="hero-eyebrow">Certified Diagnostic</div>
             <h1 class="hero-title">
-                Expert Repair.<br>
-                <span class="gold-text">Same-Day Service.</span>
+                We Don't Guess.<br>
+                We Diagnose. <span class="gold-text">Then We Fix.</span>
             </h1>
             <p class="hero-description">
-                Certified technicians, genuine parts, and 12-month warranty on all repairs. 
-                From motherboard issues to liquid damage — we fix it all.
+                Every device that comes through our door gets a full component-level diagnostic before a single screw is touched — so you know exactly what's wrong, and exactly what it'll cost.
             </p>
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <span class="stat-number">5000+</span>
-                    <span class="stat-label">Devices Repaired</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">98%</span>
-                    <span class="stat-label">Success Rate</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">24/7</span>
-                    <span class="stat-label">Support</span>
-                </div>
-            </div>
             <div class="hero-buttons">
-                <a href="#" class="btn-primary">
+                <a href="{% url 'contact' %}" class="btn-primary">
                     <i class="fas fa-calendar-check"></i> Schedule Repair
                 </a>
-                <a href="#" class="btn-outline">
+                <a href="tel:+910000000000" class="btn-outline">
                     <i class="fas fa-phone-alt"></i> Emergency Call
                 </a>
             </div>
+            
         </div>
 
-        <!-- Right Side - Floating Booking Card -->
-        <div class="booking-card-wrapper">
-            <div class="booking-card">
-                <div class="booking-header">
-                    <div class="booking-icon">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <h3>Book Your Service Today</h3>
-                    <p>Free diagnostic • Best price guarantee</p>
+        <!-- Right: live diagnostic visual -->
+        <div class="diagnostic-panel">
+            <div class="laptop-scan-wrap">
+                <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+                    <rect class="laptop-screen-fill" x="70" y="20" width="260" height="170" rx="10"/>
+                    <rect class="laptop-outline" x="70" y="20" width="260" height="170" rx="10"/>
+                    <path class="laptop-outline" d="M40,200 L360,200 L340,230 L60,230 Z"/>
+                    <line class="laptop-outline" x1="40" y1="200" x2="360" y2="200"/>
+                    <circle class="component-dot d1" cx="130" cy="70" r="3.5"/>
+                    <circle class="component-dot d2" cx="260" cy="60" r="3.5"/>
+                    <circle class="component-dot d3" cx="200" cy="140" r="3.5"/>
+                    <circle class="component-dot d4" cx="280" cy="150" r="3.5"/>
+                </svg>
+                <div class="scan-beam"></div>
+            </div>
+
+            <div class="terminal-card">
+                <div class="terminal-head">
+                    <span></span><span></span><span></span>
+                    <span class="label">diagnostic.log</span>
                 </div>
-                <form class="booking-form" id="quickBookingForm">
-                    <div class="form-group">
-                        <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <i class="fas fa-phone-alt"></i>
-                        <input type="tel" placeholder="Phone Number" required>
-                    </div>
-                    <div class="form-group">
-                        <i class="fas fa-laptop"></i>
-                        <select required>
-                            <option value="" disabled selected>Select Device Type</option>
-                            <option>Laptop Repair</option>
-                            <option>Desktop Repair</option>
-                            <option>Data Recovery</option>
-                            <option>Virus Removal</option>
-                            <option>Printer Repair</option>
-                        </select>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <i class="fas fa-calendar-day"></i>
-                            <input type="date" required id="bookingDate">
-                        </div>
-                        <div class="form-group">
-                            <i class="fas fa-clock"></i>
-                            <select required>
-                                <option value="" disabled selected>Time</option>
-                                <option>10:00 AM - 12:00 PM</option>
-                                <option>12:00 PM - 02:00 PM</option>
-                                <option>02:00 PM - 04:00 PM</option>
-                                <option>04:00 PM - 06:00 PM</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button type="submit" class="book-btn">
-                        <i class="fas fa-check-circle"></i> Book Now - Free Quote
-                    </button>
-                    <div class="urgency-note">
-                        <i class="fas fa-clock"></i> Same-day pickup available • Limited slots
-                    </div>
-                </form>
+                <div class="terminal-body" id="diagLog"></div>
             </div>
         </div>
     </div>
 </section>
 
 <script>
-    // ============================================
-    // ANIMATED PARTICLES - GOLD DUST EFFECT
-    // ============================================
-    (function createParticles() {
-        const container = document.getElementById('particlesContainer');
-        if (!container) return;
-        
-        const particleCount = 45;
-        
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            
-            // Random size between 2px and 8px
-            const size = Math.random() * 6 + 2;
-            particle.style.width = size + 'px';
-            particle.style.height = size + 'px';
-            
-            // Random starting position
-            particle.style.left = Math.random() * 100 + '%';
-            
-            // Random animation duration between 8s and 25s
-            const duration = Math.random() * 17 + 8;
-            particle.style.animationDuration = duration + 's';
-            
-            // Random delay
-            particle.style.animationDelay = Math.random() * 10 + 's';
-            
-            // Random opacity variant
-            particle.style.opacity = Math.random() * 0.5 + 0.2;
-            
-            container.appendChild(particle);
-        }
-    })();
+(function () {
+    const lines = [
+        'Initializing diagnostic\u2026',
+        'Battery health: 91% \u2713',
+        'Display panel: OK \u2713',
+        'Motherboard: OK \u2713',
+        'Thermal system: OK \u2713',
+        'Ready for pickup \u2713'
+    ];
+    const el = document.getElementById('diagLog');
+    if (!el) return;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Set minimum date for booking (today's date)
-    (function setMinDate() {
-        const dateInput = document.getElementById('bookingDate');
-        if (dateInput) {
-            const today = new Date();
-            const yyyy = today.getFullYear();
-            const mm = String(today.getMonth() + 1).padStart(2, '0');
-            const dd = String(today.getDate()).padStart(2, '0');
-            dateInput.min = `${yyyy}-${mm}-${dd}`;
-            // Set default to tomorrow for better UX
-            const tomorrow = new Date(today);
-            tomorrow.setDate(today.getDate() + 1);
-            const tmrY = tomorrow.getFullYear();
-            const tmrM = String(tomorrow.getMonth() + 1).padStart(2, '0');
-            const tmrD = String(tomorrow.getDate()).padStart(2, '0');
-            dateInput.value = `${tmrY}-${tmrM}-${tmrD}`;
-        }
-    })();
+    if (reduced) {
+        el.innerHTML = lines.map(l => `<div>&gt; ${l.replace('\u2713', '<span class="ok">\u2713</span>')}</div>`).join('');
+        return;
+    }
 
-    // Form submission handling (demo)
-    const bookingForm = document.getElementById('quickBookingForm');
-    if (bookingForm) {
-        bookingForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            // Create success animation / alert
-            const btn = bookingForm.querySelector('.book-btn');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Processing...';
-            btn.disabled = true;
-            
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fas fa-check-circle"></i> Request Sent! We\'ll Call You';
-                btn.style.background = 'linear-gradient(135deg, #2a7a3e, #1e5a2e)';
+    let lineIdx = 0, charIdx = 0;
+    let current = document.createElement('div');
+    el.appendChild(current);
+
+    function tick() {
+        const line = lines[lineIdx];
+        if (charIdx <= line.length) {
+            let text = line.slice(0, charIdx).replace('\u2713', '<span class="ok">\u2713</span>');
+            current.innerHTML = '&gt; ' + text + '<span class="cursor"></span>';
+            charIdx++;
+            setTimeout(tick, 28);
+        } else {
+            lineIdx++;
+            charIdx = 0;
+            if (lineIdx >= lines.length) {
                 setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
-                    btn.style.background = '';
-                    bookingForm.reset();
-                    // Reset date after reset
-                    const today = new Date();
-                    const tomorrow = new Date(today);
-                    tomorrow.setDate(today.getDate() + 1);
-                    const tmrY = tomorrow.getFullYear();
-                    const tmrM = String(tomorrow.getMonth() + 1).padStart(2, '0');
-                    const tmrD = String(tomorrow.getDate()).padStart(2, '0');
-                    const dateInput = document.getElementById('bookingDate');
-                    if (dateInput) dateInput.value = `${tmrY}-${tmrM}-${tmrD}`;
-                }, 2500);
-            }, 1200);
-        });
-    }
-
-    // Add mouse parallax effect to booking card (3D depth)
-    const bookingCard = document.querySelector('.booking-card');
-    if (bookingCard) {
-        const wrapper = document.querySelector('.booking-card-wrapper');
-        if (wrapper) {
-            wrapper.addEventListener('mousemove', (e) => {
-                const rect = wrapper.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 25;
-                const rotateY = (centerX - x) / 25;
-                bookingCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
-            });
-            wrapper.addEventListener('mouseleave', () => {
-                bookingCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
-            });
+                    el.innerHTML = '';
+                    lineIdx = 0;
+                    current = document.createElement('div');
+                    el.appendChild(current);
+                    tick();
+                }, 1800);
+                return;
+            }
+            current = document.createElement('div');
+            el.appendChild(current);
+            if (el.children.length > 6) el.removeChild(el.firstChild);
+            setTimeout(tick, 250);
         }
     }
-
-    // Floating animation for gold particles - additional random movement
-    const particles = document.querySelectorAll('.particle');
-    setInterval(() => {
-        particles.forEach(p => {
-            const randomX = (Math.random() - 0.5) * 15;
-            const randomY = (Math.random() - 0.5) * 15;
-            p.style.transform = `translate(${randomX}px, ${randomY}px)`;
-            setTimeout(() => {
-                p.style.transform = 'translate(0, 0)';
-            }, 800);
-        });
-    }, 4000);
+    tick();
+})();
 </script>
 
 <!-- Core Services Showcase
@@ -1786,7 +1872,7 @@
     <!-- Row 1 -->
     <div class="sector-row reveal-row">
         <div class="sector-img">
-            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=900" alt="">
+            <img src="{% static 'images/services/educational_institutions.png' %}" alt="">
         </div>
         <div class="sector-box">
             <div class="sector-icon"><i class="fas fa-graduation-cap"></i></div>
