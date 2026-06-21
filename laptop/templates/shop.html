@@ -1495,7 +1495,7 @@
 }
 
 .printer-card .card-bg {
-  background-image: url('{% static 'images/printer.png' %}');
+  background-image: url('{% static 'images/services/printer.png' %}');
 }
 
 .solution-card:hover .card-bg {
@@ -2272,6 +2272,383 @@
   }
 }
 </style>
+<style>
+
+  /* ── FIX 1: VIEW ALL BUTTON — Gold bg, black text, prominent ── */
+  .fullcover-card-btn {
+    color: #080a0e !important;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark)) !important;
+    padding: 0.55rem 1.4rem !important;
+    border-radius: 50px !important;
+    font-size: 0.7rem !important;
+    font-weight: 800 !important;
+    box-shadow: 0 4px 16px rgba(201,162,39,0.45) !important;
+    border: none !important;
+    letter-spacing: 0.1em !important;
+  }
+  .fullcover-card-btn:hover {
+    transform: translateY(-3px) scale(1.04) !important;
+    box-shadow: 0 8px 24px rgba(201,162,39,0.65) !important;
+    color: #080a0e !important;
+    gap: 0.9rem !important;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark)) !important;
+  }
+
+  /* ── FIX 2: SECURITY SECTION — Proper 2-column mobile layout ── */
+  @media (max-width: 768px) {
+    .solutions-grid {
+      grid-template-columns: 1fr 1fr !important;
+      gap: 0.75rem !important;
+    }
+    .solution-card {
+      min-height: 320px !important;
+      border-radius: 16px !important;
+      padding: 0 0.85rem !important;
+    }
+    .card-header {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: 0.35rem !important;
+      padding: 0.6rem 0 !important;
+    }
+    .card-title {
+      font-size: 0.8rem !important;
+      padding: 4px 8px !important;
+      max-width: 100% !important;
+      white-space: normal !important;
+    }
+    .card-badge {
+      font-size: 0.5rem !important;
+      padding: 3px 8px !important;
+    }
+    .card-features {
+      gap: 0.35rem !important;
+      margin: 0.5rem 0 0 0 !important;
+    }
+    .feature {
+      font-size: 0.58rem !important;
+      padding: 3px 7px !important;
+    }
+    .card-btn {
+      font-size: 0.58rem !important;
+      padding: 7px 12px !important;
+    }
+    .card-icon {
+      width: 40px !important;
+      height: 40px !important;
+      margin-bottom: 0.6rem !important;
+    }
+    .card-icon i {
+      font-size: 1.1rem !important;
+    }
+    .solutions-title {
+      font-size: 1.4rem !important;
+    }
+    .premium-solutions-section {
+      padding: 2.5rem 3% !important;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .solutions-grid {
+      gap: 0.5rem !important;
+    }
+    .solution-card {
+      min-height: 280px !important;
+      padding: 0 0.65rem !important;
+    }
+    .card-title {
+      font-size: 0.7rem !important;
+    }
+    .feature {
+      font-size: 0.52rem !important;
+      padding: 2px 5px !important;
+    }
+  }
+
+  /* ── FIX 3: ACCESSORIES CAROUSEL — 1.5 cards visible on mobile ── */
+  @media (max-width: 768px) {
+    .accessories-swiper .swiper-slide {
+      width: 62vw !important;
+    }
+    .accessories-swiper {
+      overflow: hidden !important;
+    }
+  }
+  @media (max-width: 480px) {
+    .accessories-swiper .swiper-slide {
+      width: 64vw !important;
+    }
+  }
+
+  /* ── FIX 4: MONITORS — Light gray theme + eye-catching animations ── */
+  .monitors-premium-section {
+    padding: 5rem 5% !important;
+    background: linear-gradient(135deg, #f8f9fb 0%, #eef0f4 60%, #f3f1f8 100%) !important;
+    overflow: hidden !important;
+  }
+
+  /* Floating blobs */
+  .monitors-premium-section::before {
+    background: radial-gradient(circle, rgba(201,162,39,0.10) 0%, transparent 65%) !important;
+    top: -20% !important;
+    left: -15% !important;
+    width: 55% !important;
+    height: 75% !important;
+    animation: monBlob1 14s ease-in-out infinite !important;
+  }
+  .monitors-premium-section::after {
+    background: radial-gradient(circle, rgba(120,90,200,0.07) 0%, transparent 65%) !important;
+    bottom: -20% !important;
+    right: -10% !important;
+    width: 50% !important;
+    height: 70% !important;
+    animation: monBlob2 17s ease-in-out infinite !important;
+    background-image: none !important;
+  }
+
+  @keyframes monBlob1 {
+    0%,100% { transform: translate(0,0) scale(1); }
+    40% { transform: translate(6%,8%) scale(1.12); }
+    70% { transform: translate(-4%,3%) scale(0.94); }
+  }
+  @keyframes monBlob2 {
+    0%,100% { transform: translate(0,0) scale(1); }
+    40% { transform: translate(-7%,-6%) scale(1.09); }
+    70% { transform: translate(4%,-2%) scale(0.96); }
+  }
+
+  /* Header text colors */
+  .monitors-title {
+    color: #1a1828 !important;
+    text-shadow: none !important;
+  }
+  .monitors-subtitle {
+    color: #666 !important;
+  }
+  .monitors-header .section-tag-gold {
+    color: var(--gold-dark) !important;
+  }
+
+  /* Monitor Card — clean white card */
+  .monitor-card {
+    background: #ffffff !important;
+    border: 1px solid rgba(0,0,0,0.07) !important;
+    box-shadow: 0 4px 22px rgba(0,0,0,0.07) !important;
+    overflow: visible !important;
+    position: relative !important;
+  }
+
+  /* Animated gradient border on hover */
+  .monitor-card::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: -2px !important;
+    border-radius: 26px !important;
+    background: linear-gradient(135deg,
+      var(--gold) 0%,
+      var(--gold-light) 35%,
+      rgba(160,120,230,0.6) 65%,
+      var(--gold) 100%) !important;
+    background-size: 300% 300% !important;
+    opacity: 0 !important;
+    z-index: -1 !important;
+    transition: opacity 0.4s ease !important;
+    animation: gradBorderShift 3.5s linear infinite !important;
+    border-radius: 26px !important;
+    height: unset !important;
+  }
+  @keyframes gradBorderShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .monitor-card:hover::before { opacity: 1 !important; }
+
+  .monitor-card:hover {
+    transform: translateY(-14px) scale(1.025) !important;
+    box-shadow: 0 32px 65px rgba(0,0,0,0.14) !important;
+    border-color: transparent !important;
+  }
+
+  /* Image wrapper — light gray bg */
+  .monitor-img-wrapper {
+    background: linear-gradient(145deg, #f4f4f7 0%, #eaebee 100%) !important;
+    border-radius: 22px 22px 0 0 !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  /* Shimmer sweep on hover */
+  .monitor-img-wrapper::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 55% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent) !important;
+    transition: left 0.65s ease !important;
+    pointer-events: none !important;
+    z-index: 3 !important;
+  }
+  .monitor-card:hover .monitor-img-wrapper::after {
+    left: 160% !important;
+  }
+
+  .monitor-card:hover .monitor-img {
+    transform: scale(1.07) translateY(-6px) !important;
+    filter: drop-shadow(0 14px 28px rgba(0,0,0,0.22)) !important;
+  }
+
+  /* Text — dark on light bg */
+  .monitor-brand   { color: var(--gold-dark) !important; font-weight: 800 !important; }
+  .monitor-name    { color: #1a1828 !important; }
+  .spec-item       { background: #f0f0f6 !important; color: #555 !important; border: 1px solid rgba(0,0,0,0.06) !important; }
+  .monitor-old-price { color: #bbb !important; }
+
+  /* Badge pulse */
+  .monitor-badge {
+    animation: badgePulse 2.5s ease-in-out infinite !important;
+  }
+  @keyframes badgePulse {
+    0%,100% { box-shadow: 0 0 0 0 rgba(201,162,39,0.45); }
+    50%      { box-shadow: 0 0 0 7px rgba(201,162,39,0); }
+  }
+
+  /* Button */
+  .monitor-btn {
+    background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark)) !important;
+    color: #080a0e !important;
+    box-shadow: 0 3px 14px rgba(201,162,39,0.30) !important;
+  }
+  .monitor-btn:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 28px rgba(201,162,39,0.55) !important;
+    gap: 0.85rem !important;
+  }
+
+  /* Staggered entrance animation */
+  .monitors-grid .monitor-card {
+    opacity: 0;
+    transform: translateY(35px) scale(0.97);
+    transition: opacity 0.7s cubic-bezier(0.2,0.9,0.4,1.1),
+                transform 0.7s cubic-bezier(0.2,0.9,0.4,1.1) !important;
+  }
+  .monitors-grid .monitor-card.is-visible {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+  }
+  .monitors-grid .monitor-card:nth-child(1) { transition-delay: 0.0s !important; }
+  .monitors-grid .monitor-card:nth-child(2) { transition-delay: 0.1s !important; }
+  .monitors-grid .monitor-card:nth-child(3) { transition-delay: 0.2s !important; }
+  .monitors-grid .monitor-card:nth-child(4) { transition-delay: 0.1s !important; }
+  .monitors-grid .monitor-card:nth-child(5) { transition-delay: 0.2s !important; }
+  .monitors-grid .monitor-card:nth-child(6) { transition-delay: 0.3s !important; }
+
+  /* Responsive monitors */
+  @media (max-width: 768px) {
+    .monitors-premium-section { padding: 3.5rem 4% !important; }
+    .monitors-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 1rem !important; }
+    .monitor-name  { font-size: 0.9rem !important; }
+    .monitor-price { font-size: 1rem !important; }
+  }
+  @media (max-width: 480px) {
+    .monitors-grid  { gap: 0.75rem !important; }
+    .monitor-info   { padding: 0.8rem !important; }
+    .monitor-specs  { gap: 0.35rem !important; }
+    .monitor-name   { font-size: 0.82rem !important; }
+  }
+</style>
+
+<style>
+    /*/* ── SECURITY SECTION: SINGLE COLUMN ON MOBILE ── */
+  @media (max-width: 768px) {
+    .solutions-grid {
+      grid-template-columns: 1fr !important;
+      gap: 1.2rem !important;
+    }
+
+    .solution-card {
+      min-height: 380px !important;
+      border-radius: 18px !important;
+      padding: 0 1.4rem !important;
+    }
+
+    .card-header {
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      flex-wrap: wrap !important;
+      gap: 0.5rem !important;
+      padding: 0.8rem 0 !important;
+    }
+
+    .card-title {
+      font-size: 1rem !important;
+      padding: 5px 12px !important;
+      max-width: 65% !important;
+    }
+
+    .card-badge {
+      font-size: 0.58rem !important;
+      padding: 4px 10px !important;
+    }
+
+    .card-features {
+      gap: 0.5rem !important;
+      margin: 0.8rem 0 0 0 !important;
+    }
+
+    .feature {
+      font-size: 0.68rem !important;
+      padding: 4px 10px !important;
+    }
+
+    .card-btn {
+      font-size: 0.65rem !important;
+      padding: 8px 18px !important;
+      margin-bottom: 1.2rem !important;
+    }
+
+    .card-icon {
+      width: 48px !important;
+      height: 48px !important;
+      margin-bottom: 0.8rem !important;
+    }
+
+    .card-icon i {
+      font-size: 1.4rem !important;
+    }
+
+    .solutions-title {
+      font-size: 1.6rem !important;
+    }
+
+    .premium-solutions-section {
+      padding: 2.5rem 4% !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .solutions-grid {
+      grid-template-columns: 1fr !important;
+    }
+
+    .solution-card {
+      min-height: 340px !important;
+      padding: 0 1.1rem !important;
+    }
+
+    .card-title {
+      font-size: 0.9rem !important;
+    }
+
+    .feature {
+      font-size: 0.62rem !important;
+    }
+  } paste sbm_security_fix.css content here */
+</style>
 {% endblock %}
 
 {% block content %}
@@ -2287,9 +2664,9 @@
   <!-- Swiper Slideshow - 25px gap from all sides, perfectly rounded -->
   <div class="hero-swiper swiper">
     <div class="swiper-wrapper">
-      <div class="swiper-slide" style="background-image: url('{% static "images/banner-main-1.jpg" %}');"></div>
-      <div class="swiper-slide" style="background-image: url('{% static "images/banner-main-2.jpg" %}');"></div>
-      <div class="swiper-slide" style="background-image: url('{% static "images/banner-main-3.jpg" %}');"></div>
+      <div class="swiper-slide" style="background-image: url('{% static "images/services/banner-main-1.jpg" %}');"></div>
+      <div class="swiper-slide" style="background-image: url('{% static "images/services/banner-main-2.jpg" %}');"></div>
+      <div class="swiper-slide" style="background-image: url('{% static "images/services/banner-main-3.jpg" %}');"></div>
     </div>
   </div>
 
@@ -2319,7 +2696,7 @@
       
       <!-- Card 1: Powerful GPU Series / Gaming Machines -->
       <a href="{% url 'gamingl' %}" class="fullcover-card anim up delay-1">
-        <div class="fullcover-card-bg" style="background-image: url('{% static "images/gaming-laptop.png" %}');"></div>
+        <div class="fullcover-card-bg" style="background-image: url('{% static "images/services/gaming-laptop.png" %}');"></div>
         <div class="fullcover-card-content">
           <div class="fullcover-card-subtitle">High-Performance GPU</div>
           <h2 class="fullcover-card-title">Gaming Laptop</h2>
@@ -2329,7 +2706,7 @@
 
       <!-- Card 2: AI-Powered Series / Business Laptops -->
       <a href="#" class="fullcover-card anim up delay-2" data-link-url="https://your-link-here.com/ai-series">
-        <div class="fullcover-card-bg" style="background-image: url('{% static "images/business-laptop.png" %}');"></div>
+        <div class="fullcover-card-bg" style="background-image: url('{% static "images/services/business-laptop.png" %}');"></div>
         <div class="fullcover-card-overlay"></div>
         <div class="fullcover-card-content">
           <div class="fullcover-card-subtitle">Optimized Power</div>
@@ -2340,11 +2717,11 @@
 
       <!-- Card 3: Next Gen GPU Series / Video Editors -->
       <a href="#" class="fullcover-card anim up delay-3" data-link-url="https://your-link-here.com/nextgen-gpu">
-        <div class="fullcover-card-bg" style="background-image: url('{% static "images/video-editors-laptop.png" %}');"></div>
+        <div class="fullcover-card-bg" style="background-image: url('{% static "images/services/educational-laptop.png" %}');"></div>
         <div class="fullcover-card-overlay"></div>
         <div class="fullcover-card-content">
           <div class="fullcover-card-subtitle">Creator-Grade Performance</div>
-          <h2 class="fullcover-card-title">Video Editors</h2>
+          <h2 class="fullcover-card-title">Educational Laptops</h2>
           <span class="fullcover-card-btn">View All <i class="fas fa-arrow-up-right"></i></span>
         </div>
       </a>
@@ -2366,13 +2743,15 @@
   </div>
 
   <!-- Category Filter Buttons - ONLY 2 TABS -->
-  <div style="max-width:1200px;margin:0 auto 2rem;display:flex;justify-content:center; gap: 0.8rem;" class="anim up delay-2">
-    <button class="cat-filter-btn" data-cat-filter="new">✨ New Arrivals</button>
-    <button class="cat-filter-btn active" data-cat-filter="popular">🔥 Popular</button>
-  </div>
+<!-- Category Filter Buttons - ONLY 2 TABS -->
+<!-- Category Filter Buttons - ONLY 2 TABS -->
+<div style="max-width:1200px;margin:0 auto 2rem;display:flex;justify-content:center; gap: 0.8rem;" class="anim up delay-2">
+  <button class="cat-filter-btn active" data-cat-filter="new">✨ New Arrivals</button>
+  <button class="cat-filter-btn" data-cat-filter="popular">🔥 Popular</button>
+</div>
 
   <!-- POPULAR Laptops Panel (6 cards) -->
-  <div id="cat-popular" class="cat-panel active">
+  <div id="cat-popular" class="cat-panel">
     <div class="category-grid">
       <!-- Popular Card 1 -->
       <div class="cat-card-new anim up delay-1">
@@ -2473,7 +2852,7 @@
   </div>
 
   <!-- NEW ARRIVALS Laptops Panel (9 cards) -->
-  <div id="cat-new" class="cat-panel">
+  <div id="cat-new" class="cat-panel active">
     <div class="category-grid">
       <!-- New Card 1 -->
       <div class="cat-card-new anim up delay-1">
@@ -2698,7 +3077,7 @@
       <!-- Card 1: SSD -->
       <div class="swiper-slide">
         <div class="premium-accessory-card">
-          <div class="card-bg-img" style="background-image: url('{% static "images/laptop-stand-bg.png" %}');"></div>
+          <div class="card-bg-img" style="background-image: url('{% static "images/services/accessory/laptop-stand-bg.png" %}');"></div>
           <div class="accessory-card-content">
             <div>
               <h4>Laptop Stand</h4>
@@ -2711,7 +3090,7 @@
       <!-- Card 2: RAM -->
       <div class="swiper-slide">
         <div class="premium-accessory-card">
-          <div class="card-bg-img" style="background-image: url('{% static "images/ram-bg.png" %}');"></div>
+          <div class="card-bg-img" style="background-image: url('{% static "images/services/accessory/ram-bg.png" %}');"></div>
           <div class="accessory-card-content">
             <div>
               <h4>RAM</h4>
@@ -2725,7 +3104,7 @@
       <!-- Card 3: Convertors -->
       <div class="swiper-slide">
         <div class="premium-accessory-card">
-          <div class="card-bg-img" style="background-image: url('{% static "images/convertor-bg.png" %}');"></div>
+          <div class="card-bg-img" style="background-image: url('{% static "images/services/accessory/convertor-bg.png" %}');"></div>
           <div class="accessory-card-content">
             <div>
               <h4>Convertors</h4>
@@ -2739,7 +3118,7 @@
       <!-- Card 4: Toner -->
       <div class="swiper-slide">
         <div class="premium-accessory-card">
-          <div class="card-bg-img" style="background-image: url('{% static "images/toner-bg.png" %}');"></div>
+          <div class="card-bg-img" style="background-image: url('{% static "images/services/accessory/toner-bg.png" %}');"></div>
           <div class="accessory-card-content">
             <div>
               <h4>Toner</h4>
@@ -2753,7 +3132,7 @@
       <!-- Card 5: Cartage -->
       <div class="swiper-slide">
         <div class="premium-accessory-card">
-          <div class="card-bg-img" style="background-image: url('{% static "images/Cartage-bg.png" %}');"></div>
+          <div class="card-bg-img" style="background-image: url('{% static "images/services/accessory/cartage-bg.png" %}');"></div>
           <div class="accessory-card-content">
             <div>
               <h4>Cartage</h4>
@@ -2781,7 +3160,7 @@
       <!-- Card 7: Batteries -->
       <div class="swiper-slide">
         <div class="premium-accessory-card">
-          <div class="card-bg-img" style="background-image: url('{% static "images/battery-bg.png" %}');"></div>
+          <div class="card-bg-img" style="background-image: url('{% static "images/services/accessory/battery-bg.png" %}');"></div>
           <div class="accessory-card-content">
             <div>
               <h4>Batteries</h4>
@@ -2795,7 +3174,7 @@
       <!-- Card 8: Mouse -->
       <div class="swiper-slide">
         <div class="premium-accessory-card">
-          <div class="card-bg-img" style="background-image: url('{% static "images/mouse-bg.png" %}');"></div>
+          <div class="card-bg-img" style="background-image: url('{% static "images/services/accessory/mouse-bg.png" %}');"></div>
           <div class="accessory-card-content">
             <div>
               <h4>Mouse</h4>
@@ -2809,7 +3188,7 @@
       <!-- Card 9: Keyboard -->
       <div class="swiper-slide">
         <div class="premium-accessory-card">
-          <div class="card-bg-img" style="background-image: url('{% static "images/keyboard-bg.png" %}');"></div>
+          <div class="card-bg-img" style="background-image: url('{% static "images/services/accessory/keyboard-bg.png" %}');"></div>
           <div class="accessory-card-content">
             <div>
               <h4>Keyboard</h4>
@@ -2823,7 +3202,7 @@
       <!-- Card 10: Laptop Fan -->
       <div class="swiper-slide">
         <div class="premium-accessory-card">
-          <div class="card-bg-img" style="background-image: url('{% static "images/ssd-bg.png" %}');"></div>
+          <div class="card-bg-img" style="background-image: url('{% static "images/services/accessory/ssd-bg.png" %}');"></div>
           <div class="accessory-card-content">
             <div>
               <h4>SSD</h4>
@@ -2836,7 +3215,7 @@
       <!-- Card 11: Laptop Stand -->
       <div class="swiper-slide">
         <div class="premium-accessory-card">
-          <div class="card-bg-img" style="background-image: url('{% static "images/laptop-fan-bg.png" %}');"></div>
+          <div class="card-bg-img" style="background-image: url('{% static "images/services/accessory/laptop-fan-bg.png" %}');"></div>
           <div class="accessory-card-content">
             <div>
               <h4>Laptop Fan</h4>
@@ -2850,7 +3229,7 @@
       <!-- Card 12: Webcam -->
       <div class="swiper-slide">
         <div class="premium-accessory-card">
-          <div class="card-bg-img" style="background-image: url('{% static "images/webcam-bg.png" %}');"></div>
+          <div class="card-bg-img" style="background-image: url('{% static "images/services/accessory/webcam-bg.png" %}');"></div>
           <div class="accessory-card-content">
             <div>
               <h4>Webcam</h4>
@@ -2864,7 +3243,7 @@
       <!-- Card 13: Monitor Mount -->
       <div class="swiper-slide">
         <div class="premium-accessory-card">
-          <div class="card-bg-img" style="background-image: url('{% static "images/monitor-mount-bg.png" %}');"></div>
+          <div class="card-bg-img" style="background-image: url('{% static "images/services/accessory/monitor-mount-bg.png" %}');"></div>
           <div class="accessory-card-content">
             <div>
               <h4>Monitor Mount</h4>
@@ -2878,7 +3257,7 @@
       <!-- Card 14: Router -->
       <div class="swiper-slide">
         <div class="premium-accessory-card">
-          <div class="card-bg-img" style="background-image: url('{% static "images/router-bg.png" %}');"></div>
+          <div class="card-bg-img" style="background-image: url('{% static "images/services/accessory/router-bg.png" %}');"></div>
           <div class="accessory-card-content">
             <div>
               <h4>Router</h4>
@@ -3071,6 +3450,8 @@ const animObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
 document.querySelectorAll('.anim, .fullcover-card').forEach(el => animObserver.observe(el));
 
+
+
 // ══ 3D Tilt on Cards ════════════════════════════════════════
 document.querySelectorAll('.prod-card, .cat-card, .promo-small, .promo-feature, .fullcover-card').forEach(card => {
   card.addEventListener('mousemove', e => {
@@ -3176,6 +3557,7 @@ const accessoriesSwiper = new Swiper('.accessories-swiper', {
     },
   }
 });
+
 </script>
 {% endblock %}
 
