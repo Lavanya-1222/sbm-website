@@ -1013,73 +1013,84 @@
     
     /* Responsive Ideal Section */
     @media (max-width: 968px) {
-        .ideal-laptop-section {
-            min-height: auto;
-            height: auto;
-            padding: 0 0 3rem 0;
-        }
-        
-        .ideal-image-container {
-            position: relative !important;
-            top: 12px;
-            left: 12px;
-            width: calc(100% - 24px);
-            height: 40vh;
-            bottom: auto;
-        }
-        
-        .ideal-content-wrapper {
-            position: relative;
-            padding-top: 40vh;
-        }
-        
-        .ideal-container {
-            flex-direction: column;
-            text-align: center;
-            gap: 1.2rem;
-            padding: 1.5rem 6%;
-        }
-        
-        .ideal-content {
-            flex: 0 0 100%;
-            max-width: 100%;
-            text-align: center;
-        }
-        
-        .ideal-image-wrapper {
-            flex: 0 0 100%;
-            max-width: 100%;
-            order: -1;
-        }
-        
-        .ideal-desc {
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .ideal-btn {
-            margin: 0 auto;
-        }
-        
-        .ideal-image {
-            max-width: 300px;
-            margin: 0 auto;
-        }
+    .ideal-laptop-section {
+        display: block;
+        position: relative;
+        min-height: auto;
+        height: auto;
+        padding: 2rem 0;
+        background: #fff;
     }
-    
-    @media (max-width: 576px) {
-        .ideal-main-title { font-size: 1.6rem; }
-        .ideal-image { 
-            max-width: 240px; 
-        }
-        @keyframes gentleJump {
-            0%, 100% { transform: translateY(0px); }
-            15% { transform: translateY(-4px); }
-            30% { transform: translateY(2px); }
-            45% { transform: translateY(-1px); }
-            60% { transform: translateY(0px); }
-        }
+
+    /* hide the big decorative background photo on mobile — 
+       it was causing the flat pink box behind everything */
+    .ideal-white-container,
+    .ideal-image-container {
+        display: none;
     }
+
+    .ideal-content-wrapper {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .ideal-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+        gap: 0.8rem;
+        padding: 0 6%;
+        max-width: 100%;
+    }
+
+    .ideal-content {
+        flex: 0 0 58%;
+        max-width: 58%;
+        text-align: left;
+        animation: none;
+    }
+
+    .ideal-image-wrapper {
+        flex: 0 0 38%;
+        max-width: 38%;
+        order: 0;
+    }
+
+    .ideal-main-title {
+        font-size: 1.15rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .ideal-desc {
+        font-size: 0.7rem;
+        line-height: 1.45;
+        margin: 0 0 1rem 0;
+        max-width: 100%;
+    }
+
+    .ideal-btn {
+        margin: 0;
+        padding: 0.5rem 1rem;
+        font-size: 0.6rem;
+    }
+
+    .ideal-image {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .ideal-main-title { font-size: 1rem; }
+    .ideal-desc { font-size: 0.65rem; }
+    .ideal-btn { font-size: 0.55rem; padding: 0.45rem 0.9rem; }
+}
 </style>
 
 <!-- ============================================ -->
