@@ -210,7 +210,7 @@
         padding-top: 1rem !important;
         padding-bottom: 2rem !important;
         position: relative;
-        background-image: url('{% static "images/contact-bg.png" %}');
+        background-image: url('{% static "images/contact/contact-bg.png" %}');
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
@@ -470,7 +470,7 @@
     .qc-icon {
         width: 44px;
         height: 44px;
-        background: linear-gradient(135deg, var(--gold-light), var(--gold));
+        background: linear-gradient(135deg, rgb(113, 246, 113), rgb(10, 218, 10));
         border-radius: 14px;
         display: flex;
         align-items: center;
@@ -598,63 +598,36 @@
     }
     
     /* Responsive */
+    /* ===== MOBILE VIEW: Quick Contact FIRST, Form SECOND ===== */
     @media (max-width: 968px) {
-        .info-grid {
-            grid-template-columns: 1fr;
-            gap: 0.8rem;
-        }
-        
         .contact-grid {
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
+            display: flex;
+            flex-direction: column;
         }
         
-        .form-row {
-            grid-template-columns: 1fr;
+        /* Quick Contact (Right side) appears FIRST on mobile */
+        .contact-grid .reveal-right-contact {
+            order: 1;
         }
         
-        .contact-form {
-            padding: 1.5rem;
-        }
-        
-        .contact-hero {
-            padding: 4rem 5% 2.5rem 5%;
-        }
-        
-        .typing-static, .typing-dynamic {
-            font-size: 1.6rem;
+        /* Form (Left side) appears SECOND on mobile */
+        .contact-grid .reveal-left-contact {
+            order: 2;
         }
     }
-    
+
     @media (max-width: 576px) {
-        .qc-item {
-            padding: 0.8rem;
+        .contact-grid {
+            display: flex;
+            flex-direction: column;
         }
         
-        .qc-icon {
-            width: 38px;
-            height: 38px;
-            font-size: 1rem;
+        .contact-grid .reveal-right-contact {
+            order: 1;
         }
         
-        .qc-brand-img {
-            width: 38px;
-            height: 38px;
-            padding: 5px;
-        }
-        
-        .typing-static, .typing-dynamic {
-            font-size: 1.3rem;
-        }
-        
-        .real-map-container::after {
-            font-size: 0.55rem;
-            padding: 3px 8px;
-            white-space: nowrap;
-        }
-        
-        .contact-main-section .section-title {
-            font-size: 1.3rem !important;
+        .contact-grid .reveal-left-contact {
+            order: 2;
         }
     }
     
@@ -699,6 +672,50 @@
     section:first-of-type {
         padding-top: 0rem !important;
     }
+    /* ===== MOBILE VIEW: Info Cards Stacked Vertically ===== */
+    @media (max-width: 968px) {
+        /* Make info cards stack vertically on mobile */
+        .info-grid {
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+        }
+        
+        /* Ensure contact grid is stacked properly */
+        .contact-grid {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Quick Contact (Right side) appears FIRST on mobile */
+        .contact-grid .reveal-right-contact {
+            order: 1;
+        }
+        
+        /* Form (Left side) appears SECOND on mobile */
+        .contact-grid .reveal-left-contact {
+            order: 2;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .info-grid {
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+        }
+        
+        .contact-grid {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .contact-grid .reveal-right-contact {
+            order: 1;
+        }
+        
+        .contact-grid .reveal-left-contact {
+            order: 2;
+        }
+    }
 </style>
 {% endblock %}
 
@@ -735,7 +752,7 @@
         <div class="info-card reveal-contact" style="transition-delay: 0.3s">
             <div class="info-icon">🕐</div>
             <h3>Opening Hours</h3>
-            <p>Monday – Sunday<br>11:00 AM – 10:00 PM</p>
+            <p>Monday – Sunday<br>10:00 AM – 10:00 PM</p>
         </div>
     </div>
 </section>
